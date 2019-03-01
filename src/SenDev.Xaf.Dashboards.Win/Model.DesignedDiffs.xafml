@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Application>
+  <Localization>
+    <LocalizationGroup Name="Captions">
+      <LocalizationItem Name="EnterScript" Value="Enter Script" IsNewNode="True" />
+    </LocalizationGroup>
+  </Localization>
+  <SchemaModules>
+    <SchemaModule Name="SystemModule" Version="18.2.6.0" IsNewNode="True" />
+  </SchemaModules>
+  <Views>
+    <DetailView Id="ScriptDashboardWizardParameters_DetailView">
+      <Layout>
+        <LayoutGroup Id="Main" RelativeSize="100">
+          <LayoutGroup Id="SizeableEditors" RelativeSize="100" Index="0">
+            <LayoutItem Id="Script" RelativeSize="100" CaptionLocation="Top" />
+          </LayoutGroup>
+          <LayoutGroup Id="SimpleEditors" RelativeSize="50" Direction="Horizontal" Removed="True">
+            <LayoutGroup Id="XafWizardParameters" Direction="Horizontal" Index="0" RelativeSize="100" Caption="Data Type" Removed="True">
+              <LayoutItem Id="DataType" Removed="True" />
+            </LayoutGroup>
+          </LayoutGroup>
+        </LayoutGroup>
+      </Layout>
+    </DetailView>
+    <DetailView Id="ScriptDashboardWizardParameters_DetailView_Extract" ClassName="SenDev.Xaf.Dashboards.Win.BusinessObjects.ScriptDashboardWizardParameters" IsNewNode="True">
+      <Items IsNewNode="True">
+        <PropertyEditor Id="DataExtract" PropertyName="DataExtract" IsNewNode="True" />
+        <PropertyEditor Id="DataType" PropertyName="DataType" IsNewNode="True" />
+        <PropertyEditor Id="Script" PropertyName="Script" IsNewNode="True" />
+      </Items>
+      <Layout IsNewNode="True">
+        <LayoutGroup Id="Main" Index="0" ShowCaption="False" RelativeSize="100" IsNewNode="True">
+          <LayoutGroup Id="SizeableEditors" Index="0" ShowCaption="False" RelativeSize="100" Caption="Script" IsNewNode="True">
+            <LayoutItem Id="DataExtract" ViewItem="DataExtract" Index="0" RelativeSize="100" IsNewNode="True" />
+          </LayoutGroup>
+        </LayoutGroup>
+      </Layout>
+    </DetailView>
+  </Views>
+</Application>
