@@ -2,31 +2,25 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using DevExpress.Data.Linq.Helpers;
+using DevExpress.ExpressApp.DC;
 
 namespace SenDev.Xaf.Dashboards.Scripting
 {
 
-	public class DashboardDataList<TQuery, TElement> : IList<TElement>, IList
+	public class DashboardDataList : TypedListBase, IList
 	{
 
-		private TElement[] buffer;
+		private object[] buffer;
 		private int bufferStartIndex = -1;
 
-		protected DashboardDataList(IQueryable<TQuery> queryable, int elementsPerSourceRow)
+
+		public DashboardDataList(IQueryable queryable, ITypesInfo typesInfo, int elementsPerSourceRow) : base(queryable, typesInfo, true)
 		{
 			Queryable = queryable;
 			ElementsPerSourceRow = elementsPerSourceRow;
 		}
-		public DashboardDataList(IQueryable<TQuery> queryable, Func<TQuery, TElement> conversionFunc) : this(queryable, 1)
-		{
-			ConvertionFunc = conversionFunc;
-		}
 
-
-		private Func<TQuery, TElement> ConvertionFunc
-		{
-			get;
-		}
 
 
 		public int SourceRowsBufferSize { get; set; } = 10000;
@@ -39,12 +33,12 @@ namespace SenDev.Xaf.Dashboards.Scripting
 
 		private int CalculateBufferStartIndex(int index) => index / BufferSize * BufferSize;
 
-		internal TElement GetElement(int index)
+		internal object GetElement(int index)
 		{
 			var neededBufferStartIndex = CalculateBufferStartIndex(index);
 			if (neededBufferStartIndex != bufferStartIndex)
 			{
-				buffer = Queryable.Skip(neededBufferStartIndex / ElementsPerSourceRow).Take(SourceRowsBufferSize).SelectMany(ConvertElements).ToArray();
+				buffer = Queryable.Skip(neededBufferStartIndex / ElementsPerSourceRow).Take(SourceRowsBufferSize).Cast<object>().ToArray();
 				System.Diagnostics.Debug.WriteLine("Loaded buffer for index={0}", neededBufferStartIndex);
 				bufferStartIndex = neededBufferStartIndex;
 			}
@@ -52,16 +46,14 @@ namespace SenDev.Xaf.Dashboards.Scripting
 			return buffer[index - bufferStartIndex];
 		}
 
-		protected virtual IEnumerable<TElement> ConvertElements(TQuery source) => new[] { ConvertionFunc(source) };
 
-		private IQueryable<TQuery> Queryable
+		private IQueryable Queryable
 		{
 			get;
 		}
 
 
-		#region IList<T> implementation
-		public TElement this[int index] { get => GetElement(index); set => throw new NotSupportedException(); }
+		#region IList implementation
 
 		private int? count;
 		public int Count => (count ?? (count = Queryable.Count() * ElementsPerSourceRow)) ?? 0;
@@ -77,33 +69,8 @@ namespace SenDev.Xaf.Dashboards.Scripting
 
 		object IList.this[int index] { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
 
-		public void Add(TElement item) => throw new NotSupportedException();
 
 		public void Clear() => throw new NotSupportedException();
-
-		public bool Contains(TElement item) => throw new NotImplementedException();
-
-		public void CopyTo(TElement[] array, int arrayIndex)
-		{
-			throw new NotImplementedException();
-		}
-
-		public IEnumerator<TElement> GetEnumerator() => new DashboardDataListEnumerator<TQuery, TElement>(this);
-
-		public int IndexOf(TElement item)
-		{
-			throw new NotImplementedException();
-		}
-
-		public void Insert(int index, TElement item)
-		{
-			throw new NotImplementedException();
-		}
-
-		public bool Remove(TElement item)
-		{
-			throw new NotImplementedException();
-		}
 
 		public void RemoveAt(int index)
 		{
@@ -112,10 +79,8 @@ namespace SenDev.Xaf.Dashboards.Scripting
 
 
 
-		IEnumerator IEnumerable.GetEnumerator() => GetEnumerator();
-		#endregion
+		IEnumerator IEnumerable.GetEnumerator() => new DashboardDataListEnumerator(this);
 
-		#region IList implementation
 		public int Add(object value)
 		{
 			throw new NotImplementedException();

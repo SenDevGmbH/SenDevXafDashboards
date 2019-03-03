@@ -16,6 +16,8 @@ namespace SenDev.Xaf.Dashboards.Scripting
 
 		public TypedListBase(object scriptResult, ITypesInfo typesInfo, bool onlySerializableProperties)
 		{
+			TypesInfo = typesInfo;
+			OnlySerializableProperties = onlySerializableProperties;
 			if (scriptResult is IEnumerable enumerable)
 			{
 				var type = GenericTypeHelper.GetGenericIListTypeArgument(scriptResult.GetType());

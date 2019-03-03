@@ -195,6 +195,7 @@
     <Compile Include="Scripting\ScriptingDashboardDataProvider.cs" />
     <Compile Include="Scripting\ScriptingFillService.cs" />
     <Compile Include="Scripting\ScriptResultList.cs" />
+    <Compile Include="Scripting\TypedListBase.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Model.DesignedDiffs.xafml" />

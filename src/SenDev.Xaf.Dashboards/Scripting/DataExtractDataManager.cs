@@ -58,7 +58,7 @@ namespace SenDev.Xaf.Dashboards.Scripting
 			using (DashboardObjectDataSource ods = new DashboardObjectDataSource())
 			{
 				ScriptDataSource dataSource = new ScriptDataSource(extract.Script) { Application = Application, OnlySerializableTypes = true };
-				ods.DataSource = dataSource.GetData();
+				ods.DataSource = dataSource.GetDataForDataExtract();
 				using (DashboardExtractDataSource extractDataSource = new DashboardExtractDataSource())
 				{
 					extractDataSource.ExtractSourceOptions.DataSource = ods;

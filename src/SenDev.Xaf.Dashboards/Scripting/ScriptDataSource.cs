@@ -28,11 +28,24 @@ namespace SenDev.Xaf.Dashboards.Scripting
 
 		public object GetData()
 		{
+			return GetDataCore(false);
+
+		}
+
+		public object GetDataForDataExtract()
+		{
+			return GetDataCore(true);
+		}
+
+		private object GetDataCore(bool forDataExtract)
+		{
 			var objectSpace = (XPObjectSpace)Application.CreateObjectSpace();
 			var context = new ScriptContext(objectSpace);
 			dynamic scriptObject = CSScript.LoadCode(Script).CreateObject("*");
-			return new ScriptResultList(scriptObject.GetData(context), objectSpace.TypesInfo, OnlySerializableTypes);
-
+			if (forDataExtract)
+				return new DashboardDataList(scriptObject.GetData(context), objectSpace.TypesInfo, 1);
+			else
+				return new ScriptResultList(scriptObject.GetData(context), objectSpace.TypesInfo, OnlySerializableTypes);
 		}
 	}
 }

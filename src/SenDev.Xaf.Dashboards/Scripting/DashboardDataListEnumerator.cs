@@ -1,26 +1,25 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 
 namespace SenDev.Xaf.Dashboards.Scripting
 {
 
-	public class DashboardDataListEnumerator<TQuery, TElement> : IEnumerator<TElement>
+	public class DashboardDataListEnumerator : IEnumerator
 	{
 		private int currentIndex = -1;
 
 
-		public DashboardDataListEnumerator(DashboardDataList<TQuery, TElement> owner)
+		public DashboardDataListEnumerator(DashboardDataList owner)
 		{
 			Owner = owner;
 		}
 
 
-		private DashboardDataList<TQuery, TElement> Owner
+		private DashboardDataList Owner
 		{
 			get;
 		}
 
-		public TElement Current => Owner.GetElement(currentIndex);
+		public object Current => Owner.GetElement(currentIndex);
 
 		object IEnumerator.Current => Current;
 
