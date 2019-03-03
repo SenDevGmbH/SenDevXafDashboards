@@ -12,9 +12,6 @@ namespace SenDev.Xaf.Dashboards.Scripting
 		private TElement[] buffer;
 		private int bufferStartIndex = -1;
 
-
-
-
 		protected DashboardDataList(IQueryable<TQuery> queryable, int elementsPerSourceRow)
 		{
 			Queryable = queryable;

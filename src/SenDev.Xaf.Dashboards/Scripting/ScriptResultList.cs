@@ -10,26 +10,21 @@ using DevExpress.ExpressApp.DC;
 namespace SenDev.Xaf.Dashboards.Scripting
 {
 
-	public class ScriptResultList : IList, ITypedList
+	public class ScriptResultList : TypedListBase, IList
 	{
 
-		private IList resultList;
+		private readonly IList resultList;
 
-		public ScriptResultList(object scriptResult, ITypesInfo typesInfo, bool onlySerializableProperties)
+		public ScriptResultList(object scriptResult, ITypesInfo typesInfo, bool onlySerializableProperties) : base(scriptResult, typesInfo, onlySerializableProperties)
 		{
-			TypesInfo = typesInfo ?? throw new ArgumentNullException(nameof(typesInfo));
-			OnlySerializableProperties = onlySerializableProperties;
 			if (scriptResult is IEnumerable enumerable)
 			{
-				var type = GenericTypeHelper.GetGenericIListTypeArgument(scriptResult.GetType());
-
-				properties = GetProperties(type);
 				resultList = enumerable.Cast<object>().ToList();
 			}
 
 		}
 
-		
+
 		public bool IsReadOnly => resultList.IsReadOnly;
 
 		public bool IsFixedSize => resultList.IsFixedSize;
@@ -40,14 +35,7 @@ namespace SenDev.Xaf.Dashboards.Scripting
 
 		public bool IsSynchronized => resultList.IsSynchronized;
 
-		private ITypesInfo TypesInfo
-		{
-			get;
-		}
-		public bool OnlySerializableProperties
-		{
-			get;
-		}
+
 
 		public object this[int index] { get => resultList[index]; set => resultList[index] = value; }
 
@@ -98,47 +86,6 @@ namespace SenDev.Xaf.Dashboards.Scripting
 			return resultList.GetEnumerator();
 		}
 
-	
-	}
 
-	public abstract class TypedListBase : ITypedList
-	{
-		private readonly PropertyDescriptorCollection properties;
-
-		public TypedListBase(object scriptResult)
-		{
-			if (scriptResult is IEnumerable enumerable)
-			{
-				var type = GenericTypeHelper.GetGenericIListTypeArgument(scriptResult.GetType());
-
-				properties = GetProperties(type);
-			}
-		}
-
-		public string GetListName(PropertyDescriptor[] listAccessors) => string.Empty;
-
-		public PropertyDescriptorCollection GetItemProperties(PropertyDescriptor[] listAccessors)
-		{
-			if (listAccessors == null || listAccessors.Length == 0)
-				return properties;
-			else
-				return GetProperties(listAccessors.Last().PropertyType);
-		}
-
-		private PropertyDescriptorCollection GetProperties(Type type)
-		{
-			var typeInfo = TypesInfo.FindTypeInfo(type);
-			if (typeInfo != null)
-			{
-
-				XafPropertyDescriptorCollection collection = new XafPropertyDescriptorCollection(typeInfo);
-				foreach (var memberInfo in typeInfo.Members.Where(m => !OnlySerializableProperties || ValuesSerializer.IsSupportedType(m.MemberType)))
-					collection.CreatePropertyDescriptor(memberInfo, memberInfo.Name);
-
-				return collection;
-			}
-			else
-				return TypeDescriptor.GetProperties(type);
-		}
 	}
 }
