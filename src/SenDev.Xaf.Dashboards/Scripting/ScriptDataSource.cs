@@ -1,5 +1,4 @@
-﻿using System.Globalization;
-using CSScriptLibrary;
+﻿using CSScriptLibrary;
 using DevExpress.ExpressApp;
 using DevExpress.ExpressApp.Xpo;
 
@@ -20,22 +19,6 @@ namespace SenDev.Xaf.Dashboards.Scripting
 		public bool OnlySerializableTypes
 		{
 			get; set;
-		}
-		private string DecorateScript(string script)
-		{
-			return string.Format(CultureInfo.InvariantCulture,
-				@"using System;
-					  using System.Linq;
-					  using DevExpress.Xpo;	
-					  using E3Time.Module.BusinessObjects;
-				      using {1};		
-                             public class Script
-                             {{
-                                 public object GetData(ScriptContext context)
-                                 {{
-									{0}
-                                 }}
-                             }}", script, typeof(ScriptContext).Namespace);
 		}
 
 		public string Script

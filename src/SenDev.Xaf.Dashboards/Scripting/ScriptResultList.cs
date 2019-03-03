@@ -14,7 +14,6 @@ namespace SenDev.Xaf.Dashboards.Scripting
 	{
 
 		private IList resultList;
-		private readonly PropertyDescriptorCollection properties;
 
 		public ScriptResultList(object scriptResult, ITypesInfo typesInfo, bool onlySerializableProperties)
 		{
@@ -30,21 +29,7 @@ namespace SenDev.Xaf.Dashboards.Scripting
 
 		}
 
-		private PropertyDescriptorCollection GetProperties(Type type)
-		{
-			var typeInfo = TypesInfo.FindTypeInfo(type);
-			if (typeInfo != null)
-			{
-
-				XafPropertyDescriptorCollection collection = new XafPropertyDescriptorCollection(typeInfo);
-				foreach (var memberInfo in typeInfo.Members.Where(m => !OnlySerializableProperties || ValuesSerializer.IsSupportedType(m.MemberType)))
-					collection.CreatePropertyDescriptor(memberInfo, memberInfo.Name);
-
-				return collection;
-			}
-			else
-				return TypeDescriptor.GetProperties(type);
-		}
+		
 		public bool IsReadOnly => resultList.IsReadOnly;
 
 		public bool IsFixedSize => resultList.IsFixedSize;
@@ -113,10 +98,24 @@ namespace SenDev.Xaf.Dashboards.Scripting
 			return resultList.GetEnumerator();
 		}
 
-		public string GetListName(PropertyDescriptor[] listAccessors)
+	
+	}
+
+	public abstract class TypedListBase : ITypedList
+	{
+		private readonly PropertyDescriptorCollection properties;
+
+		public TypedListBase(object scriptResult)
 		{
-			return string.Empty;
+			if (scriptResult is IEnumerable enumerable)
+			{
+				var type = GenericTypeHelper.GetGenericIListTypeArgument(scriptResult.GetType());
+
+				properties = GetProperties(type);
+			}
 		}
+
+		public string GetListName(PropertyDescriptor[] listAccessors) => string.Empty;
 
 		public PropertyDescriptorCollection GetItemProperties(PropertyDescriptor[] listAccessors)
 		{
@@ -124,6 +123,22 @@ namespace SenDev.Xaf.Dashboards.Scripting
 				return properties;
 			else
 				return GetProperties(listAccessors.Last().PropertyType);
+		}
+
+		private PropertyDescriptorCollection GetProperties(Type type)
+		{
+			var typeInfo = TypesInfo.FindTypeInfo(type);
+			if (typeInfo != null)
+			{
+
+				XafPropertyDescriptorCollection collection = new XafPropertyDescriptorCollection(typeInfo);
+				foreach (var memberInfo in typeInfo.Members.Where(m => !OnlySerializableProperties || ValuesSerializer.IsSupportedType(m.MemberType)))
+					collection.CreatePropertyDescriptor(memberInfo, memberInfo.Name);
+
+				return collection;
+			}
+			else
+				return TypeDescriptor.GetProperties(type);
 		}
 	}
 }
