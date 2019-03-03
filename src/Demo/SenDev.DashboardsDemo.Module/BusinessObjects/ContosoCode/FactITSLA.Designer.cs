@@ -16,7 +16,8 @@ using System.Reflection;
 namespace SenDev.DashboardsDemo.Module.BusinessObjects
 {
 
-	public partial class FactITSLA : XPLiteObject
+	[Persistent(@"FactITSLA")]
+	public partial class ITSLA : XPLiteObject
 	{
 		int fITSLAkey;
 		[Key(true)]

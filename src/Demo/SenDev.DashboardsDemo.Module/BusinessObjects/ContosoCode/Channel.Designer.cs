@@ -115,11 +115,11 @@ namespace SenDev.DashboardsDemo.Module.BusinessObjects
 			}
 		}
 		[Association(@"FactSalesQuotaReferencesChannel")]
-		public XPCollection<FactSalesQuota> FactSalesQuotas
+		public XPCollection<SalesQuota> FactSalesQuotas
 		{
 			get
 			{
-				return GetCollection<FactSalesQuota>(nameof(FactSalesQuotas));
+				return GetCollection<SalesQuota>(nameof(FactSalesQuotas));
 			}
 		}
 	}

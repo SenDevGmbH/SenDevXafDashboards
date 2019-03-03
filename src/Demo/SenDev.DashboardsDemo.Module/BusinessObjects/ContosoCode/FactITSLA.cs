@@ -8,9 +8,9 @@ using System.Reflection;
 namespace SenDev.DashboardsDemo.Module.BusinessObjects
 {
 
-	public partial class FactITSLA
+	public partial class ITSLA
 	{
-		public FactITSLA(Session session) : base(session) { }
+		public ITSLA(Session session) : base(session) { }
 		public override void AfterConstruction()
 		{
 			base.AfterConstruction();

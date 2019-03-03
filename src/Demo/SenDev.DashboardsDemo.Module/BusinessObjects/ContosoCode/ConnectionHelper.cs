@@ -35,14 +35,14 @@ namespace SenDev.DashboardsDemo.Module.BusinessObjects
 			typeof(SalesTerritory),
 			typeof(Scenario),
 			typeof(Store),
-			typeof(FactExchangeRate),
-			typeof(FactInventory),
-			typeof(FactITMachine),
-			typeof(FactITSLA),
-			typeof(FactOnlineSales),
+			typeof(ExchangeRate),
+			typeof(Inventory),
+			typeof(ITMachine),
+			typeof(ITSLA),
+			typeof(OnlineSales),
 			typeof(Sales),
-			typeof(FactSalesQuota),
-			typeof(FactStrategyPlan),
+			typeof(SalesQuota),
+			typeof(StrategyPlan),
 			typeof(sysdiagrams)
 		};
 		public static Type[] GetPersistentTypes()

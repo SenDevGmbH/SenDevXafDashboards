@@ -184,11 +184,11 @@ namespace SenDev.DashboardsDemo.Module.BusinessObjects
 			}
 		}
 		[Association(@"FactStrategyPlanReferencesAccount")]
-		public XPCollection<FactStrategyPlan> FactStrategyPlans
+		public XPCollection<StrategyPlan> FactStrategyPlans
 		{
 			get
 			{
-				return GetCollection<FactStrategyPlan>(nameof(FactStrategyPlans));
+				return GetCollection<StrategyPlan>(nameof(FactStrategyPlans));
 			}
 		}
 	}

@@ -8,9 +8,9 @@ using System.Reflection;
 namespace SenDev.DashboardsDemo.Module.BusinessObjects
 {
 
-	public partial class FactExchangeRate
+	public partial class ExchangeRate
 	{
-		public FactExchangeRate(Session session) : base(session) { }
+		public ExchangeRate(Session session) : base(session) { }
 		public override void AfterConstruction()
 		{
 			base.AfterConstruction();

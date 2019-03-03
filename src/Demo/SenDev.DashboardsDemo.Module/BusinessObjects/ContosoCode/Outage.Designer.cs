@@ -159,11 +159,11 @@ namespace SenDev.DashboardsDemo.Module.BusinessObjects
 			}
 		}
 		[Association(@"FactITSLAReferencesOutage")]
-		public XPCollection<FactITSLA> FactITSLAs
+		public XPCollection<ITSLA> FactITSLAs
 		{
 			get
 			{
-				return GetCollection<FactITSLA>(nameof(FactITSLAs));
+				return GetCollection<ITSLA>(nameof(FactITSLAs));
 			}
 		}
 	}

@@ -107,19 +107,19 @@ namespace SenDev.DashboardsDemo.Module.BusinessObjects
 			}
 		}
 		[Association(@"FactSalesQuotaReferencesScenario")]
-		public XPCollection<FactSalesQuota> FactSalesQuotas
+		public XPCollection<SalesQuota> FactSalesQuotas
 		{
 			get
 			{
-				return GetCollection<FactSalesQuota>(nameof(FactSalesQuotas));
+				return GetCollection<SalesQuota>(nameof(FactSalesQuotas));
 			}
 		}
 		[Association(@"FactStrategyPlanReferencesScenario")]
-		public XPCollection<FactStrategyPlan> FactStrategyPlans
+		public XPCollection<StrategyPlan> FactStrategyPlans
 		{
 			get
 			{
-				return GetCollection<FactStrategyPlan>(nameof(FactStrategyPlans));
+				return GetCollection<StrategyPlan>(nameof(FactStrategyPlans));
 			}
 		}
 	}

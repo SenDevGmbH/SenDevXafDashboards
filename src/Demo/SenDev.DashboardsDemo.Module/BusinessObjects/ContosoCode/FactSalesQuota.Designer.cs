@@ -16,7 +16,8 @@ using System.Reflection;
 namespace SenDev.DashboardsDemo.Module.BusinessObjects
 {
 
-	public partial class FactSalesQuota : XPLiteObject
+	[Persistent(@"FactSalesQuota")]
+	public partial class SalesQuota : XPLiteObject
 	{
 		int fSalesQuotaKey;
 		[Key(true)]

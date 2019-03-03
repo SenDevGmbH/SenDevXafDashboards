@@ -1299,7 +1299,7 @@
       </xpObject>
     </dataBaseObjectModelHasClasses>
     <dataBaseObjectModelHasClasses Id="684f55f8-7c19-4d86-9188-90d576aa3c58">
-      <xpObject Id="33f71aa7-c70c-4102-b716-69f90fd217a9" name="FactExchangeRate" baseClass="XPLiteObject" userFileName="FactExchangeRate" designerFileName="FactExchangeRate.Designer" className="FactExchangeRate" virtualBaseClass="XPLiteObject" persistent="FactExchangeRate" virtualName="FactExchangeRate">
+      <xpObject Id="33f71aa7-c70c-4102-b716-69f90fd217a9" name="ExchangeRate" baseClass="XPLiteObject" userFileName="FactExchangeRate" designerFileName="FactExchangeRate.Designer" className="ExchangeRate" virtualBaseClass="XPLiteObject" persistent="FactExchangeRate" virtualName="ExchangeRate">
         <fields>
           <generalXpObjectHasFields Id="553bd1b7-40ed-4e26-8421-35748fd457fb">
             <field Id="243c463a-7bc4-41cc-b43e-524a8f1bd5aa" name="ExchangeRateKey" columnType="Int32" key="true" isIdentity="true" persistent="ExchangeRateKey" virtualColumnType="Int32" delayedUpdateModifiedOnly="false" />
@@ -1329,7 +1329,7 @@
       </xpObject>
     </dataBaseObjectModelHasClasses>
     <dataBaseObjectModelHasClasses Id="0a51079c-72e9-46f0-851f-96d0046de28f">
-      <xpObject Id="04c2b09a-e026-486d-bbc7-a5cc0babaac6" name="FactInventory" baseClass="XPLiteObject" userFileName="FactInventory" designerFileName="FactInventory.Designer" className="FactInventory" virtualBaseClass="XPLiteObject" persistent="FactInventory" virtualName="FactInventory">
+      <xpObject Id="04c2b09a-e026-486d-bbc7-a5cc0babaac6" name="Inventory" baseClass="XPLiteObject" userFileName="FactInventory" designerFileName="FactInventory.Designer" className="Inventory" virtualBaseClass="XPLiteObject" persistent="FactInventory" virtualName="Inventory">
         <fields>
           <generalXpObjectHasFields Id="2c8c4cb0-adef-406c-8369-dff9eb9ce111">
             <field Id="7dc7c213-2478-43da-bcd2-d8791a0c129a" name="InventoryKey" columnType="Int32" key="true" isIdentity="true" persistent="InventoryKey" virtualColumnType="Int32" delayedUpdateModifiedOnly="false" />
@@ -1383,7 +1383,7 @@
       </xpObject>
     </dataBaseObjectModelHasClasses>
     <dataBaseObjectModelHasClasses Id="a6e2dc17-7166-4bd1-b268-105f319925b8">
-      <xpObject Id="30681fa4-fe34-4066-8c42-70adba8176b3" name="FactITMachine" baseClass="XPLiteObject" userFileName="FactITMachine" designerFileName="FactITMachine.Designer" className="FactITMachine" virtualBaseClass="XPLiteObject" persistent="FactITMachine" virtualName="FactITMachine">
+      <xpObject Id="30681fa4-fe34-4066-8c42-70adba8176b3" name="ITMachine" baseClass="XPLiteObject" userFileName="FactITMachine" designerFileName="FactITMachine.Designer" className="ITMachine" virtualBaseClass="XPLiteObject" persistent="FactITMachine" virtualName="ITMachine">
         <fields>
           <generalXpObjectHasFields Id="be5c2ad0-f478-4bf3-8f8b-0bc907100bbc">
             <field Id="6f4005bc-42a1-45f3-8efe-3e9b4d7ca098" name="ITMachinekey" columnType="Int32" key="true" isIdentity="true" persistent="ITMachinekey" virtualColumnType="Int32" delayedUpdateModifiedOnly="false" />
@@ -1413,7 +1413,7 @@
       </xpObject>
     </dataBaseObjectModelHasClasses>
     <dataBaseObjectModelHasClasses Id="5f2eebb1-57ac-4405-badb-07a4a51182e3">
-      <xpObject Id="dc0984b3-b5bc-475f-af3f-fdc39b1046ba" name="FactITSLA" baseClass="XPLiteObject" userFileName="FactITSLA" designerFileName="FactITSLA.Designer" className="FactITSLA" virtualBaseClass="XPLiteObject" persistent="FactITSLA" virtualName="FactITSLA">
+      <xpObject Id="dc0984b3-b5bc-475f-af3f-fdc39b1046ba" name="ITSLA" baseClass="XPLiteObject" userFileName="FactITSLA" designerFileName="FactITSLA.Designer" className="ITSLA" virtualBaseClass="XPLiteObject" persistent="FactITSLA" virtualName="ITSLA">
         <fields>
           <generalXpObjectHasFields Id="dbcd5e51-7f36-4ed2-8907-cb1d3939f28c">
             <field Id="fa943cd5-b18d-4ae7-a1ca-509f55b9cf1d" name="ITSLAkey" columnType="Int32" key="true" isIdentity="true" persistent="ITSLAkey" virtualColumnType="Int32" delayedUpdateModifiedOnly="false" />
@@ -1452,7 +1452,7 @@
       </xpObject>
     </dataBaseObjectModelHasClasses>
     <dataBaseObjectModelHasClasses Id="05d3b78a-2843-427c-9732-caba225df875">
-      <xpObject Id="158d7fac-25fc-4ed7-a33d-98c88221420e" name="FactOnlineSales" baseClass="XPLiteObject" userFileName="FactOnlineSales" designerFileName="FactOnlineSales.Designer" className="FactOnlineSales" virtualBaseClass="XPLiteObject" persistent="FactOnlineSales" virtualName="FactOnlineSales">
+      <xpObject Id="158d7fac-25fc-4ed7-a33d-98c88221420e" name="OnlineSales" baseClass="XPLiteObject" userFileName="FactOnlineSales" designerFileName="FactOnlineSales.Designer" className="OnlineSales" virtualBaseClass="XPLiteObject" persistent="FactOnlineSales" virtualName="OnlineSales">
         <fields>
           <generalXpObjectHasFields Id="4c50e5a7-0c81-4129-aade-64e26f89e40c">
             <field Id="6eb16a3d-26aa-4ebb-abe5-11ff0a8ea311" name="OnlineSalesKey" columnType="Int32" key="true" isIdentity="true" persistent="OnlineSalesKey" virtualColumnType="Int32" delayedUpdateModifiedOnly="false" />
@@ -1584,7 +1584,7 @@
       </xpObject>
     </dataBaseObjectModelHasClasses>
     <dataBaseObjectModelHasClasses Id="18c7100b-181a-4ac2-b10a-5bf6230c7858">
-      <xpObject Id="5ae0f27b-268b-426e-a68d-524b88739e2e" name="FactSalesQuota" baseClass="XPLiteObject" userFileName="FactSalesQuota" designerFileName="FactSalesQuota.Designer" className="FactSalesQuota" virtualBaseClass="XPLiteObject" persistent="FactSalesQuota" virtualName="FactSalesQuota">
+      <xpObject Id="5ae0f27b-268b-426e-a68d-524b88739e2e" name="SalesQuota" baseClass="XPLiteObject" userFileName="FactSalesQuota" designerFileName="FactSalesQuota.Designer" className="SalesQuota" virtualBaseClass="XPLiteObject" persistent="FactSalesQuota" virtualName="SalesQuota">
         <fields>
           <generalXpObjectHasFields Id="0da4f800-295a-45c4-9b09-ab94131bbf77">
             <field Id="6d813da1-7ffc-4451-813c-b8ceee9975fc" name="SalesQuotaKey" columnType="Int32" key="true" isIdentity="true" persistent="SalesQuotaKey" virtualColumnType="Int32" delayedUpdateModifiedOnly="false" />
@@ -1629,7 +1629,7 @@
       </xpObject>
     </dataBaseObjectModelHasClasses>
     <dataBaseObjectModelHasClasses Id="fb8f1358-4cbe-45c3-82c6-2881ca5c75d5">
-      <xpObject Id="5e50db00-13d3-4e15-a1a2-2843ddea3db8" name="FactStrategyPlan" baseClass="XPLiteObject" userFileName="FactStrategyPlan" designerFileName="FactStrategyPlan.Designer" className="FactStrategyPlan" virtualBaseClass="XPLiteObject" persistent="FactStrategyPlan" virtualName="FactStrategyPlan">
+      <xpObject Id="5e50db00-13d3-4e15-a1a2-2843ddea3db8" name="StrategyPlan" baseClass="XPLiteObject" userFileName="FactStrategyPlan" designerFileName="FactStrategyPlan.Designer" className="StrategyPlan" virtualBaseClass="XPLiteObject" persistent="FactStrategyPlan" virtualName="StrategyPlan">
         <fields>
           <generalXpObjectHasFields Id="1f444bbe-3017-48b6-9ad0-10aedf36b3a9">
             <field Id="1825ad47-acdd-4d3d-887c-ba1a988b8471" name="StrategyPlanKey" columnType="Int32" key="true" isIdentity="true" persistent="StrategyPlanKey" virtualColumnType="Int32" delayedUpdateModifiedOnly="false" />

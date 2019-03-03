@@ -10,7 +10,6 @@
     <RootNamespace>SenDev.DashboardsDemo.Win</RootNamespace>
     <AssemblyName>SenDev.DashboardsDemo.Win</AssemblyName>
     <ApplicationIcon>ExpressApp.ico</ApplicationIcon>
-    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileUpgradeFlags>
     </FileUpgradeFlags>
     <UpgradeBackupLocation>

@@ -16,7 +16,8 @@ using System.Reflection;
 namespace SenDev.DashboardsDemo.Module.BusinessObjects
 {
 
-	public partial class FactOnlineSales : XPLiteObject
+	[Persistent(@"FactOnlineSales")]
+	public partial class OnlineSales : XPLiteObject
 	{
 		int fOnlineSalesKey;
 		[Key(true)]

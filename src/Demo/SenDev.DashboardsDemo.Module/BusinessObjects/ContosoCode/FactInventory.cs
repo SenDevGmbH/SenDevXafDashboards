@@ -8,9 +8,9 @@ using System.Reflection;
 namespace SenDev.DashboardsDemo.Module.BusinessObjects
 {
 
-	public partial class FactInventory
+	public partial class Inventory
 	{
-		public FactInventory(Session session) : base(session) { }
+		public Inventory(Session session) : base(session) { }
 		public override void AfterConstruction()
 		{
 			base.AfterConstruction();

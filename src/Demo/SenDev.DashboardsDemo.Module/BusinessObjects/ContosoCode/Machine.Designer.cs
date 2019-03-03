@@ -243,19 +243,19 @@ namespace SenDev.DashboardsDemo.Module.BusinessObjects
 			}
 		}
 		[Association(@"FactITMachineReferencesMachine")]
-		public XPCollection<FactITMachine> FactITMachines
+		public XPCollection<ITMachine> FactITMachines
 		{
 			get
 			{
-				return GetCollection<FactITMachine>(nameof(FactITMachines));
+				return GetCollection<ITMachine>(nameof(FactITMachines));
 			}
 		}
 		[Association(@"FactITSLAReferencesMachine")]
-		public XPCollection<FactITSLA> FactITSLAs
+		public XPCollection<ITSLA> FactITSLAs
 		{
 			get
 			{
-				return GetCollection<FactITSLA>(nameof(FactITSLAs));
+				return GetCollection<ITSLA>(nameof(FactITSLAs));
 			}
 		}
 	}

@@ -314,27 +314,27 @@ namespace SenDev.DashboardsDemo.Module.BusinessObjects
 			}
 		}
 		[Association(@"FactInventoryReferencesStore")]
-		public XPCollection<FactInventory> FactInventories
+		public XPCollection<Inventory> FactInventories
 		{
 			get
 			{
-				return GetCollection<FactInventory>(nameof(FactInventories));
+				return GetCollection<Inventory>(nameof(FactInventories));
 			}
 		}
 		[Association(@"FactITSLAReferencesStore")]
-		public XPCollection<FactITSLA> FactITSLAs
+		public XPCollection<ITSLA> FactITSLAs
 		{
 			get
 			{
-				return GetCollection<FactITSLA>(nameof(FactITSLAs));
+				return GetCollection<ITSLA>(nameof(FactITSLAs));
 			}
 		}
 		[Association(@"FactOnlineSalesReferencesStore")]
-		public XPCollection<FactOnlineSales> FactOnlineSalesCollection
+		public XPCollection<OnlineSales> FactOnlineSalesCollection
 		{
 			get
 			{
-				return GetCollection<FactOnlineSales>(nameof(FactOnlineSalesCollection));
+				return GetCollection<OnlineSales>(nameof(FactOnlineSalesCollection));
 			}
 		}
 		[Association(@"FactSalesReferencesStore")]
@@ -346,11 +346,11 @@ namespace SenDev.DashboardsDemo.Module.BusinessObjects
 			}
 		}
 		[Association(@"FactSalesQuotaReferencesStore")]
-		public XPCollection<FactSalesQuota> FactSalesQuotas
+		public XPCollection<SalesQuota> FactSalesQuotas
 		{
 			get
 			{
-				return GetCollection<FactSalesQuota>(nameof(FactSalesQuotas));
+				return GetCollection<SalesQuota>(nameof(FactSalesQuotas));
 			}
 		}
 	}

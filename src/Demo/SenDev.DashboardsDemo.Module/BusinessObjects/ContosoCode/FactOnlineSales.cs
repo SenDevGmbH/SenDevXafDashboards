@@ -8,9 +8,9 @@ using System.Reflection;
 namespace SenDev.DashboardsDemo.Module.BusinessObjects
 {
 
-	public partial class FactOnlineSales
+	public partial class OnlineSales
 	{
-		public FactOnlineSales(Session session) : base(session) { }
+		public OnlineSales(Session session) : base(session) { }
 		public override void AfterConstruction()
 		{
 			base.AfterConstruction();

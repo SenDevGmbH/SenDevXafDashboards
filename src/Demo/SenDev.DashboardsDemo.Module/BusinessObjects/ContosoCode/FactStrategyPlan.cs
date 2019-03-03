@@ -8,9 +8,9 @@ using System.Reflection;
 namespace SenDev.DashboardsDemo.Module.BusinessObjects
 {
 
-	public partial class FactStrategyPlan
+	public partial class StrategyPlan
 	{
-		public FactStrategyPlan(Session session) : base(session) { }
+		public StrategyPlan(Session session) : base(session) { }
 		public override void AfterConstruction()
 		{
 			base.AfterConstruction();

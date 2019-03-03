@@ -386,43 +386,43 @@ namespace SenDev.DashboardsDemo.Module.BusinessObjects
 			}
 		}
 		[Association(@"FactExchangeRateReferencesDate")]
-		public XPCollection<FactExchangeRate> FactExchangeRates
+		public XPCollection<ExchangeRate> FactExchangeRates
 		{
 			get
 			{
-				return GetCollection<FactExchangeRate>(nameof(FactExchangeRates));
+				return GetCollection<ExchangeRate>(nameof(FactExchangeRates));
 			}
 		}
 		[Association(@"FactInventoryReferencesDate")]
-		public XPCollection<FactInventory> FactInventories
+		public XPCollection<Inventory> FactInventories
 		{
 			get
 			{
-				return GetCollection<FactInventory>(nameof(FactInventories));
+				return GetCollection<Inventory>(nameof(FactInventories));
 			}
 		}
 		[Association(@"FactITMachineReferencesDate")]
-		public XPCollection<FactITMachine> FactITMachines
+		public XPCollection<ITMachine> FactITMachines
 		{
 			get
 			{
-				return GetCollection<FactITMachine>(nameof(FactITMachines));
+				return GetCollection<ITMachine>(nameof(FactITMachines));
 			}
 		}
 		[Association(@"FactITSLAReferencesDate")]
-		public XPCollection<FactITSLA> FactITSLAs
+		public XPCollection<ITSLA> FactITSLAs
 		{
 			get
 			{
-				return GetCollection<FactITSLA>(nameof(FactITSLAs));
+				return GetCollection<ITSLA>(nameof(FactITSLAs));
 			}
 		}
 		[Association(@"FactOnlineSalesReferencesDate")]
-		public XPCollection<FactOnlineSales> FactOnlineSalesCollection
+		public XPCollection<OnlineSales> FactOnlineSalesCollection
 		{
 			get
 			{
-				return GetCollection<FactOnlineSales>(nameof(FactOnlineSalesCollection));
+				return GetCollection<OnlineSales>(nameof(FactOnlineSalesCollection));
 			}
 		}
 		[Association(@"FactSalesReferencesDate")]
@@ -434,19 +434,19 @@ namespace SenDev.DashboardsDemo.Module.BusinessObjects
 			}
 		}
 		[Association(@"FactSalesQuotaReferencesDate")]
-		public XPCollection<FactSalesQuota> FactSalesQuotas
+		public XPCollection<SalesQuota> FactSalesQuotas
 		{
 			get
 			{
-				return GetCollection<FactSalesQuota>(nameof(FactSalesQuotas));
+				return GetCollection<SalesQuota>(nameof(FactSalesQuotas));
 			}
 		}
 		[Association(@"FactStrategyPlanReferencesDate")]
-		public XPCollection<FactStrategyPlan> FactStrategyPlans
+		public XPCollection<StrategyPlan> FactStrategyPlans
 		{
 			get
 			{
-				return GetCollection<FactStrategyPlan>(nameof(FactStrategyPlans));
+				return GetCollection<StrategyPlan>(nameof(FactStrategyPlans));
 			}
 		}
 	}

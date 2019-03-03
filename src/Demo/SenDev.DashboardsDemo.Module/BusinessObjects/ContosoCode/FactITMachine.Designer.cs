@@ -16,7 +16,8 @@ using System.Reflection;
 namespace SenDev.DashboardsDemo.Module.BusinessObjects
 {
 
-	public partial class FactITMachine : XPLiteObject
+	[Persistent(@"FactITMachine")]
+	public partial class ITMachine : XPLiteObject
 	{
 		int fITMachinekey;
 		[Key(true)]

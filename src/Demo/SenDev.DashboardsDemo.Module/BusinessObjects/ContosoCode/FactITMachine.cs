@@ -8,9 +8,9 @@ using System.Reflection;
 namespace SenDev.DashboardsDemo.Module.BusinessObjects
 {
 
-	public partial class FactITMachine
+	public partial class ITMachine
 	{
-		public FactITMachine(Session session) : base(session) { }
+		public ITMachine(Session session) : base(session) { }
 		public override void AfterConstruction()
 		{
 			base.AfterConstruction();

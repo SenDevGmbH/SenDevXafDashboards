@@ -16,7 +16,8 @@ using System.Reflection;
 namespace SenDev.DashboardsDemo.Module.BusinessObjects
 {
 
-	public partial class FactExchangeRate : XPLiteObject
+	[Persistent(@"FactExchangeRate")]
+	public partial class ExchangeRate : XPLiteObject
 	{
 		int fExchangeRateKey;
 		[Key(true)]

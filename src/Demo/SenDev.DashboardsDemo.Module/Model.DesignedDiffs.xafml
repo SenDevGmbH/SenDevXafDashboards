@@ -1,5 +1,20 @@
-﻿<?xml version="1.0" ?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Application Title="SenDev.DashboardsDemo">
+  <NavigationItems>
+    <Items>
+      <Item Id="Data" IsNewNode="True">
+        <Items IsNewNode="True">
+          <Item Id="@2c94e975-f37c-4483-82bf-17101f4b6f21" ViewId="OnlineSales_ListView" IsNewNode="True" />
+          <Item Id="@498d43f6-76e6-4e3c-9ac8-87d0eed8932e" ViewId="Sales_ListView" IsNewNode="True" />
+        </Items>
+      </Item>
+    </Items>
+  </NavigationItems>
+  <SchemaModules>
+    <SchemaModule Name="SystemModule" Version="18.2.6.0" IsNewNode="True" />
+  </SchemaModules>
   <Views>
+    <ListView Id="OnlineSales_ListView" DataAccessMode="InstantFeedback" />
+    <ListView Id="Sales_ListView" DataAccessMode="InstantFeedback" />
   </Views>
 </Application>

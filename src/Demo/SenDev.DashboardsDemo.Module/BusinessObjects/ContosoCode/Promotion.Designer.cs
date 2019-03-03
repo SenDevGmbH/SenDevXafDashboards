@@ -193,11 +193,11 @@ namespace SenDev.DashboardsDemo.Module.BusinessObjects
 			}
 		}
 		[Association(@"FactOnlineSalesReferencesPromotion")]
-		public XPCollection<FactOnlineSales> FactOnlineSalesCollection
+		public XPCollection<OnlineSales> FactOnlineSalesCollection
 		{
 			get
 			{
-				return GetCollection<FactOnlineSales>(nameof(FactOnlineSalesCollection));
+				return GetCollection<OnlineSales>(nameof(FactOnlineSalesCollection));
 			}
 		}
 		[Association(@"FactSalesReferencesPromotion")]
