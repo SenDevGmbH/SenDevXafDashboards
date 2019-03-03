@@ -13,3 +13,7 @@ XAF Dashboards provides with [Data Extracts](https://documentation.devexpress.co
 
 
 ## Getting started
+
+## Development
+
+* Contoso BI Demo DataSet: https://www.microsoft.com/en-us/download/details.aspx?id=18279
