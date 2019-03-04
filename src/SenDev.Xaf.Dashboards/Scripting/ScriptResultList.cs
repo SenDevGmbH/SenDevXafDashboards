@@ -14,9 +14,12 @@ namespace SenDev.Xaf.Dashboards.Scripting
 	{
 
 		private readonly IList resultList;
-
-		public ScriptResultList(object scriptResult, ITypesInfo typesInfo, bool onlySerializableProperties) : base(scriptResult, typesInfo, onlySerializableProperties)
+        private readonly object scriptResult;
+        private readonly ITypesInfo typesInfo;
+		public ScriptResultList(object scriptResult, ITypesInfo typesInfo, bool onlySerializableProperties) : base(onlySerializableProperties)
 		{
+            this.scriptResult = scriptResult;
+            this.typesInfo = typesInfo;
 			if (scriptResult is IEnumerable enumerable)
 			{
 				resultList = enumerable.Cast<object>().ToList();
@@ -24,8 +27,10 @@ namespace SenDev.Xaf.Dashboards.Scripting
 
 		}
 
+        protected override ITypesInfo TypesInfo => typesInfo;
+        protected override object ScriptResult => scriptResult;
 
-		public bool IsReadOnly => resultList.IsReadOnly;
+        public bool IsReadOnly => resultList.IsReadOnly;
 
 		public bool IsFixedSize => resultList.IsFixedSize;
 
