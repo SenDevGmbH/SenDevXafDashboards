@@ -10,6 +10,7 @@
     <description>Xaf ApplicationServer platform agnostic library</description>
     <releaseNotes></releaseNotes>
     <tags>DevExpress XAF eXpressApplicationFramework Dashboards</tags>
+    <license type="expression">MIT</license>
   </metadata>
   <files>
     <file src="$SourceDir$SenDev.Xaf.Dashboards.dll" target="lib\net46" />
