@@ -37,7 +37,7 @@ steps:
     command: 'push' 
     packagesToPush: '$(Build.ArtifactStagingDirectory)/**/*.nupkg'
     nuGetFeedType: 'external' 
-    publishFeedCredentials: '$(NugetApiKey)'
+    publishFeedCredentials: 'nuget.org'
 - task: VSTest@2
   inputs:
     platform: '$(buildPlatform)'
