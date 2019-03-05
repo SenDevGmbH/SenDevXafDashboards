@@ -26,7 +26,7 @@ steps:
     command: 'restore' 
     restoreSolution: '**/*.sln'
 
-- task: VSBuild@1
+- task: MSBuild@1
   inputs:
     solution: '$(solution)'
     platform: '$(buildPlatform)'
