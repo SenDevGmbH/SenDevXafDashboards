@@ -58,45 +58,45 @@
     <ErrorReport>prompt</ErrorReport>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="DevExpress.Dashboard.v18.2.Core, Version=18.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
-    <Reference Include="DevExpress.Dashboard.v18.2.Web, Version=18.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
-    <Reference Include="DevExpress.Dashboard.v18.2.Web.WebForms, Version=18.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
-    <Reference Include="DevExpress.DataAccess.v18.2, Version=18.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
-    <Reference Include="DevExpress.ExpressApp.Dashboards.v18.2, Version=18.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+    <Reference Include="DevExpress.Dashboard.v$(DevExpressVersion).Core" />
+    <Reference Include="DevExpress.Dashboard.v$(DevExpressVersion).Web" />
+    <Reference Include="DevExpress.Dashboard.v$(DevExpressVersion).Web.WebForms" />
+    <Reference Include="DevExpress.DataAccess.v$(DevExpressVersion)" />
+    <Reference Include="DevExpress.ExpressApp.Dashboards.v$(DevExpressVersion)">
       <SpecificVersion>False</SpecificVersion>
     </Reference>
-    <Reference Include="DevExpress.ExpressApp.Dashboards.Web.v18.2, Version=18.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+    <Reference Include="DevExpress.ExpressApp.Dashboards.Web.v$(DevExpressVersion)">
       <SpecificVersion>False</SpecificVersion>
     </Reference>
-    <Reference Include="DevExpress.Printing.v18.2.Core">
+    <Reference Include="DevExpress.Printing.v$(DevExpressVersion).Core">
       <SpecificVersion>False</SpecificVersion>
     </Reference>
-    <Reference Include="DevExpress.Data.v18.2">
+    <Reference Include="DevExpress.Data.v$(DevExpressVersion)">
       <SpecificVersion>False</SpecificVersion>
     </Reference>
-    <Reference Include="DevExpress.ExpressApp.Xpo.v18.2">
+    <Reference Include="DevExpress.ExpressApp.Xpo.v$(DevExpressVersion)">
       <SpecificVersion>False</SpecificVersion>
     </Reference>
-    <Reference Include="DevExpress.ExpressApp.v18.2">
+    <Reference Include="DevExpress.ExpressApp.v$(DevExpressVersion)">
       <SpecificVersion>False</SpecificVersion>
     </Reference>
-    <Reference Include="DevExpress.ExpressApp.Images.v18.2">
+    <Reference Include="DevExpress.ExpressApp.Images.v$(DevExpressVersion)">
       <SpecificVersion>False</SpecificVersion>
     </Reference>
-    <Reference Include="DevExpress.ExpressApp.Web.v18.2">
+    <Reference Include="DevExpress.ExpressApp.Web.v$(DevExpressVersion)">
       <SpecificVersion>False</SpecificVersion>
     </Reference>
-    <Reference Include="DevExpress.Persistent.Base.v18.2">
+    <Reference Include="DevExpress.Persistent.Base.v$(DevExpressVersion)">
       <SpecificVersion>False</SpecificVersion>
     </Reference>
-    <Reference Include="DevExpress.Persistent.BaseImpl.v18.2">
+    <Reference Include="DevExpress.Persistent.BaseImpl.v$(DevExpressVersion)">
       <SpecificVersion>False</SpecificVersion>
     </Reference>
-    <Reference Include="DevExpress.Utils.v18.2, Version=18.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
-    <Reference Include="DevExpress.Web.v18.2">
+    <Reference Include="DevExpress.Utils.v$(DevExpressVersion)" />
+    <Reference Include="DevExpress.Web.v$(DevExpressVersion)">
       <SpecificVersion>False</SpecificVersion>
     </Reference>
-    <Reference Include="DevExpress.Xpo.v18.2">
+    <Reference Include="DevExpress.Xpo.v$(DevExpressVersion)">
       <SpecificVersion>False</SpecificVersion>
     </Reference>
     <Reference Include="System">

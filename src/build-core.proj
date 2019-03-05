@@ -1,0 +1,35 @@
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="15.0" DefaultTargets="Build">
+  <PropertyGroup>
+    <TargetConfigurations>Debug</TargetConfigurations>
+    <DevExpressVersion>$(DevExpressFullVersion.Substring(0,4))</DevExpressVersion>
+  </PropertyGroup>
+  <ItemGroup>
+    <ProjectToBuild Include="SenDev.Xaf.Dashboards\SenDev.Xaf.Dashboards.csproj;"/>
+    <ProjectToBuild Include="SenDev.Xaf.Dashboards.Win\SenDev.Xaf.Dashboards.Win.csproj;"/>
+    <ProjectToBuild Include="SenDev.Xaf.Dashboards.Web\SenDev.Xaf.Dashboards.Web.csproj;"/>
+    <NugetFile Include="nuspec\*.nuspec"/>
+  </ItemGroup>
+
+  <Target Name="Build">
+    <DownloadFile SourceUrl="$(DevExpressBinariesServerUrl)/$(DevExpressFullVersion).zip" DestinationFolder="$(OutputPath)">
+      <Output TaskParameter="DownloadedFile" PropertyName="DevExpressBinariesArchive"/>
+    </DownloadFile>
+    <UnZip SourceFiles="$(DevExpressBinariesArchive)" DestinationFolder="$(OutputPath)"  ContinueOnError="True"/>
+    <ConvertToAbsolutePath Paths="$(OutputPath)">
+      <Output TaskParameter="AbsolutePaths" PropertyName="FullOutputPath"/>
+    </ConvertToAbsolutePath>
+	  <MSBuild Projects="@(ProjectToBuild)"
+                 Properties="OutDir=$(FullOutputPath);ReferencePath=$(FullOutputPath);DevExpressVersion=$(DevExpressVersion)"
+                 StopOnFirstFailure="true" ToolsVersion="$(ToolsVersion)"  Targets="Clean;Rebuild"/>
+	
+  </Target>
+  <Target Name="NuGet" DependsOnTargets="Build" Inputs="@(NugetFile)" Outputs="EmptyOutput">
+    <DownloadFile SourceUrl="https://dist.nuget.org/win-x86-commandline/latest/nuget.exe" DestinationFolder="$(OutputPath)">
+      <Output TaskParameter="DownloadedFile" PropertyName="NugetTool"/>   
+    </DownloadFile>
+  
+    <MakeDir Directories="$(NugetTargetDir)"/>
+	 
+    <Exec ContinueOnError="false" Command="$(NuGetTool) pack %(NugetFile.Identity) -BasePath $(MSBuildProjectDirectory) -OutputDirectory $(NugetTargetDir) -Version $(DevExpressFullVersion).$(Build_BuildId)-alpha  -Properties SourceDir=$(FullOutputPath)"/>
+  </Target>
+</Project>
