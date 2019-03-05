@@ -1,11 +1,10 @@
 <Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="15.0" DefaultTargets="Build">
   <PropertyGroup>
-    <NuGetTool>.nuget\NuGet.exe</NuGetTool>
     <TargetConfigurations>Debug</TargetConfigurations>
   </PropertyGroup>
   <ItemGroup>
     <ProjectToBuild Include="SenDev.Xaf.Dashboards.sln"/>
-    <NugetFile Include="$(NuspecDir)\*.nuspec"/>
+    <NugetFile Include="nuspec\*.nuspec"/>
   </ItemGroup>
 
   <Target Name="Build">
@@ -22,9 +21,15 @@
 	
   </Target>
   <Target Name="NuGet" DependsOnTargets="Build" Inputs="@(NugetFile)" Outputs="EmptyOutput">
-    <MakeDir Directories="bin\nuget"/>
+    <DownloadFile SourceUrl="https://dist.nuget.org/win-x86-commandline/latest/nuget.exe" DestinationFolder="$(OutputPath)">
+      <Output TaskParameter="DownloadedFile" PropertyName="NugetTool"/>   
+    </DownloadFile>
+  
+    <PropertyGroup>
+      <NugetTargetDir Condition="$(NugetTargetDir)==''">$(FullOutputPath)\nuget</NugetTargetDir>
+    </PropertyGroup>
+    <MakeDir Directories="$(NugetTargetDir)"/>
 	 
-    <Exec ContinueOnError="false" Command="$(NuGetTool) pack %(NugetFile.Identity) -BasePath $(MSBuildProjectDirectory) -OutputDirectory bin\NuGet -Version $(Version)  -Properties SourceDir=$(OutputPath)"/>
-   
+    <Exec ContinueOnError="false" Command="$(NuGetTool) pack %(NugetFile.Identity) -BasePath $(MSBuildProjectDirectory) -OutputDirectory $(NugetTargetDir) -Version $(DevExpressFullVersion).$(Build.BuildNumber)-alpha  -Properties SourceDir=$(FullOutputPath)"/>
   </Target>
 </Project>

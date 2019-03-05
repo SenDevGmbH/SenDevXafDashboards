@@ -13,7 +13,7 @@ variables:
   solution: 'src/build.proj'
   buildPlatform: 'Any CPU'
   buildConfiguration: 'Release'
-
+  NugetTargetDir: '$(Build.ArtifactStagingDirectory)'
 steps:
 - task: NuGetToolInstaller@0
 
@@ -25,13 +25,19 @@ steps:
   inputs:
     command: 'restore' 
     restoreSolution: '**/*.sln'
-    
+
 - task: VSBuild@1
   inputs:
     solution: '$(solution)'
     platform: '$(buildPlatform)'
     configuration: '$(buildConfiguration)'
 
+- task: NuGetCommand@2
+  inputs:
+    command: 'push' 
+    packagesToPush: '$(Build.ArtifactStagingDirectory)/**/*.nupkg'
+    nuGetFeedType: 'external' 
+    publishFeedCredentials: '$(NugetApiKey)'
 - task: VSTest@2
   inputs:
     platform: '$(buildPlatform)'

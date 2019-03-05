@@ -1,9 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <package>
   <metadata>
-    <id>SenDev.Xaf.Dashboards.</id>
+    <id>SenDev.Xaf.Dashboards</id>
     <version>$version$</version>
     <title>SenDev XAF Dashboards platform agnostic module</title>
+    <authors>Sergej Derjabkin</authors>
     <owners>Sergej Derjabkin</owners>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>Xaf ApplicationServer platform agnostic library</description>
@@ -11,8 +12,8 @@
     <tags>DevExpress XAF eXpressApplicationFramework Dashboards</tags>
   </metadata>
   <files>
-    <file src="$SourceDir$\SenDev.Xaf.Dashboards.dll" target="lib\net40" />
-  	<file src="$SourceDir$\SenDev.Xaf.Dashboards.pdb" target="lib\net40" />
-	  <file src="$SourceDir$\..\..\SenDev.Xaf.Dashboards\**\*.cs" target="src\SenDev.Xaf.Dashboards" />
+    <file src="$SourceDir$SenDev.Xaf.Dashboards.dll" target="lib\net46" />
+  	<file src="$SourceDir$SenDev.Xaf.Dashboards.pdb" target="lib\net46" />
+	  <file src="$SourceDir$\..\SenDev.Xaf.Dashboards\**\*.cs" target="src\SenDev.Xaf.Dashboards" />
   </files>
 </package>
