@@ -1,0 +1,30 @@
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="15.0" DefaultTargets="Build">
+  <PropertyGroup>
+    <NuGetTool>.nuget\NuGet.exe</NuGetTool>
+    <TargetConfigurations>Debug</TargetConfigurations>
+  </PropertyGroup>
+  <ItemGroup>
+    <ProjectToBuild Include="SenDev.Xaf.Dashboards.sln"/>
+    <NugetFile Include="$(NuspecDir)\*.nuspec"/>
+  </ItemGroup>
+
+  <Target Name="Build">
+    <DownloadFile SourceUrl="$(DevExpressBinariesServerUrl)/$(DevExpressFullVersion).zip" DestinationFolder="$(OutputPath)">
+      <Output TaskParameter="DownloadedFile" PropertyName="DevExpressBinariesArchive"/>
+    </DownloadFile>
+    <UnZip SourceFiles="$(DevExpressBinariesArchive)" DestinationFolder="$(OutputPath)"  ContinueOnError="True"/>
+    <ConvertToAbsolutePath Paths="$(OutputPath)">
+      <Output TaskParameter="AbsolutePaths" PropertyName="FullOutputPath"/>
+    </ConvertToAbsolutePath>
+	  <MSBuild Projects="@(ProjectToBuild)"
+                 Properties="OutDir=$(FullOutputPath);ReferencePath=$(FullOutputPath)"
+                 StopOnFirstFailure="true" ToolsVersion="$(ToolsVersion)"  Targets="Clean;Rebuild"/>
+	
+  </Target>
+  <Target Name="NuGet" DependsOnTargets="Build" Inputs="@(NugetFile)" Outputs="EmptyOutput">
+    <MakeDir Directories="bin\nuget"/>
+	 
+    <Exec ContinueOnError="false" Command="$(NuGetTool) pack %(NugetFile.Identity) -BasePath $(MSBuildProjectDirectory) -OutputDirectory bin\NuGet -Version $(Version)  -Properties SourceDir=$(OutputPath)"/>
+   
+  </Target>
+</Project>

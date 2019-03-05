@@ -1,4 +1,6 @@
-﻿namespace SenDev.DashboardsDemo.Module {
+﻿using SenDev.Xaf.Dashboards;
+
+namespace SenDev.DashboardsDemo.Module {
 	partial class DashboardsDemoModule {
 		/// <summary> 
 		/// Required designer variable.
@@ -29,6 +31,7 @@
 			this.RequiredModuleTypes.Add(typeof(DevExpress.ExpressApp.SystemModule.SystemModule));
 			this.RequiredModuleTypes.Add(typeof(DevExpress.ExpressApp.Objects.BusinessClassLibraryCustomizationModule));
 			this.RequiredModuleTypes.Add(typeof(DevExpress.ExpressApp.Dashboards.DashboardsModule));
+			this.RequiredModuleTypes.Add(typeof(SenDevDashboardsModule));
 		}
 
 		#endregion

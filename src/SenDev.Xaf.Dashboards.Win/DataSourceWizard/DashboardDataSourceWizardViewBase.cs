@@ -17,7 +17,7 @@ namespace SenDev.Xaf.Dashboards.Win.DataSourceWizard
 			WizardParameters = parameters;
 			Application = application;
 
-			paramsObjectSpace = application.CreateObjectSpace(typeof(ScriptDashboardWizardParameters));
+			paramsObjectSpace = application.CreateObjectSpace();
 			paramsView = CreateDetailView(paramsObjectSpace);
 			paramsView.CreateControls();
 			paramsView.LayoutManager.CustomizationEnabled = false;
