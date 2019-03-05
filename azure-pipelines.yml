@@ -21,6 +21,11 @@ steps:
   inputs:
     restoreSolution: '$(solution)'
 
+- task: NuGetCommand@2
+  inputs:
+    command: 'restore' 
+    restoreSolution: '**/*.sln'
+    
 - task: VSBuild@1
   inputs:
     solution: '$(solution)'
