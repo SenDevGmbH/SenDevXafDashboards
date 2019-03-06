@@ -173,9 +173,11 @@
   <ItemGroup>
     <Compile Include="BusinessObjects\DashboardDataExtract.cs" />
     <Compile Include="BusinessObjects\SenDevDataSourceType.cs" />
+    <Compile Include="Controllers\DataExtractJobSchedulerController.cs" />
     <Compile Include="Controllers\UpdateDataExtractController.cs" />
     <Compile Include="DatabaseUpdate\Updater.cs" />
     <Compile Include="EditorAliases.cs" />
+    <Compile Include="IJobScheduler.cs" />
     <Compile Include="Module.cs">
       <SubType>Component</SubType>
     </Compile>

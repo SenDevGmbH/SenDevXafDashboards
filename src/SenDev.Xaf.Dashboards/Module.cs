@@ -18,6 +18,12 @@ namespace SenDev.Xaf.Dashboards
 			InitializeComponent();
 			BaseObject.OidInitializationMode = OidInitializationMode.AfterConstruction;
 		}
+
+		public IJobScheduler JobScheduler
+		{
+			get; set;
+		}
+
 		public override IEnumerable<ModuleUpdater> GetModuleUpdaters(IObjectSpace objectSpace, Version versionFromDB)
 		{
 			ModuleUpdater updater = new DatabaseUpdate.Updater(objectSpace, versionFromDB);

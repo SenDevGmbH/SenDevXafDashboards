@@ -52,6 +52,14 @@ namespace SenDev.Xaf.Dashboards.BusinessObjects
 			set => SetPropertyValue(nameof(Name), ref name, value);
 		}
 
+
+		private string cronExpression;
+		public string CronExpression
+		{
+			get => cronExpression;
+			set => SetPropertyValue(nameof(CronExpression), ref cronExpression, value);
+		}
+
 		private string script;
 
 		[Size(SizeAttribute.Unlimited)]
