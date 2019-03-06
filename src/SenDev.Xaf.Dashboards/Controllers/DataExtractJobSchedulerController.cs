@@ -25,6 +25,7 @@ namespace SenDev.Xaf.Dashboards.Controllers
 		{
 			base.OnDeactivated();
 			ObjectSpace.Committed -= ObjectSpace_Committed;
+			ObjectSpace.ObjectDeleted -= ObjectSpace_ObjectDeleted;
 
 		}
 		private void ObjectSpace_Committed(object sender, EventArgs e)
