@@ -2,8 +2,10 @@
 using DevExpress.DataProcessing.ExtractStorage;
 using DevExpress.ExpressApp;
 using DevExpress.ExpressApp.DC;
+using DevExpress.ExpressApp.Utils;
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
 
@@ -17,7 +19,6 @@ namespace SenDev.Xaf.Dashboards.Scripting
         public TypedListBase(bool onlySerializableProperties)
         {
             OnlySerializableProperties = onlySerializableProperties;
-
         }
 
         protected abstract object ScriptResult { get; }
@@ -65,11 +66,23 @@ namespace SenDev.Xaf.Dashboards.Scripting
             if (typeInfo != null)
             {
 
-                XafPropertyDescriptorCollection collection = new XafPropertyDescriptorCollection(typeInfo);
-                foreach (var memberInfo in typeInfo.Members.Where(m => m.IsPersistent && (!OnlySerializableProperties || ValuesSerializer.IsSupportedType(m.MemberType))))
-                    collection.CreatePropertyDescriptor(memberInfo, memberInfo.Name);
+                var collection = new XafPropertyDescriptorCollection(typeInfo);
+				var descriptors = new List<PropertyDescriptor>();
+				foreach (var memberInfo in typeInfo.Members.Where(m => m.IsPersistent))
+				{
+					
+					var descriptor = collection.CreatePropertyDescriptor(memberInfo, memberInfo.Name);
+					if (ValuesSerializer.IsSupportedType(memberInfo.MemberType))
+					{
+						descriptors.Add(descriptor);
+					}
+					else
+					{
+						descriptors.Add(new DisplayTextPropertyDescriptor(descriptor));
+					}
+				}
 
-                return collection;
+                return new PropertyDescriptorCollection(descriptors.ToArray());
             }
             else
                 return TypeDescriptor.GetProperties(type);
