@@ -25,9 +25,9 @@ namespace SenDev.Xaf.Dashboards.Scripting
         protected override object ScriptResult => Queryable;
 
         protected override ITypesInfo TypesInfo => ObjectSpace.TypesInfo;
-        public int SourceRowsBufferSize { get; set; } = 10000;
+        public int SourceRowsBufferSize { get; set; } = 100000;
 
-        public int MaxQueriesPerObjectSpace { get; set; } = 50;
+        public int MaxQueriesPerObjectSpace { get; set; } = 5;
 
         public int ElementsPerSourceRow
         {

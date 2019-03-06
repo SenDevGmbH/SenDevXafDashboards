@@ -10,6 +10,7 @@ namespace SenDev.DashboardsDemo.Web.Services
 	{
 		public void DeleteUpdateDataExtractJob(Guid dataExtractId)
 		{
+			Hangfire.RecurringJob.RemoveIfExists(dataExtractId.ToString());
 		}
 
 		public void ScheduleUpdateDataExtractJob(Guid dataExtractId)
