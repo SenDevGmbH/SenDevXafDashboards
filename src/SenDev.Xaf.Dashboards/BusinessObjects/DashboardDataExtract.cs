@@ -23,6 +23,11 @@ namespace SenDev.Xaf.Dashboards.BusinessObjects
 			Session.Disposed += Session_Disposed;
 		}
 
+		public override void AfterConstruction()
+		{
+			base.AfterConstruction();
+			CronExpression = "0 1 * * *";
+		}
 		private void Session_Disposed(object sender, EventArgs e)
 		{
 			DeleteTempFileSafe();
@@ -54,6 +59,7 @@ namespace SenDev.Xaf.Dashboards.BusinessObjects
 
 
 		private string cronExpression;
+	
 		public string CronExpression
 		{
 			get => cronExpression;

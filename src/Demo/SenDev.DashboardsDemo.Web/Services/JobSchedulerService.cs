@@ -6,7 +6,7 @@ using SenDev.Xaf.Dashboards.Scripting;
 
 namespace SenDev.DashboardsDemo.Web.Services
 {
-	public class JobSchedulerService : IJobSchedulerService
+	public class JobSchedulerService : MarshalByRefObject, IJobSchedulerService
 	{
 		public void DeleteUpdateDataExtractJob(Guid dataExtractId)
 		{
@@ -22,8 +22,23 @@ namespace SenDev.DashboardsDemo.Web.Services
 					Hangfire.RecurringJob.AddOrUpdate(dataExtractId.ToString(), () => UpdateDataExtract(dataExtractId.ToString()), dataExtract.CronExpression);
 			}
 		}
-
 		public void UpdateDataExtract(string dataExtractId)
+		{
+
+			var appDomain = AppDomain.CreateDomain("ServerSideInstanceDomain",null, AppDomain.CurrentDomain.SetupInformation);
+			try
+			{
+				var service = (JobSchedulerService)appDomain.CreateInstanceAndUnwrap(GetType().Assembly.FullName, GetType().FullName);
+				service.UpdateDataExtractCore(dataExtractId);
+			}
+			finally
+			{
+				AppDomain.Unload(appDomain);
+			}
+		}
+
+
+		public void UpdateDataExtractCore(string dataExtractId)
 		{
 			var dataManager = new DataExtractDataManager(ServerSideApplication.Instance);
 			dataManager.UpdateDataExtractByKey(Guid.Parse(dataExtractId));
