@@ -8,7 +8,7 @@ namespace SenDev.DashboardsDemo.Web.Services
 {
 	public class JobSchedulerService : MarshalByRefObject, IJobSchedulerService
 	{
-		public void DeleteUpdateDataExtractJob(Guid dataExtractId)
+		public void RemoveUpdateDataExtractJob(Guid dataExtractId)
 		{
 			Hangfire.RecurringJob.RemoveIfExists(dataExtractId.ToString());
 		}

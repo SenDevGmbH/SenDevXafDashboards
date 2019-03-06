@@ -23,7 +23,7 @@ namespace SenDev.DashboardsDemo.Win
 		public void RemoveDataExtractCreationJob(DashboardDataExtract dataExtract)
 		{
 			var channel = CreateChannel();
-			channel.DeleteUpdateDataExtractJob(dataExtract.Oid);
+			channel.RemoveUpdateDataExtractJob(dataExtract.Oid);
 		}
 
 		public void ScheduleDataExtractCreationJob(DashboardDataExtract dataExtract)
