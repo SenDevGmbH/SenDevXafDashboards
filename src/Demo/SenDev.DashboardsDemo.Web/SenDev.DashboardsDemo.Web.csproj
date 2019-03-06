@@ -201,6 +201,11 @@
     <Compile Include="Login.aspx.designer.cs">
       <DependentUpon>Login.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Services\JobSchedulerService.cs" />
+    <Compile Include="Services\JobSchedulerServiceFactory.cs" />
+    <Compile Include="Services\ServerSideApplication.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Startup.cs" />
     <Compile Include="WebApplication.cs">
       <SubType>Component</SubType>
@@ -231,6 +236,10 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\SenDev.Xaf.Dashboards\SenDev.Xaf.Dashboards.csproj">
+      <Project>{4D917657-12F3-4391-9DA4-32FD3756579E}</Project>
+      <Name>SenDev.Xaf.Dashboards</Name>
+    </ProjectReference>
     <ProjectReference Include="..\SenDev.DashboardsDemo.Module.Web\SenDev.DashboardsDemo.Module.Web.csproj">
       <Project>{0C729AAD-7626-4668-A7F1-35F7D240489D}</Project>
       <Name>SenDev.DashboardsDemo.Module.Web</Name>
@@ -256,9 +265,7 @@
       <DependentUpon>Web.config</DependentUpon>
     </None>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Services\" />
-  </ItemGroup>
+  <ItemGroup />
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
