@@ -12,7 +12,7 @@ pool:
 variables:
   solution: 'src/build.proj'
   buildPlatform: 'Any CPU'
-  buildConfiguration: 'Release'
+  buildConfiguration: 'Debug'
   NugetTargetDir: '$(Build.ArtifactStagingDirectory)'
 steps:
 - task: NuGetToolInstaller@0
