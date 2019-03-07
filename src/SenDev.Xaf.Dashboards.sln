@@ -3,11 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28307.329
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SenDev.Xaf.Dashboards", "SenDev.Xaf.Dashboards\SenDev.Xaf.Dashboards.csproj", "{4D917657-12F3-4391-9DA4-32FD3756579E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SenDev.Xaf.Dashboards", "Libraries\SenDev.Xaf.Dashboards\SenDev.Xaf.Dashboards.csproj", "{4D917657-12F3-4391-9DA4-32FD3756579E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SenDev.Xaf.Dashboards.Web", "SenDev.Xaf.Dashboards.Web\SenDev.Xaf.Dashboards.Web.csproj", "{EF3E2394-BB3A-44EC-B7B9-314A0CC3B8FB}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SenDev.Xaf.Dashboards.Web", "Libraries\SenDev.Xaf.Dashboards.Web\SenDev.Xaf.Dashboards.Web.csproj", "{EF3E2394-BB3A-44EC-B7B9-314A0CC3B8FB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SenDev.Xaf.Dashboards.Win", "SenDev.Xaf.Dashboards.Win\SenDev.Xaf.Dashboards.Win.csproj", "{DA2F9100-A85C-424F-90AA-AB8CF8504A98}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SenDev.Xaf.Dashboards.Win", "Libraries\SenDev.Xaf.Dashboards.Win\SenDev.Xaf.Dashboards.Win.csproj", "{DA2F9100-A85C-424F-90AA-AB8CF8504A98}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Demo", "Demo", "{2E0BB36F-BE22-474D-B62B-1B53E04E199C}"
 EndProject
@@ -20,6 +20,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SenDev.DashboardsDemo.Web", "Demo\SenDev.DashboardsDemo.Web\SenDev.DashboardsDemo.Web.csproj", "{82A6DBC9-B1B4-44E4-9718-55DF930CD349}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SenDev.DashboardsDemo.Win", "Demo\SenDev.DashboardsDemo.Win\SenDev.DashboardsDemo.Win.csproj", "{D05D93DF-312D-4D4E-B980-726871EC7833}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Libraries", "Libraries", "{A4F7E23B-BBF6-485A-A5CE-9BB4CD0570BC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -81,6 +83,9 @@ Global
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
+		{4D917657-12F3-4391-9DA4-32FD3756579E} = {A4F7E23B-BBF6-485A-A5CE-9BB4CD0570BC}
+		{EF3E2394-BB3A-44EC-B7B9-314A0CC3B8FB} = {A4F7E23B-BBF6-485A-A5CE-9BB4CD0570BC}
+		{DA2F9100-A85C-424F-90AA-AB8CF8504A98} = {A4F7E23B-BBF6-485A-A5CE-9BB4CD0570BC}
 		{5F15837D-D1E5-44DC-92F0-4F2EBE9C3F8D} = {2E0BB36F-BE22-474D-B62B-1B53E04E199C}
 		{0C729AAD-7626-4668-A7F1-35F7D240489D} = {2E0BB36F-BE22-474D-B62B-1B53E04E199C}
 		{7964F87D-BC5D-4C4E-8B2F-71E89739AA97} = {2E0BB36F-BE22-474D-B62B-1B53E04E199C}

@@ -4,13 +4,14 @@
     <DevExpressVersion>$(DevExpressFullVersion.Substring(0,4))</DevExpressVersion>
   </PropertyGroup>
   <ItemGroup>
-    <ProjectToBuild Include="SenDev.Xaf.Dashboards\SenDev.Xaf.Dashboards.csproj;"/>
-    <ProjectToBuild Include="SenDev.Xaf.Dashboards.Win\SenDev.Xaf.Dashboards.Win.csproj;"/>
-    <ProjectToBuild Include="SenDev.Xaf.Dashboards.Web\SenDev.Xaf.Dashboards.Web.csproj;"/>
+    <ProjectToBuild Include="Libraries\**\*.csproj;"/>
     <NugetFile Include="nuspec\*.nuspec"/>
   </ItemGroup>
 
   <Target Name="Build">
+    
+    <WriteLinesToFile File="Libraries\CommonVersion.cs" Lines="[assembly: System.Reflection.AssemblyVersion(&quot;$(DevExpressFullVersion).$(Build_BuildId))]&quot;/>" Overwrite=True/
+    >
     <DownloadFile SourceUrl="$(DevExpressBinariesServerUrl)/$(DevExpressFullVersion).zip" DestinationFolder="$(OutputPath)">
       <Output TaskParameter="DownloadedFile" PropertyName="DevExpressBinariesArchive"/>
     </DownloadFile>

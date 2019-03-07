@@ -155,7 +155,7 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\SenDev.Xaf.Dashboards.Win\SenDev.Xaf.Dashboards.Win.csproj">
+    <ProjectReference Include="..\..\Libraries\SenDev.Xaf.Dashboards.Win\SenDev.Xaf.Dashboards.Win.csproj">
       <Project>{DA2F9100-A85C-424F-90AA-AB8CF8504A98}</Project>
       <Name>SenDev.Xaf.Dashboards.Win</Name>
     </ProjectReference>

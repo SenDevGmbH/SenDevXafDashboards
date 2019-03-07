@@ -1,0 +1,10 @@
+<Project>
+ <PropertyGroup>
+    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
+    <DevExpressVersion>18.2</DevExpressVersion>
+ </PropertyGroup>
+
+ <ItemGroup>
+    <Compile Include="$(MSBuildThisFileDirectory)CommonVersion.cs"/>
+  </ItemGroup>
+</Project>

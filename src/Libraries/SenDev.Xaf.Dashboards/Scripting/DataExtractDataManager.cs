@@ -57,7 +57,7 @@ namespace SenDev.Xaf.Dashboards.Scripting
 			string fileName = Path.GetTempFileName();
 			using (DashboardObjectDataSource ods = new DashboardObjectDataSource())
 			{
-				ScriptDataSource dataSource = new ScriptDataSource(extract.Script) { Application = Application, OnlySerializableTypes = true };
+				ScriptDataSource dataSource = new ScriptDataSource(extract.Script) { Application = Application};
 				ods.DataSource = dataSource.GetDataForDataExtract();
 				using (DashboardExtractDataSource extractDataSource = new DashboardExtractDataSource())
 				{
