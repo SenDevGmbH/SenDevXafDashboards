@@ -15,6 +15,6 @@
   <files>
     <file src="$SourceDir$SenDev.Xaf.Dashboards.dll" target="lib\net46" />
   	<file src="$SourceDir$SenDev.Xaf.Dashboards.pdb" target="lib\net46" />
-	  <file src="$SourceDir$\..\..\SenDev.Xaf.Dashboards\**\*.cs" target="src\SenDev.Xaf.Dashboards" />
+	  <file src="$SourceDir$\..\..\Libraries\SenDev.Xaf.Dashboards\**\*.cs" target="src\SenDev.Xaf.Dashboards" />
   </files>
 </package>
