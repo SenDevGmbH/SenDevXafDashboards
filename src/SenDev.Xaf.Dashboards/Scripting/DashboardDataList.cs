@@ -16,7 +16,7 @@ namespace SenDev.Xaf.Dashboards.Scripting
         private IObjectSpace objectSpace;
         private int queriesCount;
 
-        public DashboardDataList(Func<(IQueryable queryable, IObjectSpace objectSpace)> queryableFunc, int elementsPerSourceRow) : base(true)
+        public DashboardDataList(Func<(IQueryable queryable, IObjectSpace objectSpace)> queryableFunc, int elementsPerSourceRow) 
         {
             ElementsPerSourceRow = elementsPerSourceRow;
             QueryableFunc = queryableFunc;

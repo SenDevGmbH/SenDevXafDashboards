@@ -16,9 +16,8 @@ namespace SenDev.Xaf.Dashboards.Scripting
     {
         private PropertyDescriptorCollection properties;
 
-        public TypedListBase(bool onlySerializableProperties)
+        public TypedListBase()
         {
-            OnlySerializableProperties = onlySerializableProperties;
         }
 
         protected abstract object ScriptResult { get; }
@@ -46,10 +45,6 @@ namespace SenDev.Xaf.Dashboards.Scripting
             }
         }
 
-        public bool OnlySerializableProperties
-        {
-            get;
-        }
         public string GetListName(PropertyDescriptor[] listAccessors) => string.Empty;
 
         public PropertyDescriptorCollection GetItemProperties(PropertyDescriptor[] listAccessors)

@@ -17,11 +17,6 @@ namespace SenDev.Xaf.Dashboards.Scripting
             get; set;
         }
 
-        public bool OnlySerializableTypes
-        {
-            get; set;
-        }
-
         public string Script
         {
             get;
@@ -30,7 +25,7 @@ namespace SenDev.Xaf.Dashboards.Scripting
         public object GetData()
         {
             var data = GetDataCore(out var objectSpace);
-            return new ScriptResultList(data, objectSpace.TypesInfo, OnlySerializableTypes);
+            return new ScriptResultList(data, objectSpace.TypesInfo);
 
         }
 

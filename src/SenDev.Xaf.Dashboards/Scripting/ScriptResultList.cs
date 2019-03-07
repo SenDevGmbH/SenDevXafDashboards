@@ -16,7 +16,7 @@ namespace SenDev.Xaf.Dashboards.Scripting
 		private readonly IList resultList;
         private readonly object scriptResult;
         private readonly ITypesInfo typesInfo;
-		public ScriptResultList(object scriptResult, ITypesInfo typesInfo, bool onlySerializableProperties) : base(onlySerializableProperties)
+		public ScriptResultList(object scriptResult, ITypesInfo typesInfo) 
 		{
             this.scriptResult = scriptResult;
             this.typesInfo = typesInfo;
