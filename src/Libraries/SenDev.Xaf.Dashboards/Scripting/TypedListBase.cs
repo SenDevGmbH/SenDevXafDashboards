@@ -63,17 +63,20 @@ namespace SenDev.Xaf.Dashboards.Scripting
 
                 var collection = new XafPropertyDescriptorCollection(typeInfo);
 				var descriptors = new List<PropertyDescriptor>();
-				foreach (var memberInfo in typeInfo.Members.Where(m => m.IsPersistent))
+				foreach (var memberInfo in typeInfo.Members.Where(m=>!m.IsKey))
 				{
-					
 					var descriptor = collection.CreatePropertyDescriptor(memberInfo, memberInfo.Name);
-					if (ValuesSerializer.IsSupportedType(memberInfo.MemberType))
+					if (descriptor.IsBrowsable)
 					{
-						descriptors.Add(descriptor);
-					}
-					else
-					{
-						descriptors.Add(new DisplayTextPropertyDescriptor(descriptor));
+
+						if (ValuesSerializer.IsSupportedType(memberInfo.MemberType))
+						{
+							descriptors.Add(descriptor);
+						}
+						else
+						{
+							descriptors.Add(new DisplayTextPropertyDescriptor(descriptor));
+						}
 					}
 				}
 
