@@ -1,5 +1,4 @@
-﻿using SenDev.Xaf.Dashboards;
-
+﻿
 namespace SenDev.DashboardsDemo.Module {
 	partial class DashboardsDemoModule {
 		/// <summary> 
@@ -31,7 +30,7 @@ namespace SenDev.DashboardsDemo.Module {
 			this.RequiredModuleTypes.Add(typeof(DevExpress.ExpressApp.SystemModule.SystemModule));
 			this.RequiredModuleTypes.Add(typeof(DevExpress.ExpressApp.Objects.BusinessClassLibraryCustomizationModule));
 			this.RequiredModuleTypes.Add(typeof(DevExpress.ExpressApp.Dashboards.DashboardsModule));
-			this.RequiredModuleTypes.Add(typeof(SenDevDashboardsModule));
+			this.RequiredModuleTypes.Add(typeof(Xaf.Dashboards.SenDevDashboardsModule));
 		}
 
 		#endregion

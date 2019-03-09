@@ -1,5 +1,4 @@
-﻿using SenDev.Xaf.Dashboards.Win;
-
+﻿
 namespace SenDev.DashboardsDemo.Module.Win {
     partial class DashboardsDemoWindowsFormsModule {
         /// <summary> 
@@ -31,7 +30,7 @@ namespace SenDev.DashboardsDemo.Module.Win {
             this.RequiredModuleTypes.Add(typeof(SenDev.DashboardsDemo.Module.DashboardsDemoModule));
             this.RequiredModuleTypes.Add(typeof(DevExpress.ExpressApp.Win.SystemModule.SystemWindowsFormsModule));
 			this.RequiredModuleTypes.Add(typeof(DevExpress.ExpressApp.Dashboards.Win.DashboardsWindowsFormsModule));
-			this.RequiredModuleTypes.Add(typeof(SenDevDashboardsWinModule));
+			this.RequiredModuleTypes.Add(typeof(Xaf.Dashboards.Win.SenDevDashboardsWinModule));
         }
 
         #endregion
