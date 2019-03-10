@@ -91,8 +91,9 @@ First, we must create a data extract. Goto _Dashboard Data Extract_ Navigation I
 <img src="images/UpdateDataAction.png" width="50px">
 
 After the data extract is created, we can use it in a dashboard. Goto dashboards, click on new. 
-In the data source window select "XAF Data Extract":
-![XAF Data Extract](images/SelectXAFDataExtract.png)
+In the data source window select "XAF Data Extract": 
+
+<img src="images/SelectXAFDataExtract.png" width="400px">
 
 On the next page You can select the data extract, You created previously:
 ![XAF Data Extract](images/SelectDataExtract.png)
