@@ -58,10 +58,11 @@ this.RequiredModuleTypes.Add(typeof(DevExpress.ExpressApp.Dashboards.Web.Dashboa
 
 ### Using Script Data Source
 Start Application. Goto Dashboards and click on "New". Select "C# Script Data Source":
-![Select C# Script Data Source](images/SelectCSScriptDataSource.png)
+<img src="images/SelectCSScriptDataSource.png" width="600">
 
 Click Next and specify the script:
-![Specify Script](images/SpecifyScript.png)
+
+<img src="images/SpecifyScript.png" width="600">
 
 You can use following script template:
 
@@ -93,10 +94,10 @@ First, we must create a data extract. Goto _Dashboard Data Extract_ Navigation I
 After the data extract is created, we can use it in a dashboard. Goto dashboards, click on new. 
 In the data source window select "XAF Data Extract": 
 
-<img src="images/SelectXAFDataExtract.png" width="400px">
+<img src="images/SelectXAFDataExtract.png" width="600">
 
 On the next page You can select the data extract, You created previously:
-![XAF Data Extract](images/SelectDataExtract.png)
+<img src="images/SelectDataExtract.png" width="600">
 
 Then click on "Finish". Your Data Extract Data Source is ready!
 
@@ -117,7 +118,7 @@ Also You can easily integrate You preferred scheduler by implementing the `IJobS
 Download the [Contoso BI Demo DataSet](https://www.microsoft.com/en-us/download/details.aspx?id=18279). Restore the database, use ContosoRetailDW for database name. 
 Connection Strings in the applications are configured to use default instance of the SQL Server, if You're not using the default instance, You can modify the Connection Strings accordingly.
 After opening the SenDev.Xaf.Dashboards.sln in Visual Studio, go to the solution properties and set the SenDev.Xaf.Dashboards.Win and SenDev.Xaf.Dashboards.Web projects to "Start":
-![Solution Properties](images/SolutionProperties.png).
+<img src="images/SolutionProperties.png" width="600">
 
 The web application needs allways to be started, since it hosting a WCF Service for job scheduler.
 
