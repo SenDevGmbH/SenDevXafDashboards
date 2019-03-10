@@ -25,7 +25,7 @@ We Nuget packages for multiple DevExpress versions. You can pick the matching ve
 #### Platform agnostic module
 Install the package with following command in the Visual Studio Package Manager Console 
 ```Console
-Install-Package SenDev.Xaf.Dashboards -MinimumVersion 18.2.6 -MaxmumumVersion 18.2.6.65535
+Install-Package SenDev.Xaf.Dashboards -MinimumVersion 18.2.6 -MaximumVersion 18.2.6.65535
 ```
 
 Add following line in the InitializeComponent method in Module.Designer.cs:
@@ -82,15 +82,13 @@ public class Script
         return context.Query<OnlineSales>().Take(1000);
     }
 }
-
-
 ```
 
 ### Using XAF Data Extract Data Source
 
 First, we must create a data extract. Goto _Dashboard Data Extract_ Navigation Item. Click On "New". Enter a data extract name and the script. You can use the same template as for the Script Data Source above. Then Click on _Save & Close_. In the list view use the "Update Data" button to create data extract: 
 
-![Update Data](images/UpdateDataAction.png | width=50)
+<img src="images/UpdateDataAction.png" width="50px">
 
 After the data extract is created, we can use it in a dashboard. Goto dashboards, click on new. 
 In the data source window select "XAF Data Extract":
@@ -99,10 +97,26 @@ In the data source window select "XAF Data Extract":
 On the next page You can select the data extract, You created previously:
 ![XAF Data Extract](images/SelectDataExtract.png)
 
-Then click on "Finish". Your Data Exctract Data Source is ready!
+Then click on "Finish". Your Data Extract Data Source is ready!
 
+#### Scheduling Updates of Data Extracts
+We are not providing are build-in job scheduler with the packages. However the demo application implements a scheduler by using [Hangfire](https://www.hangfire.io), You can use the code in Your applications.
+
+Also You can easily integrate You preferred scheduler by implementing the `IJobScheduler` interface.
 
 
 ## Development
 
-* Contoso BI Demo DataSet: https://www.microsoft.com/en-us/download/details.aspx?id=18279
+### Pre-requisites
+* Visual Studio 2017
+* Microsoft SQL Server 2017 or higher
+* DevExpress Universal Suite 18.2
+
+### Database
+Download the [Contoso BI Demo DataSet](https://www.microsoft.com/en-us/download/details.aspx?id=18279). Restore the database, use ContosoRetailDW for database name. 
+Connection Strings in the applications are configured to use default instance of the SQL Server, if You're not using the default instance, You can modify the Connection Strings accordingly.
+After opening the SenDev.Xaf.Dashboards.sln in Visual Studio, go to the solution properties and set the SenDev.Xaf.Dashboards.Win and SenDev.Xaf.Dashboards.Web projects to "Start":
+![Solution Properties](images/SolutionProperties.png).
+
+The web application needs allways to be started, since it hosting a WCF Service for job scheduler.
+

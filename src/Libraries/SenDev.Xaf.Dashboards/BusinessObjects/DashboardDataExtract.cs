@@ -96,7 +96,6 @@ namespace SenDev.Xaf.Dashboards.BusinessObjects
 		[VisibleInDetailView(true)]
 		[VisibleInListView(true)]
 		[VisibleInLookupListView(false)]
-		[ModelDefault(nameof(IModelMember.Caption), "Startzeit")]
 		[ModelDefault(nameof(IModelMember.DisplayFormat), "{0:g}")]
 		[ModelDefault(nameof(IModelMember.EditMask), "g")]
 		public DateTime StartTime
@@ -135,7 +134,6 @@ namespace SenDev.Xaf.Dashboards.BusinessObjects
 		[VisibleInDetailView(true)]
 		[VisibleInListView(false)]
 		[VisibleInLookupListView(false)]
-		[ModelDefault(nameof(IModelMember.Caption), "Dauer")]
 		[NonPersistent]
 		public TimeSpan Duration => FinishTime - StartTime;
 
