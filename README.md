@@ -56,7 +56,7 @@ Add following line in the InitializeComponent method in WebModule.Designer.cs:
 this.RequiredModuleTypes.Add(typeof(DevExpress.ExpressApp.Dashboards.Web.DashboardsAspNetModule));
 ```
 
-### Creating a Script Data Source
+### Using Script Data Source
 Start Application. Goto Dashboards and click on "New". Select "C# Script Data Source":
 ![Select C# Script Data Source](images/SelectCSScriptDataSource.png)
 
@@ -85,6 +85,24 @@ public class Script
 
 
 ```
+
+### Using XAF Data Extract Data Source
+
+First, we must create a data extract. Goto _Dashboard Data Extract_ Navigation Item. Click On "New". Enter a data extract name and the script. You can use the same template as for the Script Data Source above. Then Click on _Save & Close_. In the list view use the "Update Data" button to create data extract: 
+
+![Update Data](images/UpdateDataAction.png | width=50)
+
+After the data extract is created, we can use it in a dashboard. Goto dashboards, click on new. 
+In the data source window select "XAF Data Extract":
+![XAF Data Extract](images/SelectXAFDataExtract.png)
+
+On the next page You can select the data extract, You created previously:
+![XAF Data Extract](images/SelectDataExtract.png)
+
+Then click on "Finish". Your Data Exctract Data Source is ready!
+
+
+
 ## Development
 
 * Contoso BI Demo DataSet: https://www.microsoft.com/en-us/download/details.aspx?id=18279
