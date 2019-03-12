@@ -20,12 +20,12 @@ XAF Data Extract Data Source has following features:
 
 ## Getting started
 ### Installing SenDev.XafDashboard packages into your application modules
-We Nuget packages for multiple DevExpress versions. You can pick the matching version for Your installed DevExpress Suite by specifying a range of versions `-MinimumVersion` and `-MaximumVersion` options of the Install-Package command.
+We provide Nuget packages for multiple DevExpress versions. If You want to install SenDev.Xaf.Dashboard packages for specific version of DevExpress, please pick the latest Version according to the installed version of the installed DevExpress Suite. You can specify the version with the `-Version` parameter of the `Install-Package` command. If You skip the version parameter, latest Version of the packages for the latest supported version of the DevExpress Suite will be installed.
 
 #### Platform agnostic module
 Install the package with following command in the Visual Studio Package Manager Console 
 ```Console
-Install-Package SenDev.Xaf.Dashboards -MinimumVersion 18.2.6 -MaximumVersion 18.2.6.65535
+Install-Package SenDev.Xaf.Dashboards -IncludePrerelease
 ```
 
 Add following line in the InitializeComponent method in Module.Designer.cs:
@@ -36,7 +36,7 @@ this.RequiredModuleTypes.Add(typeof(Xaf.Dashboards.SenDevDashboardsModule));
 #### Windows module
 Install the package with following command in the Visual Studio Package Manager Console 
 ```Console
-Install-Package SenDev.Xaf.Dashboards.Win -MinimumVersion 18.2.6 -MaximumVersion 18.2.6.65535
+Install-Package SenDev.Xaf.Dashboards.Win -IncludePrerelease
 ```
 
 Add following line in the InitializeComponent method in WinModule.Designer.cs:
@@ -48,7 +48,7 @@ this.RequiredModuleTypes.Add(typeof(Xaf.Dashboards.Win.SenDevDashboardsWinModule
 #### Web module
 Install the package with following command in the Visual Studio Package Manager Console 
 ```Console
-Install-Package SenDev.Xaf.Dashboards.Web -MinimumVersion 18.2.6 -MaximumVersion 18.2.6.65535
+Install-Package SenDev.Xaf.Dashboards.Web -IncludePrerelease
 ```
 
 Add following line in the InitializeComponent method in WebModule.Designer.cs:
@@ -120,5 +120,5 @@ Connection Strings in the applications are configured to use default instance of
 After opening the SenDev.Xaf.Dashboards.sln in Visual Studio, go to the solution properties and set the SenDev.Xaf.Dashboards.Win and SenDev.Xaf.Dashboards.Web projects to "Start":
 <img src="images/SolutionProperties.png" width="600">
 
-The web application needs allways to be started, since it hosting a WCF Service for job scheduler.
+The web application needs always to be started, since it hosting a WCF Service for job scheduler.
 
