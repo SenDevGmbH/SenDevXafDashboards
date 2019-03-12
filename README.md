@@ -30,7 +30,7 @@ Install-Package SenDev.Xaf.Dashboards -IncludePrerelease
 
 Add following line in the InitializeComponent method in Module.Designer.cs:
 ```C#
-this.RequiredModuleTypes.Add(typeof(Xaf.Dashboards.SenDevDashboardsModule));
+this.RequiredModuleTypes.Add(typeof(SenDev.Xaf.Dashboards.SenDevDashboardsModule));
 ```
 
 #### Windows module
@@ -41,7 +41,7 @@ Install-Package SenDev.Xaf.Dashboards.Win -IncludePrerelease
 
 Add following line in the InitializeComponent method in WinModule.Designer.cs:
 ```C#
-this.RequiredModuleTypes.Add(typeof(Xaf.Dashboards.Win.SenDevDashboardsWinModule));
+this.RequiredModuleTypes.Add(typeof(SenDev.Xaf.Dashboards.Win.SenDevDashboardsWinModule));
 
 ```
 
@@ -53,7 +53,7 @@ Install-Package SenDev.Xaf.Dashboards.Web -IncludePrerelease
 
 Add following line in the InitializeComponent method in WebModule.Designer.cs:
 ```C#
-this.RequiredModuleTypes.Add(typeof(DevExpress.ExpressApp.Dashboards.Web.DashboardsAspNetModule));
+this.RequiredModuleTypes.Add(typeof(SenDev.Xaf.Dashboards.Web.SenDevDashboardsWebModule));
 ```
 
 ### Using Script Data Source
