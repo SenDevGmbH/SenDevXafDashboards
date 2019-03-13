@@ -44,9 +44,13 @@ namespace SenDev.Xaf.Dashboards.Win.DataSourceWizard
 			{
 				customization.StartPage = typeof(EnterScriptPage<DashboardDataSourceModel>);
 			}
-			IDataComponentModelWithConnection connectionModel = customization.Model as IDataComponentModelWithConnection;
-			bool hasDataConnection = connectionModel != null ? connectionModel.DataConnection != null : false;
-			if (customization.Model.DataSchema == null && !hasDataConnection)
+			var connectionModel = customization.Model as IDataComponentModelWithConnection;
+			bool hasDataConnection = connectionModel?.DataConnection != null;
+			if (DataExtractHelper.IsXafDataExtract(customization.Model))
+			{
+				customization.StartPage = typeof(ChoiceDataExtractPage<DashboardDataSourceModel>);
+			}
+			else if (customization.Model.DataSchema == null && !hasDataConnection)
 			{
 				customization.StartPage = typeof(XafDashboardChooseDataSourceTypePage<DashboardDataSourceModel>);
 			}

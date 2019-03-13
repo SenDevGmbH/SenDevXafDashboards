@@ -9,7 +9,6 @@ namespace SenDev.Xaf.Dashboards.Win.DataSourceWizard
 	public abstract class DashboardDataSourceWizardViewBase : WizardViewBase
 	{
 		private DetailView paramsView;
-		private IObjectSpace paramsObjectSpace;
 
 		public DashboardDataSourceWizardViewBase(ScriptDashboardWizardParameters parameters, IObjectSpace objectSpace, XafApplication application)
 		{
@@ -17,8 +16,8 @@ namespace SenDev.Xaf.Dashboards.Win.DataSourceWizard
 			WizardParameters = parameters;
 			Application = application;
 
-			paramsObjectSpace = application.CreateObjectSpace();
-			paramsView = CreateDetailView(paramsObjectSpace);
+			ParamsObjectSpace = application.CreateObjectSpace();
+			paramsView = CreateDetailView(ParamsObjectSpace);
 			paramsView.CreateControls();
 			paramsView.LayoutManager.CustomizationEnabled = false;
 			panelBaseContent.Controls.Add((XafLayoutControl)paramsView.LayoutManager.Container);
@@ -37,6 +36,10 @@ namespace SenDev.Xaf.Dashboards.Win.DataSourceWizard
 		{
 			get;
 		}
+		public IObjectSpace ParamsObjectSpace
+		{
+			get; private set;
+		}
 
 		protected abstract DetailView CreateDetailView(IObjectSpace objectSpace);
 
@@ -49,10 +52,10 @@ namespace SenDev.Xaf.Dashboards.Win.DataSourceWizard
 				paramsView.Dispose();
 				paramsView = null;
 			}
-			if (paramsObjectSpace != null)
+			if (ParamsObjectSpace != null)
 			{
-				paramsObjectSpace.Dispose();
-				paramsObjectSpace = null;
+				ParamsObjectSpace.Dispose();
+				ParamsObjectSpace = null;
 			}
 		}
 	}

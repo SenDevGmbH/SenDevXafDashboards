@@ -14,5 +14,10 @@ namespace SenDev.Xaf.Dashboards.Win.DataSourceWizard.ScriptingPages
 		{
 			get; set;
 		}
+
+		IObjectSpace ParamsObjectSpace
+		{
+			get;
+		}
 	}
 }

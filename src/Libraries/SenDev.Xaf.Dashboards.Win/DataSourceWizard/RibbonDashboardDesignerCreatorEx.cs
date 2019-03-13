@@ -20,7 +20,7 @@ namespace SenDev.Xaf.Dashboards.Win.DataSourceWizard
 		protected override XafDashboardDataSourceWizardCustomization CreateXafDataSourceWizardCustomization()
 		{
 			var parameters = new ScriptDashboardWizardParameters();
-			IObjectSpace objectSpace = Application.CreateObjectSpace(typeof(XafWizardParameters));
+			IObjectSpace objectSpace = Application.CreateObjectSpace();
 			return new DashboardCustomization(parameters, objectSpace, Application);
 		}
 	}

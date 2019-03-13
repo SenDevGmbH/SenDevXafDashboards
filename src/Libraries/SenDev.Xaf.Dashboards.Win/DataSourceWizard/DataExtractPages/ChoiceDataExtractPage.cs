@@ -1,7 +1,5 @@
-﻿using System;
-using DevExpress.DashboardCommon;
+﻿using DevExpress.DashboardCommon;
 using DevExpress.DashboardCommon.DataSourceWizard;
-using SenDev.Xaf.Dashboards.BusinessObjects;
 
 namespace SenDev.Xaf.Dashboards.Win.DataSourceWizard.DataExtractPages
 {
@@ -15,9 +13,10 @@ namespace SenDev.Xaf.Dashboards.Win.DataSourceWizard.DataExtractPages
 		public override void Begin()
 		{
 			base.Begin();
-			if (Model.FileName != null)
-				View.WizardParameters.DataExtract = View.ObjectSpace.GetObjectByKey<DashboardDataExtract>(Guid.Parse(Model.FileName));
+			View.WizardParameters.DataExtract = DataExtractHelper.GetDataExtract(View.ParamsObjectSpace, Model);
 		}
+
+
 		public override void Commit()
 		{
 			var dataExtract = View.WizardParameters.DataExtract;

@@ -121,6 +121,7 @@
     <Compile Include="DataSourceWizard\DataExtractPages\ChoiceDataExtractPageView.cs">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Include="DataSourceWizard\DataExtractPages\DataExtractHelper.cs" />
     <Compile Include="DataSourceWizard\DataExtractPages\IChoiceDataExctractPageView.cs" />
     <Compile Include="DataSourceWizard\DataSourceWizardPageBase.cs" />
     <Compile Include="DataSourceWizard\ScriptingPages\EnterScriptPageView.cs">
