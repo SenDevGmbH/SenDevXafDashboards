@@ -14,15 +14,15 @@ namespace SenDev.Xaf.Dashboards.Win.DataSourceWizard.DataExtractPages
 		}
 		public override void Begin()
 		{
+			base.Begin();
 			if (Model.FileName != null)
 				View.WizardParameters.DataExtract = View.ObjectSpace.GetObjectByKey<DashboardDataExtract>(Guid.Parse(Model.FileName));
-			View.WizardParameters.PropertyChanged += (s, e) => RaiseChanged();
 		}
 		public override void Commit()
 		{
 			var dataExtract = View.WizardParameters.DataExtract;
 			IExtractDataSourceModel model = Model;
-			model.FileName = dataExtract != null ? dataExtract.Oid.ToString() : null;
+			model.FileName = dataExtract?.Oid.ToString();
 		}
 		public override bool FinishEnabled => View.WizardParameters.DataExtract != null;
 		public override bool MoveNextEnabled => false;
