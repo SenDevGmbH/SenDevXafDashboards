@@ -12,6 +12,10 @@
     <tags>DevExpress XAF eXpressApplicationFramework Dashboards</tags>
     <license type="expression">MIT</license>
   </metadata>
+  <dependencies>
+      <dependency id="SenDev.Xaf.Dashboards" version="[$version$]" />
+  </dependencies>
+
   <files>
     <file src="$SourceDir$SenDev.Xaf.Dashboards.Web.dll" target="lib\net46" />
   	<file src="$SourceDir$SenDev.Xaf.Dashboards.Web.pdb" target="lib\net46" />
