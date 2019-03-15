@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Dynamic;
 using System.Linq;
 using DevExpress.DashboardCommon;
 
@@ -32,7 +34,7 @@ namespace SenDev.Xaf.Dashboards.Scripting
 				{
 					Application = DataProvider.ContextApplication
 				};
-				return scriptDataSource.GetData();
+				return scriptDataSource.GetData(fillParameters.Parameters.ToDictionary(p => p.Name, p => p.Value));
 			}
 			else
 				return DefaultFillService.GetData(dataSource, fillParameters);
