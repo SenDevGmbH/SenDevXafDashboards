@@ -1,7 +1,7 @@
 <Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="15.0" DefaultTargets="Build">
   <ItemGroup>
     <ProjectToBuild Include="build-core.proj"/>
-		<TargetDevExpressVersion Include="18.1.7;18.2.6"/>
+		<TargetDevExpressVersion Include="18.1.7;18.2.6;18.2.7"/>
   </ItemGroup>
   
 
