@@ -35,12 +35,13 @@ namespace SenDev.Xaf.Dashboards.Scripting
 		private string[] GetReferencedAssemblies()
 		{
 			var assembly = GetType().Assembly;
-			var assemblies = new HashSet<string>(
-				assembly.GetReferencedAssemblies()
-				.Concat(new[] { assembly.GetName() })
-
+			var assemmblyNames = assembly.GetReferencedAssemblies()
+				.Concat(Application.TypesInfo.PersistentTypes.Select(t => t.Type.Assembly.GetName()))
 				.Where(a => a.Name != "mscorlib")
-				.Select(a => a.Name), StringComparer.OrdinalIgnoreCase);
+				.Select(a => a.Name);
+
+			var assemblies = new HashSet<string>(assemmblyNames, StringComparer.OrdinalIgnoreCase);
+
 			var module = Application.Modules.FindModule<SenDevDashboardsModule>();
 			if (module != null)
 			{
