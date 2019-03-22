@@ -32,11 +32,24 @@ namespace SenDev.Xaf.Dashboards.Scripting
 
 		}
 
+		private IEnumerable<Type> GetTypesHierarchy(Type type)
+		{
+			for (var currentType = type; currentType != null; currentType = currentType.BaseType)
+			{
+				yield return currentType;
+			}
+
+			foreach (var itf in type.GetInterfaces().SelectMany(GetTypesHierarchy))
+			{
+				yield return itf;
+			}
+		}
+
 		private string[] GetReferencedAssemblies()
 		{
 			var assembly = GetType().Assembly;
-			var assemmblyNames = assembly.GetReferencedAssemblies()
-				.Concat(Application.TypesInfo.PersistentTypes.Select(t => t.Type.Assembly.GetName()))
+			var assemmblyNames = 
+				Application.TypesInfo.PersistentTypes.SelectMany(ti => GetTypesHierarchy(ti.Type)).Select(t => t.Assembly.GetName())
 				.Where(a => a.Name != "mscorlib")
 				.Select(a => a.Name);
 
