@@ -15,6 +15,8 @@ using DevExpress.ExpressApp.Model.Core;
 using DevExpress.ExpressApp.Model.DomainLogics;
 using DevExpress.ExpressApp.Model.NodeGenerators;
 using DevExpress.ExpressApp.Xpo;
+using SenDev.Xaf.Dashboards;
+using SenDev.DashboardsDemo.Module.BusinessObjects;
 
 namespace SenDev.DashboardsDemo.Module {
     // For more typical usage scenarios, be sure to check out https://documentation.devexpress.com/eXpressAppFramework/clsDevExpressExpressAppModuleBasetopic.aspx.
@@ -29,9 +31,17 @@ namespace SenDev.DashboardsDemo.Module {
         }
         public override void Setup(XafApplication application) {
             base.Setup(application);
-            // Manage various aspects of the application UI and behavior at the module level.
-        }
-        public override void CustomizeTypesInfo(ITypesInfo typesInfo) {
+			Application.SetupComplete += Application_SetupComplete;
+			// Manage various aspects of the application UI and behavior at the module level.
+		}
+
+		private void Application_SetupComplete(object sender, EventArgs e)
+		{
+			var module = Application.Modules.FindModule<SenDevDashboardsModule>();
+			module.DefaultBusinessObjectType = typeof(OnlineSales);
+		}
+
+		public override void CustomizeTypesInfo(ITypesInfo typesInfo) {
             base.CustomizeTypesInfo(typesInfo);
             CalculatedPersistentAliasHelper.CustomizeTypesInfo(typesInfo);
         }

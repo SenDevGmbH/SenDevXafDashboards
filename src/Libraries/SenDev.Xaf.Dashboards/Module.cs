@@ -23,6 +23,22 @@ namespace SenDev.Xaf.Dashboards
 		{
 			get; set;
 		}
+		
+		/// <summary>
+		/// List of simple names of reference assemblies for script compilation
+		/// </summary>
+		public string[] ScriptReferenceAssemblies
+		{
+			get; set;
+		}
+
+		/// <summary>
+		/// Type of the default business object for script templates
+		/// </summary>
+		public Type DefaultBusinessObjectType
+		{
+			get;set;
+		}
 
 		public override IEnumerable<ModuleUpdater> GetModuleUpdaters(IObjectSpace objectSpace, Version versionFromDB)
 		{
@@ -33,7 +49,7 @@ namespace SenDev.Xaf.Dashboards
 		{
 			base.Setup(application);
 			DashboardsModule.DataProvider = new ScriptingDashboardDataProvider();
-
+			CSScriptLibrary.CSScript.ShareHostRefAssemblies = false;
 		}
 
 		public override void CustomizeTypesInfo(ITypesInfo typesInfo)
