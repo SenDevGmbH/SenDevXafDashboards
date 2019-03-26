@@ -11,9 +11,6 @@
     <releaseNotes></releaseNotes>
     <tags>DevExpress XAF eXpressApplicationFramework Dashboards</tags>
     <license type="expression">MIT</license>
-    <dependencies>
-      <dependency id="CS-Script" version="[3.28.7]" />
-    </dependencies>
   </metadata>
 
   <files>
