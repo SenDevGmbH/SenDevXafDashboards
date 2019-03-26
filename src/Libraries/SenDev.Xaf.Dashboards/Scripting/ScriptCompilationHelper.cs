@@ -1,7 +1,9 @@
-﻿using Microsoft.CSharp;
+﻿using DevExpress.Data.Filtering;
+using Microsoft.CSharp;
 using System;
 using System.CodeDom.Compiler;
 using System.Collections.Concurrent;
+using System.Data;
 using System.IO;
 using System.Linq;
 using System.Reflection;
@@ -38,6 +40,8 @@ namespace SenDev.Xaf.Dashboards.Scripting
 			var assemblyFilePath = Path.GetTempFileName();
 			options.OutputAssembly = assemblyFilePath;
 			options.ReferencedAssemblies.Add(typeof(System.Linq.Enumerable).Assembly.Location);
+			options.ReferencedAssemblies.Add(typeof(CriteriaOperator).Assembly.Location);
+			options.ReferencedAssemblies.Add(typeof(IDataReader).Assembly.Location);
 			options.ReferencedAssemblies.AddRange(ReferencedAssemblies);
 			var compileResult = codeProvider.CompileAssemblyFromSource(options, script);
 
