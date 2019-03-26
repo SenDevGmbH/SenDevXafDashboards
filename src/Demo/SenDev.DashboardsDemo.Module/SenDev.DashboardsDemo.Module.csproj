@@ -218,6 +218,7 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
+    <None Include="app.config" />
     <None Include="BusinessObjects\Contoso.xpo" />
     <None Include="BusinessObjects\Contoso.Xpo.xpo.diagram">
       <DependentUpon>Contoso.xpo</DependentUpon>

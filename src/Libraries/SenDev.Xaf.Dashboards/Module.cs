@@ -49,7 +49,6 @@ namespace SenDev.Xaf.Dashboards
 		{
 			base.Setup(application);
 			DashboardsModule.DataProvider = new ScriptingDashboardDataProvider();
-			CSScriptLibrary.CSScript.ShareHostRefAssemblies = false;
 		}
 
 		public override void CustomizeTypesInfo(ITypesInfo typesInfo)
