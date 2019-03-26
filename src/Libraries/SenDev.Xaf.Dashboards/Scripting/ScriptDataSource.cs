@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Dynamic;
 using System.Linq;
+using System.Reflection;
 
 namespace SenDev.Xaf.Dashboards.Scripting
 {
@@ -45,13 +46,18 @@ namespace SenDev.Xaf.Dashboards.Scripting
 			}
 		}
 
-		private string[] GetReferencedAssemblies()
+
+		private string GetAssemblyLocation(Assembly assembly)
+		{
+			return assembly.Location;
+		}
+		private string[] GetReferencedAssembliesPaths()
 		{
 			var assembly = GetType().Assembly;
-			var assemmblyNames = 
-				Application.TypesInfo.PersistentTypes.SelectMany(ti => GetTypesHierarchy(ti.Type)).Select(t => t.Assembly.GetName())
-				.Where(a => a.Name != "mscorlib")
-				.Select(a => a.Name);
+			var assemmblyNames =
+				Application.TypesInfo.PersistentTypes.SelectMany(ti => GetTypesHierarchy(ti.Type)).Select(t => t.Assembly)
+				.Where(a => a.GetName().Name != "mscorlib")
+				.Select(GetAssemblyLocation);
 
 			var assemblies = new HashSet<string>(assemmblyNames, StringComparer.OrdinalIgnoreCase);
 
@@ -66,7 +72,7 @@ namespace SenDev.Xaf.Dashboards.Scripting
 
 				if (module.DefaultBusinessObjectType != null)
 				{
-					assemblies.Add(module.DefaultBusinessObjectType.Assembly.GetName().Name);
+					assemblies.Add(GetAssemblyLocation(module.DefaultBusinessObjectType.Assembly));
 				}
 			}
 
@@ -77,7 +83,8 @@ namespace SenDev.Xaf.Dashboards.Scripting
 		{
 			objectSpace = (XPObjectSpace)Application.CreateObjectSpace();
 			var context = new ScriptContext(objectSpace, parameters);
-			dynamic scriptObject = CSScript.LoadCode(Script, GetReferencedAssemblies()).CreateObject("*");
+			var compilationHelper = new ScriptCompilationHelper(GetReferencedAssembliesPaths());
+			dynamic scriptObject = compilationHelper.CreateObject(Script);
 			return scriptObject.GetData(context);
 		}
 
@@ -91,7 +98,6 @@ namespace SenDev.Xaf.Dashboards.Scripting
 		}
 
 	}
-
 
 }
 

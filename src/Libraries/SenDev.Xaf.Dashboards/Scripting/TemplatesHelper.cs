@@ -17,7 +17,7 @@ namespace SenDev.Xaf.Dashboards.Scripting
 			{
 				using (var reader = new StreamReader(stream))
 				{
-					return string.Format(CultureInfo.InvariantCulture, type.Namespace, type.Name);
+					return reader.ReadToEnd().Replace("|namespace|", type.Namespace).Replace("|classname|", type.Name);
 				}
 			}
 		}
