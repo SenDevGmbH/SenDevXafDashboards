@@ -1,6 +1,7 @@
 ﻿using Microsoft.CSharp;
 using System;
 using System.CodeDom.Compiler;
+using System.Collections.Concurrent;
 using System.IO;
 using System.Linq;
 using System.Reflection;
@@ -10,6 +11,7 @@ namespace SenDev.Xaf.Dashboards.Scripting
 	public class ScriptCompilationHelper
 	{
 
+		private static readonly ConcurrentDictionary<string, Assembly> scriptAssemblyCache = new ConcurrentDictionary<string, Assembly>();
 		public ScriptCompilationHelper(string[] referencedAssemblies)
 		{
 			ReferencedAssemblies = referencedAssemblies;
@@ -29,6 +31,8 @@ namespace SenDev.Xaf.Dashboards.Scripting
 
 		private Assembly GetScriptAssembly(string script)
 		{
+			if (scriptAssemblyCache.TryGetValue(script, out var cachedAssembly))
+				return cachedAssembly;
 			var codeProvider = new CSharpCodeProvider();
 			var options = new CompilerParameters();
 			var assemblyFilePath = Path.GetTempFileName();
@@ -41,6 +45,7 @@ namespace SenDev.Xaf.Dashboards.Scripting
 			{
 				var assembly = Assembly.Load(File.ReadAllBytes(compileResult.PathToAssembly));
 				File.Delete(compileResult.PathToAssembly);
+				scriptAssemblyCache[script] = assembly;
 				return assembly;
 			}
 
