@@ -31,7 +31,7 @@ namespace SenDev.DashboardsDemo.Module {
         }
         public override void Setup(XafApplication application) {
             base.Setup(application);
-			//Application.SetupComplete += Application_SetupComplete;
+			Application.SetupComplete += Application_SetupComplete;
 			// Manage various aspects of the application UI and behavior at the module level.
 		}
 

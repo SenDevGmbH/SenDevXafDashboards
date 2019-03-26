@@ -7,7 +7,7 @@ using DevExpress.Xpo.Metadata;
 
 namespace UnitTests
 {
-    public abstract class XpoTestBase
+    public abstract class XpoTestBase : MarshalByRefObject
     {
 
         private SimpleDataLayer dataLayer;

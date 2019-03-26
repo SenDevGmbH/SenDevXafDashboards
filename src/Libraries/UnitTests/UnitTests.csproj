@@ -75,6 +75,7 @@
     <Compile Include="DashboardDataListTests.cs" />
     <Compile Include="InMemoryDataStoreProvider.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ScriptCompilationTests.cs" />
     <Compile Include="SelectDataEventArgs.cs" />
     <Compile Include="TestClassesCombination.cs" />
     <Compile Include="TestClassWithName.cs" />

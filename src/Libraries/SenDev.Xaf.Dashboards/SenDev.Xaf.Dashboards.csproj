@@ -197,6 +197,8 @@
     <Compile Include="Scripting\ScriptingDashboardDataProvider.cs" />
     <Compile Include="Scripting\ScriptingFillService.cs" />
     <Compile Include="Scripting\ScriptResultList.cs" />
+    <EmbeddedResource Include="Scripting\ScriptTemplate.cs" />
+    <Compile Include="Scripting\TemplatesHelper.cs" />
     <Compile Include="Scripting\TypedListBase.cs" />
   </ItemGroup>
   <ItemGroup>

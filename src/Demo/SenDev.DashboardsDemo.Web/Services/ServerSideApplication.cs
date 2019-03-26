@@ -31,7 +31,6 @@ namespace SenDev.DashboardsDemo.Web.Services
 					{
 						if (instance == null)
 						{
-
 							var application = new ServerSideApplication() { ConnectionString = Global.ConnectionString };
 							application.Setup();
 							instance = application;
