@@ -3,12 +3,13 @@ using DevExpress.DashboardCommon;
 using DevExpress.DashboardWin;
 using DevExpress.ExpressApp;
 using DevExpress.ExpressApp.Dashboards.Win;
+using DevExpress.Persistent.Base;
 using DevExpress.Persistent.BaseImpl;
 using SenDev.Xaf.Dashboards.BusinessObjects;
 
 namespace SenDev.Xaf.Dashboards.Win.Controllers
 {
-	public class WinDashboardDataSourceController : ObjectViewController<ObjectView, DashboardData>
+	public class WinDashboardDataSourceController : ObjectViewController<ObjectView, IDashboardData>
 	{
 		protected override void OnActivated()
 		{
