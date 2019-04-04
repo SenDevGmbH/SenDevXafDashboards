@@ -3,12 +3,12 @@ using DevExpress.DashboardCommon;
 using DevExpress.DashboardWeb;
 using DevExpress.ExpressApp;
 using DevExpress.ExpressApp.Dashboards.Web;
-using DevExpress.Persistent.BaseImpl;
+using DevExpress.Persistent.Base;
 using SenDev.Xaf.Dashboards.BusinessObjects;
 
 namespace SenDev.Xaf.Dashboards.Web.Controllers
 {
-	public class WebDashboardDataSourceController : ObjectViewController<ObjectView, DashboardData>
+	public class WebDashboardDataSourceController : ObjectViewController<ObjectView, IDashboardData>
 	{
 		protected override void OnActivated()
 		{
