@@ -13,7 +13,26 @@ namespace SenDev.Xaf.Dashboards.Win.Controllers
 		protected override void OnActivated()
 		{
 			base.OnActivated();
+			if (SaveDashboardParametersEnabled)
+				View.Closing += View_Closing;
+		}
+
+
+		protected override void OnDeactivated()
+		{
+			base.OnDeactivated();
 			View.Closing += View_Closing;
+		}
+
+		private bool SaveDashboardParametersEnabled
+		{
+			get
+			{
+				if (Application.Model.Options is IModelOptionsXtraDashboards options)
+					return options.XtraDashboards.SaveDashboardParameters;
+				else
+					return false;
+			}
 		}
 
 		private void View_Closing(object sender, EventArgs e)
@@ -25,8 +44,8 @@ namespace SenDev.Xaf.Dashboards.Win.Controllers
 
 		protected override void CustomizeDashboardViewer(DashboardViewer dashboardViewer)
 		{
-			//dashboardViewer.CustomParameters += DashboardViewer_CustomParameters;
-			dashboardViewer.DashboardChanged += DashboardViewer_DashboardChanged;
+			if (SaveDashboardParametersEnabled)
+				dashboardViewer.DashboardChanged += DashboardViewer_DashboardChanged;
 		}
 
 		private void DashboardViewer_DashboardChanged(object sender, EventArgs e)
@@ -34,11 +53,6 @@ namespace SenDev.Xaf.Dashboards.Win.Controllers
 			DashboardHelper.RestoreParameters(Application, GetDashboardId(), ((DashboardViewer)sender).Parameters);
 		}
 
-		private void DashboardViewer_CustomParameters(object sender, DevExpress.DashboardCommon.CustomParametersEventArgs e)
-		{
-			DashboardHelper.RestoreParameters(Application, GetDashboardId(), e.Parameters);
-
-		}
 
 		private string GetDashboardId()
 		{
