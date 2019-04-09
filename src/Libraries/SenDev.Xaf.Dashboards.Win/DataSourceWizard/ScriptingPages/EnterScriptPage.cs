@@ -14,7 +14,9 @@ namespace SenDev.Xaf.Dashboards.Win.DataSourceWizard.ScriptingPages
 		public override void Begin()
 		{
 			base.Begin();
-			View.WizardParameters.Script = GetConstructorParameterValueByName<string>("script");
+			string scriptParameterValue = GetConstructorParameterValueByName<string>("script");
+			if (scriptParameterValue != null)
+				View.WizardParameters.Script = scriptParameterValue;
 		}
 		public override void Commit()
 		{
