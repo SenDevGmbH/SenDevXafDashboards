@@ -4,7 +4,7 @@ namespace SenDev.Xaf.Dashboards
 {
 	public interface IModelDashboardParameter : IModelNode
 	{
-		object Value
+		string Value
 		{
 			get;
 			set;

@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using DevExpress.Data;
 using DevExpress.ExpressApp;
@@ -20,7 +22,7 @@ namespace SenDev.Xaf.Dashboards.Utils
 					foreach (var parameter in parameters)
 					{
 						var parameterNode = dashboardNode.Parameters.AddNode<IModelDashboardParameter>(parameter.Name);
-						parameterNode.Value = parameter.Value;
+						parameterNode.Value = Convert.ToString(parameter.Value, CultureInfo.InvariantCulture);
 					}
 				}
 				else
@@ -41,7 +43,7 @@ namespace SenDev.Xaf.Dashboards.Utils
 					{
 						var parameterNode = dashboardNode.Parameters[parameter.Name];
 						if (parameterNode != null)
-							parameter.Value = parameterNode.Value;
+							parameter.Value = Convert.ChangeType(parameterNode.Value, parameter.Type, CultureInfo.InvariantCulture);
 					}
 				}
 			}
