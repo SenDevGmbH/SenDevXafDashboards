@@ -1,42 +1,48 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using DevExpress.DashboardCommon;
+using DevExpress.Data;
 using DevExpress.ExpressApp;
 
 namespace SenDev.Xaf.Dashboards.Utils
 {
 	public static class DashboardHelper
 	{
-		public static void SaveParameters(XafApplication application, Guid dashboardId, Dashboard dashboard)
+		public static void SaveParameters(XafApplication application, string dashboardId, IEnumerable<IParameter> parameters)
 		{
 			if (application.Model.Options is IModelOptionsXtraDashboards options)
 			{
 				string dashboardIdString = dashboardId.ToString();
 				IModelXtraDashboardPreferences dashboardNode = options.XtraDashboards[dashboardIdString] ?? options.XtraDashboards.AddNode<IModelXtraDashboardPreferences>(dashboardIdString);
 				dashboardNode.Parameters.ClearNodes();
-				foreach (var parameter in dashboard.Parameters)
+				if (parameters.Any())
 				{
-					var parameterNode = dashboardNode.Parameters.AddNode<IModelDashboardParameter>(parameter.Name);
-					parameterNode.Value = parameter.Value;
+
+					foreach (var parameter in parameters)
+					{
+						var parameterNode = dashboardNode.Parameters.AddNode<IModelDashboardParameter>(parameter.Name);
+						parameterNode.Value = parameter.Value;
+					}
 				}
+				else
+					dashboardNode.Remove();
 			}
 		}
 
-		public static void RestoreParameters(XafApplication application, Guid dashboardId, Dashboard dashboard)
+		public static void RestoreParameters(XafApplication application, string dashboardId, IEnumerable<IParameter> parameters)
 		{
 			if (application.Model.Options is IModelOptionsXtraDashboards options)
 			{
-				string dashboardIdString = dashboardId.ToString();
-				IModelXtraDashboardPreferences dashboardNode = options.XtraDashboards[dashboardIdString];
+				IModelXtraDashboardPreferences dashboardNode = options.XtraDashboards[dashboardId];
 
-				foreach (var parameter in dashboard.Parameters)
+				if (dashboardNode != null)
 				{
-					var parameterNode = dashboardNode.Parameters[parameter.Name];
-					if (parameterNode != null)
-						parameter.Value = parameterNode.Value;
+
+					foreach (var parameter in parameters)
+					{
+						var parameterNode = dashboardNode.Parameters[parameter.Name];
+						if (parameterNode != null)
+							parameter.Value = parameterNode.Value;
+					}
 				}
 			}
 		}

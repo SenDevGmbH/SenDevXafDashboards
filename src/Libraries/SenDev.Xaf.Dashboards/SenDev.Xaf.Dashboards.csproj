@@ -149,7 +149,11 @@
     <Compile Include="DatabaseUpdate\Updater.cs" />
     <Compile Include="EditorAliases.cs" />
     <Compile Include="IJobScheduler.cs" />
+    <Compile Include="Model\IModelDashboardParameter.cs" />
+    <Compile Include="Model\IModelDashboardParametersList.cs" />
+    <Compile Include="Model\IModelDashboardsList.cs" />
     <Compile Include="Model\IModelOptionsXtraDashboards.cs" />
+    <Compile Include="Model\IModelXtraDashboardPreferences.cs" />
     <Compile Include="Module.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -167,6 +171,7 @@
     <Compile Include="Scripting\ScriptingDashboardDataProvider.cs" />
     <Compile Include="Scripting\ScriptingFillService.cs" />
     <Compile Include="Scripting\ScriptResultList.cs" />
+    <Compile Include="Utils\DashboardHelper.cs" />
     <EmbeddedResource Include="Scripting\ScriptTemplate.cs" />
     <Compile Include="Scripting\TemplatesHelper.cs" />
     <Compile Include="Scripting\TypedListBase.cs" />

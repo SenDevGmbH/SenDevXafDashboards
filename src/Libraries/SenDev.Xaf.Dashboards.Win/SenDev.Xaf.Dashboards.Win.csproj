@@ -112,7 +112,9 @@
     <Compile Include="Controllers\DashboardCustomizationController.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Controllers\WinCustomizeDashboardViewerControllerBase.cs" />
     <Compile Include="Controllers\WinDashboardDataSourceController.cs" />
+    <Compile Include="Controllers\WinSaveParametersController.cs" />
     <Compile Include="DatabaseUpdate\Updater.cs" />
     <Compile Include="DataSourceWizard\DashboardDataSourceWizardViewBase.cs">
       <SubType>UserControl</SubType>
