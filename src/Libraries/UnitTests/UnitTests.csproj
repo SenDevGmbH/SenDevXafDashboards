@@ -40,7 +40,7 @@
     </Reference>
     <Reference Include="DevExpress.Data.v$(DevExpressVErsion)">
     </Reference>
-    <Reference Include="DevExpress.DataAccess.v18.2, Version=18.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.DataAccess.v$(DevExpressVersion)" />
     <Reference Include="DevExpress.ExpressApp.v$(DevExpressVErsion)">
     </Reference>
     <Reference Include="DevExpress.ExpressApp.Xpo.v$(DevExpressVErsion)">
