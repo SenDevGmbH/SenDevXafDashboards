@@ -43,7 +43,16 @@ namespace SenDev.Xaf.Dashboards.Utils
 					{
 						var parameterNode = dashboardNode.Parameters[parameter.Name];
 						if (parameterNode != null)
-							parameter.Value = Convert.ChangeType(parameterNode.Value, parameter.Type, CultureInfo.InvariantCulture);
+							try
+							{
+								parameter.Value = Convert.ChangeType(parameterNode.Value, parameter.Type, CultureInfo.InvariantCulture);
+							}
+							catch(OverflowException)
+							{
+							}
+							catch(FormatException)
+							{
+							}
 					}
 				}
 			}

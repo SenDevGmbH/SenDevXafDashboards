@@ -30,7 +30,7 @@ namespace UnitTests
 				DashboardHelper.RestoreParameters(application, dashboardId, dashboard.Parameters);
 
 				Assert.Equal(25, dashboard.Parameters[0].Value);
-				Assert.Equal(new DateTime(2019,04,09), dashboard.Parameters[1].Value);
+				Assert.Equal(new DateTime(2019, 04, 09), dashboard.Parameters[1].Value);
 			}
 		}
 
@@ -64,5 +64,30 @@ namespace UnitTests
 				Assert.Empty(options.XtraDashboards);
 			}
 		}
+
+		[Fact]
+		public void ParameterTypeChangedTest()
+		{
+			using (var application = XpoInMemoryXafApplication.CreateInstance())
+			{
+
+				Dashboard dashboard = new Dashboard();
+				dashboard.Parameters.Add(new DashboardParameter("Parameter1", typeof(string), "aaa"));
+				dashboard.Parameters.Add(new DashboardParameter("Parameter2", typeof(int), int.MaxValue));
+				var dashboardId = Guid.NewGuid().ToString();
+				DashboardHelper.SaveParameters(application, dashboardId, dashboard.Parameters);
+
+
+				dashboard = new Dashboard();
+				dashboard.Parameters.Add(new DashboardParameter("Parameter1", typeof(int), 25));
+				dashboard.Parameters.Add(new DashboardParameter("Parameter2", typeof(byte), 35));
+
+				DashboardHelper.RestoreParameters(application, dashboardId, dashboard.Parameters);
+
+				Assert.Equal(25, dashboard.Parameters[0].Value);
+				Assert.Equal(35, dashboard.Parameters[1].Value);
+			}
+		}
+
 	}
 }
