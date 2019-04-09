@@ -36,9 +36,17 @@ steps:
 - task: NuGetCommand@2
   inputs:
     command: 'push' 
-    packagesToPush: '$(Build.ArtifactStagingDirectory)/**/*.nupkg'
+    packagesToPush: '$(Build.ArtifactStagingDirectory)/**/DX/*.nupkg'
     nuGetFeedType: 'external' 
     publishFeedCredentials: 'nuget.org'
+
+- task: NuGetCommand@2
+  inputs:
+    command: 'push' 
+    packagesToPush: '$(Build.ArtifactStagingDirectory)/**/SelfCompiled/*.nupkg'
+    nuGetFeedType: 'external' 
+    publishFeedCredentials: 'PrivateNuget'
+
 - task: VSTest@2
   inputs:
     platform: '$(buildPlatform)'

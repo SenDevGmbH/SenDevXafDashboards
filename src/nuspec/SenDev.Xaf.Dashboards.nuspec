@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <package>
   <metadata>
-    <id>SenDev.Xaf.Dashboards</id>
+    <id>SenDev.Xaf.Dashboards$PackageNameSuffix$</id>
     <version>$version$</version>
     <title>SenDev XAF Dashboards platform agnostic module</title>
     <authors>Sergej Derjabkin</authors>

@@ -1,23 +1,26 @@
 <Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="15.0" DefaultTargets="Build">
   <ItemGroup>
     <ProjectToBuild Include="build-core.proj"/>
-		<TargetDevExpressVersion Include="18.1.7;18.2.6;18.2.7"/>
+    <TargetDevExpressVersion Include="18.1.7" TargetParentDir="DX"/>
+    <TargetDevExpressVersion Include="18.2.6" TargetParentDir="DX"/>
+    <TargetDevExpressVersion Include="18.2.7" TargetParentDir="DX"/>
+    <TargetDevExpressVersion Include="18.2.7" TargetParentDir="SelfCompiled" PackageNameSuffix=".SelfCompiled"/>
   </ItemGroup>
   
 
   <Target Name="NuGet" Inputs="@(TargetDevExpressVersion)" Outputs="EmptyOutput" >
-
-
-	<MSBuild Projects="@(ProjectToBuild)"
-                 Properties="OutputPath=$(MSBuildProjectDirectory)\bin\%(TargetDevExpressVersion.Identity)\;DevExpressFullVersion=%(TargetDevExpressVersion.Identity)"
-                 StopOnFirstFailure="true"  Targets="Nuget" ToolsVersion="15.0"/>
+    <MSBuild 
+      Projects="@(ProjectToBuild)" 
+      Properties="OutputPath=$(MSBuildProjectDirectory)\bin\%(TargetDevExpressVersion.Identity)\;DevExpressFullVersion=%(TargetDevExpressVersion.Identity);TargetParentDir=%(TargetDevExpressVersion.TargetParentDir);PackageNameSuffix=%(TargetDevExpressVersion.PackageNameSuffix)" 
+      StopOnFirstFailure="true" 
+      Targets="Nuget" 
+      ToolsVersion="15.0"/>
 
     <MakeDir Directories="bin\nuget"/>
 	<PropertyGroup>
 		<PackageVersion Condition="$(BranchName)=='' OR $(BranchName)=='master' OR $(IsReleaseBuild)==true">$(Version)</PackageVersion>
 		<PackageVersion Condition="$(BranchName)!='' AND $(BranchName)!='master' AND $(IsReleaseBuild)!=true">$(Version)-$(BranchName)</PackageVersion>
 	</PropertyGroup>
-    <Exec ContinueOnError="false" Command="$(NuGetTool) push bin\Nuget\SenDev*$(Version).nupkg -ApiKey $(NugetPushApiKey) -Source &quot;$(PackageSources)&quot;" Condition="$(NugetPushApiKey)!=''"/>
   </Target>
   
 </Project>

@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <package>
   <metadata>
-    <id>SenDev.Xaf.Dashboards.Web</id>
+    <id>SenDev.Xaf.Dashboards.Web$PackageNameSuffix$</id>
     <version>$version$</version>
     <title>SenDev XAF Dashboards Web module</title>
     <authors>Sergej Derjabkin</authors>
@@ -12,7 +12,7 @@
     <tags>DevExpress XAF eXpressApplicationFramework Dashboards</tags>
     <license type="expression">MIT</license>
     <dependencies>
-      <dependency id="SenDev.Xaf.Dashboards" version="[$version$]" />
+      <dependency id="SenDev.Xaf.Dashboards$PackageNameSuffix$" version="[$version$]" />
     </dependencies>
   </metadata>
 

@@ -11,7 +11,7 @@
   <Target Name="Build">
     
     <WriteLinesToFile File="Libraries\CommonVersion.cs" Lines="[assembly: System.Reflection.AssemblyVersion(&quot;$(DevExpressFullVersion).$(Build_BuildId)&quot;)]" Overwrite="True"/>
-    <DownloadFile SourceUrl="$(DevExpressBinariesServerUrl)/$(DevExpressFullVersion).zip" DestinationFolder="$(OutputPath)">
+    <DownloadFile SourceUrl="$(DevExpressBinariesServerUrl)/$(TargetParentDir)/$(DevExpressFullVersion).zip" DestinationFolder="$(OutputPath)">
       <Output TaskParameter="DownloadedFile" PropertyName="DevExpressBinariesArchive"/>
     </DownloadFile>
     <UnZip SourceFiles="$(DevExpressBinariesArchive)" DestinationFolder="$(OutputPath)"  ContinueOnError="True"/>
@@ -28,8 +28,8 @@
       <Output TaskParameter="DownloadedFile" PropertyName="NugetTool"/>   
     </DownloadFile>
   
-    <MakeDir Directories="$(NugetTargetDir)"/>
+    <MakeDir Directories="$(NugetTargetDir)\$(TargetParentDir)"/>
 	 
-    <Exec ContinueOnError="false" Command="$(NuGetTool) pack %(NugetFile.Identity) -BasePath $(MSBuildProjectDirectory) -OutputDirectory $(NugetTargetDir) -Version $(DevExpressFullVersion).$(Build_BuildId)-alpha  -Properties SourceDir=$(FullOutputPath)"/>
+    <Exec ContinueOnError="false" Command="$(NuGetTool) pack %(NugetFile.Identity) -BasePath $(MSBuildProjectDirectory) -OutputDirectory $(NugetTargetDir)\$(TargetParentDir) -Version $(DevExpressFullVersion).$(Build_BuildId)-beta  -Properties SourceDir=$(FullOutputPath);PackageNameSuffix=$(PackageNameSuffix)"/>
   </Target>
 </Project>
