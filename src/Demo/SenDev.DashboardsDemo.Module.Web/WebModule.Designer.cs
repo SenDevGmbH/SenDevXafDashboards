@@ -29,6 +29,7 @@
             this.RequiredModuleTypes.Add(typeof(SenDev.DashboardsDemo.Module.DashboardsDemoModule));
             this.RequiredModuleTypes.Add(typeof(DevExpress.ExpressApp.Web.SystemModule.SystemAspNetModule));
 			this.RequiredModuleTypes.Add(typeof(DevExpress.ExpressApp.Dashboards.Web.DashboardsAspNetModule));
+			this.RequiredModuleTypes.Add(typeof(SenDev.Xaf.Dashboards.Web.SenDevDashboardsWebModule));
         }
 
         #endregion

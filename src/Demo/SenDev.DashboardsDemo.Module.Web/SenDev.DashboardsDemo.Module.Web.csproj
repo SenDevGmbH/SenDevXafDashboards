@@ -129,6 +129,10 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\Libraries\SenDev.Xaf.Dashboards.Web\SenDev.Xaf.Dashboards.Web.csproj">
+      <Project>{ef3e2394-bb3a-44ec-b7b9-314a0cc3b8fb}</Project>
+      <Name>SenDev.Xaf.Dashboards.Web</Name>
+    </ProjectReference>
     <ProjectReference Include="..\SenDev.DashboardsDemo.Module\SenDev.DashboardsDemo.Module.csproj">
       <Project>{5F15837D-D1E5-44DC-92F0-4F2EBE9C3F8D}</Project>
       <Name>SenDev.DashboardsDemo.Module</Name>
