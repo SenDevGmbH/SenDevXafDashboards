@@ -73,6 +73,7 @@
   <ItemGroup>
     <Compile Include="DashboardDataListTests.cs" />
     <Compile Include="DashboardParametersTests.cs" />
+    <Compile Include="DataReaderDynamicListTest.cs" />
     <Compile Include="InMemoryDataStoreProvider.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ScriptCompilationTests.cs" />
