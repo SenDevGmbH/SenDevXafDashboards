@@ -9,53 +9,44 @@ using System.Threading.Tasks;
 
 namespace SenDev.Xaf.Dashboards.Scripting
 {
-	public sealed class DataReaderDynamicList : IList, ITypedList
+	public sealed class DataReaderList : IList, ITypedList
 	{
 		private readonly object syncRoot = new object();
-		private object[] currentRow;
-		private object[] nextRow;
-		public DataReaderDynamicList(IDataReader dataReader)
+		private List<object[]> rows;
+		public DataReaderList(IDataReader dataReader)
 		{
 			DataReader = dataReader;
 		}
 
-		private bool MoveToNextRow()
+		private void EnsureRows()
 		{
-			currentRow = nextRow;
-			if (DataReader.Read())
+			if (rows == null)
 			{
-				nextRow = new object[DataReader.FieldCount];
-				DataReader.GetValues(nextRow);
-				Count++;
-				return true;
+				rows = new List<object[]>();
+				while (DataReader.Read())
+				{
+					object[] values = new object[DataReader.FieldCount];
+					DataReader.GetValues(values);
+					rows.Add(values);
+				}
 			}
-
-			return false;
 		}
-		public object this[int index]
+
+		private IList<object[]> Rows
 		{
 			get
 			{
-				if (currentRow == null)
-					MoveToNextRow();
-
-				if (index < 0)
-					throw new IndexOutOfRangeException("Index cannot be negative");
-
-				if (index == Count - 1)
-				{
-					MoveToNextRow();
-					return currentRow;
-				}
-
-				if (index == Count - 2)
-					return currentRow;
-
-				throw new IndexOutOfRangeException("Unsupported index");
+				EnsureRows();
+				return rows;
 			}
+		}
+		public object this[int index]
+		{
+			get => Rows[index];
 
 			set => throw new NotSupportedException();
 		}
+
 
 		private IDataReader DataReader
 		{
@@ -96,7 +87,7 @@ namespace SenDev.Xaf.Dashboards.Scripting
 
 		void ICollection.CopyTo(Array array, int index) => throw new NotSupportedException();
 
-		IEnumerator IEnumerable.GetEnumerator() => new Enumerator(this);
+		IEnumerator IEnumerable.GetEnumerator() => Rows.GetEnumerator();
 
 		int IList.IndexOf(object value)
 		{
@@ -116,28 +107,6 @@ namespace SenDev.Xaf.Dashboards.Scripting
 		void IList.RemoveAt(int index) => throw new NotSupportedException();
 
 
-		private class Enumerator : IEnumerator
-		{
-			public Enumerator(DataReaderDynamicList list)
-			{
-				List = list;
-			}
-			public object Current => List.currentRow;
-
-			public DataReaderDynamicList List
-			{
-				get;
-			}
-
-			public bool MoveNext()
-			{
-				return List.MoveToNextRow();
-			}
-
-			public void Reset()
-			{
-				throw new NotSupportedException();
-			}
-		}
+		
 	}
 }

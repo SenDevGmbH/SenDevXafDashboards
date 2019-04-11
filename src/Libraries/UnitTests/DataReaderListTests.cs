@@ -1,15 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using DevExpress.DashboardCommon;
 using SenDev.Xaf.Dashboards.Scripting;
 using Xunit;
 
 namespace UnitTests
 {
-	public class DataReaderDynamicListTests
+	public class DataReaderListTests
 	{
 		[Fact]
 		public void BasicReaderTest()
@@ -22,7 +24,7 @@ namespace UnitTests
 			table.Rows.Add(3, "Row 3");
 			var reader = table.CreateDataReader();
 
-			DataReaderDynamicList list = new DataReaderDynamicList(reader);
+			DataReaderList list = new DataReaderList(reader);
 			var properties = list.GetItemProperties(null);
 			Assert.Equal(2, properties.Count);
 			Assert.Equal("IntColumn", properties[0].Name);
@@ -45,7 +47,7 @@ namespace UnitTests
 			table.Rows.Add(3, "Row 3");
 			var reader = table.CreateDataReader();
 
-			DataReaderDynamicList dynamicList = new DataReaderDynamicList(reader);
+			DataReaderList dynamicList = new DataReaderList(reader);
 			var properties = dynamicList.GetItemProperties(null);
 			List<object> list = new List<object>();
 			foreach (var item in dynamicList)
@@ -54,6 +56,29 @@ namespace UnitTests
 			}
 			Assert.Equal(3, list.Count);
 
+		}
+
+		[Fact]
+		public void DataExtractCreationTest()
+		{
+			DataTable table = new DataTable();
+			table.Columns.Add("IntColumn", typeof(int));
+			table.Columns.Add("StringColumn", typeof(string));
+			table.Rows.Add(1, "Row 1");
+			table.Rows.Add(2, "Row 2");
+			table.Rows.Add(3, "Row 3");
+			var reader = table.CreateDataReader();
+
+			using (DashboardObjectDataSource ods = new DashboardObjectDataSource())
+			{
+				ods.DataSource = reader;
+				using (DashboardExtractDataSource extractDataSource = new DashboardExtractDataSource())
+				{
+					extractDataSource.ExtractSourceOptions.DataSource = ods;
+					extractDataSource.FileName = Path.GetTempFileName();
+					extractDataSource.UpdateExtractFile();
+				}
+			}
 		}
 	}
 }
