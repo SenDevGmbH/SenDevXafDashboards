@@ -47,7 +47,7 @@
     </Reference>
     <Reference Include="DevExpress.Persistent.BaseImpl.v$(DevExpressVErsion)">
     </Reference>
-    <Reference Include="DevExpress.PivotGrid.v18.2.Core, Version=18.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.PivotGrid.v$(DevExpressVersion).Core" />
     <Reference Include="DevExpress.Xpo.v$(DevExpressVErsion)">
     </Reference>
     <Reference Include="System" />
