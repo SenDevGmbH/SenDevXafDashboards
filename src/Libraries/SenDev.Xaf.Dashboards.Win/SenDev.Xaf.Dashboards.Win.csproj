@@ -45,7 +45,6 @@
   <ItemGroup>
     <Reference Include="DevExpress.CodeParser.v$(DevExpressVersion)">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\DevExpress\18.2.6\Bin\Framework\DevExpress.CodeParser.v$(DevExpressVersion).dll</HintPath>
     </Reference>
     <Reference Include="DevExpress.Dashboard.v$(DevExpressVersion).Core" />
     <Reference Include="DevExpress.Dashboard.v$(DevExpressVersion).Win" />
@@ -53,7 +52,6 @@
     <Reference Include="DevExpress.DataAccess.v$(DevExpressVersion).UI" />
     <Reference Include="DevExpress.ExpressApp.Dashboards.Win.v$(DevExpressVersion)">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\DevExpress\18.2.6\Bin\Framework\DevExpress.ExpressApp.Dashboards.Win.v$(DevExpressVersion).dll</HintPath>
     </Reference>
     <Reference Include="DevExpress.ExpressApp.Win.v$(DevExpressVersion)" />
     <Reference Include="DevExpress.ExpressApp.Xpo.v$(DevExpressVersion)">
@@ -78,7 +76,6 @@
     </Reference>
     <Reference Include="DevExpress.RichEdit.v$(DevExpressVersion).Core">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\DevExpress\18.2.6\Bin\Framework\DevExpress.RichEdit.v$(DevExpressVersion).Core.dll</HintPath>
     </Reference>
     <Reference Include="DevExpress.Utils.v$(DevExpressVersion)" />
     <Reference Include="DevExpress.Xpo.v$(DevExpressVersion)">
@@ -88,7 +85,6 @@
     <Reference Include="DevExpress.XtraLayout.v$(DevExpressVersion)" />
     <Reference Include="DevExpress.XtraRichEdit.v$(DevExpressVersion)">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\DevExpress\18.2.6\Bin\Framework\DevExpress.XtraRichEdit.v$(DevExpressVersion).dll</HintPath>
     </Reference>
     <Reference Include="System">
       <Name>System</Name>

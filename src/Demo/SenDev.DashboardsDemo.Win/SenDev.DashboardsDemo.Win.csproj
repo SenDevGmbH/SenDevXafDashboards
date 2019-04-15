@@ -63,7 +63,7 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\packages\CS-Script.bin.3.28.7\lib\net46\CSScriptLibrary.dll</HintPath>
     </Reference>
-    <Reference Include="DevExpress.CodeParser.v18.2, Version=18.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.CodeParser.v$(DevExpressVersion)" />
     <Reference Include="DevExpress.Dashboard.v$(DevExpressVersion).Core" />
     <Reference Include="DevExpress.Dashboard.v$(DevExpressVersion).Win" />
     <Reference Include="DevExpress.DataAccess.v$(DevExpressVersion)" />
@@ -88,7 +88,9 @@
       <SpecificVersion>False</SpecificVersion>
       <Private>True</Private>
     </Reference>
-    <Reference Include="DevExpress.PivotGrid.v18.2.Core, Version=18.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.PivotGrid.v18.2.Core, Version=18.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
     <Reference Include="DevExpress.RichEdit.v$(DevExpressVersion).Core">
       <SpecificVersion>False</SpecificVersion>
       <Private>True</Private>

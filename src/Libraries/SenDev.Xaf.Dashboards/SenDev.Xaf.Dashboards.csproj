@@ -164,7 +164,7 @@
     <Compile Include="Scripting\DashboardDataListEnumerator.cs" />
     <Compile Include="Scripting\DashboardDataList.cs" />
     <Compile Include="Scripting\DataExtractDataManager.cs" />
-    <Compile Include="Scripting\DataReaderDynamicList.cs" />
+    <Compile Include="Scripting\DataReaderList.cs" />
     <Compile Include="Scripting\DataReaderPropertyDescriptor.cs" />
     <Compile Include="Scripting\DisplayTextPropertyDescriptor.cs" />
     <Compile Include="Scripting\ScriptCompilationHelper.cs" />

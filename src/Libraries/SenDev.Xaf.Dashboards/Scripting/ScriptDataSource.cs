@@ -2,6 +2,7 @@
 using DevExpress.ExpressApp.Xpo;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Dynamic;
 using System.Linq;
 using System.Reflection;
@@ -28,6 +29,9 @@ namespace SenDev.Xaf.Dashboards.Scripting
 		public object GetData(IDictionary<string, object> parameters)
 		{
 			var data = GetDataCore(parameters, out var objectSpace);
+			if (data is IDataReader reader)
+				return new DataReaderList(reader);
+
 			return new ScriptResultList(data, objectSpace.TypesInfo);
 
 		}
@@ -89,6 +93,10 @@ namespace SenDev.Xaf.Dashboards.Scripting
 
 		public object GetDataForDataExtract()
 		{
+			var data = GetDataCore(new Dictionary<string, object>(), out var os);
+			if (data is IDataReader reader)
+				return new DataReaderList(reader);
+
 			return new DashboardDataList(() =>
 				{
 					var queryable = (IQueryable)GetDataCore(new Dictionary<string, object>(), out var objectSpace);

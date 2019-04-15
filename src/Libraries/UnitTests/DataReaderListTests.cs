@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using DevExpress.DashboardCommon;
+using DevExpress.DashboardCommon.Native;
 using SenDev.Xaf.Dashboards.Scripting;
 using Xunit;
 
@@ -71,12 +72,15 @@ namespace UnitTests
 
 			using (DashboardObjectDataSource ods = new DashboardObjectDataSource())
 			{
-				ods.DataSource = reader;
+				ods.DataSource = new DataReaderList(reader);
 				using (DashboardExtractDataSource extractDataSource = new DashboardExtractDataSource())
 				{
 					extractDataSource.ExtractSourceOptions.DataSource = ods;
 					extractDataSource.FileName = Path.GetTempFileName();
 					extractDataSource.UpdateExtractFile();
+					IDashboardDataSourceInternal dsi = extractDataSource;
+					var storage = dsi.GetStorage(null);
+					Assert.Equal(3, storage.RowCount);
 				}
 			}
 		}
