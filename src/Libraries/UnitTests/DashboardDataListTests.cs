@@ -1,8 +1,14 @@
 ﻿using System.Collections.Generic;
+using System.ComponentModel;
+using System.IO;
 using System.Linq;
+using DevExpress.DashboardCommon;
+using DevExpress.DashboardCommon.Native;
+using DevExpress.Data.Browsing;
 using DevExpress.Persistent.BaseImpl;
 using DevExpress.Xpo;
 using SenDev.Xaf.Dashboards.Scripting;
+using UnitTests.TestClasses;
 using Xunit;
 
 namespace UnitTests
@@ -38,5 +44,31 @@ namespace UnitTests
 			}
 		}
 
+		[Fact]
+		public void ChainedPropertiesTest()
+		{
+			using (var application = XpoInMemoryXafApplication.CreateInstance())
+			using (var objectSpace = application.CreateObjectSpace())
+			{
+				for (int i = 1; i <= 10000; i++)
+				{
+					var objectWithReference = objectSpace.CreateObject<TestClassWithReference>();
+					var objectWithName = objectSpace.CreateObject<TestClassWithName>();
+					objectWithName.Name = $"Name {i}";
+					objectWithReference.NamedObject = objectWithName;
+					objectWithReference.Title = $"Reference to {i}";
+				}
+				objectSpace.CommitChanges();
+
+				var list = new ScriptResultList(objectSpace.GetObjectsQuery<TestClassWithReference>(), application.TypesInfo);
+
+				PropertyDescriptorCollection dataListProperties = list.GetItemProperties(null);
+				var complexProperty = dataListProperties.Find(nameof(TestClassWithReference.NamedObject), false);
+				Assert.NotNull(complexProperty);
+				var nestedProperties = list.GetItemProperties(new[] { complexProperty });
+				Assert.Equal(2, nestedProperties.Count);
+
+			}
+		}
 	}
 }

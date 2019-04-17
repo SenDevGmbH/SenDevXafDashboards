@@ -3,7 +3,6 @@ using DevExpress.DashboardCommon;
 using DevExpress.DashboardWin;
 using DevExpress.ExpressApp;
 using DevExpress.ExpressApp.Dashboards.Win;
-using DevExpress.Persistent.BaseImpl;
 using SenDev.Xaf.Dashboards.BusinessObjects;
 using SenDev.Xaf.Dashboards.Controllers;
 

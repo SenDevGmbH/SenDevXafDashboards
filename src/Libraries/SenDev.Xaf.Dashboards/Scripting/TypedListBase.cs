@@ -12,78 +12,78 @@ using System.Linq;
 namespace SenDev.Xaf.Dashboards.Scripting
 {
 
-    public abstract class TypedListBase : ITypedList
-    {
-        private PropertyDescriptorCollection properties;
+	public abstract class TypedListBase : ITypedList
+	{
+		private PropertyDescriptorCollection properties;
 
-        public TypedListBase()
-        {
-        }
+		public TypedListBase()
+		{
+		}
 
-        protected abstract object ScriptResult { get; }
+		protected abstract object ScriptResult
+		{
+			get;
+		}
 
-        protected abstract ITypesInfo TypesInfo { get; }
+		protected abstract ITypesInfo TypesInfo
+		{
+			get;
+		}
 
 
-        private PropertyDescriptorCollection Properties
-        {
-            get
-            {
-                if (properties == null)
-                {
-                    if (ScriptResult is IEnumerable enumerable)
-                    {
-                        var type = GenericTypeHelper.GetGenericIListTypeArgument(ScriptResult.GetType());
+		private PropertyDescriptorCollection Properties
+		{
+			get
+			{
+				if (properties == null)
+				{
+					if (ScriptResult is IEnumerable enumerable)
+					{
+						var type = GenericTypeHelper.GetGenericIListTypeArgument(ScriptResult.GetType());
 
-                        properties = GetProperties(type);
-                    }
-                    else
-                        properties = PropertyDescriptorCollection.Empty;
-                }
+						properties = GetProperties(type);
+					}
+					else
+						properties = PropertyDescriptorCollection.Empty;
+				}
 
-                return properties;
-            }
-        }
+				return properties;
+			}
+		}
 
-        public string GetListName(PropertyDescriptor[] listAccessors) => string.Empty;
+		public string GetListName(PropertyDescriptor[] listAccessors) => string.Empty;
 
-        public PropertyDescriptorCollection GetItemProperties(PropertyDescriptor[] listAccessors)
-        {
-            if (listAccessors == null || listAccessors.Length == 0)
-                return Properties;
-            else
-                return GetProperties(listAccessors.Last().PropertyType);
-        }
+		public PropertyDescriptorCollection GetItemProperties(PropertyDescriptor[] listAccessors)
+		{
+			if (listAccessors == null || listAccessors.Length == 0)
+				return Properties;
+			else
+				return GetProperties(listAccessors.Last().PropertyType);
+		}
 
-        private PropertyDescriptorCollection GetProperties(Type type)
-        {
-            var typeInfo = TypesInfo.FindTypeInfo(type);
-            if (typeInfo != null)
-            {
+		private PropertyDescriptorCollection GetProperties(Type type)
+		{
+			var typeInfo = TypesInfo.FindTypeInfo(type);
+			if (typeInfo != null)
+			{
 
-                var collection = new XafPropertyDescriptorCollection(typeInfo);
+				var collection = new XafPropertyDescriptorCollection(typeInfo);
 				var descriptors = new List<PropertyDescriptor>();
-				foreach (var memberInfo in typeInfo.Members.Where(m=>!m.IsKey))
+				foreach (var memberInfo in typeInfo.Members.Where(m => !m.IsKey))
 				{
 					var descriptor = collection.CreatePropertyDescriptor(memberInfo, memberInfo.Name);
 					if (descriptor.IsBrowsable)
 					{
-
-						if (ValuesSerializer.IsSupportedType(memberInfo.MemberType))
-						{
-							descriptors.Add(descriptor);
-						}
-						else
-						{
-							descriptors.Add(new DisplayTextPropertyDescriptor(descriptor));
-						}
+						descriptors.Add(GetSupportedPropertyDescriptor(descriptor));
 					}
 				}
 
-                return new PropertyDescriptorCollection(descriptors.ToArray());
-            }
-            else
-                return TypeDescriptor.GetProperties(type);
-        }
-    }
+				return new PropertyDescriptorCollection(descriptors.ToArray());
+			}
+			else
+				return TypeDescriptor.GetProperties(type);
+		}
+
+		protected virtual PropertyDescriptor GetSupportedPropertyDescriptor(PropertyDescriptor descriptor) => descriptor;
+	}
 }

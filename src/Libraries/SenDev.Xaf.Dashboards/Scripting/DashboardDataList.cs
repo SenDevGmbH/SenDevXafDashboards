@@ -1,8 +1,10 @@
 ﻿using DevExpress.Data.Linq.Helpers;
+using DevExpress.DataProcessing.ExtractStorage;
 using DevExpress.ExpressApp;
 using DevExpress.ExpressApp.DC;
 using System;
 using System.Collections;
+using System.ComponentModel;
 using System.Linq;
 
 namespace SenDev.Xaf.Dashboards.Scripting
@@ -88,9 +90,13 @@ namespace SenDev.Xaf.Dashboards.Scripting
         }
 
 
-        #region IList implementation
+		protected override PropertyDescriptor GetSupportedPropertyDescriptor(PropertyDescriptor descriptor)
+		{
+			return ValuesSerializer.IsSupportedType(descriptor.PropertyType) ? descriptor : new DisplayTextPropertyDescriptor(descriptor);
+		}
+		#region IList implementation
 
-        private int? count;
+		private int? count;
         public int Count => (count ?? (count = Queryable.Count() * ElementsPerSourceRow)) ?? 0;
 
         public bool IsReadOnly => true;

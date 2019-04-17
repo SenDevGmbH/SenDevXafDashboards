@@ -79,9 +79,10 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ScriptCompilationTests.cs" />
     <Compile Include="SelectDataEventArgs.cs" />
-    <Compile Include="TestClassesCombination.cs" />
-    <Compile Include="TestClassWithName.cs" />
-    <Compile Include="TestClassWithNameAndNumber.cs" />
+    <Compile Include="TestClasses\TestClassesCombination.cs" />
+    <Compile Include="TestClasses\TestClassWithName.cs" />
+    <Compile Include="TestClasses\TestClassWithNameAndNumber.cs" />
+    <Compile Include="TestClasses\TestClassWithReference.cs" />
     <Compile Include="TestDataLayer.cs" />
     <Compile Include="UnitTestsModule.cs">
       <SubType>Component</SubType>
