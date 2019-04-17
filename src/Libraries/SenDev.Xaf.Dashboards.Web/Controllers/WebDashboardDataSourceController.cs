@@ -1,14 +1,16 @@
 ﻿using System;
+using System.Xml.Linq;
 using DevExpress.DashboardCommon;
 using DevExpress.DashboardWeb;
 using DevExpress.ExpressApp;
 using DevExpress.ExpressApp.Dashboards.Web;
 using DevExpress.Persistent.Base;
 using SenDev.Xaf.Dashboards.BusinessObjects;
+using SenDev.Xaf.Dashboards.Controllers;
 
 namespace SenDev.Xaf.Dashboards.Web.Controllers
 {
-	public class WebDashboardDataSourceController : ObjectViewController<ObjectView, IDashboardData>
+	public class WebDashboardDataSourceController : ObjectViewController<DetailView, IDashboardData>
 	{
 		protected override void OnActivated()
 		{
@@ -35,10 +37,25 @@ namespace SenDev.Xaf.Dashboards.Web.Controllers
 		}
 		private void CustomizeDashboardControl(ASPxDashboard dashboard)
 		{
-			dashboard.ConfigureDataConnection += DashboardViewer_ConfigureDataConnection1;
+			dashboard.ConfigureDataConnection += DashboardViewer_ConfigureDataConnection;
+			dashboard.DashboardLoading += Dashboard_DashboardLoading;
 		}
 
-		private void DashboardViewer_ConfigureDataConnection1(object sender, ConfigureDataConnectionWebEventArgs e)
+		private void Dashboard_DashboardLoading(object sender, DashboardLoadingWebEventArgs e)
+		{
+			var customizeDashboardController = Frame.GetController<CustomizeDashboardController>();
+			if (customizeDashboardController != null && customizeDashboardController.ShouldCustomizeDashboard)
+			{
+				Dashboard dashboard = new Dashboard();
+				dashboard.LoadFromXDocument(e.DashboardXml);
+				customizeDashboardController.RaiseCustomizeDashboard(
+					new CustomizeDashboardEventArgs(dashboard, View.ViewEditMode == DevExpress.ExpressApp.Editors.ViewEditMode.Edit));
+				e.DashboardXml = dashboard.SaveToXDocument();
+			}
+		}
+
+
+		private void DashboardViewer_ConfigureDataConnection(object sender, ConfigureDataConnectionWebEventArgs e)
 		{
 			if (e.ConnectionParameters is ExtractDataSourceConnectionParameters extractParameters)
 			{

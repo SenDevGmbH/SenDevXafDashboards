@@ -143,6 +143,7 @@
   <ItemGroup>
     <Compile Include="BusinessObjects\DashboardDataExtract.cs" />
     <Compile Include="BusinessObjects\SenDevDataSourceType.cs" />
+    <Compile Include="Controllers\CustomizeDashboardDashboardController.cs" />
     <Compile Include="Controllers\DataExtractJobSchedulerController.cs" />
     <Compile Include="Controllers\SaveParametersController.cs" />
     <Compile Include="Controllers\UpdateDataExtractController.cs" />
