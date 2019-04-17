@@ -199,6 +199,7 @@
     <Compile Include="BusinessObjects\ContosoCode\sysdiagrams.Designer.cs">
       <DependentUpon>sysdiagrams.cs</DependentUpon>
     </Compile>
+    <Compile Include="Controllers\AddDashboardParameterController.cs" />
     <Compile Include="DatabaseUpdate\Updater.cs" />
     <Compile Include="IJobSchedulerService.cs" />
     <Compile Include="Module.cs">

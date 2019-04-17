@@ -9,7 +9,7 @@ using DevExpress.Persistent.Base;
 
 namespace SenDev.Xaf.Dashboards.Controllers
 {
-	public class CustomizeDashboardController : ObjectViewController<DetailView, IDashboardData>
+	public class CustomizeDashboardController : ObjectViewController<ObjectView, IDashboardData>
 	{
 		public event EventHandler<CustomizeDashboardEventArgs> CustomizeDashboard;
 
