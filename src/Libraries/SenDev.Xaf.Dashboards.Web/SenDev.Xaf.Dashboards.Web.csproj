@@ -96,7 +96,10 @@
   <ItemGroup>
     <Compile Include="Controllers\WebDashboardControllerBase.cs" />
     <Compile Include="Controllers\WebDashboardDataSourceController.cs" />
+    <Compile Include="Controllers\WebDashboardSaveStateController.cs" />
     <Compile Include="DatabaseUpdate\Updater.cs" />
+    <Compile Include="Model\IModelWebDashboardsOptions.cs" />
+    <Compile Include="Model\IModelWebDashboardState.cs" />
     <Compile Include="Module.cs">
       <SubType>Component</SubType>
     </Compile>

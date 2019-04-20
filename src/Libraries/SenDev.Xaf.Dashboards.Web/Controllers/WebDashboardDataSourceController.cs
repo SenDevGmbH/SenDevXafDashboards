@@ -47,6 +47,5 @@ namespace SenDev.Xaf.Dashboards.Web.Controllers
 
 		
 	}
-
 }
 
