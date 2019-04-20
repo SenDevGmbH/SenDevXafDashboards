@@ -84,7 +84,7 @@
     <Compile Include="TestClasses\TestClassWithNameAndNumber.cs" />
     <Compile Include="TestClasses\TestClassWithReference.cs" />
     <Compile Include="TestDataLayer.cs" />
-    <Compile Include="UnitTestsModule.cs">
+    <Compile Include="TestClasses\UnitTestsModule.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="XpoInMemoryXafApplication.cs">

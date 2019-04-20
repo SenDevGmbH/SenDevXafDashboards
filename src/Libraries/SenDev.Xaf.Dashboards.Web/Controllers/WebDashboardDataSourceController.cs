@@ -3,41 +3,18 @@ using System.Xml.Linq;
 using DevExpress.DashboardCommon;
 using DevExpress.DashboardWeb;
 using DevExpress.ExpressApp;
-using DevExpress.ExpressApp.Dashboards.Web;
-using DevExpress.Persistent.Base;
 using SenDev.Xaf.Dashboards.BusinessObjects;
 using SenDev.Xaf.Dashboards.Controllers;
 
 namespace SenDev.Xaf.Dashboards.Web.Controllers
 {
-	public class WebDashboardDataSourceController : ObjectViewController<DetailView, IDashboardData>
+	public class WebDashboardDataSourceController : WebDashboardControllerBase
 	{
-		protected override void OnActivated()
+	
+		
+		protected override void CustomizeDashboardControl(ASPxDashboard dashboard)
 		{
-			base.OnActivated();
-			var dashboardViewerViewItem = GetDashboardViewItem();
-			if (dashboardViewerViewItem != null)
-			{
-				if (dashboardViewerViewItem.DashboardControl != null)
-				{
-					CustomizeDashboardControl(dashboardViewerViewItem.DashboardControl);
-				}
-				dashboardViewerViewItem.ControlCreated += DashboardViewerViewItem_ControlCreated;
-			}
-		}
-
-		private WebDashboardViewerViewItem GetDashboardViewItem()
-		{
-			return View.FindItem("DashboardViewer") as WebDashboardViewerViewItem;
-		}
-
-		private void DashboardViewerViewItem_ControlCreated(object sender, EventArgs e)
-		{
-			CustomizeDashboardControl(((WebDashboardViewerViewItem)sender).DashboardControl);
-		}
-		private void CustomizeDashboardControl(ASPxDashboard dashboard)
-		{
-			dashboard.ConfigureDataConnection += DashboardViewer_ConfigureDataConnection;
+			dashboard.ConfigureDataConnection += Dashboard_ConfigureDataConnection;
 			dashboard.DashboardLoading += Dashboard_DashboardLoading;
 		}
 
@@ -55,7 +32,7 @@ namespace SenDev.Xaf.Dashboards.Web.Controllers
 		}
 
 
-		private void DashboardViewer_ConfigureDataConnection(object sender, ConfigureDataConnectionWebEventArgs e)
+		private void Dashboard_ConfigureDataConnection(object sender, ConfigureDataConnectionWebEventArgs e)
 		{
 			if (e.ConnectionParameters is ExtractDataSourceConnectionParameters extractParameters)
 			{
@@ -68,15 +45,7 @@ namespace SenDev.Xaf.Dashboards.Web.Controllers
 			}
 		}
 
-		protected override void OnDeactivated()
-		{
-			var dashboardViewerViewItem = GetDashboardViewItem();
-			if (dashboardViewerViewItem != null)
-			{
-				dashboardViewerViewItem.ControlCreated -= DashboardViewerViewItem_ControlCreated;
-			}
-			base.OnDeactivated();
-		}
+		
 	}
 
 }
