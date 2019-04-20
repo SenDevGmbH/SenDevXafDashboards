@@ -176,6 +176,7 @@
     <Compile Include="Scripting\ScriptingFillService.cs" />
     <Compile Include="Scripting\ScriptResultList.cs" />
     <Compile Include="Utils\DashboardHelper.cs" />
+    <Compile Include="Utils\HandledEventArgsBase.cs" />
     <EmbeddedResource Include="Scripting\ScriptTemplate.cs" />
     <Compile Include="Scripting\TemplatesHelper.cs" />
     <Compile Include="Scripting\TypedListBase.cs" />

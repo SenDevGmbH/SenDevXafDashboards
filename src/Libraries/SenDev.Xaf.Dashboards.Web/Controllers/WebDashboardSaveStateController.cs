@@ -1,4 +1,5 @@
-﻿using DevExpress.DashboardCommon;
+﻿using System;
+using DevExpress.DashboardCommon;
 using DevExpress.DashboardWeb;
 using DevExpress.ExpressApp;
 using DevExpress.ExpressApp.Model;
@@ -8,6 +9,9 @@ namespace SenDev.Xaf.Dashboards.Web.Controllers
 {
 	public class WebDashboardSaveStateController : WebDashboardControllerBase, IModelExtender
 	{
+
+		public event EventHandler<SaveDashboardStateEventArgs> CustomSaveDashboardState;
+		public event EventHandler<LoadDashboardStateEventArgs> CustomLoadDashboardState;
 
 		private const string dashboardStatePrefix = "DASHBOARDSTATE|";
 		public void ExtendModelInterfaces(ModelInterfaceExtenders extenders)
@@ -34,18 +38,39 @@ namespace SenDev.Xaf.Dashboards.Web.Controllers
 			if (e.Parameter.StartsWith(dashboardStatePrefix))
 			{
 				var settings = GetDasbhoardSettings(true);
-				settings.State = e.Parameter.Substring(dashboardStatePrefix.Length);
-				View.SaveModel();
+				string state = e.Parameter.Substring(dashboardStatePrefix.Length);
+				var args = new SaveDashboardStateEventArgs(state);
+				CustomSaveDashboardState?.Invoke(this, args);
+				if (!args.Handled)
+				{
+					settings.State = state;
+					View.SaveModel();
+				}
 			}
 		}
 
-		private void Dashboard_SetInitialDashboardState(object sender, SetInitialDashboardStateEventArgs e)
+		private string LoadDashboardState()
 		{
+			var args = new LoadDashboardStateEventArgs();
+			CustomLoadDashboardState?.Invoke(this, args);
+			if (args.Handled)
+				return args.StateJson;
+
 			IModelWebDashboardState dashboardSettings = GetDasbhoardSettings(false);
 			if (dashboardSettings != null)
 			{
+				return dashboardSettings.State;
+			}
+
+			return null;
+		}
+		private void Dashboard_SetInitialDashboardState(object sender, SetInitialDashboardStateEventArgs e)
+		{
+			string stateJson = LoadDashboardState();
+			if (!string.IsNullOrWhiteSpace(stateJson))
+			{
 				DashboardState state = new DashboardState();
-				state.LoadFromJson(dashboardSettings.State);
+				state.LoadFromJson(stateJson);
 				e.InitialState = state;
 			}
 		}
@@ -61,10 +86,11 @@ namespace SenDev.Xaf.Dashboards.Web.Controllers
 
 				return settings;
 			}
-
+			
 			return null;
 		}
 	}
+
 }
 
 
