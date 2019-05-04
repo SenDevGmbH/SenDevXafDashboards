@@ -11,6 +11,10 @@
     <releaseNotes></releaseNotes>
     <tags>DevExpress XAF eXpressApplicationFramework Dashboards</tags>
     <license type="expression">MIT</license>
+    <dependencies>
+      <dependency id="System.ValueTuple" version="[4.5.0]" />
+    </dependencies>
+
   </metadata>
 
   <files>
