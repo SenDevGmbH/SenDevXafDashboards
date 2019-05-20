@@ -34,6 +34,8 @@
 			this.RequiredModuleTypes.Add(typeof(DevExpress.ExpressApp.SystemModule.SystemModule));
 			this.RequiredModuleTypes.Add(typeof(DevExpress.ExpressApp.Dashboards.DashboardsModule));
 			this.RequiredModuleTypes.Add(typeof(SenDevDashboardsModule));
+			this.RequiredModuleTypes.Add(typeof(DevExpress.ExpressApp.Dashboards.Web.DashboardsAspNetModule));
+
 		}
 
 		#endregion

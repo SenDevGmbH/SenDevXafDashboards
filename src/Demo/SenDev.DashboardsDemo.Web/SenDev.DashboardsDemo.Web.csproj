@@ -82,7 +82,7 @@
     <Reference Include="DevExpress.ExpressApp.v$(DevExpressVersion)">
       <SpecificVersion>False</SpecificVersion>
     </Reference>
-    <Reference Include="DevExpress.ExpressApp.Web.v18.2">
+    <Reference Include="DevExpress.ExpressApp.Web.v$(DevExpressVersion)">
       <SpecificVersion>False</SpecificVersion>
       <Private>True</Private>
     </Reference>
@@ -98,14 +98,14 @@
     <Reference Include="DevExpress.RichEdit.v$(DevExpressVersion).Export">
       <SpecificVersion>False</SpecificVersion>
     </Reference>
-    <Reference Include="DevExpress.Utils.v18.2">
+    <Reference Include="DevExpress.Utils.v$(DevExpressVersion)">
       <SpecificVersion>False</SpecificVersion>
       <Private>True</Private>
     </Reference>
     <Reference Include="DevExpress.Web.ASPxThemes.v$(DevExpressVersion)">
       <SpecificVersion>False</SpecificVersion>
     </Reference>
-    <Reference Include="DevExpress.Web.ASPxTreeList.v18.2">
+    <Reference Include="DevExpress.Web.ASPxTreeList.v$(DevExpressVersion)">
       <SpecificVersion>False</SpecificVersion>
       <Private>True</Private>
     </Reference>
