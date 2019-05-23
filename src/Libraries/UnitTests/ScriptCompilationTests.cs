@@ -15,7 +15,7 @@ namespace UnitTests
 		[Fact]
 		public void DataExtractCompilationTest()
 		{
-			using(var application = XpoInMemoryXafApplication.CreateInstance())
+			using (var application = XpoInMemoryXafApplication.CreateInstance())
 			using (var objectSpace = application.CreateObjectSpace())
 			{
 				var extract = objectSpace.CreateObject<DashboardDataExtract>();
@@ -26,6 +26,33 @@ namespace UnitTests
 				objectSpace.CommitChanges();
 				var dataManager = new DataExtractDataManager(application);
 				dataManager.UpdateDataExtractByKey(extract.Oid);
+			}
+		}
+
+		[Fact]
+		public void DataExtractResultTest()
+		{
+			using (var application = XpoInMemoryXafApplication.CreateInstance())
+			using (var objectSpace = application.CreateObjectSpace())
+			{
+				var extract = objectSpace.CreateObject<DashboardDataExtract>();
+				var testObject = objectSpace.CreateObject<TestClassWithNameAndNumber>();
+				testObject.Name = "Name 1";
+				testObject.SequentialNumber = 1;
+				extract.Script = @"using System;
+					public class Script
+					{
+						public object GetData(SenDev.Xaf.Dashboards.Scripting.ScriptContext context)
+						{
+							return new byte[] {0,1,2,3,4,5,6,7,8,9};
+						}
+					}";
+
+				objectSpace.CommitChanges();
+				var dataManager = new DataExtractDataManager(application);
+				dataManager.UpdateDataExtractByKey(extract.Oid);
+				extract.Reload();
+				Assert.Equal(new byte[] { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 }, extract.ExtractData);
 			}
 		}
 
@@ -49,7 +76,7 @@ namespace UnitTests
 			using (var application = XpoInMemoryXafApplication.CreateInstance())
 			{
 
-				
+
 			}
 		}
 

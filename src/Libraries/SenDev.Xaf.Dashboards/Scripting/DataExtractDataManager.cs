@@ -54,23 +54,42 @@ namespace SenDev.Xaf.Dashboards.Scripting
 				throw new ArgumentNullException(nameof(extract));
 			if (string.IsNullOrWhiteSpace(extract.Script))
 				return;
-			string fileName = Path.GetTempFileName();
+
 			using (DashboardObjectDataSource ods = new DashboardObjectDataSource())
 			{
-				ScriptDataSource dataSource = new ScriptDataSource(extract.Script) { Application = Application};
-				ods.DataSource = dataSource.GetDataForDataExtract();
-				using (DashboardExtractDataSource extractDataSource = new DashboardExtractDataSource())
+				ScriptDataSource dataSource = new ScriptDataSource(extract.Script) { Application = Application };
+				object data = dataSource.GetDataForDataExtract();
+				if (data is byte[] buffer)
 				{
-					extractDataSource.ExtractSourceOptions.DataSource = ods;
-					extractDataSource.FileName = fileName;
-					extractDataSource.UpdateExtractFile();
-					extract.ExtractData = File.ReadAllBytes(fileName);
-					extract.ExtractDataSize = extract.ExtractData.LongLength;
+					SetDataExtractContent(extract, buffer);
+					return;
 				}
+				ods.DataSource = data;
+				string fileName = Path.GetTempFileName();
+				try
+				{
+
+					using (DashboardExtractDataSource extractDataSource = new DashboardExtractDataSource())
+					{
+						extractDataSource.ExtractSourceOptions.DataSource = ods;
+						extractDataSource.FileName = fileName;
+						extractDataSource.UpdateExtractFile();
+						SetDataExtractContent(extract, File.ReadAllBytes(fileName));
+					}
+				}
+				finally
+				{
+					if (File.Exists(fileName))
+						File.Delete(fileName);
+				}
+
 			}
-			File.Delete(fileName);
 		}
 
-
+		private static void SetDataExtractContent(DashboardDataExtract extract, byte[] fileData)
+		{
+			extract.ExtractData = fileData;
+			extract.ExtractDataSize = extract.ExtractData.LongLength;
+		}
 	}
 }

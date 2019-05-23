@@ -93,6 +93,9 @@ You need to first create a data extract.
 Goto _Dashboard Data Extract_ Navigation Item.
 Click on "New".
 Enter a data extract name and its script.
+
+<img src="images/CreateDataExtract.png" width="600px">
+
 You can use the same template as for the Script Data Source above.
 Then Click on _Save & Close_.
 In the list view use the "Update Data" button to create data extract: 
@@ -117,6 +120,10 @@ However the demo application implements a scheduler by using [Hangfire](https://
 Feel free to use the code in your applications.
 
 It is possible to easily integrate your preferred scheduler by implementing the `IJobScheduler` interface.
+
+## Additional Features
+
+### Saving state of web dashboards
 
 
 ## Development

@@ -94,6 +94,9 @@ namespace SenDev.Xaf.Dashboards.Scripting
 		public object GetDataForDataExtract()
 		{
 			var data = GetDataCore(new Dictionary<string, object>(), out var os);
+			if (data is byte[])
+				return data;
+			
 			if (data is IDataReader reader)
 				return new DataReaderList(reader);
 
