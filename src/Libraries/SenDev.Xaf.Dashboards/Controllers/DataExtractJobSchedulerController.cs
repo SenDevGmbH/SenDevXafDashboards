@@ -33,6 +33,6 @@ namespace SenDev.Xaf.Dashboards.Controllers
 			JobScheduler?.ScheduleDataExtractCreationJob(ViewCurrentObject);
 		}
 
-		private IJobScheduler JobScheduler => Application.Modules.FindModule<SenDevDashboardsModule>()?.JobScheduler;
+		public IJobScheduler JobScheduler => Application.Modules.FindModule<SenDevDashboardsModule>()?.JobScheduler;
 	}
 }

@@ -25,7 +25,11 @@ steps:
   inputs:
     command: 'restore' 
     restoreSolution: '**/*.sln'
-
+- task: SonarSource.sonarqube.15B84CA1-B62F-4A2A-A403-89B77A063157.SonarQubePrepare@4
+  displayName: 'Prepare analysis on SonarQube'
+  inputs:
+    SonarQube: 'SonarCloud'
+    projectName: SenDevGmbH_SenDevXafDashboards
 - task: MSBuild@1
   inputs:
     solution: '$(solution)'
@@ -51,3 +55,6 @@ steps:
   inputs:
     platform: '$(buildPlatform)'
     configuration: '$(buildConfiguration)'
+
+- task: SonarSource.sonarqube.6D01813A-9589-4B15-8491-8164AEB38055.SonarQubeAnalyze@4
+  displayName: 'Run Code Analysis'

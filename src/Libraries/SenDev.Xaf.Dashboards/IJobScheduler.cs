@@ -11,5 +11,6 @@ namespace SenDev.Xaf.Dashboards
 	{
 		void ScheduleDataExtractCreationJob(DashboardDataExtract dataExtract);
 		void RemoveDataExtractCreationJob(DashboardDataExtract dataExtract);
+		void StartDataExtractUpdate(DashboardDataExtract dataExtract);
 	}
 }

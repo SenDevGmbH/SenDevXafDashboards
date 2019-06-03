@@ -22,9 +22,18 @@ namespace SenDev.Xaf.Dashboards.Controllers
 
 		private void UpdateDataExtractAction_Execute(object sender, SimpleActionExecuteEventArgs e)
 		{
-			var dm = new DataExtractDataManager(Application);
-			dm.UpdateDataExtractByKey(ObjectSpace.GetKeyValue(ViewCurrentObject));
-			ObjectSpace.Refresh();
+			var scheduler = Frame.GetController<DataExtractJobSchedulerController>().JobScheduler;
+			if (scheduler != null)
+			{
+				scheduler.StartDataExtractUpdate(ViewCurrentObject);
+			}
+			else
+			{
+
+				var dm = new DataExtractDataManager(Application);
+				dm.UpdateDataExtractByKey(ObjectSpace.GetKeyValue(ViewCurrentObject));
+				ObjectSpace.Refresh();
+			}
 		}
 
 		public SimpleAction UpdateDataExtractAction
