@@ -14,7 +14,7 @@ namespace SenDev.Xaf.Dashboards.Controllers
 		{
 			UpdateDataExtractAction = new SimpleAction(this, "UpdateDataExtract", PredefinedCategory.Edit);
 			UpdateDataExtractAction.Caption = "Update data";
-			UpdateDataExtractAction.ImageName = "AutomaticUpdates";
+			UpdateDataExtractAction.ImageName = "Action_SimpleAction";
 			UpdateDataExtractAction.SelectionDependencyType = SelectionDependencyType.RequireSingleObject;
 			UpdateDataExtractAction.Execute += UpdateDataExtractAction_Execute;
 			UpdateDataExtractAction.ConfirmationMessage = "Caution: This action can take very long time and it cannot be cancelled, are You sure to proceed?";

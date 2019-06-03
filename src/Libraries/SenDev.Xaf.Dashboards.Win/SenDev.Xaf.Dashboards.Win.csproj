@@ -108,6 +108,7 @@
     <Compile Include="Controllers\DashboardCustomizationController.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Controllers\ExportDataExtractController.cs" />
     <Compile Include="Controllers\WinCustomizeDashboardViewerControllerBase.cs" />
     <Compile Include="Controllers\WinDashboardDataSourceController.cs" />
     <Compile Include="Controllers\WinSaveParametersController.cs" />
