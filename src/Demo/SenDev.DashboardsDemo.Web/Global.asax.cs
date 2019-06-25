@@ -25,7 +25,7 @@ namespace SenDev.DashboardsDemo.Web
 			Tracing.Initialize();
 			WebApplication.SetInstance(Session, new DashboardsDemoAspNetApplication());
 			DevExpress.ExpressApp.Web.Templates.DefaultVerticalTemplateContentNew.ClearSizeLimit();
-			WebApplication.Instance.SwitchToNewStyle();
+			//WebApplication.Instance.SwitchToNewStyle();
 			WebApplication.Instance.ConnectionString = ConnectionString;
 #if EASYTEST
             if(ConfigurationManager.ConnectionStrings["EasyTestConnectionString"] != null) {

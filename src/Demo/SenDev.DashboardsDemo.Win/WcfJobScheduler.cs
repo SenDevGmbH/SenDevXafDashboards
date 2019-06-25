@@ -31,6 +31,11 @@ namespace SenDev.DashboardsDemo.Win
 			var channel = CreateChannel();
 			channel.ScheduleUpdateDataExtractJob(dataExtract.Oid);
 		}
+
+		public void StartDataExtractUpdate(DashboardDataExtract dataExtract)
+		{
+			throw new NotImplementedException();
+		}
 	}
 
 
