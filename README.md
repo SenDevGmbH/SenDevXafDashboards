@@ -1,5 +1,6 @@
 # SenDev XAF Dashboards
 [![Build Status](https://dev.azure.com/SenDevGmbH/XafDashboards/_apis/build/status/SenDevGmbH.SenDevXafDashboards?branchName=master)](https://dev.azure.com/SenDevGmbH/XafDashboards/_build/latest?definitionId=1&branchName=master)
+[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=SenDevGmbH_SenDevXafDashboards&metric=alert_status)](https://sonarcloud.io/dashboard?id=SenDevGmbH_SenDevXafDashboards)
 
 ## Introduction
 This module adds 2 new data sources to the DevExpress XAF Dashboards module:
