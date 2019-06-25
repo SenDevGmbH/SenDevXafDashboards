@@ -26,12 +26,6 @@ steps:
     command: 'restore' 
     restoreSolution: '**/*.sln'
 
-- task: NuGetCommand@2
-  inputs:
-    command: 'push' 
-    packagesToPush: '$(Build.ArtifactStagingDirectory)/**/DX/*.nupkg'
-    nuGetFeedType: 'external' 
-    publishFeedCredentials: 'nuget.org'
 
 - task: SonarSource.sonarcloud.14d9cde6-c1da-4d55-aa01-2965cd301255.SonarCloudPrepare@1
   displayName: 'Prepare analysis on SonarCloud'
@@ -47,12 +41,7 @@ steps:
     configuration: '$(buildConfiguration)'
     msbuildArguments: '/t:NuGet'
 
-- task: NuGetCommand@2
-  inputs:
-    command: 'push' 
-    packagesToPush: '$(Build.ArtifactStagingDirectory)/**/SelfCompiled/*.nupkg'
-    nuGetFeedType: 'external' 
-    publishFeedCredentials: 'PrivateNuget'
+
 - task: VSTest@2
   inputs:
     platform: '$(buildPlatform)'
@@ -61,4 +50,17 @@ steps:
   displayName: 'Run Code Analysis'
 - task: SonarSource.sonarcloud.38b27399-a642-40af-bb7d-9971f69712e8.SonarCloudPublish@1
   displayName: 'Publish Quality Gate Result'  
+
+- task: NuGetCommand@2
+  inputs:
+    command: 'push' 
+    packagesToPush: '$(Build.ArtifactStagingDirectory)/**/DX/*.nupkg'
+    nuGetFeedType: 'external' 
+    publishFeedCredentials: 'nuget.org'
+- task: NuGetCommand@2
+  inputs:
+    command: 'push' 
+    packagesToPush: '$(Build.ArtifactStagingDirectory)/**/SelfCompiled/*.nupkg'
+    nuGetFeedType: 'external' 
+    publishFeedCredentials: 'PrivateNuget'
 
