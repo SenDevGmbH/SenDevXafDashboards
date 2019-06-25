@@ -37,7 +37,7 @@ steps:
   displayName: 'Prepare analysis on SonarCloud'
   inputs:
     SonarCloud: 'Sonar Clp'
-    organization: 'SenDev GmbH'
+    organization: 'sendev'
     projectKey: 'SenDevGmbH_SenDevXafDashboards'
     projectName: SenDevXafDashboards
 - task: MSBuild@1
