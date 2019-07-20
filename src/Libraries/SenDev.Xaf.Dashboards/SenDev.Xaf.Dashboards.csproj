@@ -141,6 +141,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="..\CommonVersion.cs">
+      <Link>CommonVersion.cs</Link>
+    </Compile>
     <Compile Include="BusinessObjects\DashboardDataExtract.cs" />
     <Compile Include="BusinessObjects\SenDevDataSourceType.cs" />
     <Compile Include="Controllers\CustomizeDashboardDashboardController.cs" />
