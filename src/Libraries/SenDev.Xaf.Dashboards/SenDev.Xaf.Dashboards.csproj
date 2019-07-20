@@ -42,6 +42,10 @@
     <PlatformTarget>AnyCPU</PlatformTarget>
     <ErrorReport>prompt</ErrorReport>
   </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>true</SignAssembly>
+    <AssemblyOriginatorKeyFile>..\StrongKey.snk</AssemblyOriginatorKeyFile>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="DevExpress.Dashboard.v$(DevExpressVersion).Core" />
     <Reference Include="DevExpress.DataAccess.v$(DevExpressVersion)" />
@@ -194,6 +198,7 @@
   <ItemGroup>
     <None Include="app.config" />
     <None Include="DatabaseUpdate\ReadMe.txt" />
+    <None Include="StrongKey.snk" />
   </ItemGroup>
   <ItemGroup>
     <None Include="BusinessObjects\ReadMe.txt" />
