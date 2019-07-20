@@ -10,7 +10,7 @@
 
   <Target Name="Build">
     
-    <WriteLinesToFile File="CommonVersion.cs" Lines="[assembly: System.Reflection.AssemblyVersion(&quot;$(DevExpressFullVersion).$(VersionRevision)&quot;)]" Overwrite="True"/>
+    <WriteLinesToFile File="Libraries\CommonVersion.cs" Lines="[assembly: System.Reflection.AssemblyVersion(&quot;$(DevExpressFullVersion).$(VersionRevision)&quot;)]" Overwrite="True"/>
     <DownloadFile SourceUrl="$(DevExpressBinariesServerUrl)/$(TargetParentDir)/$(DevExpressFullVersion).zip" DestinationFolder="$(OutputPath)">
       <Output TaskParameter="DownloadedFile" PropertyName="DevExpressBinariesArchive"/>
     </DownloadFile>
