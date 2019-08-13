@@ -11,24 +11,5 @@ namespace SenDev.Xaf.Dashboards.Web.DatabaseUpdate
 			base(objectSpace, currentDBVersion)
 		{
 		}
-		public override void UpdateDatabaseAfterUpdateSchema()
-		{
-			base.UpdateDatabaseAfterUpdateSchema();
-			//string name = "MyName";
-			//DomainObject1 theObject = ObjectSpace.FindObject<DomainObject1>(CriteriaOperator.Parse("Name=?", name));
-			//if(theObject == null) {
-			//    theObject = ObjectSpace.CreateObject<DomainObject1>();
-			//    theObject.Name = name;
-			//}
-
-			//ObjectSpace.CommitChanges(); //Uncomment this line to persist created object(s).
-		}
-		public override void UpdateDatabaseBeforeUpdateSchema()
-		{
-			base.UpdateDatabaseBeforeUpdateSchema();
-			//if(CurrentDBVersion < new Version("1.1.0.0") && CurrentDBVersion > new Version("0.0.0.0")) {
-			//    RenameColumn("DomainObject1Table", "OldColumnName", "NewColumnName");
-			//}
-		}
 	}
 }

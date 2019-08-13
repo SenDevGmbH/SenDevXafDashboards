@@ -7,7 +7,7 @@ using DevExpress.DataAccess.Wizard.Services;
 using DevExpress.DataAccess.Wizard.Views;
 using DevExpress.Entity.ProjectModel;
 using DevExpress.ExpressApp.Dashboards.Win;
-using SenDev.Xaf.Dashboards.BusinessObjects;
+using SenDev.Xaf.Dashboards.Win.BusinessObjects;
 using SenDev.Xaf.Dashboards.Win.DataSourceWizard.DataExtractPages;
 using SenDev.Xaf.Dashboards.Win.DataSourceWizard.ScriptingPages;
 

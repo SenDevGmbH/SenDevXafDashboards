@@ -151,13 +151,12 @@ namespace SenDev.Xaf.Dashboards.Win.PropertyEditors
 		}
 		void HighlightCategorizedToken(CategorizedToken token, List<SyntaxHighlightToken> syntaxTokens)
 		{
-			var backColor = editor.ActiveView.BackColor;
 			var highlightProperties = syntaxHighlightInfo.CalculateTokenCategoryHighlight(token.Category);
-			var syntaxToken = SetTokenColor(token, highlightProperties, backColor);
+			var syntaxToken = SetTokenColor(token, highlightProperties);
 			if (syntaxToken != null)
 				syntaxTokens.Add(syntaxToken);
 		}
-		SyntaxHighlightToken SetTokenColor(Token token, SyntaxHighlightProperties foreColor, Color backColor)
+		SyntaxHighlightToken SetTokenColor(Token token, SyntaxHighlightProperties foreColor)
 		{
 			if (editor.Document.Paragraphs.Count < token.Range.Start.Line)
 				return null;

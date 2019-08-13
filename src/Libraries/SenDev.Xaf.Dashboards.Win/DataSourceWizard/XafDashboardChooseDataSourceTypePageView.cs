@@ -6,7 +6,7 @@ using DevExpress.ExpressApp.Dashboards.Win;
 using DevExpress.ExpressApp.Utils;
 using DevExpress.XtraEditors;
 using DevExpress.XtraEditors.Controls;
-using SenDev.Xaf.Dashboards.BusinessObjects;
+using SenDev.Xaf.Dashboards.Win.BusinessObjects;
 
 namespace SenDev.Xaf.Dashboards.Win.DataSourceWizard
 {

@@ -1,5 +1,4 @@
-﻿<Project DefaultTargets="Build" 
-  xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="14.0">
+﻿<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="14.0">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
@@ -112,8 +111,8 @@
     <Compile Include="..\CommonVersion.cs">
       <Link>CommonVersion.cs</Link>
     </Compile>
-
     <Compile Include="BusinessObjects\ScriptDashboardWizardParameters.cs" />
+    <Compile Include="BusinessObjects\SenDevDataSourceType.cs" />
     <Compile Include="Controllers\DashboardCustomizationController.cs">
       <SubType>Component</SubType>
     </Compile>

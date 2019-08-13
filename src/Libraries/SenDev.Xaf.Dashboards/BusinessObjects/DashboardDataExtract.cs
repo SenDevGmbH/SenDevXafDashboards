@@ -44,7 +44,10 @@ namespace SenDev.Xaf.Dashboards.BusinessObjects
 					File.Delete(tempFileName);
 					tempFileName = null;
 				}
-				catch (IOException) { }
+				catch (IOException ex)
+				{
+					Tracing.Tracer.LogError(ex);
+				}
 			}
 		}
 
@@ -59,7 +62,7 @@ namespace SenDev.Xaf.Dashboards.BusinessObjects
 
 
 		private string cronExpression;
-	
+
 		public string CronExpression
 		{
 			get => cronExpression;

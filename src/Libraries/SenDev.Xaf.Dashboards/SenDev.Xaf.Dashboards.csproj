@@ -52,7 +52,6 @@
     <Reference Include="DevExpress.ExpressApp.Dashboards.v$(DevExpressVersion)">
       <SpecificVersion>False</SpecificVersion>
     </Reference>
-    <Reference Include="DevExpress.ExpressApp.Dashboards.Win.v$(DevExpressVersion)" />
     <Reference Include="DevExpress.ExpressApp.Xpo.v$(DevExpressVersion)">
       <SpecificVersion>False</SpecificVersion>
       <Private>False</Private>
@@ -149,7 +148,6 @@
       <Link>CommonVersion.cs</Link>
     </Compile>
     <Compile Include="BusinessObjects\DashboardDataExtract.cs" />
-    <Compile Include="BusinessObjects\SenDevDataSourceType.cs" />
     <Compile Include="Controllers\CustomizeDashboardDashboardController.cs" />
     <Compile Include="Controllers\CustomizeDashboardEventArgs.cs" />
     <Compile Include="Controllers\DataExtractJobSchedulerController.cs" />
