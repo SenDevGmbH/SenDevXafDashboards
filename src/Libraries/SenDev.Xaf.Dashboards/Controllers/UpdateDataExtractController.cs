@@ -3,6 +3,7 @@ using DevExpress.ExpressApp.Actions;
 using DevExpress.Persistent.Base;
 using SenDev.Xaf.Dashboards.BusinessObjects;
 using SenDev.Xaf.Dashboards.Scripting;
+using SenDev.Xaf.Dashboards.Utils;
 
 namespace SenDev.Xaf.Dashboards.Controllers
 {
@@ -20,16 +21,25 @@ namespace SenDev.Xaf.Dashboards.Controllers
 			UpdateDataExtractAction.ConfirmationMessage = "Caution: This action can take very long time and it cannot be cancelled, are You sure to proceed?";
 		}
 
-		private void UpdateDataExtractAction_Execute(object sender, SimpleActionExecuteEventArgs e)
+        private bool UpdateBySchedulerEnabled
+        {
+            get
+            {
+                if (Application.Model.Options is IModelOptionsXtraDashboards options)
+                    return options.XtraDashboards.UseSchedulerToCreateDataExtractsFromUI;
+                else
+                    return false;
+            }
+        }
+        private void UpdateDataExtractAction_Execute(object sender, SimpleActionExecuteEventArgs e)
 		{
-			var scheduler = Frame.GetController<DataExtractJobSchedulerController>().JobScheduler;
-			if (scheduler != null)
+            var scheduler = Application.GetJobScheduler();
+			if (scheduler != null && UpdateBySchedulerEnabled)
 			{
 				scheduler.StartDataExtractUpdate(ViewCurrentObject);
 			}
 			else
 			{
-
 				var dm = new DataExtractDataManager(Application);
 				dm.UpdateDataExtractByKey(ObjectSpace.GetKeyValue(ViewCurrentObject));
 				ObjectSpace.Refresh();

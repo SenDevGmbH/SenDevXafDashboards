@@ -57,5 +57,7 @@ namespace SenDev.Xaf.Dashboards.Utils
 				}
 			}
 		}
-	}
+
+        public static IJobScheduler GetJobScheduler(this XafApplication application) => application.Modules.FindModule<SenDevDashboardsModule>()?.JobScheduler;
+    }
 }

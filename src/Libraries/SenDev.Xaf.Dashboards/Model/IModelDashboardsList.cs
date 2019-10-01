@@ -8,5 +8,11 @@ namespace SenDev.Xaf.Dashboards
 		{
 			get; set;
 		}
-	}
+        bool UseSchedulerToCreateDataExtractsFromUI
+        {
+            get; set;
+        }
+
+
+    }
 }

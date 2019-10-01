@@ -23,7 +23,13 @@ namespace SenDev.DashboardsDemo.Web.Services
 					Hangfire.RecurringJob.AddOrUpdate(dataExtractId.ToString(), () => UpdateDataExtract(dataExtractId.ToString()), dataExtract.CronExpression);
 			}
 		}
-		public void UpdateDataExtract(string dataExtractId)
+
+        public void StartDataExtractUpdate(Guid dataExtractId)
+        {
+            Hangfire.BackgroundJob.Enqueue(() => UpdateDataExtract(dataExtractId.ToString()));
+        }
+
+        public void UpdateDataExtract(string dataExtractId)
 		{
 
 			var appDomain = AppDomain.CreateDomain("ServerSideInstanceDomain",null, AppDomain.CurrentDomain.SetupInformation);

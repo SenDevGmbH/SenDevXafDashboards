@@ -34,7 +34,8 @@ namespace SenDev.DashboardsDemo.Win
 
 		public void StartDataExtractUpdate(DashboardDataExtract dataExtract)
 		{
-			throw new NotImplementedException();
+            var channel = CreateChannel();
+            channel.StartDataExtractUpdate(dataExtract.Oid);
 		}
 	}
 

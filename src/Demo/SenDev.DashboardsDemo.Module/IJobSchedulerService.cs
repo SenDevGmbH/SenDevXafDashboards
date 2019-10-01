@@ -11,5 +11,8 @@ namespace SenDev.DashboardsDemo.Module
 
 		[OperationContract]
 		void RemoveUpdateDataExtractJob(Guid dataExtractId);
-	}
+
+		[OperationContract]
+        void StartDataExtractUpdate(Guid dataExtractId);
+    }
 }

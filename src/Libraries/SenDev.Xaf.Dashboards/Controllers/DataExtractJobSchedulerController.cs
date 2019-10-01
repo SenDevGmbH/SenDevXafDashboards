@@ -3,6 +3,7 @@ using System.Linq;
 using DevExpress.DataProcessing;
 using DevExpress.ExpressApp;
 using SenDev.Xaf.Dashboards.BusinessObjects;
+using SenDev.Xaf.Dashboards.Utils;
 
 namespace SenDev.Xaf.Dashboards.Controllers
 {
@@ -33,6 +34,6 @@ namespace SenDev.Xaf.Dashboards.Controllers
 			JobScheduler?.ScheduleDataExtractCreationJob(ViewCurrentObject);
 		}
 
-		public IJobScheduler JobScheduler => Application.Modules.FindModule<SenDevDashboardsModule>()?.JobScheduler;
+        public IJobScheduler JobScheduler => Application.GetJobScheduler(); 
 	}
 }
