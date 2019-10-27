@@ -1,6 +1,6 @@
 <Project>
  <PropertyGroup>
     <TargetFrameworkVersion>v4.7.1</TargetFrameworkVersion>
-    <DevExpressVersion>19.1</DevExpressVersion>
+    <DevExpressVersion>19.2</DevExpressVersion>
  </PropertyGroup>
 </Project>

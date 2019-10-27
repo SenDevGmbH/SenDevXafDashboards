@@ -16,10 +16,11 @@ namespace SenDev.Xaf.Dashboards.Win.DataSourceWizard
 
 	public class XafDashboardChooseDataSourceTypePage<TModel> : DashboardChooseDataSourceTypePage<TModel> where TModel : class, IDashboardDataSourceModel
 	{
-		public XafDashboardChooseDataSourceTypePage(IChooseDataSourceTypePageView view, IWizardRunnerContext context, IConnectionStorageService connectionStorageService, ISolutionTypesProvider solutionTypesProvider, SqlWizardOptions options)
-			: base(view, context, connectionStorageService, solutionTypesProvider, options)
+		public XafDashboardChooseDataSourceTypePage(IChooseDataSourceTypePageView view, IWizardRunnerContext context, IConnectionStorageService connectionStorageService, IJsonConnectionStorageService jsonConnectionStorageService, ISolutionTypesProvider solutionTypesProvider, SqlWizardOptions options) 
+			: base(view, context, connectionStorageService, jsonConnectionStorageService, solutionTypesProvider, options)
 		{
 		}
+
 		public override void Commit()
 		{
 			base.Commit();

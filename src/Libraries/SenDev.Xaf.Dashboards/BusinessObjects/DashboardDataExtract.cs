@@ -155,7 +155,6 @@ namespace SenDev.Xaf.Dashboards.BusinessObjects
 
 		public void ConfigureConnectionParameters(ExtractDataSourceConnectionParameters parameters)
 		{
-
 			parameters.FileName = EnsureTempFileCreated();
 		}
 
