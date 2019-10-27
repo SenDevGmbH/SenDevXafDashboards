@@ -13,6 +13,7 @@
     <TargetDevExpressVersion Include="19.1.5" TargetParentDir="DX"/>
     <TargetDevExpressVersion Include="19.1.5" TargetParentDir="SelfCompiled" PackageNameSuffix=".SelfCompiled"/>
     <TargetDevExpressVersion Include="19.1.6" TargetParentDir="DX"/>
+    <TargetDevExpressVersion Include="19.2.3" TargetParentDir="DX"/>
 
   </ItemGroup>
 
