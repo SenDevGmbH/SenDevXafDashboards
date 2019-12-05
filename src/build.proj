@@ -3,6 +3,8 @@
     <ProjectToBuild Include="build-core.proj"/>
     <TargetDevExpressVersion Include="19.2.3" TargetParentDir="DX"/>
     <TargetDevExpressVersion Include="19.2.3" TargetParentDir="SelfCompiled" PackageNameSuffix=".SelfCompiled"/>
+    <TargetDevExpressVersion Include="19.2.4" TargetParentDir="DX"/>
+
   </ItemGroup>
 
 
