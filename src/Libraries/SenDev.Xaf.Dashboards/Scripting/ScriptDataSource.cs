@@ -58,7 +58,9 @@ namespace SenDev.Xaf.Dashboards.Scripting
 		{
 			var assembly = GetType().Assembly;
 			var assemmblyNames =
-				Application.TypesInfo.PersistentTypes.SelectMany(ti => GetTypesHierarchy(ti.Type)).Select(t => t.Assembly)
+				Application.TypesInfo.PersistentTypes
+				.AsEnumerable()
+				.SelectMany(ti => GetTypesHierarchy(ti.Type)).Select(t => t.Assembly)
 				.Where(a => a.GetName().Name != "mscorlib")
 				.Select(GetAssemblyLocation);
 
