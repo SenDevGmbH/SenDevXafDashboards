@@ -36,6 +36,7 @@ namespace SenDev.Xaf.Dashboards.Win.Controllers
 			dashboardViewer.ConfigureDataConnection += DashboardViewer_ConfigureDataConnection;
 			dashboardViewer.AllowPrintDashboardItems = true;
 			dashboardViewer.DashboardLoaded += DashboardViewer_DashboardLoaded;
+			dashboardViewer.PopulateUnusedDataSources = true;
 		}
 
 		private void DashboardViewer_DashboardLoaded(object sender, DashboardLoadedEventArgs e)
@@ -64,10 +65,6 @@ namespace SenDev.Xaf.Dashboards.Win.Controllers
 				}
 			}
 		}
-
-
-
-
 	}
 
 }
