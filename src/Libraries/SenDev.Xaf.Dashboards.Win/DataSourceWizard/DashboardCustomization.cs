@@ -1,7 +1,9 @@
-﻿using DevExpress.DashboardCommon;
+﻿using System;
+using DevExpress.DashboardCommon;
 using DevExpress.DashboardWin.ServiceModel;
 using DevExpress.DataAccess.UI.Wizard;
 using DevExpress.DataAccess.Wizard.Model;
+using DevExpress.DataAccess.Wizard.Presenters;
 using DevExpress.DataAccess.Wizard.Views;
 using DevExpress.ExpressApp;
 using DevExpress.ExpressApp.Dashboards.Win;
@@ -35,24 +37,27 @@ namespace SenDev.Xaf.Dashboards.Win.DataSourceWizard
 			get;
 		}
 
-
 		public new void CustomizeDataSourceWizard(IWizardCustomization<DashboardDataSourceModel> customization)
 		{
 
 			AddDefaultCustomizations(customization);
-			if (customization.Model.ObjectType != null)
+			if (!IsFederationDataSource(customization))
 			{
-				customization.StartPage = typeof(EnterScriptPage<DashboardDataSourceModel>);
-			}
-			var connectionModel = customization.Model as IDataComponentModelWithConnection;
-			bool hasDataConnection = connectionModel?.DataConnection != null;
-			if (DataExtractHelper.IsXafDataExtract(customization.Model))
-			{
-				customization.StartPage = typeof(ChoiceDataExtractPage<DashboardDataSourceModel>);
-			}
-			else if (customization.Model.DataSchema == null && !hasDataConnection)
-			{
-				customization.StartPage = typeof(XafDashboardChooseDataSourceTypePage<DashboardDataSourceModel>);
+
+				if (customization.Model.ObjectType != null)
+				{
+					customization.StartPage = typeof(EnterScriptPage<DashboardDataSourceModel>);
+				}
+				var connectionModel = customization.Model as IDataComponentModelWithConnection;
+				bool hasDataConnection = connectionModel?.DataConnection != null;
+				if (DataExtractHelper.IsXafDataExtract(customization.Model))
+				{
+					customization.StartPage = typeof(ChoiceDataExtractPage<DashboardDataSourceModel>);
+				}
+				else if (customization.Model.DataSchema == null && !hasDataConnection)
+				{
+					customization.StartPage = typeof(XafDashboardChooseDataSourceTypePage<DashboardDataSourceModel>);
+				}
 			}
 			customization.RegisterPage<XafDashboardChooseDataSourceTypePage<DashboardDataSourceModel>, XafDashboardChooseDataSourceTypePage<DashboardDataSourceModel>>();
 			customization.RegisterPageView<IChooseDataSourceTypePageView, XafDashboardChooseDataSourceTypePageView>();
@@ -63,6 +68,12 @@ namespace SenDev.Xaf.Dashboards.Win.DataSourceWizard
 			customization.RegisterInstance(WizardParameters);
 			customization.RegisterInstance(ObjectSpace);
 			customization.RegisterInstance(Application);
+		}
+
+		private bool IsFederationDataSource(IWizardCustomization<DashboardDataSourceModel> customization)
+		{
+			Type startPageType = customization.StartPage;
+			return startPageType.IsGenericType && startPageType.GetGenericTypeDefinition() == typeof(ConfigureFederatedQueryPage<>);
 		}
 
 		private void AddDefaultCustomizations(IWizardCustomization<DashboardDataSourceModel> customization)
