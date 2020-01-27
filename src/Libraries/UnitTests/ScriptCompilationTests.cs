@@ -39,7 +39,7 @@ namespace UnitTests
 				var testObject = objectSpace.CreateObject<TestClassWithNameAndNumber>();
 				testObject.Name = "Name 1";
 				testObject.SequentialNumber = 1;
-				extract.Script = TemplateHelper.GetScriptTemplate(testObject.GetType(), testObject.GetType().Assembly.GetManifestResourceStream("UnitTests.ScriptTemplate.cs.template"));
+				extract.Script = TemplateHelper.GetScriptTemplate(testObject.GetType(), testObject.GetType().Assembly.GetManifestResourceStream("UnitTests.ScriptTemplate.template"));
 				objectSpace.CommitChanges();
 				var dataManager = new DataExtractDataManager(application);
 				dataManager.UpdateDataExtractByKey(extract.Oid);

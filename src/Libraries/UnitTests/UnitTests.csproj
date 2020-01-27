@@ -79,7 +79,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ScriptCompilationTests.cs" />
     <Compile Include="SelectDataEventArgs.cs" />
-    <EmbeddedResource Include="ScriptTemplate.cs.template" />
+    <EmbeddedResource Include="ScriptTemplate.template" />
     <Compile Include="TestClasses\TestClassesCombination.cs" />
     <Compile Include="TestClasses\TestClassWithName.cs" />
     <Compile Include="TestClasses\TestClassWithNameAndNumber.cs" />
