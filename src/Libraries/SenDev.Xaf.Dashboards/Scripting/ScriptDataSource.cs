@@ -1,6 +1,7 @@
 ﻿using DevExpress.ExpressApp;
 using DevExpress.ExpressApp.Xpo;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Data;
 using System.Dynamic;
@@ -93,6 +94,15 @@ namespace SenDev.Xaf.Dashboards.Scripting
 			return scriptObject.GetData(context);
 		}
 
+
+		private static bool IsGenericCollection(object obj)
+		{
+			if (obj == null)
+				return false;
+			var type = obj.GetType();
+			return type.IsGenericType && type.GetGenericTypeDefinition() == typeof(ICollection<>);
+			
+		}
 		public object GetDataForDataExtract()
 		{
 			var data = GetDataCore(new Dictionary<string, object>(), out var os);
@@ -101,6 +111,9 @@ namespace SenDev.Xaf.Dashboards.Scripting
 			
 			if (data is IDataReader reader)
 				return new DataReaderList(reader);
+
+			if (data is ICollection || IsGenericCollection(data))
+				return data;
 
 			return new DashboardDataList(() =>
 				{

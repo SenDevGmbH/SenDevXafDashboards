@@ -30,6 +30,23 @@ namespace UnitTests
 		}
 
 		[Fact]
+		public void DataExtractCollectionDataTest()
+		{
+			using (var application = XpoInMemoryXafApplication.CreateInstance())
+			using (var objectSpace = application.CreateObjectSpace())
+			{
+				var extract = objectSpace.CreateObject<DashboardDataExtract>();
+				var testObject = objectSpace.CreateObject<TestClassWithNameAndNumber>();
+				testObject.Name = "Name 1";
+				testObject.SequentialNumber = 1;
+				extract.Script = TemplateHelper.GetScriptTemplate(testObject.GetType(), testObject.GetType().Assembly.GetManifestResourceStream("UnitTests.ScriptTemplate.cs.template"));
+				objectSpace.CommitChanges();
+				var dataManager = new DataExtractDataManager(application);
+				dataManager.UpdateDataExtractByKey(extract.Oid);
+			}
+		}
+
+		[Fact]
 		public void DataExtractResultTest()
 		{
 			using (var application = XpoInMemoryXafApplication.CreateInstance())

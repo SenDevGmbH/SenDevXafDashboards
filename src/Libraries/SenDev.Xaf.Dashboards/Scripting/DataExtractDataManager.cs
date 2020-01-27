@@ -68,7 +68,6 @@ namespace SenDev.Xaf.Dashboards.Scripting
 				string fileName = Path.GetTempFileName();
 				try
 				{
-
 					using (DashboardExtractDataSource extractDataSource = new DashboardExtractDataSource())
 					{
 						extractDataSource.ExtractSourceOptions.DataSource = ods;
