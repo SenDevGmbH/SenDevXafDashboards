@@ -15,6 +15,7 @@ namespace SenDev.Xaf.Dashboards.Web.Controllers
 		protected override void CustomizeDashboardControl(ASPxDashboard dashboard)
 		{
 			dashboard.ConfigureDataConnection += Dashboard_ConfigureDataConnection;
+			dashboard.DashboardLoading += Dashboard_DashboardLoading;
 		}
 
 		private void Dashboard_DashboardLoading(object sender, DashboardLoadingWebEventArgs e)
