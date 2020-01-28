@@ -15,7 +15,6 @@ namespace SenDev.Xaf.Dashboards.Web.Controllers
 		protected override void CustomizeDashboardControl(ASPxDashboard dashboard)
 		{
 			dashboard.ConfigureDataConnection += Dashboard_ConfigureDataConnection;
-			dashboard.DashboardLoading += Dashboard_DashboardLoading;
 		}
 
 		private void Dashboard_DashboardLoading(object sender, DashboardLoadingWebEventArgs e)
@@ -38,14 +37,18 @@ namespace SenDev.Xaf.Dashboards.Web.Controllers
 			{
 				if (Guid.TryParse(extractParameters.FileName, out var id))
 				{
-					var extract = ObjectSpace.GetObjectByKey<DashboardDataExtract>(id);
+					DashboardDataExtract extract = GetDataExtract(id);
 					if (extract != null)
 						extract.ConfigureConnectionParameters(extractParameters);
 				}
 			}
 		}
 
-		
+		protected virtual DashboardDataExtract GetDataExtract(Guid id)
+		{
+			return ObjectSpace.GetObjectByKey<DashboardDataExtract>(id);
+		}
+
 	}
 }
 
