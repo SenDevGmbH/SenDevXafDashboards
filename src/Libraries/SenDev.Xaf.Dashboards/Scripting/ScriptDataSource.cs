@@ -63,8 +63,8 @@ namespace SenDev.Xaf.Dashboards.Scripting
 				.AsEnumerable()
 				.SelectMany(ti => GetTypesHierarchy(ti.Type)).Select(t => t.Assembly)
 				.Where(a => a.GetName().Name != "mscorlib")
-				.Select(GetAssemblyLocation);
-
+				.Select(GetAssemblyLocation)
+				.ToArray();
 			var assemblies = new HashSet<string>(assemmblyNames, StringComparer.OrdinalIgnoreCase);
 
 			var module = Application.Modules.FindModule<SenDevDashboardsModule>();
