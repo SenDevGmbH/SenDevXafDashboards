@@ -40,7 +40,7 @@ steps:
     solution: '$(solution)'
     platform: '$(buildPlatform)'
     configuration: '$(buildConfiguration)'
-    msbuildArguments: '/t:NuGet'
+    msbuildArguments: '/t:NuGet /p:TargetParentDir=DX'
 
 
 - task: VSTest@2
@@ -58,10 +58,3 @@ steps:
     packagesToPush: '$(Build.ArtifactStagingDirectory)/**/DX/*.nupkg'
     nuGetFeedType: 'external' 
     publishFeedCredentials: 'nuget.org'
-- task: NuGetCommand@2
-  inputs:
-    command: 'push' 
-    packagesToPush: '$(Build.ArtifactStagingDirectory)/**/SelfCompiled/*.nupkg'
-    nuGetFeedType: 'external' 
-    publishFeedCredentials: 'PrivateNuget'
-

@@ -10,7 +10,8 @@
 
 
   <Target Name="NuGet" Inputs="@(TargetDevExpressVersion)" Outputs="EmptyOutput">
-    <MSBuild Projects="@(ProjectToBuild)" Properties="OutputPath=$(MSBuildProjectDirectory)\bin\%(TargetDevExpressVersion.Identity)\;DevExpressFullVersion=%(TargetDevExpressVersion.Identity);TargetParentDir=%(TargetDevExpressVersion.TargetParentDir);PackageNameSuffix=%(TargetDevExpressVersion.PackageNameSuffix)" StopOnFirstFailure="true" Targets="Nuget" ToolsVersion="15.0"/>
+    <MSBuild Projects="@(ProjectToBuild)" Properties="OutputPath=$(MSBuildProjectDirectory)\bin\%(TargetDevExpressVersion.Identity)\;DevExpressFullVersion=%(TargetDevExpressVersion.Identity);TargetParentDir=%(TargetDevExpressVersion.TargetParentDir);PackageNameSuffix=%(TargetDevExpressVersion.PackageNameSuffix)" StopOnFirstFailure="true" Targets="Nuget" ToolsVersion="15.0"
+    	Condition="$(TargetParentDir)=='' OR %(TargetDevExpressVersion.TargetParentDir)==$(TargetParentDir)"/>
 
     <MakeDir Directories="bin\nuget"/>
     <PropertyGroup>
