@@ -16,7 +16,12 @@ namespace SenDevDashboardsDemo.UnitTests
 		{
 			var stream1 = GetCsvStream("01-22-2020.csv");
 			Assert.NotNull(stream1);
-			var records = CovidDataManager.GetRecords(new DateTime(2020, 1, 22), stream1);
+			var records1 = CovidDataManager.GetRecords(new DateTime(2020, 1, 22), stream1);
+
+			var stream2 = GetCsvStream("03-20-2020.csv");
+			Assert.NotNull(stream2);
+			var records2 = CovidDataManager.GetRecords(new DateTime(2020, 3, 20), stream1);
+
 		}
 
 		private Stream GetCsvStream(string name)

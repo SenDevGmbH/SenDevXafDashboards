@@ -104,7 +104,7 @@ namespace SenDev.DashboardsDemo.Module.Covid
 		public override object ConvertFromString(string text, IReaderRow row, MemberMapData memberMapData)
 		{
 			if (string.IsNullOrWhiteSpace(text))
-				return 0;
+				return 0.0;
 			return base.ConvertFromString(text, row, memberMapData);
 		}
 	}
