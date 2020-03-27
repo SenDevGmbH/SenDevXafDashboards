@@ -5,7 +5,7 @@ using System.Text;
 
 namespace SenDev.DashboardsDemo.Module.Covid
 {
-	public class CovidDay
+	public class CovidDay : ICovidDay
 	{
 
 		public DateTime Date
@@ -22,43 +22,44 @@ namespace SenDev.DashboardsDemo.Module.Covid
 		}
 
 		[Index(1)]
-		public string Country
+		public virtual string Country
 		{
 			get; set;
 		}
 
 		[Index(0)]
-		public string Province
+		public virtual string Province
 		{
 			get; set;
 		}
 
 		[Index(3)]
-		public int ConfirmedCount
+		public virtual int ConfirmedCount
 		{
 			get; set;
 		}
 
 		[Index(4)]
-		public int DeathCount
+		public virtual int DeathCount
 		{
 			get;
+			set;
 		}
 
 		[Index(5)]
-		public int RecoveredCount
+		public virtual int RecoveredCount
 		{
 			get; set;
 		}
 
 		[Index(6)]
-		public double Latitude
+		public virtual double Latitude
 		{
 			get; set;
 		}
 
 		[Index(7)]
-		public double Longitude
+		public virtual double Longitude
 		{
 			get; set;
 		}

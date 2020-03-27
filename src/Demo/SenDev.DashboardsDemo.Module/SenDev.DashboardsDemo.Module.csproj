@@ -252,6 +252,8 @@
     <Compile Include="Covid\CovidDataManager.cs" />
     <Compile Include="Covid\CovidDay.cs" />
     <Compile Include="Covid\CovidDayHolder.cs" />
+    <Compile Include="Covid\CovidDayNewFormat.cs" />
+    <Compile Include="Covid\ICovidDay.cs" />
     <Compile Include="DatabaseUpdate\Updater.cs" />
     <Compile Include="IJobSchedulerService.cs" />
     <Compile Include="Module.cs">

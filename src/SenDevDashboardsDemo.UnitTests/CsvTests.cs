@@ -24,6 +24,16 @@ namespace SenDevDashboardsDemo.UnitTests
 
 		}
 
+		[Fact]
+		public void CsvNewFormatTest()
+		{
+			var stream1 = GetCsvStream("03-22-2020.csv");
+			Assert.NotNull(stream1);
+			var records1 = CovidDataManager.GetRecords(new DateTime(2020, 3, 22), stream1);
+
+
+		}
+
 		private Stream GetCsvStream(string name)
 		{
 			var assembly = GetType().Assembly;

@@ -15,11 +15,11 @@ namespace SenDev.DashboardsDemo.Module.Covid
 	{
 		private CovidDayHolder fistDayWith100InfectionsPerCountry = new CovidDayHolder();
 		private CovidDayHolder firstDayWith100InfectionsPerProvince = new CovidDayHolder();
-		
-		public IList<CovidDay> GetData()
+
+		public IList<ICovidDay> GetData()
 		{
 
-			var tasks = new List<Task<IEnumerable<CovidDay>>>();
+			var tasks = new List<Task<IEnumerable<ICovidDay>>>();
 			for (var date = new DateTime(2020, 1, 22); date <= DateTime.Today; date = date.AddDays(1))
 			{
 				tasks.Add(RetrieveDayDataAsync(date));
@@ -29,7 +29,7 @@ namespace SenDev.DashboardsDemo.Module.Covid
 
 		}
 
-		private async Task<IEnumerable<CovidDay>> RetrieveDayDataAsync(DateTime date)
+		private async Task<IEnumerable<ICovidDay>> RetrieveDayDataAsync(DateTime date)
 		{
 			using (HttpClient httpClient = new HttpClient())
 			{
@@ -44,16 +44,21 @@ namespace SenDev.DashboardsDemo.Module.Covid
 
 			}
 
-			return Array.Empty<CovidDay>();
+			return Array.Empty<ICovidDay>();
 		}
 
-		public static IList<CovidDay> GetRecords(DateTime date, Stream stream)
+		public static IList<ICovidDay> GetRecords(DateTime date, Stream stream)
 		{
 			if (stream is null)
 				throw new ArgumentNullException(nameof(stream));
 
 			CsvReader reader = CreateCsvReader(stream);
-			var records = reader.GetRecords<CovidDay>().ToArray();
+			ICovidDay[] records ;
+			if (date < new DateTime(2020, 3, 22))
+				records = reader.GetRecords<CovidDay>().ToArray();
+			else
+				records = reader.GetRecords<CovidDayNewFormat>().ToArray();
+
 			foreach (var record in records)
 			{
 				record.Date = date;
@@ -95,7 +100,7 @@ namespace SenDev.DashboardsDemo.Module.Covid
 		{
 			if (string.IsNullOrWhiteSpace(text))
 				return 0;
-			return base.ConvertFromString(text, row, memberMapData);
+			!return base.ConvertFromString(text, row, memberMapData);
 		}
 	}
 
