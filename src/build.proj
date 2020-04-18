@@ -6,6 +6,8 @@
     <TargetDevExpressVersion Include="19.2.4" TargetParentDir="DX"/>
     <TargetDevExpressVersion Include="19.2.5" TargetParentDir="DX"/>
     <TargetDevExpressVersion Include="19.2.6" TargetParentDir="DX"/>
+    <TargetDevExpressVersion Include="19.2.7" TargetParentDir="DX"/>
+    <TargetDevExpressVersion Include="19.2.7" TargetParentDir="SelfCompiled"/>
   </ItemGroup>
 
 
