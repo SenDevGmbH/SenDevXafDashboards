@@ -5,69 +5,69 @@ using System.Text;
 
 namespace SenDev.DashboardsDemo.Module.Covid
 {
-	public class CovidDay : ICovidDay
+	public class CovidDay 
 	{
 
 		public DateTime Date
 		{
 			get; set;
 		}
+		[Ignore]
 		public int DaysSinceFirst100InfectionsByCountry
 		{
 			get; set;
 		}
-		public int DaysSinceFirst100InfectionsByProvince
-		{
-			get; set;
-		}
-
-		[Index(1)]
+		
+		[Name("Country/Region", "Country_Region")]
 		public virtual string Country
 		{
 			get; set;
 		}
 
-		[Index(0)]
+		[Name("Province/State", "Province_State")]
 		public virtual string Province
 		{
 			get; set;
 		}
 
-		[Index(3)]
+		[Name("Confirmed")]
 		public virtual int ConfirmedCount
 		{
 			get; set;
 		}
 
-		[Index(4)]
+		[Name("Deaths")]
 		public virtual int DeathCount
 		{
 			get;
 			set;
 		}
 
-		[Index(5)]
+		[Name("Recovered")]
 		public virtual int RecoveredCount
 		{
 			get; set;
 		}
 
-		[Index(6)]
+		[Name("Latitude")]
 		public virtual double Latitude
 		{
 			get; set;
 		}
 
-		[Index(7)]
+		[Name("Longitude")]
 		public virtual double Longitude
 		{
 			get; set;
 		}
 
+		[Ignore]
 		public CovidDayHolder FirstDayWith100InfectionsPerCountry
 		{
 			get; set;
 		}
+
+		[Ignore]
 		public CovidDayHolder FirstDayWith100InfectionsPerProvince
 		{
 			get; set;
