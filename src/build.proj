@@ -1,14 +1,7 @@
 <Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="15.0" DefaultTargets="Build">
   <ItemGroup>
     <ProjectToBuild Include="build-core.proj"/>
-    <TargetDevExpressVersion Include="19.2.3" TargetParentDir="DX"/>
-    <TargetDevExpressVersion Include="19.2.3" TargetParentDir="SelfCompiled" PackageNameSuffix=".SelfCompiled"/>
-    <TargetDevExpressVersion Include="19.2.4" TargetParentDir="DX"/>
-    <TargetDevExpressVersion Include="19.2.5" TargetParentDir="DX"/>
-    <TargetDevExpressVersion Include="19.2.6" TargetParentDir="DX"/>
-    <TargetDevExpressVersion Include="19.2.7" TargetParentDir="DX"/>
     <TargetDevExpressVersion Include="20.1.4" TargetParentDir="DX"/>
-    <TargetDevExpressVersion Include="19.2.7" TargetParentDir="SelfCompiled"/>
     <TargetDevExpressVersion Include="20.1.4" TargetParentDir="SelfCompiled"/>
 
   </ItemGroup>
