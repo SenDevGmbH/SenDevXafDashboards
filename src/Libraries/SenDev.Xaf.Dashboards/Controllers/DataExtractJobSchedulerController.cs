@@ -19,7 +19,10 @@ namespace SenDev.Xaf.Dashboards.Controllers
 		private void ObjectSpace_ObjectDeleted(object sender, ObjectsManipulatingEventArgs e)
 		{
 			if (JobScheduler != null)
-				e.Objects.OfType<DashboardDataExtract>().ForEach(de => JobScheduler.RemoveDataExtractCreationJob(de));
+			{
+				foreach (var extract in e.Objects.OfType<DashboardDataExtract>())
+					JobScheduler.RemoveDataExtractCreationJob(extract);
+			}
 		}
 
 		protected override void OnDeactivated()
