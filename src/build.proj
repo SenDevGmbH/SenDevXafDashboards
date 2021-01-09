@@ -5,7 +5,8 @@
     <TargetDevExpressVersion Include="20.1.4" TargetParentDir="SelfCompiled" PackageNameSuffix=".SelfCompiled"/>
     <TargetDevExpressVersion Include="20.1.7" TargetParentDir="DX"/>
     <TargetDevExpressVersion Include="20.1.7" TargetParentDir="SelfCompiled" PackageNameSuffix=".SelfCompiled"/>
-
+    <TargetDevExpressVersion Include="20.2.4" TargetParentDir="DX"/>
+    <TargetDevExpressVersion Include="20.2.4" TargetParentDir="SelfCompiled" PackageNameSuffix=".SelfCompiled"/>
   </ItemGroup>
 
 
