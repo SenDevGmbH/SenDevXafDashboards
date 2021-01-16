@@ -57,7 +57,7 @@ namespace SenDev.Xaf.Dashboards.Scripting
 
 			using (DashboardObjectDataSource ods = new DashboardObjectDataSource())
 			{
-				ScriptDataSource dataSource = new ScriptDataSource(extract.Script) { Application = Application };
+				ScriptDataSource dataSource = CreateScriptDataSource(extract, Application);
 				object data = dataSource.GetDataForDataExtract();
 				if (data is byte[] buffer)
 				{
@@ -84,6 +84,9 @@ namespace SenDev.Xaf.Dashboards.Scripting
 
 			}
 		}
+
+		protected virtual ScriptDataSource CreateScriptDataSource(DashboardDataExtract extract, XafApplication application) =>
+			new ScriptDataSource(extract.Script) { Application = application };
 
 		private static void SetDataExtractContent(DashboardDataExtract extract, byte[] fileData)
 		{

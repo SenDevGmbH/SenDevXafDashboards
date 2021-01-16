@@ -55,7 +55,7 @@ namespace SenDev.Xaf.Dashboards.Scripting
 		{
 			return assembly.Location;
 		}
-		private string[] GetReferencedAssembliesPaths()
+		protected virtual string[] GetReferencedAssembliesPaths()
 		{
 			var assembly = GetType().Assembly;
 			var assemmblyNames =
