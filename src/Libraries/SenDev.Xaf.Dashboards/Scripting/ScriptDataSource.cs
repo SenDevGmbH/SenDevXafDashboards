@@ -55,6 +55,11 @@ namespace SenDev.Xaf.Dashboards.Scripting
 		{
 			return assembly.Location;
 		}
+
+		private string GetNeststandardAssemblyPath()
+		{
+			return AppDomain.CurrentDomain.GetAssemblies().FirstOrDefault(asm => asm.GetName().Name == "netstandard")?.Location;
+		}
 		protected virtual string[] GetReferencedAssembliesPaths()
 		{
 			var assembly = GetType().Assembly;
@@ -64,7 +69,12 @@ namespace SenDev.Xaf.Dashboards.Scripting
 				.SelectMany(ti => GetTypesHierarchy(ti.Type)).Select(t => t.Assembly)
 				.Where(a => a.GetName().Name != "mscorlib")
 				.Select(GetAssemblyLocation)
-				.ToArray();
+				.ToList();
+
+			var netstandardPath = GetNeststandardAssemblyPath();
+			if (!string.IsNullOrWhiteSpace(netstandardPath))
+				assemmblyNames.Add(netstandardPath);
+
 			var assemblies = new HashSet<string>(assemmblyNames, StringComparer.OrdinalIgnoreCase);
 
 			var module = Application.Modules.FindModule<SenDevDashboardsModule>();
