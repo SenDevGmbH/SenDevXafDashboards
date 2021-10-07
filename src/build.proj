@@ -8,6 +8,7 @@
     <TargetDevExpressVersion Include="20.2.4" TargetParentDir="DX"/>
     <TargetDevExpressVersion Include="20.2.4" TargetParentDir="SelfCompiled" PackageNameSuffix=".SelfCompiled"/>
     <TargetDevExpressVersion Include="20.2.5" TargetParentDir="DX"/>
+    <TargetDevExpressVersion Include="20.2.7" TargetParentDir="DX"/>
   </ItemGroup>
 
 
