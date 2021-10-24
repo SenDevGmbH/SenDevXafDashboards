@@ -1,6 +1,7 @@
 ﻿using System;
 using System.IO;
 using DevExpress.DashboardCommon;
+using DevExpress.ExpressApp;
 using DevExpress.ExpressApp.Model;
 using DevExpress.Persistent.Base;
 using DevExpress.Persistent.BaseImpl;
@@ -167,17 +168,19 @@ namespace SenDev.Xaf.Dashboards.BusinessObjects
             get => rowCount;
             set => SetPropertyValue(nameof(RowCount), ref rowCount, value);
         }
-		public void ConfigureConnectionParameters(ExtractDataSourceConnectionParameters parameters)
+		public void ConfigureConnectionParameters(XafApplication application, ExtractDataSourceConnectionParameters parameters)
 		{
-			parameters.FileName = EnsureTempFileCreated();
+			parameters.FileName = EnsureTempFileCreated(application);
 		}
 
-		public string EnsureTempFileCreated()
+
+		protected virtual byte[] GetExtractData(XafApplication application) => ExtractData;
+		public string EnsureTempFileCreated(XafApplication application)
 		{
 			if (string.IsNullOrWhiteSpace(tempFileName))
 			{
 				tempFileName = Path.GetTempFileName();
-				File.WriteAllBytes(tempFileName, ExtractData);
+				File.WriteAllBytes(tempFileName, GetExtractData(application));
 			}
 
 			return tempFileName;

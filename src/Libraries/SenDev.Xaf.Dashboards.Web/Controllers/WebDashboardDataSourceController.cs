@@ -40,7 +40,7 @@ namespace SenDev.Xaf.Dashboards.Web.Controllers
 				{
 					IDashboardDataExtract extract = GetDataExtract(id);
 					if (extract != null)
-						extract.ConfigureConnectionParameters(extractParameters);
+						extract.ConfigureConnectionParameters(Application, extractParameters);
 				}
 			}
 		}

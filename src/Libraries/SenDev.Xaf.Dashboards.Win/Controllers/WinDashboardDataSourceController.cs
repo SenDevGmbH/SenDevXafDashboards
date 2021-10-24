@@ -62,7 +62,7 @@ namespace SenDev.Xaf.Dashboards.Win.Controllers
 				{
 					var extract = DashboardHelper.GetDataExtract(Application, ObjectSpace, id);
 					if (extract != null)
-						extract.ConfigureConnectionParameters(extractParameters);
+						extract.ConfigureConnectionParameters(Application, extractParameters);
 				}
 			}
 		}
