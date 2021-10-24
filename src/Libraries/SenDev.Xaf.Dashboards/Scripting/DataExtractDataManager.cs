@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.IO;
 using System.Linq;
 using DevExpress.DashboardCommon;
@@ -80,6 +81,8 @@ namespace SenDev.Xaf.Dashboards.Scripting
 						extractDataSource.FileName = fileName;
 						extractDataSource.UpdateExtractFile();
 						SetDataExtractContent(extract, File.ReadAllBytes(fileName));
+						if (data is ICollection collection)
+							extract.RowCount = collection.Count;
 					}
 				}
 				finally

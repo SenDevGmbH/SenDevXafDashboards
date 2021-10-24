@@ -134,11 +134,15 @@ namespace SenDev.Xaf.Dashboards.BusinessObjects
 			}
 		}
 
+
+
 		[VisibleInDetailView(true)]
 		[VisibleInListView(false)]
 		[VisibleInLookupListView(false)]
 		[NonPersistent]
 		public TimeSpan Duration => FinishTime - StartTime;
+
+		
 
 		private long extractDataSize;
 
@@ -153,6 +157,16 @@ namespace SenDev.Xaf.Dashboards.BusinessObjects
 		}
 
 
+        private int rowCount;
+		[VisibleInDetailView(false)]
+		[VisibleInListView(true)]
+		[VisibleInLookupListView(false)]
+		[ModelDefault(nameof(IModelMember.Caption), "Row Count")]
+		public int RowCount
+        {
+            get => rowCount;
+            set => SetPropertyValue(nameof(RowCount), ref rowCount, value);
+        }
 		public void ConfigureConnectionParameters(ExtractDataSourceConnectionParameters parameters)
 		{
 			parameters.FileName = EnsureTempFileCreated();

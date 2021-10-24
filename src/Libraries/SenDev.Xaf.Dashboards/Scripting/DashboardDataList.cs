@@ -53,7 +53,6 @@ namespace SenDev.Xaf.Dashboards.Scripting
 
                 buffer = Queryable.Skip(neededBufferStartIndex / ElementsPerSourceRow).Take(SourceRowsBufferSize).Cast<object>().ToArray();
                 queriesCount++;
-                System.Diagnostics.Debug.WriteLine("Loaded buffer for index={0}", neededBufferStartIndex);
                 bufferStartIndex = neededBufferStartIndex;
             }
 
