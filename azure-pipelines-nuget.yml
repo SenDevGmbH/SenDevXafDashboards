@@ -40,8 +40,15 @@ steps:
     solution: '$(solution)'
     platform: '$(buildPlatform)'
     configuration: '$(buildConfiguration)'
-    msbuildArguments: '/t:NuGet /p:TargetParentDir=DX'
+    msbuildArguments: '/bl:$(Build.ArtifactStagingDirectory)\Log\build.binlog /t:NuGet /p:TargetParentDir=DX'
 
+- task: PublishBuildArtifacts@1
+  displayName: 'Publish binary log'
+  inputs:
+    PathtoPublish: '$(Build.ArtifactStagingDirectory)\Log'
+    ArtifactName: 'Binary log'
+    publishLocation: 'Container'
+  condition: succeededOrFailed()
 
 - task: VSTest@2
   inputs:

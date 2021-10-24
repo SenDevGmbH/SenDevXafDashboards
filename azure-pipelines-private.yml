@@ -32,7 +32,15 @@ steps:
     solution: '$(solution)'
     platform: '$(buildPlatform)'
     configuration: '$(buildConfiguration)'
-    msbuildArguments: '/t:NuGet /p:TargetParentDir=SelfCompiled'
+    msbuildArguments: '/bl:$(Build.ArtifactStagingDirectory)\Log\build.binlog /t:NuGet /p:TargetParentDir=SelfCompiled'
+
+- task: PublishBuildArtifacts@1
+  displayName: 'Publish binary log'
+  inputs:
+    PathtoPublish: '$(Build.ArtifactStagingDirectory)\Log'
+    ArtifactName: 'Binary log'
+    publishLocation: 'Container'
+  condition: succeededOrFailed()
 
 - task: NuGetAuthenticate@0
   displayName: 'NuGet Authenticate'
