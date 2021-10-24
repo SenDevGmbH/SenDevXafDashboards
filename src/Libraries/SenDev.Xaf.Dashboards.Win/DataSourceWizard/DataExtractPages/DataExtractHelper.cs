@@ -2,6 +2,7 @@
 using DevExpress.DashboardCommon.DataSourceWizard;
 using DevExpress.ExpressApp;
 using SenDev.Xaf.Dashboards.BusinessObjects;
+using SenDev.Xaf.Dashboards.Utils;
 
 namespace SenDev.Xaf.Dashboards.Win.DataSourceWizard.DataExtractPages
 {
@@ -9,12 +10,12 @@ namespace SenDev.Xaf.Dashboards.Win.DataSourceWizard.DataExtractPages
 
 	static class DataExtractHelper
 	{
-		internal static DashboardDataExtract GetDataExtract(IObjectSpace objectSpace, object model)
+		internal static IDashboardDataExtract GetDataExtract(XafApplication application, IObjectSpace objectSpace, object model)
 		{
 			if (model is IExtractDataSourceModel extractModel)
 			{
 				if (Guid.TryParse(extractModel.FileName, out var id))
-					return objectSpace.GetObjectByKey<DashboardDataExtract>(id);
+					return DashboardHelper.GetDataExtract(application, objectSpace, id);
 			}
 
 			return null;

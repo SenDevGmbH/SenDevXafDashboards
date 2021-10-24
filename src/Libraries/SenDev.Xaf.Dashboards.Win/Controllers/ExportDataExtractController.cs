@@ -6,7 +6,7 @@ using SenDev.Xaf.Dashboards.BusinessObjects;
 
 namespace SenDev.Xaf.Dashboards.Win.Controllers
 {
-	public class ExportDataExtractController : ObjectViewController<ListView, DashboardDataExtract>
+	public class ExportDataExtractController : ObjectViewController<ListView, IDashboardDataExtract>
 	{
 		public ExportDataExtractController()
 		{
@@ -15,7 +15,7 @@ namespace SenDev.Xaf.Dashboards.Win.Controllers
 			ExportDataExtractAction.ImageName = "Action_LocalizationExport";
 			ExportDataExtractAction.SelectionDependencyType = SelectionDependencyType.RequireSingleObject;
 			ExportDataExtractAction.Execute += ExportDataExtractAction_Execute;
-			ExportDataExtractAction.TargetObjectsCriteria = $"Not IsNull({nameof(DashboardDataExtract.ExtractData)})";
+			ExportDataExtractAction.TargetObjectsCriteria = $"Not IsNull({nameof(IDashboardDataExtract.ExtractData)})";
 		}
 
 

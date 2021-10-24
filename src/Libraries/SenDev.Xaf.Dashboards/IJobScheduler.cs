@@ -9,8 +9,8 @@ namespace SenDev.Xaf.Dashboards
 {
 	public interface IJobScheduler
 	{
-		void ScheduleDataExtractCreationJob(DashboardDataExtract dataExtract);
-		void RemoveDataExtractCreationJob(DashboardDataExtract dataExtract);
-		void StartDataExtractUpdate(DashboardDataExtract dataExtract);
+		void ScheduleDataExtractCreationJob(IDashboardDataExtract dataExtract);
+		void RemoveDataExtractCreationJob(IDashboardDataExtract dataExtract);
+		void StartDataExtractUpdate(IDashboardDataExtract dataExtract);
 	}
 }

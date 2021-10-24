@@ -1,8 +1,10 @@
 ﻿using System;
 using System.IO;
+using System.Linq;
 using DevExpress.DashboardCommon;
 using DevExpress.ExpressApp;
 using SenDev.Xaf.Dashboards.BusinessObjects;
+using SenDev.Xaf.Dashboards.Utils;
 
 namespace SenDev.Xaf.Dashboards.Scripting
 {
@@ -23,7 +25,11 @@ namespace SenDev.Xaf.Dashboards.Scripting
 		{
 			using (var objectSpace = Application.CreateObjectSpace())
 			{
-				foreach (var extract in objectSpace.GetObjectsQuery<DashboardDataExtract>())
+				var extracts = objectSpace
+					.GetObjects(SenDevDashboardsModule.GetDashboardDataExtractType(Application))
+					.Cast<IDashboardDataExtract>();
+				
+				foreach (var extract in extracts)
 				{
 					UpdateDataExtract(extract);
 					objectSpace.CommitChanges();
@@ -38,7 +44,7 @@ namespace SenDev.Xaf.Dashboards.Scripting
 
 			using (var objectSpace = Application.CreateObjectSpace())
 			{
-				var extract = objectSpace.GetObjectByKey<DashboardDataExtract>(key);
+				var extract = DashboardHelper.GetDataExtract(Application, objectSpace, key);
 				if (extract == null)
 				{
 					throw new ArgumentException($"No DashboardExtract found for the key '{key}'", nameof(key));
@@ -48,7 +54,7 @@ namespace SenDev.Xaf.Dashboards.Scripting
 				objectSpace.CommitChanges();
 			}
 		}
-		private void UpdateDataExtract(DashboardDataExtract extract)
+		private void UpdateDataExtract(IDashboardDataExtract extract)
 		{
 			if (extract == null)
 				throw new ArgumentNullException(nameof(extract));
@@ -85,10 +91,10 @@ namespace SenDev.Xaf.Dashboards.Scripting
 			}
 		}
 
-		protected virtual ScriptDataSource CreateScriptDataSource(DashboardDataExtract extract, XafApplication application) =>
+		protected virtual ScriptDataSource CreateScriptDataSource(IDashboardDataExtract extract, XafApplication application) =>
 			new ScriptDataSource(extract.Script) { Application = application };
 
-		private static void SetDataExtractContent(DashboardDataExtract extract, byte[] fileData)
+		private static void SetDataExtractContent(IDashboardDataExtract extract, byte[] fileData)
 		{
 			extract.ExtractData = fileData;
 			extract.ExtractDataSize = extract.ExtractData.LongLength;

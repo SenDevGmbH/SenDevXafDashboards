@@ -35,9 +35,9 @@ namespace SenDev.Xaf.Dashboards.Win.BusinessObjects
 		}
 
 
-		private DashboardDataExtract dataExtract;
+		private IDashboardDataExtract dataExtract;
 		[ImmediatePostData]
-		public DashboardDataExtract DataExtract
+		public IDashboardDataExtract DataExtract
 		{
 			get => dataExtract;
 			set => SetPropertyValue(nameof(DataExtract), ref dataExtract, value);

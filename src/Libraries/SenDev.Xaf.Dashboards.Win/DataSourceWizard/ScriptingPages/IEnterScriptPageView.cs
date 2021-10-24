@@ -19,5 +19,10 @@ namespace SenDev.Xaf.Dashboards.Win.DataSourceWizard.ScriptingPages
 		{
 			get;
 		}
+
+		XafApplication Application
+		{
+			get;
+		}
 	}
 }

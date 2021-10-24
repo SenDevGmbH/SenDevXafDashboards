@@ -13,7 +13,7 @@ namespace SenDev.Xaf.Dashboards.Win.DataSourceWizard.DataExtractPages
 		public override void Begin()
 		{
 			base.Begin();
-			View.WizardParameters.DataExtract = DataExtractHelper.GetDataExtract(View.ParamsObjectSpace, Model);
+			View.WizardParameters.DataExtract = DataExtractHelper.GetDataExtract(View.Application, View.ParamsObjectSpace, Model);
 		}
 
 
@@ -21,7 +21,7 @@ namespace SenDev.Xaf.Dashboards.Win.DataSourceWizard.DataExtractPages
 		{
 			var dataExtract = View.WizardParameters.DataExtract;
 			IExtractDataSourceModel model = Model;
-			model.FileName = dataExtract?.Oid.ToString();
+			model.FileName = dataExtract?.GetKeyAsString();
 		}
 		public override bool FinishEnabled => View.WizardParameters.DataExtract != null;
 		public override bool MoveNextEnabled => false;

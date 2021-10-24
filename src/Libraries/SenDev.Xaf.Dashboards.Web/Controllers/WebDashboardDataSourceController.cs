@@ -38,16 +38,16 @@ namespace SenDev.Xaf.Dashboards.Web.Controllers
 			{
 				if (Guid.TryParse(extractParameters.FileName, out var id))
 				{
-					DashboardDataExtract extract = GetDataExtract(id);
+					IDashboardDataExtract extract = GetDataExtract(id);
 					if (extract != null)
 						extract.ConfigureConnectionParameters(extractParameters);
 				}
 			}
 		}
 
-		protected virtual DashboardDataExtract GetDataExtract(Guid id)
+		protected virtual IDashboardDataExtract GetDataExtract(Guid id)
 		{
-			return ObjectSpace.GetObjectByKey<DashboardDataExtract>(id);
+			return (IDashboardDataExtract)ObjectSpace.GetObjectByKey(SenDevDashboardsModule.GetDashboardDataExtractType(Application), id);
 		}
 
 	}

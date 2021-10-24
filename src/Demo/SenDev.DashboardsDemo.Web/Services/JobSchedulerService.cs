@@ -8,25 +8,25 @@ namespace SenDev.DashboardsDemo.Web.Services
 {
 	public class JobSchedulerService : MarshalByRefObject, IJobSchedulerService
 	{
-		public void RemoveUpdateDataExtractJob(Guid dataExtractId)
+		public void RemoveUpdateDataExtractJob(string dataExtractId)
 		{
-			Hangfire.RecurringJob.RemoveIfExists(dataExtractId.ToString());
+			Hangfire.RecurringJob.RemoveIfExists(dataExtractId);
 		}
 
-		public void ScheduleUpdateDataExtractJob(Guid dataExtractId)
+		public void ScheduleUpdateDataExtractJob(string dataExtractId)
 		{
 			using (var dataLayer = CreateDataLayer())
 			using (var unitOfWork = new UnitOfWork(dataLayer))
 			{
-				var dataExtract = unitOfWork.GetObjectByKey<DashboardDataExtract>(dataExtractId);
+				var dataExtract = unitOfWork.GetObjectByKey<DashboardDataExtract>(new Guid(dataExtractId));
 				if (!string.IsNullOrWhiteSpace(dataExtract.CronExpression))
 					Hangfire.RecurringJob.AddOrUpdate(dataExtractId.ToString(), () => UpdateDataExtract(dataExtractId.ToString()), dataExtract.CronExpression);
 			}
 		}
 
-        public void StartDataExtractUpdate(Guid dataExtractId)
+        public void StartDataExtractUpdate(string dataExtractId)
         {
-            Hangfire.BackgroundJob.Enqueue(() => UpdateDataExtract(dataExtractId.ToString()));
+            Hangfire.BackgroundJob.Enqueue(() => UpdateDataExtract(dataExtractId));
         }
 
         public void UpdateDataExtract(string dataExtractId)

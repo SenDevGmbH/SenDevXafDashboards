@@ -5,6 +5,7 @@ using DevExpress.ExpressApp;
 using DevExpress.ExpressApp.Dashboards.Win;
 using SenDev.Xaf.Dashboards.BusinessObjects;
 using SenDev.Xaf.Dashboards.Controllers;
+using SenDev.Xaf.Dashboards.Utils;
 
 namespace SenDev.Xaf.Dashboards.Win.Controllers
 {
@@ -59,7 +60,7 @@ namespace SenDev.Xaf.Dashboards.Win.Controllers
 			{
 				if (Guid.TryParse(extractParameters.FileName, out var id))
 				{
-					var extract = ObjectSpace.GetObjectByKey<DashboardDataExtract>(id);
+					var extract = DashboardHelper.GetDataExtract(Application, ObjectSpace, id);
 					if (extract != null)
 						extract.ConfigureConnectionParameters(extractParameters);
 				}

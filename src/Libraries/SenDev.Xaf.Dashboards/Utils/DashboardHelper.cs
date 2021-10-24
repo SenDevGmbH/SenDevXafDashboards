@@ -4,6 +4,7 @@ using System.Globalization;
 using System.Linq;
 using DevExpress.Data;
 using DevExpress.ExpressApp;
+using SenDev.Xaf.Dashboards.BusinessObjects;
 
 namespace SenDev.Xaf.Dashboards.Utils
 {
@@ -59,5 +60,17 @@ namespace SenDev.Xaf.Dashboards.Utils
 		}
 
         public static IJobScheduler GetJobScheduler(this XafApplication application) => application.Modules.FindModule<SenDevDashboardsModule>()?.JobScheduler;
+
+		public static IDashboardDataExtract GetDataExtract(XafApplication application, IObjectSpace objectSpace, object id)
+		{
+			if (application is null)
+				throw new ArgumentNullException(nameof(application));
+			
+			if (objectSpace is null)
+				throw new ArgumentNullException(nameof(objectSpace));
+
+			return (IDashboardDataExtract)objectSpace.GetObjectByKey(SenDevDashboardsModule.GetDashboardDataExtractType(application), id);
+
+		}
     }
 }

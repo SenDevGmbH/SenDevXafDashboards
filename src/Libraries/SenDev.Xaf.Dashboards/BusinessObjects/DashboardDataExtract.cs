@@ -14,7 +14,7 @@ namespace SenDev.Xaf.Dashboards.BusinessObjects
 	[CreatableItem(false)]
 	[NavigationItem("Reports")]
 	[ModelDefault(nameof(IModelClass.Caption), "Dashboard Data Extract")]
-	public class DashboardDataExtract : BaseObject
+	public class DashboardDataExtract : BaseObject, IDashboardDataExtract
 	{
 		private string tempFileName;
 
@@ -169,6 +169,6 @@ namespace SenDev.Xaf.Dashboards.BusinessObjects
 			return tempFileName;
 		}
 
-
+		public string GetKeyAsString() => Oid.ToString();
 	}
 }

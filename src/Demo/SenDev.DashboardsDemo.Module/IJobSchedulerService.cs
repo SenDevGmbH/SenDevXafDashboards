@@ -7,12 +7,12 @@ namespace SenDev.DashboardsDemo.Module
 	public interface IJobSchedulerService
 	{
 		[OperationContract]
-		void ScheduleUpdateDataExtractJob(Guid dataExtractId);
+		void ScheduleUpdateDataExtractJob(string dataExtractId);
 
 		[OperationContract]
-		void RemoveUpdateDataExtractJob(Guid dataExtractId);
+		void RemoveUpdateDataExtractJob(string dataExtractId);
 
 		[OperationContract]
-        void StartDataExtractUpdate(Guid dataExtractId);
+        void StartDataExtractUpdate(string dataExtractId);
     }
 }

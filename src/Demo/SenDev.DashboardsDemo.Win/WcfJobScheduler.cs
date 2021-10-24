@@ -20,22 +20,22 @@ namespace SenDev.DashboardsDemo.Win
 			get;
 		}
 
-		public void RemoveDataExtractCreationJob(DashboardDataExtract dataExtract)
+		public void RemoveDataExtractCreationJob(IDashboardDataExtract dataExtract)
 		{
 			var channel = CreateChannel();
-			channel.RemoveUpdateDataExtractJob(dataExtract.Oid);
+			channel.RemoveUpdateDataExtractJob(dataExtract.GetKeyAsString());
 		}
 
-		public void ScheduleDataExtractCreationJob(DashboardDataExtract dataExtract)
+		public void ScheduleDataExtractCreationJob(IDashboardDataExtract dataExtract)
 		{
 			var channel = CreateChannel();
-			channel.ScheduleUpdateDataExtractJob(dataExtract.Oid);
+			channel.ScheduleUpdateDataExtractJob(dataExtract.GetKeyAsString());
 		}
 
-		public void StartDataExtractUpdate(DashboardDataExtract dataExtract)
+		public void StartDataExtractUpdate(IDashboardDataExtract dataExtract)
 		{
             var channel = CreateChannel();
-            channel.StartDataExtractUpdate(dataExtract.Oid);
+            channel.StartDataExtractUpdate(dataExtract.GetKeyAsString());
 		}
 	}
 

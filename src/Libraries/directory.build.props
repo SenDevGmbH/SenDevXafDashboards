@@ -1,7 +1,7 @@
 <Project>
  <PropertyGroup>
-    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
-    <DevExpressVersion>20.1</DevExpressVersion>
+    <TargetFrameworkVersion>v4.7</TargetFrameworkVersion>
+    <DevExpressVersion>20.2</DevExpressVersion>
  </PropertyGroup>
 
  <ItemGroup>

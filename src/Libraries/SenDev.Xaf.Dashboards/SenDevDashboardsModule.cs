@@ -6,6 +6,7 @@ using DevExpress.ExpressApp.DC;
 using DevExpress.ExpressApp.Updating;
 using DevExpress.ExpressApp.Xpo;
 using DevExpress.Persistent.BaseImpl;
+using SenDev.Xaf.Dashboards.BusinessObjects;
 using SenDev.Xaf.Dashboards.Scripting;
 
 namespace SenDev.Xaf.Dashboards
@@ -23,7 +24,7 @@ namespace SenDev.Xaf.Dashboards
 		{
 			get; set;
 		}
-		
+
 		/// <summary>
 		/// List of simple names of reference assemblies for script compilation
 		/// </summary>
@@ -37,7 +38,20 @@ namespace SenDev.Xaf.Dashboards
 		/// </summary>
 		public Type DefaultBusinessObjectType
 		{
-			get;set;
+			get; set;
+		}
+
+		/// <summary>
+		/// Sets or returns type 
+		/// </summary>
+		public Type DashboardExtractType { get; set; } = typeof(DashboardDataExtract);
+
+		public static Type GetDashboardDataExtractType(XafApplication application)
+		{
+			if (application is null)
+				throw new ArgumentNullException(nameof(application));
+
+			return application.Modules.FindModule<SenDevDashboardsModule>()?.DashboardExtractType ?? typeof(DashboardDataExtract);
 		}
 
 		public override IEnumerable<ModuleUpdater> GetModuleUpdaters(IObjectSpace objectSpace, Version versionFromDB)

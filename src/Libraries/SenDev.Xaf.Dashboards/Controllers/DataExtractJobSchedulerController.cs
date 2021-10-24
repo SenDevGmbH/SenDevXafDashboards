@@ -7,7 +7,7 @@ using SenDev.Xaf.Dashboards.Utils;
 
 namespace SenDev.Xaf.Dashboards.Controllers
 {
-	public class DataExtractJobSchedulerController : ObjectViewController<DetailView, DashboardDataExtract>
+	public class DataExtractJobSchedulerController : ObjectViewController<DetailView, IDashboardDataExtract>
 	{
 		protected override void OnActivated()
 		{
@@ -20,7 +20,7 @@ namespace SenDev.Xaf.Dashboards.Controllers
 		{
 			if (JobScheduler != null)
 			{
-				foreach (var extract in e.Objects.OfType<DashboardDataExtract>())
+				foreach (var extract in e.Objects.OfType<IDashboardDataExtract>())
 					JobScheduler.RemoveDataExtractCreationJob(extract);
 			}
 		}

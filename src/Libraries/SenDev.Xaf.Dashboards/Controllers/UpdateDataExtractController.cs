@@ -7,7 +7,7 @@ using SenDev.Xaf.Dashboards.Utils;
 
 namespace SenDev.Xaf.Dashboards.Controllers
 {
-	public class UpdateDataExtractController : ObjectViewController<ListView, DashboardDataExtract>
+	public class UpdateDataExtractController : ObjectViewController<ListView, IDashboardDataExtract>
 	{
 
 

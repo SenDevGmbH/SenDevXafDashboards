@@ -127,6 +127,7 @@
       <Link>CommonVersion.cs</Link>
     </Compile>
     <Compile Include="BusinessObjects\DashboardDataExtract.cs" />
+    <Compile Include="BusinessObjects\IDashboardDataExtract.cs" />
     <Compile Include="Controllers\CustomizeDashboardDashboardController.cs" />
     <Compile Include="Controllers\CustomizeDashboardEventArgs.cs" />
     <Compile Include="Controllers\DataExtractJobSchedulerController.cs" />
@@ -140,11 +141,11 @@
     <Compile Include="Model\IModelDashboardsList.cs" />
     <Compile Include="Model\IModelOptionsXtraDashboards.cs" />
     <Compile Include="Model\IModelXtraDashboardPreferences.cs" />
-    <Compile Include="Module.cs">
+    <Compile Include="SenDevDashboardsModule.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Module.Designer.cs">
-      <DependentUpon>Module.cs</DependentUpon>
+    <Compile Include="SenDevDashboardsModule.Designer.cs">
+      <DependentUpon>SenDevDashboardsModule.cs</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Scripting\DashboardDataListEnumerator.cs" />
@@ -167,9 +168,9 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Model.DesignedDiffs.xafml" />
-    <EmbeddedResource Include="Module.resx">
+    <EmbeddedResource Include="SenDevDashboardsModule.resx">
       <SubType>Designer</SubType>
-      <DependentUpon>Module.cs</DependentUpon>
+      <DependentUpon>SenDevDashboardsModule.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
