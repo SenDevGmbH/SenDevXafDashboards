@@ -9,7 +9,6 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>SenDev.Xaf.Dashboards</RootNamespace>
     <AssemblyName>SenDev.Xaf.Dashboards</AssemblyName>
-    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
     <FileUpgradeFlags>
     </FileUpgradeFlags>
     <UpgradeBackupLocation>
