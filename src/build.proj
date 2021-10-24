@@ -1,4 +1,4 @@
-<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="15.0" DefaultTargets="Build">
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003" DefaultTargets="Build">
   <ItemGroup>
     <ProjectToBuild Include="build-core.proj"/>
     <TargetDevExpressVersion Include="20.1.4" TargetParentDir="DX"/>
@@ -14,7 +14,7 @@
 
 
   <Target Name="NuGet" Inputs="@(TargetDevExpressVersion)" Outputs="EmptyOutput">
-    <MSBuild Projects="@(ProjectToBuild)" Properties="OutputPath=$(MSBuildProjectDirectory)\bin\%(TargetDevExpressVersion.Identity)\;DevExpressFullVersion=%(TargetDevExpressVersion.Identity);TargetParentDir=%(TargetDevExpressVersion.TargetParentDir);PackageNameSuffix=%(TargetDevExpressVersion.PackageNameSuffix)" StopOnFirstFailure="true" Targets="Nuget" ToolsVersion="15.0"
+    <MSBuild Projects="@(ProjectToBuild)" Properties="OutputPath=$(MSBuildProjectDirectory)\bin\%(TargetDevExpressVersion.Identity)\;DevExpressFullVersion=%(TargetDevExpressVersion.Identity);TargetParentDir=%(TargetDevExpressVersion.TargetParentDir);PackageNameSuffix=%(TargetDevExpressVersion.PackageNameSuffix)" StopOnFirstFailure="true" Targets="Nuget" 
     	Condition="$(TargetParentDir)=='' OR %(TargetDevExpressVersion.TargetParentDir)==$(TargetParentDir)"/>
 
     <MakeDir Directories="bin\nuget"/>
