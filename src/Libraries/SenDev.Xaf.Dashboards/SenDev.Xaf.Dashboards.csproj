@@ -45,7 +45,7 @@
     <AssemblyOriginatorKeyFile>..\StrongKey.snk</AssemblyOriginatorKeyFile>
   </PropertyGroup>
   <ItemGroup>
-    <None Remove="Scripting\ScriptTemplate.cs.template" />
+    <None Remove="Scripting\ScriptTemplate.template" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Microsoft.CSharp" />
@@ -115,7 +115,6 @@
     <Compile Include="..\CommonVersion.cs">
       <Link>CommonVersion.cs</Link>
     </Compile>
-    <EmbeddedResource Include="Scripting\ScriptTemplate.cs.template" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Model.DesignedDiffs.xafml" />
@@ -123,6 +122,7 @@
       <SubType>Designer</SubType>
       <DependentUpon>SenDevDashboardsModule.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Scripting\ScriptTemplate.template" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />

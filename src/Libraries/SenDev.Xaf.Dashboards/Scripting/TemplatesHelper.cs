@@ -16,7 +16,7 @@ namespace SenDev.Xaf.Dashboards.Scripting
 				throw new ArgumentNullException(nameof(type));
 
 			var thisType = typeof(TemplateHelper);
-			using (var stream = thisType.Assembly.GetManifestResourceStream($"{thisType.Namespace}.ScriptTemplate.cs"))
+			using (var stream = thisType.Assembly.GetManifestResourceStream($"{thisType.Namespace}.ScriptTemplate.template"))
 			{
 				return GetScriptTemplate(type, stream);
 			}
