@@ -102,8 +102,8 @@
       <HintPath>$(DevExpressBinLocation)\DevExpress.Persistent.Base.v$(DevExpressVersion).dll</HintPath>
       <SpecificVersion>False</SpecificVersion>
     </Reference>
-    <Reference Include="DevExpress.Persistent.BaseImpl.v$(DevExpressVersion)">
-      <HintPath>$(DevExpressBinLocation)\DevExpress.Persistent.BaseImpl.v$(DevExpressVersion).dll</HintPath>
+    <Reference Include="DevExpress.Persistent.BaseImpl.Xpo.v$(DevExpressVersion)">
+      <HintPath>$(DevExpressBinLocation)\DevExpress.Persistent.BaseImpl.Xpo.v$(DevExpressVersion).dll</HintPath>
       <SpecificVersion>False</SpecificVersion>
     </Reference>
     <Reference Include="DevExpress.Xpo.v$(DevExpressVersion)">
