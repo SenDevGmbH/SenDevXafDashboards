@@ -17,8 +17,8 @@
   </metadata>
 
   <files>
-    <file src="$SourceDir$SenDev.Xaf.Dashboards.Web.dll" target="lib\net46" />
-  	<file src="$SourceDir$SenDev.Xaf.Dashboards.Web.pdb" target="lib\net46" />
+    <file src="$SourceDir$SenDev.Xaf.Dashboards.Web.dll" target="lib\net48" />
+  	<file src="$SourceDir$SenDev.Xaf.Dashboards.Web.pdb" target="lib\net48" />
 	  <file src="$SourceDir$\..\..\Libraries\SenDev.Xaf.Dashboards.Web\**\*.cs" target="src\SenDev.Xaf.Dashboards.Web" />
   </files>
 </package>
