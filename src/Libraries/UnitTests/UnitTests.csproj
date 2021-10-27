@@ -44,7 +44,7 @@
     </Reference>
     <Reference Include="DevExpress.ExpressApp.Xpo.v$(DevExpressVErsion)">
     </Reference>
-    <Reference Include="DevExpress.Persistent.BaseImpl.v$(DevExpressVErsion)">
+    <Reference Include="DevExpress.Persistent.BaseImpl.Xpo.v$(DevExpressVErsion)">
     </Reference>
     <Reference Include="DevExpress.PivotGrid.v$(DevExpressVersion).Core" />
     <Reference Include="DevExpress.Xpo.v$(DevExpressVErsion)">
