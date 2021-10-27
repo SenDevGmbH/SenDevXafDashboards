@@ -19,7 +19,7 @@
       <Output TaskParameter="AbsolutePaths" PropertyName="FullOutputPath"/>
     </ConvertToAbsolutePath>
 	  <MSBuild Projects="@(ProjectToBuild)"
-                 Properties="OutDir=$(FullOutputPath);ReferencePath=$(FullOutputPath);DevExpressVersion=$(DevExpressVersion)"
+                 Properties="OutDir=$(FullOutputPath);ReferencePath=$(FullOutputPath);DevExpressVersion=$(DevExpressVersion);DevExpressBinLocation=$(OutputPath)"
                  StopOnFirstFailure="true" ToolsVersion="$(ToolsVersion)"  Targets="Clean;Rebuild"/>
 	
   </Target>
