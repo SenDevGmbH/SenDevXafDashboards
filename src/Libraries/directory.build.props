@@ -1,5 +1,6 @@
 <Project>
  <PropertyGroup>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <DevExpressVersion>20.2</DevExpressVersion>
     <DevExpressBinLocation>c:\DevExpress\20.2.7\Bin\Framework</DevExpressBinLocation>
  </PropertyGroup>
