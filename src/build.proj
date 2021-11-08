@@ -1,7 +1,8 @@
 <Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003" DefaultTargets="Build">
   <ItemGroup>
     <ProjectToBuild Include="build-core.proj"/>
-    <TargetDevExpressVersion Include="21.2.2" TargetParentDir="DX"/>
+    <TargetDevExpressVersion Include="21.2.3" TargetParentDir="DX"/>
+    <TargetDevExpressVersion Include="21.2.3" TargetParentDir="SelfCompiled" PackageNameSuffix=".SelfCompiled"/>
   </ItemGroup>
 
 
