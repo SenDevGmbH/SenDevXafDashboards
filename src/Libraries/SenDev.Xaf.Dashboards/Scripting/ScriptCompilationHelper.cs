@@ -1,6 +1,7 @@
 ﻿using DevExpress.Data.Filtering;
 using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.CSharp;
+using Microsoft.CodeAnalysis.Emit;
 using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
@@ -43,19 +44,25 @@ namespace SenDev.Xaf.Dashboards.Scripting
 			return assembly.CreateInstance(assembly.GetExportedTypes().Single().FullName);
 		}
 
+		public EmitResult Compile(string script, string outputPath)
+		{
+			var syntaxTree = CSharpSyntaxTree.ParseText(script);
+
+			var compilation = CSharpCompilation.Create(Path.GetFileName(outputPath), new SyntaxTree[] { syntaxTree }, references, compilationOptions);
+
+			return compilation.Emit(outputPath);
+		}
+
 
 		private Assembly GetScriptAssembly(string script)
 		{
 			if (scriptAssemblyCache.TryGetValue(script, out var cachedAssembly))
 				return cachedAssembly;
-
-			var syntaxTree = CSharpSyntaxTree.ParseText(script);
-
+			
 			var assemblyFilePath = Path.GetTempFileName();
 
-			var compilation = CSharpCompilation.Create(Path.GetFileName(assemblyFilePath), new SyntaxTree[] { syntaxTree }, references, compilationOptions);
-			var compileResult = compilation.Emit(assemblyFilePath);
-
+			var compileResult = Compile(script, assemblyFilePath);
+			
 			if (compileResult.Success)
 			{
 				var assembly = Assembly.Load(File.ReadAllBytes(assemblyFilePath));
