@@ -1,8 +1,9 @@
 ﻿using DevExpress.Data.Filtering;
-using Microsoft.CSharp;
+using Microsoft.CodeAnalysis;
+using Microsoft.CodeAnalysis.CSharp;
 using System;
-using System.CodeDom.Compiler;
 using System.Collections.Concurrent;
+using System.Collections.Generic;
 using System.Data;
 using System.IO;
 using System.Linq;
@@ -14,14 +15,26 @@ namespace SenDev.Xaf.Dashboards.Scripting
 	{
 
 		private static readonly ConcurrentDictionary<string, Assembly> scriptAssemblyCache = new ConcurrentDictionary<string, Assembly>();
+
+		private static readonly IList<string> namespaces = new List<string>() { "System" };
+
+		private static readonly CSharpCompilationOptions compilationOptions = new CSharpCompilationOptions(OutputKind.DynamicallyLinkedLibrary)
+			.WithUsings(namespaces);
+
+		private readonly IList<MetadataReference> references = new List<MetadataReference>()
+		{
+			MetadataReference.CreateFromFile(typeof(object).Assembly.Location),
+			MetadataReference.CreateFromFile(typeof(Enumerable).Assembly.Location),
+			MetadataReference.CreateFromFile(typeof(CriteriaOperator).Assembly.Location),
+			MetadataReference.CreateFromFile(typeof(IDataReader).Assembly.Location)
+		};
+
 		public ScriptCompilationHelper(string[] referencedAssemblies)
 		{
-			ReferencedAssemblies = referencedAssemblies;
-		}
-
-		private string[] ReferencedAssemblies
-		{
-			get;
+			foreach (var assembly in referencedAssemblies)
+			{
+				references.Add(MetadataReference.CreateFromFile(assembly));
+			}
 		}
 
 		public dynamic CreateObject(string script)
@@ -35,25 +48,27 @@ namespace SenDev.Xaf.Dashboards.Scripting
 		{
 			if (scriptAssemblyCache.TryGetValue(script, out var cachedAssembly))
 				return cachedAssembly;
-			var codeProvider = new CSharpCodeProvider();
-			var options = new CompilerParameters();
-			var assemblyFilePath = Path.GetTempFileName();
-			options.OutputAssembly = assemblyFilePath;
-			options.ReferencedAssemblies.Add(typeof(System.Linq.Enumerable).Assembly.Location);
-			options.ReferencedAssemblies.Add(typeof(CriteriaOperator).Assembly.Location);
-			options.ReferencedAssemblies.Add(typeof(IDataReader).Assembly.Location);
-			options.ReferencedAssemblies.AddRange(ReferencedAssemblies);
-			var compileResult = codeProvider.CompileAssemblyFromSource(options, script);
 
-			if (!compileResult.Errors.HasErrors)
+			var syntaxTree = CSharpSyntaxTree.ParseText(script);
+
+			var assemblyFilePath = Path.GetTempFileName();
+
+			var compilation = CSharpCompilation.Create(Path.GetFileName(assemblyFilePath), new SyntaxTree[] { syntaxTree }, references, compilationOptions);
+			var compileResult = compilation.Emit(assemblyFilePath);
+
+			if (compileResult.Success)
 			{
-				var assembly = Assembly.Load(File.ReadAllBytes(compileResult.PathToAssembly));
-				File.Delete(compileResult.PathToAssembly);
+				var assembly = Assembly.Load(File.ReadAllBytes(assemblyFilePath));
+				File.Delete(assemblyFilePath);
 				scriptAssemblyCache[script] = assembly;
 				return assembly;
 			}
 
-			throw new InvalidOperationException("Compilation failed:\r\n" + string.Join(Environment.NewLine, compileResult.Errors.OfType<CompilerError>().Select(e => e.ToString())));
+			var errors = compileResult.Diagnostics
+				.Where(diagnostic => diagnostic.Severity == DiagnosticSeverity.Error)
+				.Select(diagnostic => diagnostic.ToString());
+
+			throw new InvalidOperationException("Compilation failed:\n" + string.Join("\n", errors));
 		}
 	}
 
