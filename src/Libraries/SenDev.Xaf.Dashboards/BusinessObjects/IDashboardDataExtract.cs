@@ -1,9 +1,11 @@
 ﻿using System;
 using DevExpress.DashboardCommon;
 using DevExpress.ExpressApp;
+using DevExpress.ExpressApp.DC;
 
 namespace SenDev.Xaf.Dashboards.BusinessObjects
 {
+	[DomainComponent, NonPersistentDc]
 	public interface IDashboardDataExtract
 	{
 		string CronExpression { get; set; }

@@ -1,4 +1,8 @@
-﻿using System.ComponentModel;
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Linq;
+using DevExpress.ExpressApp;
 using DevExpress.ExpressApp.Dashboards.Win;
 using DevExpress.ExpressApp.DC;
 using DevExpress.Persistent.Base;
@@ -14,8 +18,10 @@ namespace SenDev.Xaf.Dashboards.Win.BusinessObjects
 		public event PropertyChangedEventHandler PropertyChanged;
 
 
-		public ScriptDashboardWizardParameters()
+		public ScriptDashboardWizardParameters(IObjectSpace objectSpace, Type extractType)
 		{
+			ObjectSpace = objectSpace;
+			ExtractType = extractType;
 		}
 
 		private void OnPropertyChanged(string propertyName)
@@ -35,12 +41,26 @@ namespace SenDev.Xaf.Dashboards.Win.BusinessObjects
 		}
 
 
+
+		public IList<IDashboardDataExtract> DataExtractDataSource => ObjectSpace.GetObjects(ExtractType).OfType<IDashboardDataExtract>().ToList();
+
 		private IDashboardDataExtract dataExtract;
 		[ImmediatePostData]
+		[DataSourceProperty(nameof(DataExtractDataSource))]
+		[EditorAlias(DevExpress.ExpressApp.Editors.EditorAliases.LookupPropertyEditor)]
 		public IDashboardDataExtract DataExtract
 		{
 			get => dataExtract;
 			set => SetPropertyValue(nameof(DataExtract), ref dataExtract, value);
+		}
+		
+		private IObjectSpace ObjectSpace
+		{
+			get;
+		}
+		private Type ExtractType
+		{
+			get;
 		}
 
 		protected bool SetPropertyValue<T>(string propertyName, ref T propertyHolder, T value)
