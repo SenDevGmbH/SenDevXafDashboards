@@ -13,6 +13,7 @@
     <license type="expression">MIT</license>
     <dependencies>
       <dependency id="System.ValueTuple" version="[4.5.0]" />
+      <dependency id="Microsoft.CodeAnalysis.Compilers" version="[3.11.0]" />
     </dependencies>
 
   </metadata>
