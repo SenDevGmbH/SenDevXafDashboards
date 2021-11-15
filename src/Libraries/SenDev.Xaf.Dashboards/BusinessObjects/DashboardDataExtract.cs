@@ -143,7 +143,7 @@ namespace SenDev.Xaf.Dashboards.BusinessObjects
 		[NonPersistent]
 		public TimeSpan Duration => FinishTime - StartTime;
 
-		
+
 
 		private long extractDataSize;
 
@@ -158,16 +158,16 @@ namespace SenDev.Xaf.Dashboards.BusinessObjects
 		}
 
 
-        private int rowCount;
+		private int rowCount;
 		[VisibleInDetailView(false)]
 		[VisibleInListView(true)]
 		[VisibleInLookupListView(false)]
 		[ModelDefault(nameof(IModelMember.Caption), "Row Count")]
 		public int RowCount
-        {
-            get => rowCount;
-            set => SetPropertyValue(nameof(RowCount), ref rowCount, value);
-        }
+		{
+			get => rowCount;
+			set => SetPropertyValue(nameof(RowCount), ref rowCount, value);
+		}
 		public void ConfigureConnectionParameters(XafApplication application, ExtractDataSourceConnectionParameters parameters)
 		{
 			parameters.FileName = EnsureTempFileCreated(application);
@@ -177,10 +177,12 @@ namespace SenDev.Xaf.Dashboards.BusinessObjects
 		protected virtual byte[] GetExtractData(XafApplication application) => ExtractData;
 		public string EnsureTempFileCreated(XafApplication application)
 		{
-			if (string.IsNullOrWhiteSpace(tempFileName))
+			byte[] data = GetExtractData(application);
+
+			if (string.IsNullOrWhiteSpace(tempFileName) && data != null)
 			{
 				tempFileName = Path.GetTempFileName();
-				File.WriteAllBytes(tempFileName, GetExtractData(application));
+				File.WriteAllBytes(tempFileName, data);
 			}
 
 			return tempFileName;

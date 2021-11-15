@@ -20,12 +20,14 @@ namespace SenDev.Xaf.Dashboards.Win.DataSourceWizard
 
 		protected override XafDashboardDataSourceWizardCustomization CreateXafDataSourceWizardCustomization()
 		{
-			var parameters = new ScriptDashboardWizardParameters();
-			var defaultType = Application.Modules.FindModule<SenDevDashboardsModule>()?.DefaultBusinessObjectType;
+			SenDevDashboardsModule module = Application.Modules.FindModule<SenDevDashboardsModule>();
+			IObjectSpace objectSpace = Application.CreateObjectSpace();
+
+			var parameters = new ScriptDashboardWizardParameters(objectSpace, module?.DashboardExtractType);
+			var defaultType = module?.DefaultBusinessObjectType;
 			if (defaultType != null)
 				parameters.Script = TemplateHelper.GetScriptTemplate(defaultType);
 
-			IObjectSpace objectSpace = Application.CreateObjectSpace();
 			return new DashboardCustomization(parameters, objectSpace, Application);
 		}
 	}
