@@ -89,6 +89,7 @@
     <Compile Include="TestClasses\UnitTestsModule.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="TestLayoutManager.cs" />
     <Compile Include="XpoInMemoryXafApplication.cs">
       <SubType>Component</SubType>
     </Compile>
