@@ -1,5 +1,7 @@
 ﻿using System.IO;
+using System.Linq;
 using DevExpress.ExpressApp;
+using Microsoft.CodeAnalysis;
 using SenDev.Xaf.Dashboards.BusinessObjects;
 using SenDev.Xaf.Dashboards.Scripting;
 
@@ -27,12 +29,16 @@ namespace SenDev.Xaf.Dashboards.Controllers
 		{
 			var script = (e.Object as IDashboardDataExtract).Script;
 			var tempFile = Path.GetTempFileName();
-			var isCompiled = Compiler.Compile(script, tempFile).Success;
+			var compileResult = Compiler.Compile(script, tempFile);
 			File.Delete(tempFile);
 
-			if (!isCompiled)
+			if (!compileResult.Success)
 			{
-				ObjectSpace.RemoveFromModifiedObjects(e.Object);
+				var errors = compileResult.Diagnostics
+					.Where(o => o.Severity == DiagnosticSeverity.Error)
+					.Select(o => o.ToString());
+
+				throw new UserFriendlyException(string.Join("\n", errors));
 			}
 		}
 	}

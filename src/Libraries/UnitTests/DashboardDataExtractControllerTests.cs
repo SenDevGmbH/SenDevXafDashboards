@@ -42,7 +42,8 @@ namespace UnitTests
 
 				var dataExtract = objectSpace.CreateObject<DashboardDataExtract>();
 				dataExtract.Script = "invalid script";
-				objectSpace.CommitChanges();
+				
+				var exception = Assert.Throws<UserFriendlyException>(objectSpace.CommitChanges);
 
 				Assert.Empty(objectSpace.GetObjects<DashboardDataExtract>());
 			}
