@@ -37,69 +37,12 @@ namespace SenDev.Xaf.Dashboards.Scripting
 
 		}
 
-		private IEnumerable<Type> GetTypesHierarchy(Type type)
-		{
-			for (var currentType = type; currentType != null; currentType = currentType.BaseType)
-			{
-				yield return currentType;
-			}
-
-			foreach (var itf in type.GetInterfaces().SelectMany(GetTypesHierarchy))
-			{
-				yield return itf;
-			}
-		}
-
-
-		private string GetAssemblyLocation(Assembly assembly)
-		{
-			return assembly.Location;
-		}
-
-		private string GetNeststandardAssemblyPath()
-		{
-			return AppDomain.CurrentDomain.GetAssemblies().FirstOrDefault(asm => asm.GetName().Name == "netstandard")?.Location;
-		}
-		protected virtual string[] GetReferencedAssembliesPaths()
-		{
-			var assembly = GetType().Assembly;
-			var assemmblyNames =
-				Application.TypesInfo.PersistentTypes
-				.AsEnumerable()
-				.SelectMany(ti => GetTypesHierarchy(ti.Type)).Select(t => t.Assembly)
-				.Where(a => a.GetName().Name != "mscorlib")
-				.Select(GetAssemblyLocation)
-				.ToList();
-
-			var netstandardPath = GetNeststandardAssemblyPath();
-			if (!string.IsNullOrWhiteSpace(netstandardPath))
-				assemmblyNames.Add(netstandardPath);
-
-			var assemblies = new HashSet<string>(assemmblyNames, StringComparer.OrdinalIgnoreCase);
-
-			var module = Application.Modules.FindModule<SenDevDashboardsModule>();
-			if (module != null)
-			{
-				if (module.ScriptReferenceAssemblies != null)
-				{
-					foreach (var ra in module.ScriptReferenceAssemblies)
-						assemblies.Add(ra);
-				}
-
-				if (module.DefaultBusinessObjectType != null)
-				{
-					assemblies.Add(GetAssemblyLocation(module.DefaultBusinessObjectType.Assembly));
-				}
-			}
-
-			return assemblies.ToArray();
-		}
 
 		private object GetDataCore(IDictionary<string, object> parameters, out XPObjectSpace objectSpace)
 		{
 			objectSpace = (XPObjectSpace)Application.CreateObjectSpace();
 			var context = new ScriptContext(objectSpace, parameters);
-			var compilationHelper = new ScriptCompilationHelper(GetReferencedAssembliesPaths());
+			var compilationHelper = new ScriptCompilationHelper(AssembliesHelper.GetReferencedAssembliesPaths(Application));
 			dynamic scriptObject = compilationHelper.CreateObject(Script);
 			return scriptObject.GetData(context);
 		}

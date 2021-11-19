@@ -41,7 +41,7 @@ namespace UnitTests
 
 		protected override LayoutManager CreateLayoutManagerCore(bool simple)
 		{
-			throw new NotImplementedException();
+			return new TestLayoutManager();
 		}
 
 		protected override void CustomizeTypesInfo()

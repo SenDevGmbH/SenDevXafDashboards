@@ -44,6 +44,7 @@
     </Reference>
     <Reference Include="DevExpress.ExpressApp.Xpo.v$(DevExpressVErsion)">
     </Reference>
+    <Reference Include="DevExpress.Persistent.Base.v21.2, Version=21.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.Persistent.BaseImpl.Xpo.v$(DevExpressVErsion)">
     </Reference>
     <Reference Include="DevExpress.PivotGrid.v$(DevExpressVersion).Core" />
@@ -71,6 +72,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DashboardDataExtractControllerTests.cs" />
     <Compile Include="DashboardDataListTests.cs" />
     <Compile Include="DashboardParametersTests.cs" />
     <Compile Include="DataReaderListTests.cs" />
@@ -87,6 +89,7 @@
     <Compile Include="TestClasses\UnitTestsModule.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="TestLayoutManager.cs" />
     <Compile Include="XpoInMemoryXafApplication.cs">
       <SubType>Component</SubType>
     </Compile>
