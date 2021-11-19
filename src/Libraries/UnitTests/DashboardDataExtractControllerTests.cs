@@ -14,7 +14,7 @@ namespace UnitTests
 			{
 				var collectionSource = new CollectionSource(application.CreateObjectSpace(), typeof(DashboardDataExtract));
 				var listView = new ListView(collectionSource, application, true);
-				
+
 				var controller = application.CreateController<DashboardDataExtractController>();
 				controller.SetView(listView);
 
@@ -42,8 +42,8 @@ namespace UnitTests
 
 				var dataExtract = objectSpace.CreateObject<DashboardDataExtract>();
 				dataExtract.Script = "invalid script";
-				
-				var exception = Assert.Throws<UserFriendlyException>(objectSpace.CommitChanges);
+
+				var exception = Assert.Throws<UserFriendlyException>(() => objectSpace.CommitChanges());
 
 				Assert.Empty(objectSpace.GetObjects<DashboardDataExtract>());
 			}
