@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Options xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<Applications>
+		<!-- Blazor -->
+		<Application
+			Name="SenDev.Xaf.DashboardsBlazor"
+			Url="http://localhost:4030"
+			PhysicalPath="[BlazorAppPath]"
+			AdapterFileName="[BlazorAdapterAssemblyPath]"
+			Configuration="EasyTest"
+			IgnoreCase="true"/>
+	</Applications>
+	<TestDatabases>
+		<Database xsi:type="TestMSSQLDatabase" Server="(localdb)\mssqllocaldb" DBName="SenDev.Xaf.DashboardsEasyTest"/>
+	</TestDatabases>
+
+	<Aliases>
+		<Alias Name="BlazorAdapterAssemblyPath" Value="[BlazorAppPath]\bin\EasyTest\net5.0\DevExpress.ExpressApp.EasyTest.BlazorAdapter.v21.2.dll" />
+		<Alias Name="BlazorAppPath" Value="[ConfigPath]\..\..\SenDev.Xaf.Dashboards.Blazor.Server" />
+	</Aliases>
+</Options>

@@ -76,9 +76,6 @@
     <Reference Include="DevExpress.Data.v$(DevExpressVersion)">
       <SpecificVersion>False</SpecificVersion>
     </Reference>
-    <Reference Include="DevExpress.ExpressApp.Images.v$(DevExpressVersion)">
-      <SpecificVersion>False</SpecificVersion>
-    </Reference>
     <Reference Include="DevExpress.ExpressApp.v$(DevExpressVersion)">
       <SpecificVersion>False</SpecificVersion>
     </Reference>
@@ -227,14 +224,17 @@
   <ItemGroup>
     <EmbeddedResource Include="WebApplication.resx">
       <DependentUpon>WebApplication.cs</DependentUpon>
-      <SubType>Designer</SubType>
+      <SubType>Designer</SubType>	  
+    </EmbeddedResource>
+	 <EmbeddedResource Include="Model.xafml">
+         <SubType>Designer</SubType>
+    </EmbeddedResource>
+		 <EmbeddedResource Include="Model.Desktop.xafml">     
+    </EmbeddedResource>
+		 <EmbeddedResource Include="Model.Tablet.xafml">   
     </EmbeddedResource>
   </ItemGroup>
-  <ItemGroup>
-    <Content Include="Model.xafml">
-      <SubType>Designer</SubType>
-    </Content>
-  </ItemGroup>
+
   <ItemGroup>
     <ProjectReference Include="..\..\Libraries\SenDev.Xaf.Dashboards\SenDev.Xaf.Dashboards.csproj">
       <Project>{4D917657-12F3-4391-9DA4-32FD3756579E}</Project>
@@ -250,8 +250,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Model.Desktop.xafml" />
-    <Content Include="Model.Tablet.xafml" />
+
     <None Include="packages.config" />
     <None Include="ReadMe.txt" />
     <Content Include="Web.config" />

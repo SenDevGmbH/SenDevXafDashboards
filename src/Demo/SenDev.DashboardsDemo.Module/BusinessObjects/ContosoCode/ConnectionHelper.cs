@@ -52,7 +52,7 @@ namespace SenDev.DashboardsDemo.Module.BusinessObjects
 			return copy;
 		}
 #warning We recommend moving the connection string out of your source code (for instance, to a configuration file) to improve your application's maintainability and security.
-		public const string ConnectionString = "XpoProvider=MSSqlServer;data source=.;integrated security=SSPI;initial catalog=ContosoRetailDW";
+		public const string ConnectionString = "XpoProvider=MSSqlServer;data source=Data Source=EurostrandDev;integrated security=SSPI;initial catalog=ContosoRetailDW";
 		public static void Connect(DevExpress.Xpo.DB.AutoCreateOption autoCreateOption, bool threadSafe = false)
 		{
 			if (threadSafe)

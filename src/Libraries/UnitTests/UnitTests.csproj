@@ -44,7 +44,7 @@
     </Reference>
     <Reference Include="DevExpress.ExpressApp.Xpo.v$(DevExpressVErsion)">
     </Reference>
-    <Reference Include="DevExpress.Persistent.Base.v21.2, Version=21.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Persistent.Base.v21.2, Version=21.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.Persistent.BaseImpl.Xpo.v$(DevExpressVErsion)">
     </Reference>
     <Reference Include="DevExpress.PivotGrid.v$(DevExpressVersion).Core" />

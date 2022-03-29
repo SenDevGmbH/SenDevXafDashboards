@@ -1,0 +1,46 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+    <Deterministic>false</Deterministic>
+    <AssemblyVersion>1.0.*</AssemblyVersion>
+    <FileVersion>1.0.0.0</FileVersion>
+    <Configurations>Debug;Release;EasyTest</Configurations>
+  </PropertyGroup>
+  <ItemGroup>
+    <None Remove="Model.xafml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Model.xafml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <ItemGroup Condition=" '$(Configuration)' == 'EasyTest' ">
+    <PackageReference Include="DevExpress.ExpressApp.EasyTest.BlazorAdapter" Version="21.2.6" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="DevExpress.ExpressApp" Version="21.2.6" />
+    <PackageReference Include="DevExpress.ExpressApp.Blazor" Version="21.2.6" />
+    <PackageReference Include="DevExpress.ExpressApp.CodeAnalysis" Version="21.2.6" />
+    <PackageReference Include="DevExpress.ExpressApp.Xpo" Version="21.2.6" />
+    <PackageReference Include="DevExpress.Persistent.Base" Version="21.2.6" />
+    <PackageReference Include="DevExpress.Persistent.BaseImpl.Xpo" Version="21.2.6" />
+    <PackageReference Include="DevExpress.ExpressApp" Version="21.2.6" />
+    <PackageReference Include="DevExpress.ExpressApp.CodeAnalysis" Version="21.2.6" />
+    <PackageReference Include="DevExpress.ExpressApp.WebApi" Version="21.2.6" />
+    <PackageReference Include="DevExpress.ExpressApp.Xpo" Version="21.2.6" />
+    <PackageReference Include="DevExpress.Persistent.Base" Version="21.2.6" />
+    <PackageReference Include="DevExpress.Persistent.BaseImpl.Xpo" Version="21.2.6" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="5.6.3" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\SenDev.DashboardsDemo.Module.Blazor\SenDev.DashboardsDemo.Module.Blazor.csproj">
+     <Project> {250F6594-4B7E-43BE-A358-9DCD824CB512}</Project>
+	      <Name>SenDev.DashboardsDemo.Module.Blazor</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SenDev.DashboardsDemo.Module\SenDev.DashboardsDemo.Module.csproj">
+      <Project>{5F15837D-D1E5-44DC-92F0-4F2EBE9C3F8D}</Project>
+      <Name>SenDev.DashboardsDemo.Module</Name>
+    </ProjectReference>
+  
+  </ItemGroup>
+</Project>
