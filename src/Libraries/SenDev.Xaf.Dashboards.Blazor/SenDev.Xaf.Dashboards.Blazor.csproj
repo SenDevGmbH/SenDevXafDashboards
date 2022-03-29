@@ -10,6 +10,9 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Remove="..\CommonVersion.cs" />
+  </ItemGroup>
+  <ItemGroup>
     <None Remove="Model.DesignedDiffs.xafml" />
   </ItemGroup>
   <ItemGroup>
@@ -22,5 +25,6 @@
     <PackageReference Include="DevExpress.ExpressApp.Xpo" Version="21.2.6" />
     <PackageReference Include="DevExpress.Persistent.Base" Version="21.2.6" />
     <PackageReference Include="DevExpress.Persistent.BaseImpl.Xpo" Version="21.2.6" />
+    <PackageReference Include="Microsoft.CodeAnalysis.Compilers" Version="4.1.0" />
   </ItemGroup>
 </Project>

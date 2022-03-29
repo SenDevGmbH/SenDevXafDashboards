@@ -9,12 +9,10 @@ namespace SenDev.Xaf.Dashboards.Controllers
 {
 	public class DashboardDataExtractController : ObjectViewController<ObjectView, IDashboardDataExtract>
 	{
-		public ScriptCompilationHelper Compiler { get; private set; }
 
 		protected override void OnActivated()
 		{
 			base.OnActivated();
-			Compiler = new ScriptCompilationHelper(AssembliesHelper.GetReferencedAssembliesPaths(Application));
 			ObjectSpace.ObjectSaving += ObjectSaving;
 		}
 
@@ -27,9 +25,10 @@ namespace SenDev.Xaf.Dashboards.Controllers
 
 		private void ObjectSaving(object sender, ObjectManipulatingEventArgs e)
 		{
+			var compilationHelper = new ScriptCompilationHelper(AssembliesHelper.GetReferencedAssembliesPaths(Application));
 			var script = (e.Object as IDashboardDataExtract).Script;
 			var tempFile = Path.GetTempFileName();
-			var compileResult = Compiler.Compile(script, tempFile);
+			var compileResult = compilationHelper.Compile(script, tempFile);
 			File.Delete(tempFile);
 
 			if (!compileResult.Success)

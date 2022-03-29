@@ -11,7 +11,6 @@ using DevExpress.Xpo;
 using DevExpress.Xpo.DB;
 using DevExpress.Xpo.Metadata;
 using SenDev.Xaf.Dashboards.Scripting;
-using Xunit;
 
 namespace UnitTests
 {

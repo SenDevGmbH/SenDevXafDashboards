@@ -1,9 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.29911.84
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.32112.339
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SenDev.Xaf.Dashboards", "Libraries\SenDev.Xaf.Dashboards\SenDev.Xaf.Dashboards.csproj", "{4D917657-12F3-4391-9DA4-32FD3756579E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SenDev.Xaf.Dashboards", "Libraries\SenDev.Xaf.Dashboards\SenDev.Xaf.Dashboards.csproj", "{4D917657-12F3-4391-9DA4-32FD3756579E}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SenDev.Xaf.Dashboards.Web", "Libraries\SenDev.Xaf.Dashboards.Web\SenDev.Xaf.Dashboards.Web.csproj", "{EF3E2394-BB3A-44EC-B7B9-314A0CC3B8FB}"
 EndProject
@@ -27,11 +27,15 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTests", "Libraries\Unit
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SenDevDashboardsDemo.UnitTests", "SenDevDashboardsDemo.UnitTests\SenDevDashboardsDemo.UnitTests.csproj", "{99937283-FF36-4406-A5D6-9FBBA9735D56}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SenDev.Xaf.Dashboards.Blazor", "Libraries\SenDev.Xaf.Dashboards.Blazor\SenDev.Xaf.Dashboards.Blazor.csproj", "{624ED9B8-4DCE-47F5-B474-FA904897EFEC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SenDev.Xaf.Dashboards.Blazor", "Libraries\SenDev.Xaf.Dashboards.Blazor\SenDev.Xaf.Dashboards.Blazor.csproj", "{624ED9B8-4DCE-47F5-B474-FA904897EFEC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SenDev.DashboardsDemo.Module.Blazor", "Demo\SenDev.DashboardsDemo.Module.Blazor\SenDev.DashboardsDemo.Module.Blazor.csproj", "{250F6594-4B7E-43BE-A358-9DCD824CB512}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SenDev.DashboardsDemo.Module.Blazor", "Demo\SenDev.DashboardsDemo.Module.Blazor\SenDev.DashboardsDemo.Module.Blazor.csproj", "{250F6594-4B7E-43BE-A358-9DCD824CB512}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SenDev.DashboardsDemo.Blazor.Server", "Demo\SenDev.DashboardsDemo.Blazor.Server\SenDev.DashboardsDemo.Blazor.Server.csproj", "{FCD73F1C-8D26-4195-A745-D201C45B1451}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SenDev.DashboardsDemo.Blazor.Server", "Demo\SenDev.DashboardsDemo.Blazor.Server\SenDev.DashboardsDemo.Blazor.Server.csproj", "{FCD73F1C-8D26-4195-A745-D201C45B1451}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTests.NetCore", "Libraries\UnitTests.NetCore\UnitTests.NetCore.csproj", "{D1E569EF-C194-45A4-ABE7-342FCC4E9C21}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTests.Common", "Libraries\UnitTests.Common\UnitTests.Common.csproj", "{BD130A27-6FF9-4CD6-A7F7-1964DFDA3036}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -118,6 +122,18 @@ Global
 		{FCD73F1C-8D26-4195-A745-D201C45B1451}.EasyTest|Any CPU.Build.0 = EasyTest|Any CPU
 		{FCD73F1C-8D26-4195-A745-D201C45B1451}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FCD73F1C-8D26-4195-A745-D201C45B1451}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D1E569EF-C194-45A4-ABE7-342FCC4E9C21}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D1E569EF-C194-45A4-ABE7-342FCC4E9C21}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D1E569EF-C194-45A4-ABE7-342FCC4E9C21}.EasyTest|Any CPU.ActiveCfg = Debug|Any CPU
+		{D1E569EF-C194-45A4-ABE7-342FCC4E9C21}.EasyTest|Any CPU.Build.0 = Debug|Any CPU
+		{D1E569EF-C194-45A4-ABE7-342FCC4E9C21}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D1E569EF-C194-45A4-ABE7-342FCC4E9C21}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BD130A27-6FF9-4CD6-A7F7-1964DFDA3036}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BD130A27-6FF9-4CD6-A7F7-1964DFDA3036}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BD130A27-6FF9-4CD6-A7F7-1964DFDA3036}.EasyTest|Any CPU.ActiveCfg = Debug|Any CPU
+		{BD130A27-6FF9-4CD6-A7F7-1964DFDA3036}.EasyTest|Any CPU.Build.0 = Debug|Any CPU
+		{BD130A27-6FF9-4CD6-A7F7-1964DFDA3036}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BD130A27-6FF9-4CD6-A7F7-1964DFDA3036}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -134,8 +150,10 @@ Global
 		{B30E1547-3CC8-4A2A-8B33-926E1074E914} = {A4F7E23B-BBF6-485A-A5CE-9BB4CD0570BC}
 		{99937283-FF36-4406-A5D6-9FBBA9735D56} = {2E0BB36F-BE22-474D-B62B-1B53E04E199C}
 		{624ED9B8-4DCE-47F5-B474-FA904897EFEC} = {A4F7E23B-BBF6-485A-A5CE-9BB4CD0570BC}
-		{FCD73F1C-8D26-4195-A745-D201C45B1451} = {2E0BB36F-BE22-474D-B62B-1B53E04E199C}
 		{250F6594-4B7E-43BE-A358-9DCD824CB512} = {2E0BB36F-BE22-474D-B62B-1B53E04E199C}
+		{FCD73F1C-8D26-4195-A745-D201C45B1451} = {2E0BB36F-BE22-474D-B62B-1B53E04E199C}
+		{D1E569EF-C194-45A4-ABE7-342FCC4E9C21} = {A4F7E23B-BBF6-485A-A5CE-9BB4CD0570BC}
+		{BD130A27-6FF9-4CD6-A7F7-1964DFDA3036} = {A4F7E23B-BBF6-485A-A5CE-9BB4CD0570BC}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {6AAB11CF-4CB4-421E-99E6-E9EAA81181F8}

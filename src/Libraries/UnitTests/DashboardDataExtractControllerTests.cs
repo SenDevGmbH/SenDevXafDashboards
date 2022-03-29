@@ -7,23 +7,6 @@ namespace UnitTests
 {
 	public class DashboardDataExtractControllerTests : XpoTestBase
 	{
-		[Fact]
-		public void CompilerInitializeTest()
-		{
-			using (var application = XpoInMemoryXafApplication.CreateInstance())
-			{
-				var collectionSource = new CollectionSource(application.CreateObjectSpace(), typeof(DashboardDataExtract));
-				var listView = new ListView(collectionSource, application, true);
-
-				var controller = application.CreateController<DashboardDataExtractController>();
-				controller.SetView(listView);
-
-				controller.Active.Clear();
-				controller.Active["Test"] = true;
-
-				Assert.NotNull(controller.Compiler);
-			}
-		}
 
 		[Fact]
 		public void SaveInvalidScriptTest()

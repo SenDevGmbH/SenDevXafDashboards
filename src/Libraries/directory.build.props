@@ -2,7 +2,8 @@
  <PropertyGroup>
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <DevExpressVersion>21.2</DevExpressVersion>
-    <DevExpressBinLocation>C:\Program Files (x86)\DevExpress 21.2\Components\Bin\Framework</DevExpressBinLocation>
+    <DevExpressPackageVersion>21.2.6</DevExpressPackageVersion>
+    <DevExpressBinLocation>c:\DevExpress\21.2.6\Bin\Framework</DevExpressBinLocation>
  </PropertyGroup>
 
  <ItemGroup>

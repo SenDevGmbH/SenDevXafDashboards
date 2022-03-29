@@ -76,23 +76,11 @@
     <Compile Include="DashboardDataListTests.cs" />
     <Compile Include="DashboardParametersTests.cs" />
     <Compile Include="DataReaderListTests.cs" />
-    <Compile Include="InMemoryDataStoreProvider.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ScriptCompilationTests.cs" />
     <Compile Include="SelectDataEventArgs.cs" />
     <EmbeddedResource Include="ScriptTemplate.template" />
-    <Compile Include="TestClasses\TestClassesCombination.cs" />
-    <Compile Include="TestClasses\TestClassWithName.cs" />
-    <Compile Include="TestClasses\TestClassWithNameAndNumber.cs" />
-    <Compile Include="TestClasses\TestClassWithReference.cs" />
     <Compile Include="TestDataLayer.cs" />
-    <Compile Include="TestClasses\UnitTestsModule.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="TestLayoutManager.cs" />
-    <Compile Include="XpoInMemoryXafApplication.cs">
-      <SubType>Component</SubType>
-    </Compile>
     <Compile Include="XpoTestBase.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -106,6 +94,10 @@
     <ProjectReference Include="..\SenDev.Xaf.Dashboards\SenDev.Xaf.Dashboards.csproj">
       <Project>{4D917657-12F3-4391-9DA4-32FD3756579E}</Project>
       <Name>SenDev.Xaf.Dashboards</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\UnitTests.Common\UnitTests.Common.csproj">
+      <Project>{bd130a27-6ff9-4cd6-a7f7-1964dfda3036}</Project>
+      <Name>UnitTests.Common</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
