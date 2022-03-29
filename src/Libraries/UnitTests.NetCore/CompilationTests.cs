@@ -53,7 +53,7 @@ public class Script
 {
     public object GetData(ScriptContext context)
     {
-        return context.Query<TestClassWithNameAndNumber>().Take(1000);
+        return context.Query<TestClassWithNameAndNumber>();
     }
 }";
 
@@ -61,9 +61,13 @@ public class Script
 			using var application = XpoInMemoryXafApplication.CreateInstance();
 			using var objectSpace = application.CreateObjectSpace();
 			var extract = objectSpace.CreateObject<DashboardDataExtract>();
-			var testObject = objectSpace.CreateObject<TestClassWithNameAndNumber>();
-			testObject.Name = "Name 1";
-			testObject.SequentialNumber = 1;
+			var testObject1 = objectSpace.CreateObject<TestClassWithNameAndNumber>();
+			testObject1.Name = "Name 1";
+			testObject1.SequentialNumber = 1;
+
+			var testObject2 = objectSpace.CreateObject<TestClassWithNameAndNumber>();
+			testObject1.Name = "Name 2";
+			testObject2.SequentialNumber = 2;
 			extract.Script = script;
 			objectSpace.CommitChanges();
 		
@@ -71,6 +75,7 @@ public class Script
 			dataManager.UpdateDataExtractByKey(extract.Oid);
 			extract.Reload();
 			Assert.NotEmpty(extract.ExtractData);
+			Assert.Equal(2, extract.RowCount);
 
 		}
 	}
