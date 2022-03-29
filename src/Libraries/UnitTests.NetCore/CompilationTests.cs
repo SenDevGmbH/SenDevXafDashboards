@@ -37,5 +37,41 @@ namespace UnitTests.NetCore
 			}
 		}
 
+		
+		[Fact]
+		public void QueryObjectsScriptTest()
+		{
+			var script = @"
+using System;
+using System.Linq;
+using DevExpress.Xpo;	
+using SenDev.Xaf.Dashboards.Scripting;
+using UnitTests;		
+
+
+public class Script
+{
+    public object GetData(ScriptContext context)
+    {
+        return context.Query<TestClassWithNameAndNumber>().Take(1000);
+    }
+}";
+
+
+			using var application = XpoInMemoryXafApplication.CreateInstance();
+			using var objectSpace = application.CreateObjectSpace();
+			var extract = objectSpace.CreateObject<DashboardDataExtract>();
+			var testObject = objectSpace.CreateObject<TestClassWithNameAndNumber>();
+			testObject.Name = "Name 1";
+			testObject.SequentialNumber = 1;
+			extract.Script = script;
+			objectSpace.CommitChanges();
+		
+			var dataManager = new DataExtractDataManager(application);
+			dataManager.UpdateDataExtractByKey(extract.Oid);
+			extract.Reload();
+			Assert.NotEmpty(extract.ExtractData);
+
+		}
 	}
 }
