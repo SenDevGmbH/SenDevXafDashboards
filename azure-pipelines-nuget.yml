@@ -19,6 +19,13 @@ variables:
   NetSdkVersion: '6.0.201'
   
 steps:
+- task: UseDotNet@2
+  displayName: 'Use .NET Core sdk'
+  inputs:
+    version: $(NetSdkVersion)
+    packageType: 'sdk'
+    includePreviewVersions: true
+    installationPath: $(Agent.ToolsDirectory)/dotnet
 
 - task: NuGetToolInstaller@1
 
@@ -29,13 +36,14 @@ steps:
     projects: src/SenDev.Xaf.Dashboards.sln
     command: restore
     feedsToUse: 'select'
-    vstsFeed: 'DevExpress/Release'
+    vstsFeed: 'DevExpress/Debug'
 
 - task: NuGetCommand@2
   displayName: "NuGet restore"
   inputs:
     command: restore
-    vstsFeed: 'DevExpress/Release'
+    restoreSolution: '**/*.sln'
+    vstsFeed: 'DevExpress/Debug'
 
 - task: SonarSource.sonarcloud.14d9cde6-c1da-4d55-aa01-2965cd301255.SonarCloudPrepare@1
   displayName: 'Prepare analysis on SonarCloud'
