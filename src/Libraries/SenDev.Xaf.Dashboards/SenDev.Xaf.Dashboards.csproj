@@ -47,71 +47,14 @@
   <ItemGroup>
     <None Remove="Scripting\ScriptTemplate.template" />
   </ItemGroup>
-  <ItemGroup>
-    <Reference Include="Microsoft.CSharp" />
-    <Reference Include="System">
-      <Name>System</Name>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="System.ComponentModel.Composition" />
-    <Reference Include="System.Data">
-      <Name>System.Data</Name>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="System.Drawing">
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="System.Numerics" />
-    <Reference Include="System.Xml">
-      <Name>System.XML</Name>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="System.Xml.Linq" />
+	<ItemGroup>
+		<PackageReference Include="DevExpress.ExpressApp" Version="$(DevExpressPackageVersion)" />
+		<PackageReference Include="DevExpress.ExpressApp.Dashboards" Version="$(DevExpressPackageVersion)" />
+		<PackageReference Include="DevExpress.Persistent.BaseImpl.Xpo" Version="$(DevExpressPackageVersion)" />
+		<PackageReference Include="Microsoft.CSharp" Version="4.7.0" />
 
-    <Reference Include="DevExpress.Dashboard.v$(DevExpressVersion).Core">
-      <HintPath>$(DevExpressBinLocation)\DevExpress.Dashboard.v$(DevExpressVersion).Core.dll</HintPath>
-    </Reference>
-    <Reference Include="DevExpress.DataAccess.v$(DevExpressVersion)">
-      <HintPath>$(DevExpressBinLocation)\DevExpress.DataAccess.v$(DevExpressVersion).dll</HintPath>
-    </Reference>
-    <Reference Include="DevExpress.ExpressApp.Dashboards.v$(DevExpressVersion)">
-      <HintPath>$(DevExpressBinLocation)\DevExpress.ExpressApp.Dashboards.v$(DevExpressVersion).dll</HintPath>
-      <SpecificVersion>False</SpecificVersion>
-    </Reference>
-    <Reference Include="DevExpress.ExpressApp.Xpo.v$(DevExpressVersion)">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>$(DevExpressBinLocation)\DevExpress.ExpressApp.Xpo.v$(DevExpressVersion).dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="DevExpress.PivotGrid.v$(DevExpressVersion).Core">
-      <HintPath>$(DevExpressBinLocation)\DevExpress.PivotGrid.v$(DevExpressVersion).Core.dll</HintPath>
-    </Reference>
-    <Reference Include="DevExpress.Printing.v$(DevExpressVersion).Core">
-      <HintPath>$(DevExpressBinLocation)\DevExpress.Printing.v$(DevExpressVersion).Core.dll</HintPath>
-      <SpecificVersion>False</SpecificVersion>
-    </Reference>
-    <Reference Include="DevExpress.Data.v$(DevExpressVersion)">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>$(DevExpressBinLocation)\DevExpress.Data.v$(DevExpressVersion).dll</HintPath>
-    </Reference>
-    <Reference Include="DevExpress.ExpressApp.v$(DevExpressVersion)">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>$(DevExpressBinLocation)\DevExpress.ExpressApp.v$(DevExpressVersion).dll</HintPath>
-    </Reference>
-    <Reference Include="DevExpress.Persistent.Base.v$(DevExpressVersion)">
-      <HintPath>$(DevExpressBinLocation)\DevExpress.Persistent.Base.v$(DevExpressVersion).dll</HintPath>
-      <SpecificVersion>False</SpecificVersion>
-    </Reference>
-    <Reference Include="DevExpress.Persistent.BaseImpl.Xpo.v$(DevExpressVersion)">
-      <HintPath>$(DevExpressBinLocation)\DevExpress.Persistent.BaseImpl.Xpo.v$(DevExpressVersion).dll</HintPath>
-      <SpecificVersion>False</SpecificVersion>
-    </Reference>
-    <Reference Include="DevExpress.Xpo.v$(DevExpressVersion)">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>$(DevExpressBinLocation)\DevExpress.Xpo.v$(DevExpressVersion).dll</HintPath>
-    </Reference>
   </ItemGroup>
-  <ItemGroup>
+    <ItemGroup>
     <Compile Include="..\CommonVersion.cs">
       <Link>CommonVersion.cs</Link>
     </Compile>

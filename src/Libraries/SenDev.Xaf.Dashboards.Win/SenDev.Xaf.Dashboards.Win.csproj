@@ -45,6 +45,7 @@
     <PlatformTarget>AnyCPU</PlatformTarget>
     <ErrorReport>prompt</ErrorReport>
   </PropertyGroup>
+  <!--
   <ItemGroup>
     <Reference Include="DevExpress.CodeParser.v$(DevExpressVersion)">
       <SpecificVersion>False</SpecificVersion>
@@ -89,22 +90,32 @@
     <Reference Include="DevExpress.XtraRichEdit.v$(DevExpressVersion)">
       <SpecificVersion>False</SpecificVersion>
     </Reference>
-    <Reference Include="System">
-      <Name>System</Name>
-      <Private>False</Private>
+
     </Reference>
     <Reference Include="System.Data">
       <Name>System.Data</Name>
       <Private>False</Private>
     </Reference>
-    <Reference Include="System.Drawing">
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="System.Windows.Forms" />
+   
+
     <Reference Include="System.Xml">
       <Name>System.XML</Name>
       <Private>False</Private>
     </Reference>
+  </ItemGroup>
+  -->
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="DevExpress.Win.Dashboard " Version="$(DevExpressPackageVersion)" />
+    <PackageReference Include="DevExpress.ExpressApp" Version="$(DevExpressPackageVersion)" />
+    <PackageReference Include="DevExpress.ExpressApp.Win" Version="$(DevExpressPackageVersion)" />
+    <PackageReference Include="DevExpress.ExpressApp.Dashboards.Win" Version="$(DevExpressPackageVersion)" />
+	 <PackageReference Include="DevExpress.Win.RichEdit " Version="$(DevExpressPackageVersion)" />
+
   </ItemGroup>
   <ItemGroup>
     <Compile Include="..\CommonVersion.cs">
