@@ -17,6 +17,8 @@ using DevExpress.ExpressApp.WebApi.Services;
 using DevExpress.ExpressApp.WebApi.Swashbuckle;
 using Microsoft.OpenApi.Models;
 using Microsoft.AspNetCore.OData;
+using DevExpress.ExpressApp.Dashboards.Blazor;
+using SenDev.Xaf.Dashboards.Blazor;
 
 namespace SenDev.DashboardsDemo.Blazor.Server {
     public class Startup {
@@ -37,6 +39,7 @@ namespace SenDev.DashboardsDemo.Blazor.Server {
             services.AddSingleton<XpoDataStoreProviderAccessor>();
             services.AddScoped<CircuitHandler, CircuitHandlerProxy>();
             services.AddXaf<DashboardsDemoBlazorApplication>(Configuration);
+			services.AddXafDashboards();
             services.AddXafWebApi(options => {
                 // Use options.BusinessObject<YourBusinessObject>() to make the Business Object available in the Web API and generate the GET, POST, PUT, and DELETE HTTP methods for it.
             });
@@ -80,8 +83,10 @@ namespace SenDev.DashboardsDemo.Blazor.Server {
             app.UseEndpoints(endpoints => {
                 endpoints.MapBlazorHub();
                 endpoints.MapFallbackToPage("/_Host");
-                endpoints.MapControllers();
-            });
+				endpoints.MapControllers();
+				endpoints.MapXafDashboards();
+				endpoints.MapSenDevDashboardsController();
+			});
         }
     }
 }

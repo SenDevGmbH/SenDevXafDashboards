@@ -9,14 +9,13 @@ namespace UnitTests.NetCore
 		[Fact]
 		public void CSharp8SyntaxTest()
 		{
-			using (var application = XpoInMemoryXafApplication.CreateInstance())
-			using (var objectSpace = application.CreateObjectSpace())
-			{
-				var extract = objectSpace.CreateObject<DashboardDataExtract>();
-				var testObject = objectSpace.CreateObject<TestClassWithNameAndNumber>();
-				testObject.Name = "Name 1";
-				testObject.SequentialNumber = 1;
-				extract.Script = @"
+			using var application = XpoInMemoryXafApplication.CreateInstance();
+			using var objectSpace = application.CreateObjectSpace();
+			var extract = objectSpace.CreateObject<DashboardDataExtract>();
+			var testObject = objectSpace.CreateObject<TestClassWithNameAndNumber>();
+			testObject.Name = "Name 1";
+			testObject.SequentialNumber = 1;
+			extract.Script = @"
 					using System;
 					using System.Linq;
 
@@ -29,12 +28,11 @@ namespace UnitTests.NetCore
 						public object GetData(SenDev.Xaf.Dashboards.Scripting.ScriptContext context) => LoadBytes;
 					}";
 
-				objectSpace.CommitChanges();
-				var dataManager = new DataExtractDataManager(application);
-				dataManager.UpdateDataExtractByKey(extract.Oid);
-				extract.Reload();
-				Assert.Equal(new byte[] { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 }, extract.ExtractData);
-			}
+			objectSpace.CommitChanges();
+			var dataManager = new DataExtractDataManager(application);
+			dataManager.UpdateDataExtractByKey(extract.Oid);
+			extract.Reload();
+			Assert.Equal(new byte[] { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 }, extract.ExtractData);
 		}
 
 		

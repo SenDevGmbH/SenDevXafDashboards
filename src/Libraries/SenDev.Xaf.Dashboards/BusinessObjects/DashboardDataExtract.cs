@@ -29,9 +29,11 @@ namespace SenDev.Xaf.Dashboards.BusinessObjects
 			base.AfterConstruction();
 			CronExpression = "0 1 * * *";
 		}
+
 		private void Session_Disposed(object sender, EventArgs e)
 		{
-			DeleteTempFileSafe();
+			if (!PreserveTempFile)
+				DeleteTempFileSafe();
 		}
 
 
@@ -168,6 +170,14 @@ namespace SenDev.Xaf.Dashboards.BusinessObjects
 			get => rowCount;
 			set => SetPropertyValue(nameof(RowCount), ref rowCount, value);
 		}
+
+		[NonPersistent]
+		public bool PreserveTempFile
+		{
+			get;
+			set;
+		}
+
 		public void ConfigureConnectionParameters(XafApplication application, ExtractDataSourceConnectionParameters parameters)
 		{
 			parameters.FileName = EnsureTempFileCreated(application);
