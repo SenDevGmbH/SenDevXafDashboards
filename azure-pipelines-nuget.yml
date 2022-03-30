@@ -19,13 +19,6 @@ variables:
   NetSdkVersion: '6.0.201'
   
 steps:
-- task: UseDotNet@2
-  displayName: 'Use .NET Core sdk'
-  inputs:
-    version: $(NetSdkVersion)
-    packageType: 'sdk'
-    includePreviewVersions: true
-    installationPath: $(Agent.ToolsDirectory)/dotnet
 
 - task: NuGetToolInstaller@1
 
