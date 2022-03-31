@@ -39,12 +39,12 @@ steps:
     projectKey: 'SenDevGmbH_SenDevXafDashboards'
     projectName: SenDevXafDashboards
 
-- task: DotNetCoreCLI@2
-  inputs:
-    projects: src/SenDev.Xaf.Dashboards.sln
-    command: restore
-    feedsToUse: 'select'
-    vstsFeed: 'DevExpress/Release'
+# - task: DotNetCoreCLI@2
+#   inputs:
+#     projects: src/SenDev.Xaf.Dashboards.sln
+#     command: restore
+#     feedsToUse: 'select'
+#     vstsFeed: 'DevExpress/Release'
 
 - task: NuGetCommand@2
   displayName: "NuGet restore"
