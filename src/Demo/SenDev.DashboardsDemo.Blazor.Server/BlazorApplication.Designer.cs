@@ -27,7 +27,6 @@
             this.module2 = new DevExpress.ExpressApp.Blazor.SystemModule.SystemBlazorModule();
             this.module3 = new SenDev.DashboardsDemo.Module.DashboardsDemoModule();
             this.module4 = new SenDev.DashboardsDemo.Module.Blazor.DashboardsDemoBlazorModule();
-
             ((System.ComponentModel.ISupportInitialize)(this)).BeginInit();
 
             // 

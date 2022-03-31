@@ -22,6 +22,7 @@
     <PackageReference Include="DevExpress.Persistent.BaseImpl.Xpo" Version="21.2.6" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\Libraries\SenDev.Xaf.Dashboards.Blazor\SenDev.Xaf.Dashboards.Blazor.csproj" />
     <ProjectReference Include="..\SenDev.DashboardsDemo.Module\SenDev.DashboardsDemo.Module.csproj">
       <Private>True</Private>
     </ProjectReference>

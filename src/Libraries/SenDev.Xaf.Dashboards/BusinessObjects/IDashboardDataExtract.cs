@@ -18,10 +18,13 @@ namespace SenDev.Xaf.Dashboards.BusinessObjects
 		string Script { get; set; }
 		DateTime StartTime { get; set; }
 
+		bool PreserveTempFile { get;set; }
+
 		int RowCount { get; set; }
 
 		void ConfigureConnectionParameters(XafApplication application, ExtractDataSourceConnectionParameters parameters);
 		string EnsureTempFileCreated(XafApplication application);
 		string GetKeyAsString();
+
 	}
 }

@@ -1,5 +1,5 @@
-﻿namespace SenDev.Xaf.Dashboards.Module {
-	partial class DashboardsModule {
+﻿namespace SenDev.Xaf.Dashboards.Blazor {
+	partial class SenDavXafDashboardsBlazorModule {
 		/// <summary> 
 		/// Required designer variable.
 		/// </summary>

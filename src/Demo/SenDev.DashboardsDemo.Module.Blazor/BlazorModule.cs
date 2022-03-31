@@ -20,6 +20,7 @@ namespace SenDev.DashboardsDemo.Module.Blazor {
     public sealed partial class DashboardsDemoBlazorModule : ModuleBase {
         public DashboardsDemoBlazorModule() {
             InitializeComponent();
+			RequiredModuleTypes.Add(typeof(SenDev.Xaf.Dashboards.Blazor.SenDavXafDashboardsBlazorModule));
         }
         public override IEnumerable<ModuleUpdater> GetModuleUpdaters(IObjectSpace objectSpace, Version versionFromDB) {
             return ModuleUpdater.EmptyModuleUpdaters;
