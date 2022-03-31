@@ -2,7 +2,7 @@
   <ItemGroup>
     <ProjectToBuild Include="build-core.proj"/>  
     <TargetDevExpressVersion Include="21.2.6" TargetParentDir="SelfCompiled" PackageNameSuffix=".SelfCompiled"/>
-    <TargetDevExpressVersion Include="21.2.6" TargetParentDir="DX"/>
+   
   </ItemGroup>
 
 
