@@ -20,6 +20,9 @@ using Microsoft.AspNetCore.OData;
 using Hangfire;
 using Hangfire.SqlServer;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using DevExpress.ExpressApp.Dashboards.Blazor;
+using SenDev.Xaf.Dashboards.Blazor;
+
 
 namespace SenDev.DashboardsDemo.Blazor.Server
 {
@@ -47,6 +50,7 @@ namespace SenDev.DashboardsDemo.Blazor.Server
 			services.AddSingleton<XpoDataStoreProviderAccessor>();
 			services.AddScoped<CircuitHandler, CircuitHandlerProxy>();
 			services.AddXaf<DashboardsDemoBlazorApplication>(Configuration);
+			services.AddXafDashboards();
 			services.AddXafWebApi(options =>
 			{
 				// Use options.BusinessObject<YourBusinessObject>() to make the Business Object available in the Web API and generate the GET, POST, PUT, and DELETE HTTP methods for it.
@@ -69,7 +73,7 @@ namespace SenDev.DashboardsDemo.Blazor.Server
 				c.SchemaFilter<XpoSchemaFilter>();
 			});
 
-			
+
 			// Add Hangfire services.
 			services.AddHangfire(configuration => configuration
 					.SetDataCompatibilityLevel(CompatibilityLevel.Version_170)
@@ -119,6 +123,8 @@ namespace SenDev.DashboardsDemo.Blazor.Server
 				endpoints.MapFallbackToPage("/_Host");
 				endpoints.MapControllers();
 				endpoints.MapHangfireDashboard();
+				endpoints.MapXafDashboards();
+				endpoints.MapSenDevDashboardsController();
 			});
 		}
 	}
