@@ -31,20 +31,13 @@ steps:
 
 - task: NuGetAuthenticate@0
  
-- task: SonarSource.sonarcloud.14d9cde6-c1da-4d55-aa01-2965cd301255.SonarCloudPrepare@1
-  displayName: 'Prepare analysis on Sonae99a970c-b67f-4af0-acd5-f3cf3e07b313rCloud'
-  inputs:
-    SonarCloud: 'Sonar Clp'
-    organization: 'sendev'
-    projectKey: 'SenDevGmbH_SenDevXafDashboards'
-    projectName: SenDevXafDashboards
 
-- task: DotNetCoreCLI@2
-  inputs:
-    projects: src/SenDev.Xaf.Dashboards.sln
-    command: restore
-    feedsToUse: 'select'
-    vstsFeed: 'DevExpress/Release'
+# - task: DotNetCoreCLI@2
+#   inputs:
+#     projects: src/SenDev.Xaf.Dashboards.sln
+#     command: restore
+#     feedsToUse: 'select'
+#     vstsFeed: 'DevExpress/Release'
 
 - task: NuGetCommand@2
   displayName: "NuGet restore"
@@ -53,6 +46,13 @@ steps:
     restoreSolution: '**/*.sln'
     vstsFeed: 'DevExpress/Release'
 
+- task: SonarSource.sonarcloud.14d9cde6-c1da-4d55-aa01-2965cd301255.SonarCloudPrepare@1
+  displayName: 'Prepare analysis on Sonae99a970c-b67f-4af0-acd5-f3cf3e07b313rCloud'
+  inputs:
+    SonarCloud: 'Sonar Clp'
+    organization: 'sendev'
+    projectKey: 'SenDevGmbH_SenDevXafDashboards'
+    projectName: SenDevXafDashboards
 
 - task: MSBuild@1
   inputs:
