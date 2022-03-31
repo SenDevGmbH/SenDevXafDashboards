@@ -46,13 +46,13 @@ steps:
     restoreSolution: '**/*.sln'
     vstsFeed: 'DevExpress/Release'
 
-#- task: SonarSource.sonarcloud.14d9cde6-c1da-4d55-aa01-2965cd301255.SonarCloudPrepare@1
-#  displayName: 'Prepare analysis on Sonae99a970c-b67f-4af0-acd5-f3cf3e07b313rCloud'
-#  inputs:
-#    SonarCloud: 'Sonar Clp'
-#    organization: 'sendev'
-#    projectKey: 'SenDevGmbH_SenDevXafDashboards'
-#    projectName: SenDevXafDashboards
+- task: SonarSource.sonarcloud.14d9cde6-c1da-4d55-aa01-2965cd301255.SonarCloudPrepare@1
+ displayName: 'Prepare analysis on Sonae99a970c-b67f-4af0-acd5-f3cf3e07b313rCloud'
+ inputs:
+   SonarCloud: 'Sonar Clp'
+   organization: 'sendev'
+   projectKey: 'SenDevGmbH_SenDevXafDashboards'
+   projectName: SenDevXafDashboards
 
 - task: MSBuild@1
   inputs:
@@ -73,14 +73,14 @@ steps:
   inputs:
     platform: '$(buildPlatform)'
     configuration: '$(buildConfiguration)'
-#- task: SonarSource.sonarcloud.ce096e50-6155-4de8-8800-4221aaeed4a1.SonarCloudAnalyze@1
-#  displayName: 'Run Code Analysis'
-#- task: SonarSource.sonarcloud.38b27399-a642-40af-bb7d-9971f69712e8.SonarCloudPublish@1
-#  displayName: 'Publish Quality Gate Result'  
+- task: SonarSource.sonarcloud.ce096e50-6155-4de8-8800-4221aaeed4a1.SonarCloudAnalyze@1
+ displayName: 'Run Code Analysis'
+- task: SonarSource.sonarcloud.38b27399-a642-40af-bb7d-9971f69712e8.SonarCloudPublish@1
+ displayName: 'Publish Quality Gate Result'  
 
-- task: NuGetCommand@2
-  inputs:
-    command: 'push' 
-    packagesToPush: '$(Build.ArtifactStagingDirectory)/**/DX/*.nupkg'
-    nuGetFeedType: 'external' 
-    publishFeedCredentials: 'nuget.org'
+# - task: NuGetCommand@2
+#   inputs:
+#     command: 'push' 
+#     packagesToPush: '$(Build.ArtifactStagingDirectory)/**/DX/*.nupkg'
+#     nuGetFeedType: 'external' 
+#     publishFeedCredentials: 'nuget.org'
