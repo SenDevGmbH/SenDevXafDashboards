@@ -32,12 +32,6 @@ steps:
 - task: NuGetAuthenticate@0
  
 
-# - task: DotNetCoreCLI@2
-#   inputs:
-#     projects: src/SenDev.Xaf.Dashboards.sln
-#     command: restore
-#     feedsToUse: 'select'
-#     vstsFeed: 'DevExpress/Release'
 
 - task: NuGetCommand@2
   displayName: "NuGet restore"
@@ -78,9 +72,9 @@ steps:
 - task: SonarSource.sonarcloud.38b27399-a642-40af-bb7d-9971f69712e8.SonarCloudPublish@1
   displayName: 'Publish Quality Gate Result'  
 
-# - task: NuGetCommand@2
-#   inputs:
-#     command: 'push' 
-#     packagesToPush: '$(Build.ArtifactStagingDirectory)/**/DX/*.nupkg'
-#     nuGetFeedType: 'external' 
-#     publishFeedCredentials: 'nuget.org'
+- task: NuGetCommand@2
+  inputs:
+    command: 'push' 
+    packagesToPush: '$(Build.ArtifactStagingDirectory)/**/DX/*.nupkg'
+    nuGetFeedType: 'external' 
+    publishFeedCredentials: 'nuget.org'
