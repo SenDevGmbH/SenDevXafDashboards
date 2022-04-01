@@ -48,13 +48,26 @@
     <None Remove="Scripting\ScriptTemplate.template" />
   </ItemGroup>
 	<ItemGroup>
+		<PackageReference Include="DevExpress.Dashboard.Core" Version="$(DevExpressPackageVersion)" />
+		<PackageReference Include="DevExpress.Document.Processor" Version="$(DevExpressPackageVersion)" />
 		<PackageReference Include="DevExpress.ExpressApp" Version="$(DevExpressPackageVersion)" />
+		<PackageReference Include="DevExpress.ExpressApp.Chart" Version="$(DevExpressPackageVersion)" />
+		<PackageReference Include="DevExpress.ExpressApp.CloneObject.Xpo" Version="$(DevExpressPackageVersion)" />
+		<PackageReference Include="DevExpress.ExpressApp.ConditionalAppearance" Version="$(DevExpressPackageVersion)" />
 		<PackageReference Include="DevExpress.ExpressApp.Dashboards" Version="$(DevExpressPackageVersion)" />
+		<PackageReference Include="DevExpress.ExpressApp.Security" Version="$(DevExpressPackageVersion)" />
+		<PackageReference Include="DevExpress.ExpressApp.Security.Xpo" Version="$(DevExpressPackageVersion)" />
+		<PackageReference Include="DevExpress.ExpressApp.StateMachine" Version="$(DevExpressPackageVersion)" />
+		<PackageReference Include="DevExpress.ExpressApp.TreeListEditors" Version="$(DevExpressPackageVersion)" />
+		<PackageReference Include="DevExpress.ExpressApp.Validation" Version="$(DevExpressPackageVersion)" />
+		<PackageReference Include="DevExpress.ExpressApp.ViewVariantsModule" Version="$(DevExpressPackageVersion)" />
 		<PackageReference Include="DevExpress.Persistent.BaseImpl.Xpo" Version="$(DevExpressPackageVersion)" />
-		<PackageReference Include="Microsoft.CSharp" Version="4.7.0" />
+		<PackageReference Include="DevExpress.Spreadsheet.Core" Version="$(DevExpressPackageVersion)" />
+    <PackageReference Include="Microsoft.CodeAnalysis.Compilers" Version="4.1.0" />
+    <PackageReference Include="Microsoft.CSharp" Version="4.7.0" />
+	</ItemGroup>
 
-  </ItemGroup>
-    <ItemGroup>
+  <ItemGroup>
     <Compile Include="..\CommonVersion.cs">
       <Link>CommonVersion.cs</Link>
     </Compile>
@@ -86,15 +99,4 @@
   <ItemGroup>
     <EmbeddedResource Include="Images\ExpressAppLogo.png" />
   </ItemGroup>
-  <ItemGroup>
-    <PackageReference Include="Microsoft.CodeAnalysis.Compilers" Version="4.1.0" />
-  </ItemGroup>
-  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
-  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
-       Other similar extension points exist, see Microsoft.Common.targets.
-  <Target Name="BeforeBuild">
-  </Target>
-  <Target Name="AfterBuild">
-  </Target>
-  -->
 </Project>
