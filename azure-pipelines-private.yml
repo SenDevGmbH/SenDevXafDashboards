@@ -11,12 +11,22 @@ pool:
     vmImage: 'Windows-2019'
 
 variables:
-  solution: 'src/build.proj'
+  solution: 'src/build-core.proj'
   buildPlatform: 'Any CPU'
   buildConfiguration: 'Debug'
   NugetTargetDir: '$(Build.ArtifactStagingDirectory)'
   VersionRevision: $[counter('revisionCounter', 142)]
 steps:
+
+steps:
+- task: UseDotNet@2
+  displayName: 'Use .NET Core sdk'
+  inputs:
+    version: $(NetSdkVersion)
+    packageType: 'sdk'
+    includePreviewVersions: true
+    installationPath: $(Agent.ToolsDirectory)/dotnet
+    
 - task: NuGetToolInstaller@1
 
 - task: NuGetCommand@2
