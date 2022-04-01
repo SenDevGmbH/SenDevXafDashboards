@@ -51,132 +51,38 @@
     <ErrorReport>prompt</ErrorReport>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="DevExpress.Dashboard.v$(DevExpressVersion).Core" />
-    <Reference Include="DevExpress.Dashboard.v$(DevExpressVersion).Web" />
-    <Reference Include="DevExpress.Dashboard.v$(DevExpressVersion).Web.WebForms" />
-    <Reference Include="DevExpress.DataAccess.v$(DevExpressVersion)" />
-    <Reference Include="DevExpress.ExpressApp.Dashboards.v$(DevExpressVersion)">
-      <SpecificVersion>False</SpecificVersion>
-    </Reference>
-    <Reference Include="DevExpress.ExpressApp.Dashboards.Web.v$(DevExpressVersion)">
-      <SpecificVersion>False</SpecificVersion>
-    </Reference>
-    <Reference Include="DevExpress.ExpressApp.Objects.v$(DevExpressVersion)">
-      <SpecificVersion>False</SpecificVersion>
-    </Reference>
-    <Reference Include="DevExpress.ExpressApp.Xpo.v$(DevExpressVersion)">
-      <SpecificVersion>False</SpecificVersion>
-    </Reference>
-    <Reference Include="DevExpress.Office.v$(DevExpressVersion).Core">
-      <SpecificVersion>False</SpecificVersion>
-    </Reference>
-    <Reference Include="DevExpress.Printing.v$(DevExpressVersion).Core">
-      <SpecificVersion>False</SpecificVersion>
-    </Reference>
-    <Reference Include="DevExpress.Data.v$(DevExpressVersion)">
-      <SpecificVersion>False</SpecificVersion>
-    </Reference>
-    <Reference Include="DevExpress.ExpressApp.v$(DevExpressVersion)">
-      <SpecificVersion>False</SpecificVersion>
-    </Reference>
-    <Reference Include="DevExpress.ExpressApp.Web.v$(DevExpressVersion)">
-      <SpecificVersion>False</SpecificVersion>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="DevExpress.Persistent.Base.v$(DevExpressVersion)">
-      <SpecificVersion>False</SpecificVersion>
-    </Reference>
-    <Reference Include="DevExpress.Persistent.BaseImpl.Xpo.v$(DevExpressVersion)">
-      <SpecificVersion>False</SpecificVersion>
-    </Reference>
-    <Reference Include="DevExpress.RichEdit.v$(DevExpressVersion).Core">
-      <SpecificVersion>False</SpecificVersion>
-    </Reference>
-    <Reference Include="DevExpress.RichEdit.v$(DevExpressVersion).Export">
-      <SpecificVersion>False</SpecificVersion>
-    </Reference>
-    <Reference Include="DevExpress.Utils.v$(DevExpressVersion)">
-      <SpecificVersion>False</SpecificVersion>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="DevExpress.Web.ASPxThemes.v$(DevExpressVersion)">
-      <SpecificVersion>False</SpecificVersion>
-    </Reference>
-    <Reference Include="DevExpress.Web.ASPxTreeList.v$(DevExpressVersion)">
-      <SpecificVersion>False</SpecificVersion>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="DevExpress.Web.v$(DevExpressVersion)">
-      <SpecificVersion>False</SpecificVersion>
-    </Reference>
-    <Reference Include="DevExpress.Xpo.v$(DevExpressVersion)">
-      <SpecificVersion>False</SpecificVersion>
-    </Reference>
-    <Reference Include="Hangfire.Core, Version=1.6.22.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Hangfire.Core.1.6.22\lib\net45\Hangfire.Core.dll</HintPath>
-    </Reference>
-    <Reference Include="Hangfire.SqlServer, Version=1.6.22.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Hangfire.SqlServer.1.6.22\lib\net45\Hangfire.SqlServer.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.Owin, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Microsoft.Owin.3.0.0\lib\net45\Microsoft.Owin.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.Owin.Host.SystemWeb, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Microsoft.Owin.Host.SystemWeb.3.0.0\lib\net45\Microsoft.Owin.Host.SystemWeb.dll</HintPath>
-    </Reference>
-    <Reference Include="Newtonsoft.Json, Version=4.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Newtonsoft.Json.5.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
-    </Reference>
-    <Reference Include="Owin, Version=1.0.0.0, Culture=neutral, PublicKeyToken=f0ebd12fd5e55cc5, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Owin.1.0\lib\net40\Owin.dll</HintPath>
-    </Reference>
-    <Reference Include="System">
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="System.Configuration">
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="System.Data">
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="System.Data.DataSetExtensions">
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="System.Drawing">
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="System.EnterpriseServices">
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="System.ServiceModel" />
-    <Reference Include="System.ServiceModel.Activation" />
-    <Reference Include="System.Web">
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="System.Web.ApplicationServices">
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="System.Web.DynamicData">
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="System.Web.Entity">
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="System.Web.Extensions">
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="System.Web.Mobile">
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="System.Web.Services">
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="System.XML">
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="System.Xml.Linq">
-      <Private>False</Private>
-    </Reference>
+    <PackageReference Include="DevExpress.Web" Version="$(DevExpressPackageVersion)" />
+    <PackageReference Include="DevExpress.Xpo" Version="$(DevExpressPackageVersion)" />
+    <PackageReference Include="DevExpress.Utils" Version="$(DevExpressPackageVersion)" />
+    <PackageReference Include="DevExpress.Persistent.BaseImpl.Xpo" Version="$(DevExpressPackageVersion)" />
+    <PackageReference Include="DevExpress.Persistent.Base" Version="$(DevExpressPackageVersion)" />
+    <PackageReference Include="DevExpress.Data" Version="$(DevExpressPackageVersion)" />
+    <PackageReference Include="DevExpress.DataAccess" Version="$(DevExpressPackageVersion)" />
+    <PackageReference Include="DevExpress.Dashboard.Core" Version="$(DevExpressPackageVersion)" />
+    <PackageReference Include="DevExpress.Web.Dashboard" Version="$(DevExpressPackageVersion)" />
+    <PackageReference Include="DevExpress.ExpressApp" Version="$(DevExpressPackageVersion)" />
+    <PackageReference Include="DevExpress.ExpressApp.Web" Version="$(DevExpressPackageVersion)" />
+    <PackageReference Include="DevExpress.ExpressApp.Xpo" Version="$(DevExpressPackageVersion)" />
+    <PackageReference Include="DevExpress.ExpressApp.Dashboards" Version="$(DevExpressPackageVersion)" />
+    <PackageReference Include="DevExpress.ExpressApp.Dashboards.Web" Version="$(DevExpressPackageVersion)" />
+    <PackageReference Include="DevExpress.Printing.Core" Version="$(DevExpressPackageVersion)" />
+    <PackageReference Include="System.ComponentModel " Version="4.3.0" />
+    <PackageReference Include="System.Net.Http " Version="4.3.4" />
+    <PackageReference Include="System.Xml.Linq" Version=" 3.5.21022.801 " />
+    <PackageReference Include="Hangfire.Core" Version="1.6.22.0" />
+    <PackageReference Include="Hangfire.SqlServer" Version="1.6.22.0" />
+    <PackageReference Include="Microsoft.Owin" Version="3.0.0.0" />
+    <PackageReference Include="Microsoft.Owin.Host.SystemWeb" Version="3.0.0.0" />
+    <PackageReference Include="Newtonsoft.Json" Version="4.5.0.0" />
+    <PackageReference Include="Owin" Version="1.0.0.0" />
+    <PackageReference Include="System.Data.SqlClient" Version="4.8.3" />
+    <PackageReference Include="System" Version="4.0.0.0" />
+    <PackageReference Include="System.Configuration.ConfigurationManager" Version="6.0.0" />
+
+  </ItemGroup>
+    <ItemGroup>
+    <Reference Include="System.Web" />
+	<Reference Include="System.ServiceModel.Activation" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Default.aspx" />
@@ -224,17 +130,16 @@
   <ItemGroup>
     <EmbeddedResource Include="WebApplication.resx">
       <DependentUpon>WebApplication.cs</DependentUpon>
-      <SubType>Designer</SubType>	  
+      <SubType>Designer</SubType>
     </EmbeddedResource>
-	 <EmbeddedResource Include="Model.xafml">
-         <SubType>Designer</SubType>
+    <EmbeddedResource Include="Model.xafml">
+      <SubType>Designer</SubType>
     </EmbeddedResource>
-		 <EmbeddedResource Include="Model.Desktop.xafml">     
+    <EmbeddedResource Include="Model.Desktop.xafml">
     </EmbeddedResource>
-		 <EmbeddedResource Include="Model.Tablet.xafml">   
+    <EmbeddedResource Include="Model.Tablet.xafml">
     </EmbeddedResource>
   </ItemGroup>
-
   <ItemGroup>
     <ProjectReference Include="..\..\Libraries\SenDev.Xaf.Dashboards\SenDev.Xaf.Dashboards.csproj">
       <Project>{4D917657-12F3-4391-9DA4-32FD3756579E}</Project>
@@ -250,7 +155,6 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-
     <None Include="packages.config" />
     <None Include="ReadMe.txt" />
     <Content Include="Web.config" />
@@ -264,7 +168,7 @@
       <DependentUpon>Web.config</DependentUpon>
     </None>
   </ItemGroup>
-  <ItemGroup />
+
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
