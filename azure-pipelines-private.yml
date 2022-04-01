@@ -11,7 +11,7 @@ pool:
     vmImage: 'Windows-2019'
 
 variables:
-  solution: 'src/build-core.proj'
+  solution: 'src/build.proj'
   buildPlatform: 'Any CPU'
   buildConfiguration: 'Debug'
   NugetTargetDir: '$(Build.ArtifactStagingDirectory)'
