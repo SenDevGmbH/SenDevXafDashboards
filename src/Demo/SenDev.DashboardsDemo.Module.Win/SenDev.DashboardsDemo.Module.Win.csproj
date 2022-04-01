@@ -58,85 +58,19 @@
     <ErrorReport>prompt</ErrorReport>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="DevExpress.Dashboard.v$(DevExpressVersion).Core" />
-    <Reference Include="DevExpress.Dashboard.v$(DevExpressVersion).Win" />
-    <Reference Include="DevExpress.DataAccess.v$(DevExpressVersion)" />
-    <Reference Include="DevExpress.DataAccess.v$(DevExpressVersion).UI" />
-    <Reference Include="DevExpress.ExpressApp.Dashboards.v$(DevExpressVersion)">
-      <SpecificVersion>False</SpecificVersion>
-    </Reference>
-    <Reference Include="DevExpress.ExpressApp.Dashboards.Win.v$(DevExpressVersion)">
-      <SpecificVersion>False</SpecificVersion>
-    </Reference>
-    <Reference Include="DevExpress.Utils.v$(DevExpressVersion)">
-      <SpecificVersion>False</SpecificVersion>
-    </Reference>
-    <Reference Include="DevExpress.Printing.v$(DevExpressVersion).Core">
-      <SpecificVersion>False</SpecificVersion>
-    </Reference>
-    <Reference Include="DevExpress.Data.v$(DevExpressVersion)">
-      <SpecificVersion>False</SpecificVersion>
-    </Reference>
-    <Reference Include="DevExpress.ExpressApp.Xpo.v$(DevExpressVersion)">
-      <SpecificVersion>False</SpecificVersion>
-    </Reference>
-    <Reference Include="DevExpress.ExpressApp.v$(DevExpressVersion)">
-      <SpecificVersion>False</SpecificVersion>
-    </Reference>
-    <Reference Include="DevExpress.ExpressApp.Win.v$(DevExpressVersion)">
-      <SpecificVersion>False</SpecificVersion>
-    </Reference>
-    <Reference Include="DevExpress.Persistent.Base.v$(DevExpressVersion)">
-      <SpecificVersion>False</SpecificVersion>
-    </Reference>
-    <Reference Include="DevExpress.Persistent.BaseImpl.Xpo.v$(DevExpressVersion)">
-      <SpecificVersion>False</SpecificVersion>
-    </Reference>
-    <Reference Include="DevExpress.Xpo.v$(DevExpressVersion)">
-      <SpecificVersion>False</SpecificVersion>
-    </Reference>
-    <Reference Include="DevExpress.XtraGrid.v$(DevExpressVersion)">
-      <SpecificVersion>False</SpecificVersion>
-    </Reference>
-    <Reference Include="DevExpress.XtraEditors.v$(DevExpressVersion)">
-      <SpecificVersion>False</SpecificVersion>
-    </Reference>
-    <Reference Include="DevExpress.XtraLayout.v$(DevExpressVersion)">
-      <SpecificVersion>False</SpecificVersion>
-    </Reference>
-    <Reference Include="DevExpress.XtraNavBar.v$(DevExpressVersion)">
-      <SpecificVersion>False</SpecificVersion>
-    </Reference>
-    <Reference Include="DevExpress.XtraBars.v$(DevExpressVersion)">
-      <SpecificVersion>False</SpecificVersion>
-    </Reference>
-    <Reference Include="DevExpress.XtraPrinting.v$(DevExpressVersion)">
-      <SpecificVersion>False</SpecificVersion>
-    </Reference>
-    <Reference Include="System">
-      <Name>System</Name>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="System.configuration">
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="System.Data">
-      <Name>System.Data</Name>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="System.Drawing">
-      <Name>System.Drawing</Name>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="System.Windows.Forms">
-      <Name>System.Windows.Forms</Name>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="System.Xml">
-      <Name>System.XML</Name>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="System.Xml.Linq" />
+    <PackageReference Include="DevExpress.Xpo" Version="$(DevExpressPackageVersion)" />
+	<PackageReference Include="DevExpress.DataAccess" Version="$(DevExpressPackageVersion)" />
+    <PackageReference Include="DevExpress.Win.Dashboard " Version="$(DevExpressPackageVersion)" />
+    <PackageReference Include="DevExpress.ExpressApp" Version="$(DevExpressPackageVersion)" />
+    <PackageReference Include="DevExpress.ExpressApp.Xpo" Version="$(DevExpressPackageVersion)" />
+    <PackageReference Include="DevExpress.ExpressApp.Win" Version="$(DevExpressPackageVersion)" />
+    <PackageReference Include="DevExpress.ExpressApp.Dashboards.Win" Version="$(DevExpressPackageVersion)" />
+    <PackageReference Include="DevExpress.Win.RichEdit " Version="$(DevExpressPackageVersion)" />
+    <PackageReference Include="DevExpress.Utils" Version="$(DevExpressPackageVersion)" />   
+    <PackageReference Include="DevExpress.Persistent.BaseImpl.Xpo" Version="$(DevExpressPackageVersion)" />
+	<PackageReference Include="DevExpress.Printing.Core" Version="$(DevExpressPackageVersion)" />
+	<PackageReference Include="DevExpress.Data" Version="$(DevExpressPackageVersion)" />
+	<PackageReference Include="System.Xml.Linq" Version=" 3.5.21022.801 " />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="WinModule.cs">
