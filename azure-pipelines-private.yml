@@ -29,10 +29,14 @@ steps:
     
 - task: NuGetToolInstaller@1
 
+- task: NuGetAuthenticate@0
+
 - task: NuGetCommand@2
+  displayName: "NuGet restore"
   inputs:
-    command: 'restore' 
+    command: restore
     restoreSolution: '**/*.sln'
+    vstsFeed: 'DevExpress/Release'
 
 - task: MSBuild@1
   inputs:
