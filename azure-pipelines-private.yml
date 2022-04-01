@@ -16,7 +16,8 @@ variables:
   buildConfiguration: 'Debug'
   NugetTargetDir: '$(Build.ArtifactStagingDirectory)'
   VersionRevision: $[counter('revisionCounter', 142)]
-
+  NetSdkVersion: '6.0.201'
+  
 steps:
 - task: UseDotNet@2
   displayName: 'Use .NET Core sdk'
