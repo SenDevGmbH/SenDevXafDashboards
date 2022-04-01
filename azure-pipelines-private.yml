@@ -16,7 +16,6 @@ variables:
   buildConfiguration: 'Debug'
   NugetTargetDir: '$(Build.ArtifactStagingDirectory)'
   VersionRevision: $[counter('revisionCounter', 142)]
-steps:
 
 steps:
 - task: UseDotNet@2
