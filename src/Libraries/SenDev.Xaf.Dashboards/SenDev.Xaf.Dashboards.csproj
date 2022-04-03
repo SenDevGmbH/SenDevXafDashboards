@@ -11,6 +11,7 @@
 		<GenerateAssemblyTitleAttribute>false</GenerateAssemblyTitleAttribute>
 		<Deterministic>false</Deterministic>
     <EnableDefaultEmbeddedResourceItems>false</EnableDefaultEmbeddedResourceItems>
+    <PackageDescription>SenDev XAF Dashboards platform agnostic module</PackageDescription>
 	</PropertyGroup>
 
 	<PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -99,4 +100,5 @@
   <ItemGroup>
     <EmbeddedResource Include="Images\ExpressAppLogo.png" />
   </ItemGroup>
+  <Target Name="NuGetPack" AfterTargets="NuGet" DependsOnTargets="Pack"/>
 </Project>

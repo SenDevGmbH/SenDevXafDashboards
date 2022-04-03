@@ -1,0 +1,7 @@
+<Project>
+   <PropertyGroup>
+      <PackageOutputPath>$(OutDir)</PackageOutputPath>
+      <Authors>SenDev GmbH</Authors>
+   </PropertyGroup>
+   <Target Name="NuGet" DependsOnTargets="Build"/>
+</Project>

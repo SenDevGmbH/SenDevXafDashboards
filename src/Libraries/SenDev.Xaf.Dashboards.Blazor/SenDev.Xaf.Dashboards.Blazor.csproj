@@ -2,9 +2,8 @@
   <PropertyGroup>
     <TargetFramework>net5.0</TargetFramework>
     <Deterministic>false</Deterministic>
-    <AssemblyVersion>1.0.*</AssemblyVersion>
-    <FileVersion>1.0.0.0</FileVersion>
     <Configurations>Debug;Release;EasyTest</Configurations>
+    <PackageDescription>SenDev XAF Dashboards Blazor module</PackageDescription>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
     <DefineConstants>DEBUG;TRACE</DefineConstants>
@@ -32,4 +31,5 @@
   <ItemGroup>
     <ProjectReference Include="..\SenDev.Xaf.Dashboards\SenDev.Xaf.Dashboards.csproj" />
   </ItemGroup>
+  <Target Name="NuGetPack" AfterTargets="NuGet" DependsOnTargets="Pack"/>
 </Project>
