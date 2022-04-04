@@ -53,7 +53,7 @@ steps:
     solution: '$(solution)'
     platform: '$(buildPlatform)'
     configuration: '$(buildConfiguration)'
-    msbuildArguments: '/bl:$(Build.ArtifactStagingDirectory)\Log\build.binlog /t:NuGet /p:TargetParentDir=DX'
+    msbuildArguments: '/bl:$(Build.ArtifactStagingDirectory)\Log\build.binlog /t:NuGet /p:BuildNumber=$(VersionRevision)'
 
 - task: PublishBuildArtifacts@1
   displayName: 'Publish binary log'
