@@ -69,11 +69,6 @@
 	</ItemGroup>
 
   <ItemGroup>
-    <Compile Include="..\CommonVersion.cs">
-      <Link>CommonVersion.cs</Link>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
     <EmbeddedResource Include="Model.DesignedDiffs.xafml" />
     <EmbeddedResource Include="SenDevDashboardsModule.resx">
       <SubType>Designer</SubType>

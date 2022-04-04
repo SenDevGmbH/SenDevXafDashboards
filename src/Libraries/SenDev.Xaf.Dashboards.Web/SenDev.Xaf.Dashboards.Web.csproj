@@ -1,4 +1,4 @@
-﻿<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="14.0">
+﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
@@ -9,12 +9,8 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>SenDev.Xaf.Dashboards.Web</RootNamespace>
     <AssemblyName>SenDev.Xaf.Dashboards.Web</AssemblyName>
-    <FileUpgradeFlags>
-    </FileUpgradeFlags>
-    <UpgradeBackupLocation>
-    </UpgradeBackupLocation>
-    <OldToolsVersion>3.5</OldToolsVersion>
-    <TargetFrameworkProfile />
+    <TargetFrameworks>net48</TargetFrameworks>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <PackageDescription>SenDev XAF Dashboards Web module</PackageDescription>
   </PropertyGroup>
   <PropertyGroup>
@@ -29,6 +25,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -37,6 +34,7 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'EasyTest|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -45,6 +43,7 @@
     <DebugType>full</DebugType>
     <PlatformTarget>AnyCPU</PlatformTarget>
     <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="DevExpress.Web" Version="$(DevExpressPackageVersion)" />
@@ -62,59 +61,11 @@
     <PackageReference Include="System.Net.Http " Version="4.3.4" />
     <PackageReference Include="System.Xml.Linq" Version=" 3.5.21022.801 " />
   </ItemGroup>
-    <ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\SenDev.Xaf.Dashboards\SenDev.Xaf.Dashboards.csproj" />
+  </ItemGroup>
+  <ItemGroup>
     <Reference Include="System.Web" />
   </ItemGroup>
-  <ItemGroup>
-    <Compile Include="..\CommonVersion.cs">
-      <Link>CommonVersion.cs</Link>
-    </Compile>
-    <Compile Include="Controllers\LoadDashboardStateEventArgs.cs" />
-    <Compile Include="Controllers\SaveDashboardStateEventArgs.cs" />
-    <Compile Include="Controllers\WebDashboardControllerBase.cs" />
-    <Compile Include="Controllers\WebDashboardDataSourceController.cs" />
-    <Compile Include="Controllers\WebDashboardSaveStateController.cs" />
-    <Compile Include="DatabaseUpdate\Updater.cs" />
-    <Compile Include="Model\IModelWebDashboardsOptions.cs" />
-    <Compile Include="Model\IModelWebDashboardState.cs" />
-    <Compile Include="Module.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="Module.Designer.cs">
-      <DependentUpon>Module.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Properties\AssemblyInfo.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Model.DesignedDiffs.xafml" />
-    <EmbeddedResource Include="Module.resx">
-      <SubType>Designer</SubType>
-      <DependentUpon>Module.cs</DependentUpon>
-    </EmbeddedResource>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="app.config" />
-    <None Include="DatabaseUpdate\ReadMe.txt" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="BusinessObjects\ReadMe.txt" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Controllers\ReadMe.txt" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Images\ReadMe.txt" />
-    <None Include="ReadMe.txt" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Images\ExpressAppLogo.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\SenDev.Xaf.Dashboards\SenDev.Xaf.Dashboards.csproj">
-      <Project>{4d917657-12f3-4391-9da4-32fd3756579e}</Project>
-      <Name>SenDev.Xaf.Dashboards</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
-  <Target Name="NuGetPack" AfterTargets="NuGet" DependsOnTargets="Pack"/>
+  <Target Name="NuGetPack" AfterTargets="NuGet" DependsOnTargets="Pack" />
 </Project>

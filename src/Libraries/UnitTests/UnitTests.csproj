@@ -15,6 +15,8 @@
     <Deterministic>true</Deterministic>
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -24,6 +26,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -32,28 +35,26 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="DevExpress.Dashboard.Core" Version="$(DevExpressPackageVersion)"/>
-    <PackageReference Include="DevExpress.Data" Version="$(DevExpressPackageVersion)"/>
-    <PackageReference Include="DevExpress.DataAccess" Version="$(DevExpressPackageVersion)"/>
-    <PackageReference Include="DevExpress.ExpressApp" Version="$(DevExpressPackageVersion)"/>
-	<PackageReference Include="DevExpress.ExpressApp.PivotGrid" Version="$(DevExpressPackageVersion)"/>
-    <PackageReference Include="DevExpress.ExpressApp.Xpo" Version="$(DevExpressPackageVersion)"/>
-    <PackageReference Include="DevExpress.Persistent.Base"  Version="$(DevExpressPackageVersion)"/>
-    <PackageReference Include="DevExpress.Persistent.BaseImpl.Xpo" Version="$(DevExpressPackageVersion)"/>
-
-    <PackageReference Include="DevExpress.Xpo" Version="$(DevExpressPackageVersion)"/>
+    <PackageReference Include="DevExpress.Dashboard.Core" Version="$(DevExpressPackageVersion)" />
+    <PackageReference Include="DevExpress.Data" Version="$(DevExpressPackageVersion)" />
+    <PackageReference Include="DevExpress.DataAccess" Version="$(DevExpressPackageVersion)" />
+    <PackageReference Include="DevExpress.ExpressApp" Version="$(DevExpressPackageVersion)" />
+    <PackageReference Include="DevExpress.ExpressApp.PivotGrid" Version="$(DevExpressPackageVersion)" />
+    <PackageReference Include="DevExpress.ExpressApp.Xpo" Version="$(DevExpressPackageVersion)" />
+    <PackageReference Include="DevExpress.Persistent.Base" Version="$(DevExpressPackageVersion)" />
+    <PackageReference Include="DevExpress.Persistent.BaseImpl.Xpo" Version="$(DevExpressPackageVersion)" />
+    <PackageReference Include="DevExpress.Xpo" Version="$(DevExpressPackageVersion)" />
     <PackageReference Include="System.Data.SqlClient" Version="4.8.3" />
-    <PackageReference Include="xunit.abstractions" Version="2.0.3.0"/>
-    <PackageReference Include="xunit.assert" Version="2.4.1.0"/>
-    <PackageReference Include="xunit.core" Version="2.4.1.0"/>
-   
+    <PackageReference Include="xunit.abstractions" Version="2.0.3.0" />
+    <PackageReference Include="xunit.assert" Version="2.4.1.0" />
+    <PackageReference Include="xunit.core" Version="2.4.1.0" />
   </ItemGroup>
   <ItemGroup>
-	<Reference Include="System"/>
+    <Reference Include="System" />
   </ItemGroup>
-
   <ItemGroup>
     <Compile Include="DashboardDataExtractControllerTests.cs" />
     <Compile Include="DashboardDataListTests.cs" />

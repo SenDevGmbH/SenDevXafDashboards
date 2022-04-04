@@ -9,7 +9,8 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>SenDev.DashboardsDemo.Module.Web</RootNamespace>
     <AssemblyName>SenDev.DashboardsDemo.Module.Web</AssemblyName>
-    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <TargetFramework>net48</TargetFramework>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileUpgradeFlags>
     </FileUpgradeFlags>
     <UpgradeBackupLocation>
@@ -57,26 +58,26 @@
     <PlatformTarget>AnyCPU</PlatformTarget>
     <ErrorReport>prompt</ErrorReport>
   </PropertyGroup>
-    <ItemGroup>
+  <ItemGroup>
     <PackageReference Include="DevExpress.Web" Version="$(DevExpressPackageVersion)" />
     <PackageReference Include="DevExpress.Xpo" Version="$(DevExpressPackageVersion)" />
     <PackageReference Include="DevExpress.Utils" Version="$(DevExpressPackageVersion)" />
     <PackageReference Include="DevExpress.Persistent.BaseImpl.Xpo" Version="$(DevExpressPackageVersion)" />
-	<PackageReference Include="DevExpress.Persistent.Base" Version="$(DevExpressPackageVersion)" />
+    <PackageReference Include="DevExpress.Persistent.Base" Version="$(DevExpressPackageVersion)" />
     <PackageReference Include="DevExpress.Data" Version="$(DevExpressPackageVersion)" />
-	<PackageReference Include="DevExpress.DataAccess" Version="$(DevExpressPackageVersion)" />
+    <PackageReference Include="DevExpress.DataAccess" Version="$(DevExpressPackageVersion)" />
     <PackageReference Include="DevExpress.Dashboard.Core" Version="$(DevExpressPackageVersion)" />
     <PackageReference Include="DevExpress.Web.Dashboard" Version="$(DevExpressPackageVersion)" />
     <PackageReference Include="DevExpress.ExpressApp" Version="$(DevExpressPackageVersion)" />
-	<PackageReference Include="DevExpress.ExpressApp.Web" Version="$(DevExpressPackageVersion)" />
+    <PackageReference Include="DevExpress.ExpressApp.Web" Version="$(DevExpressPackageVersion)" />
     <PackageReference Include="DevExpress.ExpressApp.Xpo" Version="$(DevExpressPackageVersion)" />
     <PackageReference Include="DevExpress.ExpressApp.Dashboards" Version="$(DevExpressPackageVersion)" />
     <PackageReference Include="DevExpress.ExpressApp.Dashboards.Web" Version="$(DevExpressPackageVersion)" />
-	<PackageReference Include="DevExpress.Printing.Core" Version="$(DevExpressPackageVersion)" />
+    <PackageReference Include="DevExpress.Printing.Core" Version="$(DevExpressPackageVersion)" />
     <PackageReference Include="System.ComponentModel " Version="4.3.0" />
     <PackageReference Include="System.Net.Http " Version="4.3.4" />
     <PackageReference Include="System.Xml.Linq" Version=" 3.5.21022.801 " />
-  </ItemGroup>  
+  </ItemGroup>
   <ItemGroup>
     <Compile Include="WebModule.cs">
       <SubType>Component</SubType>
