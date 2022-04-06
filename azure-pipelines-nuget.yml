@@ -53,7 +53,7 @@ steps:
     solution: '$(solution)'
     platform: '$(buildPlatform)'
     configuration: '$(buildConfiguration)'
-    msbuildArguments: '/bl:$(Build.ArtifactStagingDirectory)\Log\build.binlog /t:NuGet /p:BuildNumber=$(VersionRevision)'
+    msbuildArguments: '/bl:$(Build.ArtifactStagingDirectory)\Log\build.binlog /t:NuGet /p:BuildNumber=$(VersionRevision) /p:PackageOutputPath=$(Build.ArtifactStagingDirectory)'
 
 - task: PublishBuildArtifacts@1
   displayName: 'Publish binary log'
@@ -73,8 +73,9 @@ steps:
   displayName: 'Publish Quality Gate Result'  
 
 - task: NuGetCommand@2
+  displayName: Push packages
   inputs:
     command: 'push' 
-    packagesToPush: '$(Build.ArtifactStagingDirectory)/**/DX/*.nupkg'
+    packagesToPush: '$(Build.ArtifactStagingDirectory)/**/*.nupkg'
     nuGetFeedType: 'external' 
     publishFeedCredentials: 'nuget.org'
