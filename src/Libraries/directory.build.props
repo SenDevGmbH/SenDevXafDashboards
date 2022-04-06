@@ -1,11 +1,7 @@
-<Project>
+﻿<Project>
  <PropertyGroup>
-    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <DevExpressVersion>21.2</DevExpressVersion>
-    <DevExpressBinLocation>c:\DevExpress\21.2.2\Bin\Framework</DevExpressBinLocation>
+    <DevExpressPackageVersion>21.2.6</DevExpressPackageVersion>
+    <DevExpressBinLocation>c:\DevExpress\21.2.6\Bin\Framework</DevExpressBinLocation>
  </PropertyGroup>
-
- <ItemGroup>
-    <Compile Include="$(MSBuildThisFileDirectory)CommonVersion.cs"/>
-  </ItemGroup>
 </Project>

@@ -1,0 +1,32 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+    <Deterministic>false</Deterministic>
+    <Configurations>Debug;Release;EasyTest</Configurations>
+    <PackageDescription>SenDev XAF Dashboards Blazor module</PackageDescription>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+  </PropertyGroup>
+  <ItemGroup>
+    <None Remove="Model.DesignedDiffs.xafml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Model.DesignedDiffs.xafml" />
+  </ItemGroup>
+  <ItemGroup>
+    <FrameworkReference Include="Microsoft.AspNetCore.App" />
+    <PackageReference Include="DevExpress.ExpressApp" Version="$(DevExpressPackageVersion)" />
+    <PackageReference Include="DevExpress.ExpressApp.CodeAnalysis" Version="$(DevExpressPackageVersion)" />
+    <PackageReference Include="DevExpress.ExpressApp.Objects" Version="$(DevExpressPackageVersion)" />
+    <PackageReference Include="DevExpress.ExpressApp.Xpo" Version="$(DevExpressPackageVersion)" />
+    <PackageReference Include="DevExpress.ExpressApp.Dashboards.Blazor" Version="$(DevExpressPackageVersion)" />
+    <PackageReference Include="DevExpress.Persistent.Base" Version="$(DevExpressPackageVersion)" />
+    <PackageReference Include="DevExpress.Persistent.BaseImpl.Xpo" Version="$(DevExpressPackageVersion)" />
+    <PackageReference Include="Microsoft.CodeAnalysis.Compilers" Version="4.1.0" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\SenDev.Xaf.Dashboards\SenDev.Xaf.Dashboards.csproj" />
+  </ItemGroup>
+  <Target Name="NuGetPack" AfterTargets="NuGet" DependsOnTargets="Pack"/>
+</Project>

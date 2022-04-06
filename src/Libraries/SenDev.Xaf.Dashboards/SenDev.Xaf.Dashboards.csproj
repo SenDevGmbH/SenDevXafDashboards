@@ -11,6 +11,7 @@
 		<GenerateAssemblyTitleAttribute>false</GenerateAssemblyTitleAttribute>
 		<Deterministic>false</Deterministic>
     <EnableDefaultEmbeddedResourceItems>false</EnableDefaultEmbeddedResourceItems>
+    <PackageDescription>SenDev XAF Dashboards platform agnostic module</PackageDescription>
 	</PropertyGroup>
 
 	<PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -47,75 +48,26 @@
   <ItemGroup>
     <None Remove="Scripting\ScriptTemplate.template" />
   </ItemGroup>
-  <ItemGroup>
-    <Reference Include="Microsoft.CSharp" />
-    <Reference Include="System">
-      <Name>System</Name>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="System.ComponentModel.Composition" />
-    <Reference Include="System.Data">
-      <Name>System.Data</Name>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="System.Drawing">
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="System.Numerics" />
-    <Reference Include="System.Xml">
-      <Name>System.XML</Name>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="System.Xml.Linq" />
+	<ItemGroup>
+		<PackageReference Include="DevExpress.Dashboard.Core" Version="$(DevExpressPackageVersion)" />
+		<PackageReference Include="DevExpress.Document.Processor" Version="$(DevExpressPackageVersion)" />
+		<PackageReference Include="DevExpress.ExpressApp" Version="$(DevExpressPackageVersion)" />
+		<PackageReference Include="DevExpress.ExpressApp.Chart" Version="$(DevExpressPackageVersion)" />
+		<PackageReference Include="DevExpress.ExpressApp.CloneObject.Xpo" Version="$(DevExpressPackageVersion)" />
+		<PackageReference Include="DevExpress.ExpressApp.ConditionalAppearance" Version="$(DevExpressPackageVersion)" />
+		<PackageReference Include="DevExpress.ExpressApp.Dashboards" Version="$(DevExpressPackageVersion)" />
+		<PackageReference Include="DevExpress.ExpressApp.Security" Version="$(DevExpressPackageVersion)" />
+		<PackageReference Include="DevExpress.ExpressApp.Security.Xpo" Version="$(DevExpressPackageVersion)" />
+		<PackageReference Include="DevExpress.ExpressApp.StateMachine" Version="$(DevExpressPackageVersion)" />
+		<PackageReference Include="DevExpress.ExpressApp.TreeListEditors" Version="$(DevExpressPackageVersion)" />
+		<PackageReference Include="DevExpress.ExpressApp.Validation" Version="$(DevExpressPackageVersion)" />
+		<PackageReference Include="DevExpress.ExpressApp.ViewVariantsModule" Version="$(DevExpressPackageVersion)" />
+		<PackageReference Include="DevExpress.Persistent.BaseImpl.Xpo" Version="$(DevExpressPackageVersion)" />
+		<PackageReference Include="DevExpress.Spreadsheet.Core" Version="$(DevExpressPackageVersion)" />
+    <PackageReference Include="Microsoft.CodeAnalysis.Compilers" Version="4.1.0" />
+    <PackageReference Include="Microsoft.CSharp" Version="4.7.0" />
+	</ItemGroup>
 
-    <Reference Include="DevExpress.Dashboard.v$(DevExpressVersion).Core">
-      <HintPath>$(DevExpressBinLocation)\DevExpress.Dashboard.v$(DevExpressVersion).Core.dll</HintPath>
-    </Reference>
-    <Reference Include="DevExpress.DataAccess.v$(DevExpressVersion)">
-      <HintPath>$(DevExpressBinLocation)\DevExpress.DataAccess.v$(DevExpressVersion).dll</HintPath>
-    </Reference>
-    <Reference Include="DevExpress.ExpressApp.Dashboards.v$(DevExpressVersion)">
-      <HintPath>$(DevExpressBinLocation)\DevExpress.ExpressApp.Dashboards.v$(DevExpressVersion).dll</HintPath>
-      <SpecificVersion>False</SpecificVersion>
-    </Reference>
-    <Reference Include="DevExpress.ExpressApp.Xpo.v$(DevExpressVersion)">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>$(DevExpressBinLocation)\DevExpress.ExpressApp.Xpo.v$(DevExpressVersion).dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="DevExpress.PivotGrid.v$(DevExpressVersion).Core">
-      <HintPath>$(DevExpressBinLocation)\DevExpress.PivotGrid.v$(DevExpressVersion).Core.dll</HintPath>
-    </Reference>
-    <Reference Include="DevExpress.Printing.v$(DevExpressVersion).Core">
-      <HintPath>$(DevExpressBinLocation)\DevExpress.Printing.v$(DevExpressVersion).Core.dll</HintPath>
-      <SpecificVersion>False</SpecificVersion>
-    </Reference>
-    <Reference Include="DevExpress.Data.v$(DevExpressVersion)">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>$(DevExpressBinLocation)\DevExpress.Data.v$(DevExpressVersion).dll</HintPath>
-    </Reference>
-    <Reference Include="DevExpress.ExpressApp.v$(DevExpressVersion)">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>$(DevExpressBinLocation)\DevExpress.ExpressApp.v$(DevExpressVersion).dll</HintPath>
-    </Reference>
-    <Reference Include="DevExpress.Persistent.Base.v$(DevExpressVersion)">
-      <HintPath>$(DevExpressBinLocation)\DevExpress.Persistent.Base.v$(DevExpressVersion).dll</HintPath>
-      <SpecificVersion>False</SpecificVersion>
-    </Reference>
-    <Reference Include="DevExpress.Persistent.BaseImpl.Xpo.v$(DevExpressVersion)">
-      <HintPath>$(DevExpressBinLocation)\DevExpress.Persistent.BaseImpl.Xpo.v$(DevExpressVersion).dll</HintPath>
-      <SpecificVersion>False</SpecificVersion>
-    </Reference>
-    <Reference Include="DevExpress.Xpo.v$(DevExpressVersion)">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>$(DevExpressBinLocation)\DevExpress.Xpo.v$(DevExpressVersion).dll</HintPath>
-    </Reference>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="..\CommonVersion.cs">
-      <Link>CommonVersion.cs</Link>
-    </Compile>
-  </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Model.DesignedDiffs.xafml" />
     <EmbeddedResource Include="SenDevDashboardsModule.resx">
@@ -143,15 +95,5 @@
   <ItemGroup>
     <EmbeddedResource Include="Images\ExpressAppLogo.png" />
   </ItemGroup>
-  <ItemGroup>
-    <PackageReference Include="Microsoft.CodeAnalysis.Compilers" Version="3.11.0" />
-  </ItemGroup>
-  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
-  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
-       Other similar extension points exist, see Microsoft.Common.targets.
-  <Target Name="BeforeBuild">
-  </Target>
-  <Target Name="AfterBuild">
-  </Target>
-  -->
+  <Target Name="NuGetPack" AfterTargets="NuGet" DependsOnTargets="Pack"/>
 </Project>

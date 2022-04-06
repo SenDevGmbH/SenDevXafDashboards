@@ -1,22 +1,17 @@
 <Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003" DefaultTargets="Build">
   <ItemGroup>
-    <ProjectToBuild Include="build-core.proj"/>
-    <TargetDevExpressVersion Include="21.2.3" TargetParentDir="DX"/>
-    <TargetDevExpressVersion Include="21.2.4" TargetParentDir="DX"/>
-    <TargetDevExpressVersion Include="21.2.3" TargetParentDir="SelfCompiled" PackageNameSuffix=".SelfCompiled"/>
-    <TargetDevExpressVersion Include="21.2.4" TargetParentDir="SelfCompiled" PackageNameSuffix=".SelfCompiled"/>
+    <ProjectToPack Include="SenDev.Xaf.Dashboards.sln"/>
+    <TargetDevExpressVersion Include="21.2.6"  TargetParentDir="DX"/>
   </ItemGroup>
-
-
-  <Target Name="NuGet" Inputs="@(TargetDevExpressVersion)" Outputs="EmptyOutput">
-    <MSBuild Projects="@(ProjectToBuild)" Properties="OutputPath=$(MSBuildProjectDirectory)\bin\%(TargetDevExpressVersion.Identity)\;DevExpressFullVersion=%(TargetDevExpressVersion.Identity);TargetParentDir=%(TargetDevExpressVersion.TargetParentDir);PackageNameSuffix=%(TargetDevExpressVersion.PackageNameSuffix)" StopOnFirstFailure="true" Targets="Nuget" 
-    	Condition="$(TargetParentDir)=='' OR %(TargetDevExpressVersion.TargetParentDir)==$(TargetParentDir)"/>
-
-    <MakeDir Directories="bin\nuget"/>
+  <PropertyGroup>
+    <ProjectToBuild>SenDev.Xaf.Dashboards.sln</ProjectToBuild>
+  </PropertyGroup>
+  <Target Name="NuGet" Inputs="@(TargetDevExpressVersion)" Outputs="$(PackageOutputPath)*%(TargetDevExpressVersion.PackageVersion)*.nupkg">
+    <Exec Command="&quot;$(MSBuildBinPath)\msbuild.exe&quot;  $(ProjectToBuild) /bl:%(TargetDevExpressVersion.Identity).binlog /t:Restore;NuGet /p:OutDir=$(MSBuildProjectDirectory)\bin\%(TargetDevExpressVersion.Identity) /p:DevExpressVersion=%(TargetDevExpressVersion.Identity) /p:AssemblyVersion=%(TargetDevExpressVersion.Identity).$(BuildNumber) /p:PackageVersion=%(TargetDevExpressVersion.Identity).$(BuildNumber) /p:RestoreForce=True "/>
+    <MakeDir Directories="$(PackageOutputPath)"/>
     <PropertyGroup>
       <PackageVersion Condition="$(BranchName)=='' OR $(BranchName)=='master' OR $(IsReleaseBuild)==true">$(Version)</PackageVersion>
       <PackageVersion Condition="$(BranchName)!='' AND $(BranchName)!='master' AND $(IsReleaseBuild)!=true">$(Version)-$(BranchName)</PackageVersion>
     </PropertyGroup>
   </Target>
-
 </Project>

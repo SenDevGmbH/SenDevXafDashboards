@@ -1,9 +1,5 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using DevExpress.Persistent.BaseImpl;
+﻿using DevExpress.Persistent.BaseImpl;
 using DevExpress.Xpo;
-using SenDev.Xaf.Dashboards.Scripting;
-using Xunit;
 
 namespace UnitTests
 {

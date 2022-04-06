@@ -1,4 +1,4 @@
-﻿<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="14.0">
+﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
@@ -9,14 +9,9 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>SenDev.Xaf.Dashboards.Win</RootNamespace>
     <AssemblyName>SenDev.Xaf.Dashboards.Win</AssemblyName>
-    <FileUpgradeFlags>
-    </FileUpgradeFlags>
-    <UpgradeBackupLocation>
-    </UpgradeBackupLocation>
-    <OldToolsVersion>3.5</OldToolsVersion>
-    <TargetFrameworkProfile />
-  </PropertyGroup>
-  <PropertyGroup>
+    <PackageDescription>SenDev XAF Dashboards windows module</PackageDescription>
+    <TargetFramework>net48</TargetFramework>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <SignAssembly>true</SignAssembly>
     <AssemblyOriginatorKeyFile>..\StrongKey.snk</AssemblyOriginatorKeyFile>
   </PropertyGroup>
@@ -46,137 +41,21 @@
     <ErrorReport>prompt</ErrorReport>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="DevExpress.CodeParser.v$(DevExpressVersion)">
-      <SpecificVersion>False</SpecificVersion>
-    </Reference>
-    <Reference Include="DevExpress.Dashboard.v$(DevExpressVersion).Core" />
-    <Reference Include="DevExpress.Dashboard.v$(DevExpressVersion).Win" />
-    <Reference Include="DevExpress.DataAccess.v$(DevExpressVersion)" />
-    <Reference Include="DevExpress.DataAccess.v$(DevExpressVersion).UI" />
-    <Reference Include="DevExpress.ExpressApp.Dashboards.Win.v$(DevExpressVersion)">
-      <SpecificVersion>False</SpecificVersion>
-    </Reference>
-    <Reference Include="DevExpress.ExpressApp.Win.v$(DevExpressVersion)" />
-    <Reference Include="DevExpress.ExpressApp.Xpo.v$(DevExpressVersion)">
-      <SpecificVersion>False</SpecificVersion>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="DevExpress.Office.v$(DevExpressVersion).Core" />
-    <Reference Include="DevExpress.Printing.v$(DevExpressVersion).Core">
-      <SpecificVersion>False</SpecificVersion>
-    </Reference>
-    <Reference Include="DevExpress.Data.v$(DevExpressVersion)">
-      <SpecificVersion>False</SpecificVersion>
-    </Reference>
-    <Reference Include="DevExpress.ExpressApp.v$(DevExpressVersion)">
-      <SpecificVersion>False</SpecificVersion>
-    </Reference>
-    <Reference Include="DevExpress.Persistent.Base.v$(DevExpressVersion)">
-      <SpecificVersion>False</SpecificVersion>
-    </Reference>
-    <Reference Include="DevExpress.Persistent.BaseImpl.Xpo.v$(DevExpressVersion)">
-      <SpecificVersion>False</SpecificVersion>
-    </Reference>
-    <Reference Include="DevExpress.RichEdit.v$(DevExpressVersion).Core">
-      <SpecificVersion>False</SpecificVersion>
-    </Reference>
-    <Reference Include="DevExpress.Utils.v$(DevExpressVersion)" />
-    <Reference Include="DevExpress.Xpo.v$(DevExpressVersion)">
-      <SpecificVersion>False</SpecificVersion>
-    </Reference>
-    <Reference Include="DevExpress.XtraEditors.v$(DevExpressVersion)" />
-    <Reference Include="DevExpress.XtraLayout.v$(DevExpressVersion)" />
-    <Reference Include="DevExpress.XtraRichEdit.v$(DevExpressVersion)">
-      <SpecificVersion>False</SpecificVersion>
-    </Reference>
-    <Reference Include="System">
-      <Name>System</Name>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="System.Data">
-      <Name>System.Data</Name>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="System.Drawing">
-      <Private>False</Private>
-    </Reference>
+	<Reference Include="System" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
-    <Reference Include="System.Xml">
-      <Name>System.XML</Name>
-      <Private>False</Private>
-    </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="..\CommonVersion.cs">
-      <Link>CommonVersion.cs</Link>
-    </Compile>
-    <Compile Include="BusinessObjects\ScriptDashboardWizardParameters.cs" />
-    <Compile Include="BusinessObjects\SenDevDataSourceType.cs" />
-    <Compile Include="Controllers\DashboardCustomizationController.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="Controllers\ExportDataExtractController.cs" />
-    <Compile Include="Controllers\WinCustomizeDashboardViewerControllerBase.cs" />
-    <Compile Include="Controllers\WinDashboardDataSourceController.cs" />
-    <Compile Include="Controllers\WinSaveParametersController.cs" />
-    <Compile Include="DatabaseUpdate\Updater.cs" />
-    <Compile Include="DataSourceWizard\DashboardDataSourceWizardViewBase.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="DataSourceWizard\DataExtractPages\ChoiceDataExtractPage.cs" />
-    <Compile Include="DataSourceWizard\DataExtractPages\ChoiceDataExtractPageView.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="DataSourceWizard\DataExtractPages\DataExtractHelper.cs" />
-    <Compile Include="DataSourceWizard\DataExtractPages\IChoiceDataExctractPageView.cs" />
-    <Compile Include="DataSourceWizard\DataSourceWizardPageBase.cs" />
-    <Compile Include="DataSourceWizard\ScriptingPages\EnterScriptPageView.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="DataSourceWizard\ScriptingPages\EnterScriptPage.cs" />
-    <Compile Include="DataSourceWizard\DashboardCustomization.cs" />
-    <Compile Include="DataSourceWizard\DashboardDesignerManagerEx.cs" />
-    <Compile Include="DataSourceWizard\ScriptingPages\IEnterScriptPageView.cs" />
-    <Compile Include="DataSourceWizard\RibbonDashboardDesignerCreatorEx.cs" />
-    <Compile Include="DataSourceWizard\XafDashboardChooseDataSourceTypePage.cs" />
-    <Compile Include="DataSourceWizard\XafDashboardChooseDataSourceTypePageView.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="DataSourceWizard\Xaf\DefaultXafChooseTypePageView.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Module.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="Module.Designer.cs">
-      <DependentUpon>Module.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="PropertyEditors\CSCodePropertyEditor.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Model.DesignedDiffs.xafml" />
-    <EmbeddedResource Include="Module.resx">
-      <SubType>Designer</SubType>
-      <DependentUpon>Module.cs</DependentUpon>
-    </EmbeddedResource>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="app.config" />
-    <None Include="DatabaseUpdate\ReadMe.txt" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="BusinessObjects\ReadMe.txt" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Controllers\ReadMe.txt" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Images\ReadMe.txt" />
-    <None Include="ReadMe.txt" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Images\ExpressAppLogo.png" />
+    <PackageReference Include="DevExpress.Xpo" Version="$(DevExpressPackageVersion)" />
+    <PackageReference Include="DevExpress.Win.Dashboard " Version="$(DevExpressPackageVersion)" />
+    <PackageReference Include="DevExpress.ExpressApp" Version="$(DevExpressPackageVersion)" />
+    <PackageReference Include="DevExpress.ExpressApp.Xpo" Version="$(DevExpressPackageVersion)" />
+    <PackageReference Include="DevExpress.ExpressApp.Win" Version="$(DevExpressPackageVersion)" />
+    <PackageReference Include="DevExpress.ExpressApp.Dashboards.Win" Version="$(DevExpressPackageVersion)" />
+    <PackageReference Include="DevExpress.Win.RichEdit " Version="$(DevExpressPackageVersion)" />
+    <PackageReference Include="DevExpress.Utils" Version="$(DevExpressPackageVersion)" />
+
+    <PackageReference Include="DevExpress.Persistent.BaseImpl.Xpo" Version="$(DevExpressPackageVersion)" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\SenDev.Xaf.Dashboards\SenDev.Xaf.Dashboards.csproj">
@@ -185,11 +64,5 @@
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
-  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
-       Other similar extension points exist, see Microsoft.Common.targets.
-  <Target Name="BeforeBuild">
-  </Target>
-  <Target Name="AfterBuild">
-  </Target>
-  -->
+  <Target Name="NuGetPack" AfterTargets="NuGet" DependsOnTargets="Pack" />
 </Project>

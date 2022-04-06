@@ -1,274 +1,61 @@
-﻿<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="14.0">
-  <PropertyGroup>
-    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
-    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProductVersion>9.0.30729</ProductVersion>
-    <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{5F15837D-D1E5-44DC-92F0-4F2EBE9C3F8D}</ProjectGuid>
-    <OutputType>Library</OutputType>
-    <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>SenDev.DashboardsDemo.Module</RootNamespace>
-    <AssemblyName>SenDev.DashboardsDemo.Module</AssemblyName>
-    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
-    <FileUpgradeFlags>
-    </FileUpgradeFlags>
-    <UpgradeBackupLocation>
-    </UpgradeBackupLocation>
-    <OldToolsVersion>3.5</OldToolsVersion>
-    <TargetFrameworkProfile />
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <DebugSymbols>true</DebugSymbols>
-    <DebugType>full</DebugType>
-    <Optimize>false</Optimize>
-    <OutputPath>bin\Debug\</OutputPath>
-    <DefineConstants>DEBUG;TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <DebugType>pdbonly</DebugType>
-    <Optimize>true</Optimize>
-    <OutputPath>bin\Release\</OutputPath>
-    <DefineConstants>TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'EasyTest|AnyCPU' ">
-    <DebugSymbols>true</DebugSymbols>
-    <OutputPath>bin\EasyTest\</OutputPath>
-    <DefineConstants>TRACE;DEBUG;EASYTEST</DefineConstants>
-    <DebugType>full</DebugType>
-    <PlatformTarget>AnyCPU</PlatformTarget>
-    <ErrorReport>prompt</ErrorReport>
-  </PropertyGroup>
-  <ItemGroup>
-    <Reference Include="CsvHelper, Version=15.0.0.0, Culture=neutral, PublicKeyToken=8c4959082be5c823, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\CsvHelper.15.0.2\lib\net47\CsvHelper.dll</HintPath>
-    </Reference>
-    <Reference Include="DevExpress.Dashboard.v$(DevExpressVersion).Core" />
-    <Reference Include="DevExpress.DataAccess.v$(DevExpressVersion)" />
-    <Reference Include="DevExpress.ExpressApp.Dashboards.v$(DevExpressVersion)">
-      <SpecificVersion>False</SpecificVersion>
-    </Reference>
-    <Reference Include="DevExpress.ExpressApp.Objects.v$(DevExpressVersion)">
-      <SpecificVersion>False</SpecificVersion>
-    </Reference>
-    <Reference Include="DevExpress.ExpressApp.Xpo.v$(DevExpressVersion)">
-      <SpecificVersion>False</SpecificVersion>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="DevExpress.Printing.v$(DevExpressVersion).Core">
-      <SpecificVersion>False</SpecificVersion>
-    </Reference>
-    <Reference Include="DevExpress.Data.v$(DevExpressVersion)">
-      <SpecificVersion>False</SpecificVersion>
-    </Reference>
-    <Reference Include="DevExpress.ExpressApp.v$(DevExpressVersion)">
-      <SpecificVersion>False</SpecificVersion>
-    </Reference>
-    <Reference Include="DevExpress.Persistent.Base.v$(DevExpressVersion)">
-      <SpecificVersion>False</SpecificVersion>
-    </Reference>
-    <Reference Include="DevExpress.Persistent.BaseImpl.Xpo.v$(DevExpressVersion)">
-      <SpecificVersion>False</SpecificVersion>
-    </Reference>
-    <Reference Include="DevExpress.Utils.v$(DevExpressVersion)" />
-    <Reference Include="DevExpress.Xpo.v$(DevExpressVersion)">
-      <SpecificVersion>False</SpecificVersion>
-    </Reference>
-    <Reference Include="Microsoft.Bcl.AsyncInterfaces, Version=1.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Microsoft.Bcl.AsyncInterfaces.1.1.0\lib\net461\Microsoft.Bcl.AsyncInterfaces.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.CSharp" />
-    <Reference Include="System">
-      <Name>System</Name>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="System.ComponentModel.Composition" />
-    <Reference Include="System.Data">
-      <Name>System.Data</Name>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="System.Drawing">
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="System.IO, Version=4.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\System.IO.4.3.0\lib\net462\System.IO.dll</HintPath>
-      <Private>True</Private>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="System.Net.Http, Version=4.1.1.3, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\System.Net.Http.4.3.4\lib\net46\System.Net.Http.dll</HintPath>
-      <Private>True</Private>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="System.Runtime, Version=4.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\System.Runtime.4.3.0\lib\net462\System.Runtime.dll</HintPath>
-      <Private>True</Private>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=4.0.4.1, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\System.Runtime.CompilerServices.Unsafe.4.5.2\lib\netstandard2.0\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Runtime.Serialization" />
-    <Reference Include="System.Security.Cryptography.Algorithms, Version=4.2.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\System.Security.Cryptography.Algorithms.4.3.0\lib\net463\System.Security.Cryptography.Algorithms.dll</HintPath>
-      <Private>True</Private>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="System.Security.Cryptography.Encoding, Version=4.0.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\System.Security.Cryptography.Encoding.4.3.0\lib\net46\System.Security.Cryptography.Encoding.dll</HintPath>
-      <Private>True</Private>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="System.Security.Cryptography.Primitives, Version=4.0.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\System.Security.Cryptography.Primitives.4.3.0\lib\net46\System.Security.Cryptography.Primitives.dll</HintPath>
-      <Private>True</Private>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="System.Security.Cryptography.X509Certificates, Version=4.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\System.Security.Cryptography.X509Certificates.4.3.0\lib\net461\System.Security.Cryptography.X509Certificates.dll</HintPath>
-      <Private>True</Private>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="System.ServiceModel" />
-    <Reference Include="System.Threading.Tasks.Extensions, Version=4.2.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\System.Threading.Tasks.Extensions.4.5.2\lib\netstandard2.0\System.Threading.Tasks.Extensions.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Xml">
-      <Name>System.XML</Name>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="System.Xml.Linq" />
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="BusinessObjects\ContosoCode\Account.cs" />
-    <Compile Include="BusinessObjects\ContosoCode\Account.Designer.cs">
-      <DependentUpon>Account.cs</DependentUpon>
-    </Compile>
-    <Compile Include="BusinessObjects\ContosoCode\Channel.cs" />
-    <Compile Include="BusinessObjects\ContosoCode\Channel.Designer.cs">
-      <DependentUpon>Channel.cs</DependentUpon>
-    </Compile>
-    <Compile Include="BusinessObjects\ContosoCode\ConnectionHelper.cs" />
-    <Compile Include="BusinessObjects\ContosoCode\Currency.cs" />
-    <Compile Include="BusinessObjects\ContosoCode\Currency.Designer.cs">
-      <DependentUpon>Currency.cs</DependentUpon>
-    </Compile>
-    <Compile Include="BusinessObjects\ContosoCode\Customer.cs" />
-    <Compile Include="BusinessObjects\ContosoCode\Customer.Designer.cs">
-      <DependentUpon>Customer.cs</DependentUpon>
-    </Compile>
-    <Compile Include="BusinessObjects\ContosoCode\Date.cs" />
-    <Compile Include="BusinessObjects\ContosoCode\Date.Designer.cs">
-      <DependentUpon>Date.cs</DependentUpon>
-    </Compile>
-    <Compile Include="BusinessObjects\ContosoCode\Employee.cs" />
-    <Compile Include="BusinessObjects\ContosoCode\Employee.Designer.cs">
-      <DependentUpon>Employee.cs</DependentUpon>
-    </Compile>
-    <Compile Include="BusinessObjects\ContosoCode\Entity.cs" />
-    <Compile Include="BusinessObjects\ContosoCode\Entity.Designer.cs">
-      <DependentUpon>Entity.cs</DependentUpon>
-    </Compile>
-    <Compile Include="BusinessObjects\ContosoCode\FactExchangeRate.cs" />
-    <Compile Include="BusinessObjects\ContosoCode\FactExchangeRate.Designer.cs">
-      <DependentUpon>FactExchangeRate.cs</DependentUpon>
-    </Compile>
-    <Compile Include="BusinessObjects\ContosoCode\FactInventory.cs" />
-    <Compile Include="BusinessObjects\ContosoCode\FactInventory.Designer.cs">
-      <DependentUpon>FactInventory.cs</DependentUpon>
-    </Compile>
-    <Compile Include="BusinessObjects\ContosoCode\FactITMachine.cs" />
-    <Compile Include="BusinessObjects\ContosoCode\FactITMachine.Designer.cs">
-      <DependentUpon>FactITMachine.cs</DependentUpon>
-    </Compile>
-    <Compile Include="BusinessObjects\ContosoCode\FactITSLA.cs" />
-    <Compile Include="BusinessObjects\ContosoCode\FactITSLA.Designer.cs">
-      <DependentUpon>FactITSLA.cs</DependentUpon>
-    </Compile>
-    <Compile Include="BusinessObjects\ContosoCode\FactOnlineSales.cs" />
-    <Compile Include="BusinessObjects\ContosoCode\FactOnlineSales.Designer.cs">
-      <DependentUpon>FactOnlineSales.cs</DependentUpon>
-    </Compile>
-    <Compile Include="BusinessObjects\ContosoCode\FactSales.cs" />
-    <Compile Include="BusinessObjects\ContosoCode\FactSales.Designer.cs">
-      <DependentUpon>FactSales.cs</DependentUpon>
-    </Compile>
-    <Compile Include="BusinessObjects\ContosoCode\FactSalesQuota.cs" />
-    <Compile Include="BusinessObjects\ContosoCode\FactSalesQuota.Designer.cs">
-      <DependentUpon>FactSalesQuota.cs</DependentUpon>
-    </Compile>
-    <Compile Include="BusinessObjects\ContosoCode\FactStrategyPlan.cs" />
-    <Compile Include="BusinessObjects\ContosoCode\FactStrategyPlan.Designer.cs">
-      <DependentUpon>FactStrategyPlan.cs</DependentUpon>
-    </Compile>
-    <Compile Include="BusinessObjects\ContosoCode\Geography.cs" />
-    <Compile Include="BusinessObjects\ContosoCode\Geography.Designer.cs">
-      <DependentUpon>Geography.cs</DependentUpon>
-    </Compile>
-    <Compile Include="BusinessObjects\ContosoCode\Machine.cs" />
-    <Compile Include="BusinessObjects\ContosoCode\Machine.Designer.cs">
-      <DependentUpon>Machine.cs</DependentUpon>
-    </Compile>
-    <Compile Include="BusinessObjects\ContosoCode\Outage.cs" />
-    <Compile Include="BusinessObjects\ContosoCode\Outage.Designer.cs">
-      <DependentUpon>Outage.cs</DependentUpon>
-    </Compile>
-    <Compile Include="BusinessObjects\ContosoCode\Product.cs" />
-    <Compile Include="BusinessObjects\ContosoCode\Product.Designer.cs">
-      <DependentUpon>Product.cs</DependentUpon>
-    </Compile>
-    <Compile Include="BusinessObjects\ContosoCode\ProductCategory.cs" />
-    <Compile Include="BusinessObjects\ContosoCode\ProductCategory.Designer.cs">
-      <DependentUpon>ProductCategory.cs</DependentUpon>
-    </Compile>
-    <Compile Include="BusinessObjects\ContosoCode\ProductSubcategory.cs" />
-    <Compile Include="BusinessObjects\ContosoCode\ProductSubcategory.Designer.cs">
-      <DependentUpon>ProductSubcategory.cs</DependentUpon>
-    </Compile>
-    <Compile Include="BusinessObjects\ContosoCode\Promotion.cs" />
-    <Compile Include="BusinessObjects\ContosoCode\Promotion.Designer.cs">
-      <DependentUpon>Promotion.cs</DependentUpon>
-    </Compile>
-    <Compile Include="BusinessObjects\ContosoCode\SalesTerritory.cs" />
-    <Compile Include="BusinessObjects\ContosoCode\SalesTerritory.Designer.cs">
-      <DependentUpon>SalesTerritory.cs</DependentUpon>
-    </Compile>
-    <Compile Include="BusinessObjects\ContosoCode\Scenario.cs" />
-    <Compile Include="BusinessObjects\ContosoCode\Scenario.Designer.cs">
-      <DependentUpon>Scenario.cs</DependentUpon>
-    </Compile>
-    <Compile Include="BusinessObjects\ContosoCode\Store.cs" />
-    <Compile Include="BusinessObjects\ContosoCode\Store.Designer.cs">
-      <DependentUpon>Store.cs</DependentUpon>
-    </Compile>
-    <Compile Include="BusinessObjects\ContosoCode\sysdiagrams.cs" />
-    <Compile Include="BusinessObjects\ContosoCode\sysdiagrams.Designer.cs">
-      <DependentUpon>sysdiagrams.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Controllers\AddDashboardParameterController.cs" />
-    <Compile Include="Covid\CovidDataManager.cs" />
-    <Compile Include="Covid\CovidDay.cs" />
-    <Compile Include="Covid\CovidDayHolder.cs" />
-    <Compile Include="DatabaseUpdate\Updater.cs" />
-    <Compile Include="IJobSchedulerService.cs" />
-    <Compile Include="Module.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="Module.Designer.cs">
-      <DependentUpon>Module.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Utils\BindingFactory.cs" />
-  </ItemGroup>
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFramework>net48</TargetFramework>
+		<GenerateAssemblyCompanyAttribute>false</GenerateAssemblyCompanyAttribute>
+		<GenerateAssemblyFileVersionAttribute>false</GenerateAssemblyFileVersionAttribute>
+		<GenerateAssemblyVersionAttribute>false</GenerateAssemblyVersionAttribute>
+		<GenerateAssemblyConfigurationAttribute>false</GenerateAssemblyConfigurationAttribute>
+		<GenerateAssemblyDescriptionAttribute>false</GenerateAssemblyDescriptionAttribute>
+		<GenerateAssemblyProductAttribute>false</GenerateAssemblyProductAttribute>
+		<GenerateAssemblyTitleAttribute>false</GenerateAssemblyTitleAttribute>
+		<Deterministic>false</Deterministic>
+    <EnableDefaultEmbeddedResourceItems>false</EnableDefaultEmbeddedResourceItems>
+	</PropertyGroup>
+
+	<PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+		<DebugSymbols>true</DebugSymbols>
+		<DebugType>full</DebugType>
+		<Optimize>false</Optimize>
+		<OutputPath>bin\Debug\</OutputPath>
+		<DefineConstants>DEBUG;TRACE</DefineConstants>
+		<ErrorReport>prompt</ErrorReport>
+		<WarningLevel>4</WarningLevel>
+		<TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+		<NoWarn>1701;1702;NU1701</NoWarn>
+	</PropertyGroup>
+	<PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+		<DebugType>pdbonly</DebugType>
+		<Optimize>true</Optimize>
+		<OutputPath>bin\Release\</OutputPath>
+		<DefineConstants>TRACE</DefineConstants>
+		<ErrorReport>prompt</ErrorReport>
+		<WarningLevel>4</WarningLevel>
+	</PropertyGroup>
+	<PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'EasyTest|AnyCPU' ">
+		<DebugSymbols>true</DebugSymbols>
+		<OutputPath>bin\EasyTest\</OutputPath>
+		<DefineConstants>TRACE;DEBUG;EASYTEST</DefineConstants>
+		<DebugType>full</DebugType>
+		<PlatformTarget>AnyCPU</PlatformTarget>
+		<ErrorReport>prompt</ErrorReport>
+	</PropertyGroup>
   <ItemGroup>
     <EmbeddedResource Include="Model.DesignedDiffs.xafml" />
     <EmbeddedResource Include="Module.resx">
       <SubType>Designer</SubType>
       <DependentUpon>Module.cs</DependentUpon>
     </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="DevExpress.ExpressApp" Version="$(DevExpressPackageVersion)" />
+    <PackageReference Include="DevExpress.ExpressApp.Xpo" Version="$(DevExpressPackageVersion)" />
+    <PackageReference Include="DevExpress.Persistent.BaseImpl.Xpo" Version="$(DevExpressPackageVersion)" />
+    <PackageReference Include="DevExpress.ExpressApp.Dashboards" Version="$(DevExpressPackageVersion)" />
+    <PackageReference Include="System.Net.Http" Version="4.3.4" />
+    <PackageReference Include="System.ServiceModel.Primitives" Version="4.9.0" />
+	<PackageReference Include="CsvHelper" Version="15.0.0.0" />
+    <PackageReference Include="Microsoft.Bcl.AsyncInterfaces" Version="1.1.0.0" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
@@ -308,12 +95,4 @@
       <Name>SenDev.Xaf.Dashboards</Name>
     </ProjectReference>
   </ItemGroup>
-  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
-  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
-       Other similar extension points exist, see Microsoft.Common.targets.
-  <Target Name="BeforeBuild">
-  </Target>
-  <Target Name="AfterBuild">
-  </Target>
-  -->
 </Project>

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using DevExpress.ExpressApp;
 
@@ -15,7 +16,7 @@ namespace SenDev.Xaf.Dashboards.Scripting
 		public static string[] GetReferencedAssembliesPaths(XafApplication application)
 		{
 			var assembly = application.GetType().Assembly;
-			var assemmblyNames =
+			var assemblyNames =
 				application.TypesInfo.PersistentTypes
 				.AsEnumerable()
 				.SelectMany(ti => GetTypesHierarchy(ti.Type)).Select(t => t.Assembly)
@@ -25,9 +26,17 @@ namespace SenDev.Xaf.Dashboards.Scripting
 
 			var netstandardPath = GetNeststandardAssemblyPath();
 			if (!string.IsNullOrWhiteSpace(netstandardPath))
-				assemmblyNames.Add(netstandardPath);
+				assemblyNames.Add(netstandardPath);
 
-			var assemblies = new HashSet<string>(assemmblyNames, StringComparer.OrdinalIgnoreCase);
+			var systemRuntimePath = Path.Combine(Path.GetDirectoryName(typeof(object).Assembly.Location), "System.Runtime.dll");
+			if (File.Exists(systemRuntimePath))
+				assemblyNames.Add(systemRuntimePath);
+
+			assemblyNames.Add(typeof(System.Runtime.AssemblyTargetedPatchBandAttribute).Assembly.Location);
+			assemblyNames.Add(typeof(Microsoft.CSharp.RuntimeBinder.CSharpArgumentInfo).Assembly.Location);
+			assemblyNames.Add(typeof(IQueryable<>).Assembly.Location);
+          
+			var assemblies = new HashSet<string>(assemblyNames, StringComparer.OrdinalIgnoreCase);
 
 			var module = application.Modules.FindModule<SenDevDashboardsModule>();
 			if (module != null)
