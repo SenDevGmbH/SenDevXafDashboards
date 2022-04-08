@@ -45,6 +45,9 @@
     <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
   </ItemGroup>
+	<ItemGroup>
+		<EmbeddedResource Include="Model.DesignedDiffs.xafml" />
+	</ItemGroup>
   <ItemGroup>
     <PackageReference Include="DevExpress.Xpo" Version="$(DevExpressPackageVersion)" />
     <PackageReference Include="DevExpress.Win.Dashboard " Version="$(DevExpressPackageVersion)" />
