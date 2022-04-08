@@ -9,7 +9,6 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>SenDev.DashboardsDemo.Module.Web</RootNamespace>
     <AssemblyName>SenDev.DashboardsDemo.Module.Web</AssemblyName>
-    <TargetFramework>net48</TargetFramework>
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileUpgradeFlags>
     </FileUpgradeFlags>
