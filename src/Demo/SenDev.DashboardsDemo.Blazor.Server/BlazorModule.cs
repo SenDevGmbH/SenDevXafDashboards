@@ -14,7 +14,4 @@ public sealed class DashboardsDemoBlazorModule : ModuleBase {
     public override IEnumerable<ModuleUpdater> GetModuleUpdaters(IObjectSpace objectSpace, Version versionFromDB) {
         return ModuleUpdater.EmptyModuleUpdaters;
     }
-    public override void Setup(XafApplication application) {
-        base.Setup(application);
-    }
 }
