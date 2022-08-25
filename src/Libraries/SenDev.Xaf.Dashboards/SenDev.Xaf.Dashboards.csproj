@@ -64,7 +64,7 @@
 		<PackageReference Include="DevExpress.ExpressApp.ViewVariantsModule" Version="$(DevExpressPackageVersion)" />
 		<PackageReference Include="DevExpress.Persistent.BaseImpl.Xpo" Version="$(DevExpressPackageVersion)" />
 		<PackageReference Include="DevExpress.Spreadsheet.Core" Version="$(DevExpressPackageVersion)" />
-    <PackageReference Include="Microsoft.CodeAnalysis.Compilers" Version="4.1.0" />
+    <PackageReference Include="Microsoft.CodeAnalysis.Compilers" Version="4.2.0" />
     <PackageReference Include="Microsoft.CSharp" Version="4.7.0" />
 	</ItemGroup>
 
@@ -95,5 +95,5 @@
   <ItemGroup>
     <EmbeddedResource Include="Images\ExpressAppLogo.png" />
   </ItemGroup>
-  <Target Name="NuGetPack" AfterTargets="NuGet" DependsOnTargets="Pack"/>
+  <Target Name="NuGetPack" AfterTargets="NuGet" DependsOnTargets="Pack" />
 </Project>

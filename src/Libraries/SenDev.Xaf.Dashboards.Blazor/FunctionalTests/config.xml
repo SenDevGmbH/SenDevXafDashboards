@@ -15,7 +15,7 @@
 	</TestDatabases>
 
 	<Aliases>
-		<Alias Name="BlazorAdapterAssemblyPath" Value="[BlazorAppPath]\bin\EasyTest\net5.0\DevExpress.ExpressApp.EasyTest.BlazorAdapter.v21.2.dll" />
+		<Alias Name="BlazorAdapterAssemblyPath" Value="[BlazorAppPath]\bin\EasyTest\net5.0\DevExpress.ExpressApp.EasyTest.BlazorAdapter.v22.1.dll" />
 		<Alias Name="BlazorAppPath" Value="[ConfigPath]\..\..\SenDev.Xaf.Dashboards.Blazor.Server" />
 	</Aliases>
 </Options>

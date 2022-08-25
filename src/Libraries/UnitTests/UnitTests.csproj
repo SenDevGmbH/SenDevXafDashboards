@@ -49,8 +49,8 @@
     <PackageReference Include="DevExpress.Xpo" Version="$(DevExpressPackageVersion)" />
     <PackageReference Include="System.Data.SqlClient" Version="4.8.3" />
     <PackageReference Include="xunit.abstractions" Version="2.0.3.0" />
-    <PackageReference Include="xunit.assert" Version="2.4.1.0" />
-    <PackageReference Include="xunit.core" Version="2.4.1.0" />
+    <PackageReference Include="xunit.assert" Version="2.4.2" />
+    <PackageReference Include="xunit.core" Version="2.4.2" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -80,6 +80,9 @@
       <Project>{bd130a27-6ff9-4cd6-a7f7-1964dfda3036}</Project>
       <Name>UnitTests.Common</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

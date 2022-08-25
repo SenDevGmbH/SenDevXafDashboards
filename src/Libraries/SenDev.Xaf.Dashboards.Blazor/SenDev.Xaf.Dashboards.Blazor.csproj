@@ -1,6 +1,6 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <TargetFramework>net5.0</TargetFramework>
+    <TargetFramework>net6.0</TargetFramework>
     <Deterministic>false</Deterministic>
     <Configurations>Debug;Release;EasyTest</Configurations>
     <PackageDescription>SenDev XAF Dashboards Blazor module</PackageDescription>
@@ -23,10 +23,10 @@
     <PackageReference Include="DevExpress.ExpressApp.Dashboards.Blazor" Version="$(DevExpressPackageVersion)" />
     <PackageReference Include="DevExpress.Persistent.Base" Version="$(DevExpressPackageVersion)" />
     <PackageReference Include="DevExpress.Persistent.BaseImpl.Xpo" Version="$(DevExpressPackageVersion)" />
-    <PackageReference Include="Microsoft.CodeAnalysis.Compilers" Version="4.1.0" />
+    <PackageReference Include="Microsoft.CodeAnalysis.Compilers" Version="4.2.0" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\SenDev.Xaf.Dashboards\SenDev.Xaf.Dashboards.csproj" />
   </ItemGroup>
-  <Target Name="NuGetPack" AfterTargets="NuGet" DependsOnTargets="Pack"/>
+  <Target Name="NuGetPack" AfterTargets="NuGet" DependsOnTargets="Pack" />
 </Project>

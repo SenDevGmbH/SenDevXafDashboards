@@ -1,12 +1,12 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" Inherits="LoginPage" EnableViewState="false"
     ValidateRequest="false" CodeBehind="Login.aspx.cs" %>
-<%@ Register Assembly="DevExpress.ExpressApp.Web.v21.2" 
+<%@ Register Assembly="DevExpress.ExpressApp.Web.v22.1" 
     Namespace="DevExpress.ExpressApp.Web.Templates.ActionContainers" TagPrefix="cc2" %>
-<%@ Register Assembly="DevExpress.ExpressApp.Web.v21.2" 
+<%@ Register Assembly="DevExpress.ExpressApp.Web.v22.1" 
     Namespace="DevExpress.ExpressApp.Web.Templates.Controls" TagPrefix="tc" %>
-<%@ Register Assembly="DevExpress.ExpressApp.Web.v21.2" 
+<%@ Register Assembly="DevExpress.ExpressApp.Web.v22.1" 
     Namespace="DevExpress.ExpressApp.Web.Controls" TagPrefix="cc4" %>
-<%@ Register Assembly="DevExpress.ExpressApp.Web.v21.2" 
+<%@ Register Assembly="DevExpress.ExpressApp.Web.v22.1" 
     Namespace="DevExpress.ExpressApp.Web.Templates" TagPrefix="cc3" %>
 <!DOCTYPE html>
 <html>
