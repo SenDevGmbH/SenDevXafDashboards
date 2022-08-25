@@ -1,7 +1,7 @@
 <Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003" DefaultTargets="Build">
   <ItemGroup>
     <ProjectToPack Include="SenDev.Xaf.Dashboards.sln"/>
-    <TargetDevExpressVersion Include="21.2.6"  TargetParentDir="DX"/>
+    <TargetDevExpressVersion Include="22.1.4"  TargetParentDir="DX"/>
   </ItemGroup>
   <PropertyGroup>
     <ProjectToBuild>SenDev.Xaf.Dashboards.sln</ProjectToBuild>
