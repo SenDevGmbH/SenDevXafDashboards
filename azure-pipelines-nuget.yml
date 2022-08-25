@@ -69,8 +69,8 @@ steps:
     configuration: '$(buildConfiguration)'
     testSelector: 'testAssemblies'
     testAssemblyVer2: |
-      **\UnitTests.dll
-      **\UnitTests.NetCore.dll
+      src\bin\**\UnitTests.dll
+      src\bin\**\UnitTests.NetCore.dll
 - task: SonarSource.sonarcloud.ce096e50-6155-4de8-8800-4221aaeed4a1.SonarCloudAnalyze@1
   displayName: 'Run Code Analysis'
 - task: SonarSource.sonarcloud.38b27399-a642-40af-bb7d-9971f69712e8.SonarCloudPublish@1
@@ -79,6 +79,7 @@ steps:
 - task: NuGetCommand@2
   displayName: Push packages
   inputs:
+    condition: ne(variables['Build.Reason'], 'PullRequest')
     command: 'push' 
     packagesToPush: '$(Build.ArtifactStagingDirectory)/**/*.nupkg'
     nuGetFeedType: 'external' 
