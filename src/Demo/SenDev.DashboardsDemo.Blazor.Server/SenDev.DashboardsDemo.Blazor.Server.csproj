@@ -18,21 +18,21 @@
     </Content>
   </ItemGroup>
   <ItemGroup Condition=" '$(Configuration)' == 'EasyTest' ">
-    <PackageReference Include="DevExpress.ExpressApp.EasyTest.BlazorAdapter" Version="21.2.6" />
+    <PackageReference Include="DevExpress.ExpressApp.EasyTest.BlazorAdapter" Version="$(DevExpressPackageVersion)" />
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="DevExpress.ExpressApp" Version="21.2.6" />
-    <PackageReference Include="DevExpress.ExpressApp.Blazor" Version="21.2.6" />
-    <PackageReference Include="DevExpress.ExpressApp.CodeAnalysis" Version="21.2.6" />
-    <PackageReference Include="DevExpress.ExpressApp.Xpo" Version="21.2.6" />
-    <PackageReference Include="DevExpress.Persistent.Base" Version="21.2.6" />
-    <PackageReference Include="DevExpress.Persistent.BaseImpl.Xpo" Version="21.2.6" />
-    <PackageReference Include="DevExpress.ExpressApp" Version="21.2.6" />
-    <PackageReference Include="DevExpress.ExpressApp.CodeAnalysis" Version="21.2.6" />
-    <PackageReference Include="DevExpress.ExpressApp.WebApi" Version="21.2.6" />
-    <PackageReference Include="DevExpress.ExpressApp.Xpo" Version="21.2.6" />
-    <PackageReference Include="DevExpress.Persistent.Base" Version="21.2.6" />
-    <PackageReference Include="DevExpress.Persistent.BaseImpl.Xpo" Version="21.2.6" />
+    <PackageReference Include="DevExpress.ExpressApp" Version="$(DevExpressPackageVersion)" />
+    <PackageReference Include="DevExpress.ExpressApp.Blazor" Version="$(DevExpressPackageVersion)" />
+    <PackageReference Include="DevExpress.ExpressApp.CodeAnalysis" Version="$(DevExpressPackageVersion)" />
+    <PackageReference Include="DevExpress.ExpressApp.Xpo" Version="$(DevExpressPackageVersion)" />
+    <PackageReference Include="DevExpress.Persistent.Base" Version="$(DevExpressPackageVersion)" />
+    <PackageReference Include="DevExpress.Persistent.BaseImpl.Xpo" Version="$(DevExpressPackageVersion)" />
+    <PackageReference Include="DevExpress.ExpressApp" Version="$(DevExpressPackageVersion)" />
+    <PackageReference Include="DevExpress.ExpressApp.CodeAnalysis" Version="$(DevExpressPackageVersion)" />
+    <PackageReference Include="DevExpress.ExpressApp.WebApi" Version="$(DevExpressPackageVersion)" />
+    <PackageReference Include="DevExpress.ExpressApp.Xpo" Version="$(DevExpressPackageVersion)" />
+    <PackageReference Include="DevExpress.Persistent.Base" Version="$(DevExpressPackageVersion)" />
+    <PackageReference Include="DevExpress.Persistent.BaseImpl.Xpo" Version="$(DevExpressPackageVersion)" />
     <PackageReference Include="Microsoft.CodeAnalysis" Version="4.1.0" />
     <PackageReference Include="Microsoft.CodeAnalysis.Compilers" Version="4.1.0" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="5.6.3" />

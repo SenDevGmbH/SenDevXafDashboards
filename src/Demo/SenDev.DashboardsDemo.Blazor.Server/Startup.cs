@@ -51,10 +51,10 @@ namespace SenDev.DashboardsDemo.Blazor.Server
 			services.AddScoped<CircuitHandler, CircuitHandlerProxy>();
 			services.AddXaf<DashboardsDemoBlazorApplication>(Configuration);
 			services.AddXafDashboards();
-			services.AddXafWebApi(options =>
-			{
-				// Use options.BusinessObject<YourBusinessObject>() to make the Business Object available in the Web API and generate the GET, POST, PUT, and DELETE HTTP methods for it.
-			});
+			//services.AddXafWebApi(options =>
+			//{
+			//	// Use options.BusinessObject<YourBusinessObject>() to make the Business Object available in the Web API and generate the GET, POST, PUT, and DELETE HTTP methods for it.
+			//});
 			services.AddControllers().AddOData(options =>
 			{
 				options
