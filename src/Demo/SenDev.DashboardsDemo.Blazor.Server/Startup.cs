@@ -1,26 +1,17 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using DevExpress.ExpressApp.ApplicationBuilder;
+using DevExpress.ExpressApp.Blazor.ApplicationBuilder;
 using DevExpress.ExpressApp.Blazor.Services;
-using DevExpress.Persistent.Base;
-using Microsoft.AspNetCore.Authentication.Cookies;
+using DevExpress.ExpressApp.Dashboards.Blazor;
+using Hangfire;
+using Hangfire.SqlServer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Components.Server.Circuits;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using SenDev.DashboardsDemo.Blazor.Server.Services;
-using DevExpress.ExpressApp.WebApi.Services;
-using DevExpress.ExpressApp.WebApi.Swashbuckle;
-using Microsoft.OpenApi.Models;
-using Microsoft.AspNetCore.OData;
-using Hangfire;
-using Hangfire.SqlServer;
-using Microsoft.AspNetCore.Mvc.RazorPages;
-using DevExpress.ExpressApp.Dashboards.Blazor;
 using SenDev.Xaf.Dashboards.Blazor;
 
 
@@ -49,33 +40,37 @@ namespace SenDev.DashboardsDemo.Blazor.Server
 			services.AddHttpContextAccessor();
 			services.AddSingleton<XpoDataStoreProviderAccessor>();
 			services.AddScoped<CircuitHandler, CircuitHandlerProxy>();
-			services.AddXaf<DashboardsDemoBlazorApplication>(Configuration);
-			services.AddXafDashboards();
-			//services.AddXafWebApi(options =>
-			//{
-			//	// Use options.BusinessObject<YourBusinessObject>() to make the Business Object available in the Web API and generate the GET, POST, PUT, and DELETE HTTP methods for it.
-			//});
-			services.AddControllers().AddOData(options =>
-			{
-				options
-						.AddRouteComponents("api/odata", new XafApplicationEdmModelBuilder(services).GetEdmModel())
-						.EnableQueryFeatures(100);
+			services.AddXaf(Configuration, builder => {
+				builder.UseApplication<DashboardsDemoBlazorApplication>();
+				builder.Modules
+					.AddDashboards(options => {
+						options.DashboardDataType = typeof(DevExpress.Persistent.BaseImpl.DashboardData);
+					})
+					.Add<SenDev.DashboardsDemo.Module.DashboardsDemoModule>()
+					.Add<DashboardsDemoBlazorModule>();
+				builder.ObjectSpaceProviders
+					.AddXpo((serviceProvider, options) => {
+						string connectionString = null;
+						if (Configuration.GetConnectionString("ConnectionString") != null)
+						{
+							connectionString = Configuration.GetConnectionString("ConnectionString");
+						}
+#if EASYTEST
+                    if(Configuration.GetConnectionString("EasyTestConnectionString") != null) {
+                        connectionString = Configuration.GetConnectionString("EasyTestConnectionString");
+                    }
+#endif
+						ArgumentNullException.ThrowIfNull(connectionString);
+						options.ConnectionString = connectionString;
+						options.ThreadSafe = true;
+						options.UseSharedDataStoreProvider = true;
+					})
+					.AddNonPersistent();
 			});
-			services.AddSwaggerGen(c =>
-			{
-				c.EnableAnnotations();
-				c.SwaggerDoc("v1", new OpenApiInfo
-				{
-					Title = "SenDev.DashboardsDemo API",
-					Version = "v1",
-					Description = @"Use AddXafWebApi(options) in the SenDev.DashboardsDemo.Blazor.Server\Startup.cs file to make Business Objects available in the Web API."
-				});
-				c.SchemaFilter<XpoSchemaFilter>();
-			});
+		
 
-
-			// Add Hangfire services.
-			services.AddHangfire(configuration => configuration
+		// Add Hangfire services.
+		services.AddHangfire(configuration => configuration
 					.SetDataCompatibilityLevel(CompatibilityLevel.Version_170)
 					.UseSimpleAssemblyNameTypeSerializer()
 					.UseRecommendedSerializerSettings()
