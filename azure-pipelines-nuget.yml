@@ -8,7 +8,7 @@ trigger:
 - DX-*
 
 pool:
-  vmImage: 'windows-2019'
+  vmImage: 'windows-2022'
 
 variables:
   solution: 'src/build.proj'
