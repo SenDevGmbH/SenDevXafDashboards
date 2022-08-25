@@ -49,8 +49,8 @@
     <PackageReference Include="DevExpress.Xpo" Version="$(DevExpressPackageVersion)" />
     <PackageReference Include="System.Data.SqlClient" Version="4.8.3" />
     <PackageReference Include="xunit.abstractions" Version="2.0.3.0" />
-    <PackageReference Include="xunit.assert" Version="2.4.1.0" />
-    <PackageReference Include="xunit.core" Version="2.4.1.0" />
+    <PackageReference Include="xunit.assert" Version="2.4.2" />
+    <PackageReference Include="xunit.core" Version="2.4.2" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System" />

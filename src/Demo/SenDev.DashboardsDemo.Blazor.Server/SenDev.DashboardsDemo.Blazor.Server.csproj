@@ -34,12 +34,12 @@
     <PackageReference Include="DevExpress.Persistent.Base" Version="$(DevExpressPackageVersion)" />
     <PackageReference Include="DevExpress.Persistent.BaseImpl.Xpo" Version="$(DevExpressPackageVersion)" />
 	  <PackageReference Include="DevExpress.ExpressApp.FileAttachment.Blazor" Version="$(DevExpressPackageVersion)" />
-    <PackageReference Include="Microsoft.CodeAnalysis" Version="4.1.0" />
-    <PackageReference Include="Microsoft.CodeAnalysis.Compilers" Version="4.1.0" />
-    <PackageReference Include="Swashbuckle.AspNetCore" Version="5.6.3" />
-	<PackageReference Include="Hangfire.Core" Version="1.7.28" />
-	<PackageReference Include="Hangfire.SqlServer" Version="1.7.28" />
-	<PackageReference Include="Hangfire.AspNetCore" Version="1.7.28" />
+    <PackageReference Include="Microsoft.CodeAnalysis" Version="4.2.0" />
+    <PackageReference Include="Microsoft.CodeAnalysis.Compilers" Version="4.2.0" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.4.0" />
+	<PackageReference Include="Hangfire.Core" Version="1.7.31" />
+	<PackageReference Include="Hangfire.SqlServer" Version="1.7.31" />
+	<PackageReference Include="Hangfire.AspNetCore" Version="1.7.31" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\SenDev.DashboardsDemo.Module.Blazor\SenDev.DashboardsDemo.Module.Blazor.csproj">
