@@ -50,15 +50,12 @@
   </ItemGroup>
 	<ItemGroup>
 		<PackageReference Include="DevExpress.Dashboard.Core" Version="$(DevExpressPackageVersion)" />
-		<PackageReference Include="DevExpress.Document.Processor" Version="$(DevExpressPackageVersion)" />
 		<PackageReference Include="DevExpress.ExpressApp" Version="$(DevExpressPackageVersion)" />
-		<PackageReference Include="DevExpress.ExpressApp.Chart" Version="$(DevExpressPackageVersion)" />
 		<PackageReference Include="DevExpress.ExpressApp.CloneObject.Xpo" Version="$(DevExpressPackageVersion)" />
 		<PackageReference Include="DevExpress.ExpressApp.ConditionalAppearance" Version="$(DevExpressPackageVersion)" />
 		<PackageReference Include="DevExpress.ExpressApp.Dashboards" Version="$(DevExpressPackageVersion)" />
 		<PackageReference Include="DevExpress.ExpressApp.Security" Version="$(DevExpressPackageVersion)" />
 		<PackageReference Include="DevExpress.ExpressApp.Security.Xpo" Version="$(DevExpressPackageVersion)" />
-		<PackageReference Include="DevExpress.ExpressApp.StateMachine" Version="$(DevExpressPackageVersion)" />
 		<PackageReference Include="DevExpress.ExpressApp.TreeListEditors" Version="$(DevExpressPackageVersion)" />
 		<PackageReference Include="DevExpress.ExpressApp.Validation" Version="$(DevExpressPackageVersion)" />
 		<PackageReference Include="DevExpress.ExpressApp.ViewVariantsModule" Version="$(DevExpressPackageVersion)" />
@@ -89,7 +86,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Images\ReadMe.txt" />
-    <None Include="packages.config" />
     <None Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>

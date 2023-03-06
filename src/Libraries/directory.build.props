@@ -1,8 +1,7 @@
 ﻿<Project>
  <PropertyGroup>
-    <DevExpressVersion>22.1</DevExpressVersion>
-    <DevExpressPackageVersion>22.1.4</DevExpressPackageVersion>
-    <DevExpressBinLocation>c:\DevExpress\22.1.4\Bin\Framework</DevExpressBinLocation>
+    <DevExpressVersion>22.2</DevExpressVersion>
+    <DevExpressPackageVersion>22.2.4.245</DevExpressPackageVersion>
 	<MicrosoftBciVersion>6.0.0</MicrosoftBciVersion>
  </PropertyGroup>
 </Project>
