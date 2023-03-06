@@ -1,6 +1,9 @@
 ﻿using DevExpress.ExpressApp;
+using DevExpress.ExpressApp.DC;
+using DevExpress.ExpressApp.DC.Xpo;
 using DevExpress.ExpressApp.Xpo;
 using System;
+using System.CodeDom;
 using System.Collections;
 using System.Collections.Generic;
 using System.Data;
@@ -10,16 +13,22 @@ using System.Reflection;
 
 namespace SenDev.Xaf.Dashboards.Scripting
 {
-	public class ScriptDataSource
+
+	public interface IScriptDataSource
 	{
-		public ScriptDataSource(string script)
+		string Script
 		{
-			Script = script;
+			get;
 		}
 
-		public XafApplication Application
+		object GetData(IDictionary<string, object> parameters);
+	}
+	public abstract class ScriptDataSourceBase : IScriptDataSource
+	{
+
+		protected ScriptDataSourceBase(string script)
 		{
-			get; set;
+			Script = script;
 		}
 
 		public string Script
@@ -29,19 +38,32 @@ namespace SenDev.Xaf.Dashboards.Scripting
 
 		public object GetData(IDictionary<string, object> parameters)
 		{
-			var data = GetDataCore(parameters, out var objectSpace);
+			var data = GetDataCore(parameters);
 			if (data is IDataReader reader)
 				return new DataReaderList(reader);
 
-			return new ScriptResultList(data, objectSpace.TypesInfo);
+			return new ScriptResultList(data, GetTypesInfo());
 
 		}
 
-
-		private object GetDataCore(IDictionary<string, object> parameters, out XPObjectSpace objectSpace)
+		protected abstract ITypesInfo GetTypesInfo();
+		protected abstract object GetDataCore(IDictionary<string, object> parameters);
+	}
+	public class ScriptDataSource  : ScriptDataSourceBase
+	{
+		public ScriptDataSource(string script) : base(script)
 		{
-			objectSpace = (XPObjectSpace)Application.CreateObjectSpace();
-			var context = new ScriptContext(objectSpace, parameters);
+		}
+
+		public XafApplication Application
+		{
+			get; set;
+		}
+
+		protected override object GetDataCore(IDictionary<string, object> parameters)
+		{
+			var objectSpace = (XPObjectSpace)Application.CreateObjectSpace();
+			var context = new ObjectSpaceScriptContext(objectSpace, parameters);
 			var compilationHelper = new ScriptCompilationHelper(AssembliesHelper.GetReferencedAssembliesPaths(Application));
 			dynamic scriptObject = compilationHelper.CreateObject(Script);
 			return scriptObject.GetData(context);
@@ -58,7 +80,7 @@ namespace SenDev.Xaf.Dashboards.Scripting
 		}
 		public object GetDataForDataExtract()
 		{
-			var data = GetDataCore(new Dictionary<string, object>(), out var os);
+			var data = GetDataCore(new Dictionary<string, object>());
 			if (data is byte[])
 				return data;
 			
@@ -70,7 +92,7 @@ namespace SenDev.Xaf.Dashboards.Scripting
 
 			return new DashboardDataList(() =>
 				{
-					var queryable = (IQueryable)GetDataCore(new Dictionary<string, object>(), out var objectSpace);
+					var queryable = (IQueryable)GetDataCore(new Dictionary<string, object>());
 					return (queryable, objectSpace);
 				}, 1);
 		}
