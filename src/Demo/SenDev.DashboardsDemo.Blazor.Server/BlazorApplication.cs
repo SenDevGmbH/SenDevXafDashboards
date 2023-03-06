@@ -1,14 +1,14 @@
 ﻿using System;
 using DevExpress.ExpressApp;
 using DevExpress.ExpressApp.Blazor;
-using DevExpress.ExpressApp.SystemModule;
+using DevExpress.ExpressApp.Xpo;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using DevExpress.ExpressApp.Xpo;
 using SenDev.DashboardsDemo.Blazor.Server.Services;
 
-namespace SenDev.DashboardsDemo.Blazor.Server {
-    public partial class DashboardsDemoBlazorApplication : BlazorApplication {
+namespace SenDev.DashboardsDemo.Blazor.Server
+{
+	public partial class DashboardsDemoBlazorApplication : BlazorApplication {
         public DashboardsDemoBlazorApplication() {
             InitializeComponent();
         }

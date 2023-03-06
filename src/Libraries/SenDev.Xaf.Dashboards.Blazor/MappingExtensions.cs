@@ -9,19 +9,20 @@ namespace SenDev.Xaf.Dashboards.Blazor
 {
 	public static class MappingExtensions
 	{
-		private const string SetDashboardEndpointMethodName = "SetDashboardEndpoint";
+		private const string setDashboardEndpointMethodName = "SetDashboardEndpoint";
 
 		public static void MapSenDevDashboardsController(
 				this IEndpointRouteBuilder endpoints,
 				string dashboardEndpoint = "api/sendevdashboard",
 				string dashboardControllerName = "SenDevXafDashboard")
+
 		{
 			Guard.ArgumentNotNullOrEmpty(dashboardEndpoint, nameof(dashboardEndpoint));
 			var urlProviderServiceType = typeof(DashboardsBlazorModule).Assembly.GetTypes().FirstOrDefault(t => t.Name == "IDashboardEndpointUrlProvider");
 			var service = endpoints.ServiceProvider.GetService(urlProviderServiceType);
-			var method = service?.GetType().GetMethod(SetDashboardEndpointMethodName);
+			var method = service?.GetType().GetMethod(setDashboardEndpointMethodName);
 			if (method == null)
-				throw new InvalidOperationException($"Method {SetDashboardEndpointMethodName} not found.");
+				throw new InvalidOperationException($"Method {setDashboardEndpointMethodName} not found.");
 
 			method.Invoke(service, new[] { dashboardEndpoint });
 			EndpointRouteBuilderExtension.MapDashboardRoute(endpoints, dashboardEndpoint, dashboardControllerName);
