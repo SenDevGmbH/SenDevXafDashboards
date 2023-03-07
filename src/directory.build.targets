@@ -25,7 +25,7 @@
       </Code>
       </Task>
    </UsingTask>
-   <Target Name="SetVersion" BeforeTargets="Build">
+   <Target Name="SetVersion" BeforeTargets="GetAssemblyVersion">
       <CreatePackageVersion DXVersion="$(DevExpressPackageVersion)" BuildNumber="$(BuildNumber)" >
          <Output TaskParameter="PackageVersion"
                   PropertyName="AssemblyVersion" />
