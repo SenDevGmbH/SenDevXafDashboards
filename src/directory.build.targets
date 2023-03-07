@@ -4,5 +4,35 @@
       <Authors>SenDev GmbH</Authors>
       <PackageId>$(MSBuildProjectName)$(PackageIdSuffix)</PackageId>
    </PropertyGroup>
-   <Target Name="NuGet" DependsOnTargets="Build"/>
+   <Target Name="NuGet" DependsOnTargets="Build" />
+   <UsingTask
+      TaskName="CreatePackageVersion"
+      TaskFactory="CodeTaskFactory"
+      AssemblyFile="$(MSBuildToolsPath)\Microsoft.Build.Tasks.Core.dll">
+      <ParameterGroup>
+         <DXVersion ParameterType="System.String" Required="true" />
+         <BuildNumber ParameterType="System.Int32" Required="true" />
+         <PackageVersion ParameterType="System.String" Output="True"/>
+      </ParameterGroup>
+      <Task>
+         <Reference Include="System.Xml" />
+         <Using Namespace="System" />
+         <Code Type="Fragment" Language="cs">
+      <![CDATA[ 
+            var version = Version.Parse(DXVersion);
+            PackageVersion = new Version(version.Major, version.Minor, version.Build, BuildNumber).ToString();
+       ]]>
+      </Code>
+      </Task>
+   </UsingTask>
+   <Target Name="SetVersion" BeforeTargets="Build">
+      <CreatePackageVersion DXVersion="$(DevExpressPackageVersion)" BuildNumber="$(BuildNumber)" >
+         <Output TaskParameter="PackageVersion"
+                  PropertyName="AssemblyVersion" />
+      </CreatePackageVersion>
+      <PropertyGroup>
+         <PackageVersion>$(AssemblyVersion)</PackageVersion>
+      </PropertyGroup>
+ 
+   </Target>
 </Project>

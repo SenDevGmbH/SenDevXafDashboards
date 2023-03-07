@@ -1,6 +1,6 @@
 <Project>
  <PropertyGroup>
     <DevExpressVersion>22.2</DevExpressVersion>
-    <DevExpressPackageVersion>22.2.4.245</DevExpressPackageVersion>
+    <DevExpressPackageVersion>22.2.4</DevExpressPackageVersion>
  </PropertyGroup>
 </Project>
