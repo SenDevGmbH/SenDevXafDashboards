@@ -17,7 +17,7 @@ variables:
   NugetTargetDir: '$(Build.ArtifactStagingDirectory)'
   VersionRevision: $[counter('revisionCounter', 142)]
   NetSdkVersion: '6.0.201'
-  
+  BinLogDirectory: $(Build.ArtifactStagingDirectory)\Log  
 steps:
 - task: UseDotNet@2
   displayName: 'Use .NET Core sdk'
@@ -43,7 +43,7 @@ steps:
     solution: '$(solution)'
     platform: '$(buildPlatform)'
     configuration: '$(buildConfiguration)'
-    msbuildArguments: '/bl:$(Build.ArtifactStagingDirectory)\Log\build.binlog /t:NuGet /p:BuildNumber=$(VersionRevision) /p:PackageOutputPath=$(Build.ArtifactStagingDirectory) /p:TargetDevExpressVersions="$(TargetDevExpressVersions)" /p:PackageIdSuffix=".SelfCompiled" /p:NugetSource=$(NugetSource)'
+    msbuildArguments: '/bl:$(BinLogDirectory)\build.binlog /t:NuGet /p:BuildNumber=$(VersionRevision) /p:PackageOutputPath=$(Build.ArtifactStagingDirectory) /p:TargetDevExpressVersions="$(TargetDevExpressVersions)" /p:PackageIdSuffix=".SelfCompiled" /p:NugetSource=$(NugetSource) /p:BinLogDirectory=$(BinLogDirectory)'
 
 - task: PublishBuildArtifacts@1
   displayName: 'Publish binary log'
@@ -59,7 +59,7 @@ steps:
   displayName: 'NuGet push'
   inputs:
     command: push
-    packagesToPush: '$(Build.ArtifactStagingDirectory)/**/SelfCompiled/*.nupkg'
+    packagesToPush: '$(Build.ArtifactStagingDirectory)/*.nupkg'
     publishVstsFeed: 'DevExpress/Release'
     allowPackageConflicts: false
 
