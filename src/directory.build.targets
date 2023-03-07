@@ -2,6 +2,7 @@
    <PropertyGroup>
       <PackageOutputPath>$(OutDir)</PackageOutputPath>
       <Authors>SenDev GmbH</Authors>
+      <PackageId>$(MSBuildProjectName)$(PackageIdSuffix)</PackageId>
    </PropertyGroup>
    <Target Name="NuGet" DependsOnTargets="Build"/>
 </Project>

@@ -247,3 +247,4 @@ ModelManifest.xml
 .sonarqube
 /src/Libraries/SenDev.Xaf.Dashboards.Win/*.bak
 /src/Libraries/SenDev.Xaf.Dashboards/*.bak
+/*.bak

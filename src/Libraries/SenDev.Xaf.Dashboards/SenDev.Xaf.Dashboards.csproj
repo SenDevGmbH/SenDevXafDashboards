@@ -10,8 +10,8 @@
 		<GenerateAssemblyProductAttribute>false</GenerateAssemblyProductAttribute>
 		<GenerateAssemblyTitleAttribute>false</GenerateAssemblyTitleAttribute>
 		<Deterministic>false</Deterministic>
-    <EnableDefaultEmbeddedResourceItems>false</EnableDefaultEmbeddedResourceItems>
-    <PackageDescription>SenDev XAF Dashboards platform agnostic module</PackageDescription>
+		<EnableDefaultEmbeddedResourceItems>false</EnableDefaultEmbeddedResourceItems>
+		<PackageDescription>SenDev XAF Dashboards platform agnostic module</PackageDescription>
 	</PropertyGroup>
 
 	<PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -41,55 +41,65 @@
 		<PlatformTarget>AnyCPU</PlatformTarget>
 		<ErrorReport>prompt</ErrorReport>
 	</PropertyGroup>
-  <PropertyGroup>
-    <SignAssembly>true</SignAssembly>
-    <AssemblyOriginatorKeyFile>..\StrongKey.snk</AssemblyOriginatorKeyFile>
-  </PropertyGroup>
-  <ItemGroup>
-    <None Remove="Scripting\ScriptTemplate.template" />
-  </ItemGroup>
+	<PropertyGroup>
+		<SignAssembly>true</SignAssembly>
+		<AssemblyOriginatorKeyFile>..\StrongKey.snk</AssemblyOriginatorKeyFile>
+	</PropertyGroup>
+	<ItemGroup>
+		<None Remove="Scripting\ScriptTemplate.template" />
+	</ItemGroup>
 	<ItemGroup>
 		<PackageReference Include="DevExpress.Dashboard.Core" Version="$(DevExpressPackageVersion)" />
 		<PackageReference Include="DevExpress.ExpressApp" Version="$(DevExpressPackageVersion)" />
-		<PackageReference Include="DevExpress.ExpressApp.CloneObject.Xpo" Version="$(DevExpressPackageVersion)" />
-		<PackageReference Include="DevExpress.ExpressApp.ConditionalAppearance" Version="$(DevExpressPackageVersion)" />
-		<PackageReference Include="DevExpress.ExpressApp.Dashboards" Version="$(DevExpressPackageVersion)" />
-		<PackageReference Include="DevExpress.ExpressApp.Security" Version="$(DevExpressPackageVersion)" />
-		<PackageReference Include="DevExpress.ExpressApp.Security.Xpo" Version="$(DevExpressPackageVersion)" />
-		<PackageReference Include="DevExpress.ExpressApp.TreeListEditors" Version="$(DevExpressPackageVersion)" />
-		<PackageReference Include="DevExpress.ExpressApp.Validation" Version="$(DevExpressPackageVersion)" />
-		<PackageReference Include="DevExpress.ExpressApp.ViewVariantsModule" Version="$(DevExpressPackageVersion)" />
-		<PackageReference Include="DevExpress.Persistent.BaseImpl.Xpo" Version="$(DevExpressPackageVersion)" />
-		<PackageReference Include="DevExpress.Spreadsheet.Core" Version="$(DevExpressPackageVersion)" />
-    <PackageReference Include="Microsoft.CodeAnalysis.Compilers" Version="4.2.0" />
-    <PackageReference Include="Microsoft.CSharp" Version="4.7.0" />
+		<PackageReference Include="DevExpress.ExpressApp.CloneObject.Xpo"
+			Version="$(DevExpressPackageVersion)" />
+		<PackageReference Include="DevExpress.ExpressApp.ConditionalAppearance"
+			Version="$(DevExpressPackageVersion)" />
+		<PackageReference Include="DevExpress.ExpressApp.Dashboards"
+			Version="$(DevExpressPackageVersion)" />
+		<PackageReference Include="DevExpress.ExpressApp.Security"
+			Version="$(DevExpressPackageVersion)" />
+		<PackageReference Include="DevExpress.ExpressApp.Security.Xpo"
+			Version="$(DevExpressPackageVersion)" />
+		<PackageReference Include="DevExpress.ExpressApp.TreeListEditors"
+			Version="$(DevExpressPackageVersion)" />
+		<PackageReference Include="DevExpress.ExpressApp.Validation"
+			Version="$(DevExpressPackageVersion)" />
+		<PackageReference Include="DevExpress.ExpressApp.ViewVariantsModule"
+			Version="$(DevExpressPackageVersion)" />
+		<PackageReference Include="DevExpress.Persistent.BaseImpl.Xpo"
+			Version="$(DevExpressPackageVersion)" />
+		<PackageReference Include="DevExpress.Spreadsheet.Core"
+			Version="$(DevExpressPackageVersion)" />
+		<PackageReference Include="Microsoft.CodeAnalysis.Compilers" Version="4.2.0" />
+		<PackageReference Include="Microsoft.CSharp" Version="4.7.0" />
 	</ItemGroup>
 
-  <ItemGroup>
-    <EmbeddedResource Include="Model.DesignedDiffs.xafml" />
-    <EmbeddedResource Include="SenDevDashboardsModule.resx">
-      <SubType>Designer</SubType>
-      <DependentUpon>SenDevDashboardsModule.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Scripting\ScriptTemplate.template" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="app.config" />
-    <None Include="DatabaseUpdate\ReadMe.txt" />
-    <None Include="StrongKey.snk" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="BusinessObjects\ReadMe.txt" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Controllers\ReadMe.txt" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Images\ReadMe.txt" />
-    <None Include="ReadMe.txt" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Images\ExpressAppLogo.png" />
-  </ItemGroup>
-  <Target Name="NuGetPack" AfterTargets="NuGet" DependsOnTargets="Pack" />
+	<ItemGroup>
+		<EmbeddedResource Include="Model.DesignedDiffs.xafml" />
+		<EmbeddedResource Include="SenDevDashboardsModule.resx">
+			<SubType>Designer</SubType>
+			<DependentUpon>SenDevDashboardsModule.cs</DependentUpon>
+		</EmbeddedResource>
+		<EmbeddedResource Include="Scripting\ScriptTemplate.template" />
+	</ItemGroup>
+	<ItemGroup>
+		<None Include="app.config" />
+		<None Include="DatabaseUpdate\ReadMe.txt" />
+		<None Include="StrongKey.snk" />
+	</ItemGroup>
+	<ItemGroup>
+		<None Include="BusinessObjects\ReadMe.txt" />
+	</ItemGroup>
+	<ItemGroup>
+		<None Include="Controllers\ReadMe.txt" />
+	</ItemGroup>
+	<ItemGroup>
+		<None Include="Images\ReadMe.txt" />
+		<None Include="ReadMe.txt" />
+	</ItemGroup>
+	<ItemGroup>
+		<EmbeddedResource Include="Images\ExpressAppLogo.png" />
+	</ItemGroup>
+	<Target Name="NuGetPack" AfterTargets="NuGet" DependsOnTargets="Pack" />
 </Project>

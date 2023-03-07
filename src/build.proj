@@ -7,7 +7,7 @@
     <ProjectToBuild>SenDev.Xaf.Dashboards.sln</ProjectToBuild>
   </PropertyGroup>
   <Target Name="NuGet" Inputs="@(TargetDevExpressVersion)" Outputs="$(PackageOutputPath)*%(TargetDevExpressVersion.PackageVersion)*.nupkg">
-    <Exec Command="&quot;$(MSBuildBinPath)\msbuild.exe&quot;  $(ProjectToBuild) /bl:%(TargetDevExpressVersion.Identity).binlog /t:Restore;NuGet /p:OutDir=$(MSBuildProjectDirectory)\bin\%(TargetDevExpressVersion.Identity) /p:DevExpressVersion=%(TargetDevExpressVersion.Identity) /p:AssemblyVersion=%(TargetDevExpressVersion.Identity).$(BuildNumber) /p:PackageVersion=%(TargetDevExpressVersion.Identity).$(BuildNumber) /p:RestoreForce=True /p:PackageOutputPath=$(PackageOutputPath)"/>
+    <Exec Command="&quot;$(MSBuildBinPath)\msbuild.exe&quot;  $(ProjectToBuild) /bl:%(TargetDevExpressVersion.Identity).binlog /t:Restore;NuGet /p:OutDir=$(MSBuildProjectDirectory)\bin\%(TargetDevExpressVersion.Identity) /p:DevExpressVersion=%(TargetDevExpressVersion.Identity) /p:AssemblyVersion=%(TargetDevExpressVersion.Identity).$(BuildNumber) /p:PackageVersion=%(TargetDevExpressVersion.Identity).$(BuildNumber) /p:RestoreForce=True /p:PackageOutputPath=$(PackageOutputPath) /p:PackageIdSuffix=$(PackageIdSuffix)"/>
     <MakeDir Directories="$(PackageOutputPath)"/>
     <PropertyGroup>
       <PackageVersion Condition="$(BranchName)=='' OR $(BranchName)=='master' OR $(IsReleaseBuild)==true">$(Version)</PackageVersion>
