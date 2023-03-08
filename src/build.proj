@@ -1,17 +1,61 @@
 <Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003" DefaultTargets="Build">
   <ItemGroup>
-    <ProjectToPack Include="SenDev.Xaf.Dashboards.sln"/>
+    <ProjectToPack Include="SenDev.Xaf.Dashboards.sln" />
     <TargetDevExpressVersion Include="$(TargetDevExpressVersions)" />
   </ItemGroup>
   <PropertyGroup>
     <ProjectToBuild>SenDev.Xaf.Dashboards.sln</ProjectToBuild>
   </PropertyGroup>
-  <Target Name="NuGet" Inputs="@(TargetDevExpressVersion)" Outputs="$(PackageOutputPath)*%(TargetDevExpressVersion.PackageVersion)*.nupkg">
-    <Exec Command="&quot;$(MSBuildBinPath)\msbuild.exe&quot;  $(ProjectToBuild) /bl:$(BinLogDirectory)/%(TargetDevExpressVersion.Identity).binlog /t:Restore;NuGet /p:OutDir=$(MSBuildProjectDirectory)\bin\%(TargetDevExpressVersion.Identity) /p:DevExpressPackageVersion=%(TargetDevExpressVersion.Identity) /p:BuildNumber=$(BuildNumber)  /p:RestoreForce=True /p:PackageOutputPath=$(PackageOutputPath) /p:PackageIdSuffix=$(PackageIdSuffix) /p:RestoreSources=$(NugetSource)"/>
-    <MakeDir Directories="$(PackageOutputPath)"/>
+  <UsingTask
+    TaskName="CreatePackageVersions"
+    TaskFactory="CodeTaskFactory"
+    AssemblyFile="$(MSBuildToolsPath)\Microsoft.Build.Tasks.Core.dll">
+    <ParameterGroup>
+      <DXVersions ParameterType="Microsoft.Build.Framework.ITaskItem[]" Required="true" />
+      <BuildNumber ParameterType="System.Int32" Required="true" />
+      <PackageVersions ParameterType="Microsoft.Build.Framework.ITaskItem[]" Output="true" />
+    </ParameterGroup>
+    <Task>
+      <Reference Include="System.Xml" />
+      <Using Namespace="System" />
+      <Using Namespace="System.Linq" />
+      <Code Type="Fragment" Language="cs">
+      <![CDATA[ 
+
+            PackageVersions = DXVersions.Select(dxversion=> {
+              var version = Version.Parse(dxversion.ItemSpec);
+              var packageVersion = new Version(version.Major, version.Minor, version.Build, BuildNumber).ToString();
+              var taskItem = new TaskItem(dxversion);
+              taskItem.SetMetadata("PackageVersion", packageVersion);
+              return taskItem;
+            }).ToArray();
+       ]]>
+      </Code>
+    </Task>
+  </UsingTask>
+
+
+  <Target Name="CreateVersions">
+    <CreatePackageVersions DXVersions="@(TargetDevExpressVersion)" BuildNumber="$(BuildNumber)">
+      <Output TaskParameter="PackageVersions"
+        ItemName="OutputPackage" />
+
+    </CreatePackageVersions>
+    <Message Text="@(OutputPackage)" />
+  </Target>
+  <Target Name="NuGet" DependsOnTargets="CreateVersions" Inputs="@(OutputPackage)"
+    Outputs="$(PackageOutputPath)*%(OutputPackage.PackageVersion)*.nupkg">
+
+    <Exec
+      Command="&quot;$(MSBuildBinPath)\msbuild.exe&quot;  $(ProjectToBuild) /bl:$(BinLogDirectory)/%(OutputPackage.Identity).binlog /t:Restore;NuGet /p:OutDir=$(MSBuildProjectDirectory)\bin\%(OutputPackage.Identity) /p:DevExpressPackageVersion=%(OutputPackage.Identity) /p:AssemblyVersion=%(OutputPackage.PackageVersion) /p:PackageVersion=%(OutputPackage.PackageVersion)  /p:RestoreForce=True /p:PackageOutputPath=$(PackageOutputPath) /p:PackageIdSuffix=$(PackageIdSuffix) /p:RestoreSources=$(NugetSource)" />
+    <MakeDir Directories="$(PackageOutputPath)" />
     <PropertyGroup>
-      <PackageVersion Condition="$(BranchName)=='' OR $(BranchName)=='master' OR $(IsReleaseBuild)==true">$(Version)</PackageVersion>
-      <PackageVersion Condition="$(BranchName)!='' AND $(BranchName)!='master' AND $(IsReleaseBuild)!=true">$(Version)-$(BranchName)</PackageVersion>
+      <PackageVersion
+        Condition="$(BranchName)=='' OR $(BranchName)=='master' OR $(IsReleaseBuild)==true">
+        $(Version)</PackageVersion>
+      <PackageVersion
+        Condition="$(BranchName)!='' AND $(BranchName)!='master' AND $(IsReleaseBuild)!=true">
+        $(Version)-$(BranchName)</PackageVersion>
     </PropertyGroup>
   </Target>
 </Project>
