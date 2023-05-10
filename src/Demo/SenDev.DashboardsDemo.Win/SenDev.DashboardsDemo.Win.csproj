@@ -10,7 +10,7 @@
     <ApplicationIcon>ExpressApp.ico</ApplicationIcon>
     <ApplicationRevision>0</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
-    <TargetFrameworks>net48;net7-windows</TargetFrameworks>
+    <TargetFrameworks>net48;net6-windows</TargetFrameworks>
     <UseWindowsForms>true</UseWindowsForms>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
