@@ -10,8 +10,7 @@
     <RootNamespace>SenDev.Xaf.Dashboards.Win</RootNamespace>
     <AssemblyName>SenDev.Xaf.Dashboards.Win</AssemblyName>
     <PackageDescription>SenDev XAF Dashboards windows module</PackageDescription>
-    <TargetFramework>net48</TargetFramework>
-    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <TargetFrameworks>net48;net6-windows</TargetFrameworks>
     <SignAssembly>true</SignAssembly>
     <AssemblyOriginatorKeyFile>..\StrongKey.snk</AssemblyOriginatorKeyFile>
   </PropertyGroup>
@@ -57,7 +56,6 @@
     <PackageReference Include="DevExpress.ExpressApp.Dashboards.Win" Version="$(DevExpressPackageVersion)" />
     <PackageReference Include="DevExpress.Win.RichEdit " Version="$(DevExpressPackageVersion)" />
     <PackageReference Include="DevExpress.Utils" Version="$(DevExpressPackageVersion)" />
-
     <PackageReference Include="DevExpress.Persistent.BaseImpl.Xpo" Version="$(DevExpressPackageVersion)" />
   </ItemGroup>
   <ItemGroup>
@@ -66,6 +64,5 @@
       <Name>SenDev.Xaf.Dashboards</Name>
     </ProjectReference>
   </ItemGroup>
-  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Target Name="NuGetPack" AfterTargets="NuGet" DependsOnTargets="Pack" />
 </Project>

@@ -14,7 +14,8 @@ namespace SenDev.DashboardsDemo.Win
 			Uri = uri;
 		}
 
-		private IJobSchedulerService CreateChannel() => ChannelFactory<IJobSchedulerService>.CreateChannel(BindingFactory.CreateBasicHttpBinding(new[] { Uri }), new EndpointAddress(Uri));
+		private IJobSchedulerService CreateChannel() => new ChannelFactory<IJobSchedulerService>(BindingFactory.CreateBasicHttpBinding(new[] { Uri }), new EndpointAddress(Uri)).CreateChannel();
+
 		private Uri Uri
 		{
 			get;

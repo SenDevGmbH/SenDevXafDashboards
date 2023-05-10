@@ -20,7 +20,6 @@ namespace SenDev.DashboardsDemo.Win {
 #endif
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            EditModelPermission.AlwaysGranted = System.Diagnostics.Debugger.IsAttached;
             if(Tracing.GetFileLocationFromSettings() == DevExpress.Persistent.Base.FileLocation.CurrentUserApplicationDataFolder) {
                 Tracing.LocalUserAppDataPath = Application.LocalUserAppDataPath;
             }
