@@ -29,7 +29,7 @@ namespace SenDev.Xaf.Dashboards.Scripting
 				var extracts = objectSpace
 					.GetObjects(SenDevDashboardsModule.GetDashboardDataExtractType(Application))
 					.Cast<IDashboardDataExtract>();
-				
+
 				foreach (var extract in extracts)
 				{
 					UpdateDataExtract(extract);
@@ -62,10 +62,18 @@ namespace SenDev.Xaf.Dashboards.Scripting
 			if (string.IsNullOrWhiteSpace(extract.Script))
 				return;
 
+
+			ScriptDataSource dataSource = CreateScriptDataSource(extract, Application);
+			object data = dataSource.GetDataForDataExtract();
+			if (data == null)
+			{
+				extract.ExtractData = null;
+				extract.RowCount = 0;
+				return;
+			}
 			using (DashboardObjectDataSource ods = new DashboardObjectDataSource())
 			{
-				ScriptDataSource dataSource = CreateScriptDataSource(extract, Application);
-				object data = dataSource.GetDataForDataExtract();
+
 				if (data is byte[] buffer)
 				{
 					SetDataExtractContent(extract, buffer);

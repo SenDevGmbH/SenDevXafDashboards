@@ -59,6 +59,8 @@ namespace SenDev.Xaf.Dashboards.Scripting
 		public object GetDataForDataExtract()
 		{
 			var data = GetDataCore(new Dictionary<string, object>(), out var os);
+			if (data == null || data is IEnumerable enumerable && !enumerable.Cast<object>().Any())
+				return null;
 			if (data is byte[])
 				return data;
 			

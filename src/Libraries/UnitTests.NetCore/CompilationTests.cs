@@ -76,5 +76,59 @@ public class Script
 			Assert.Equal(2, extract.RowCount);
 
 		}
+
+		[Fact]
+		public void NullReturnTest()
+		{
+			using var application = XpoInMemoryXafApplication.CreateInstance();
+			using var objectSpace = application.CreateObjectSpace();
+			var extract = objectSpace.CreateObject<DashboardDataExtract>();
+			extract.ExtractData = new byte[] { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 };
+			var testObject = objectSpace.CreateObject<TestClassWithNameAndNumber>();
+			testObject.Name = "Name 1";
+			testObject.SequentialNumber = 1;
+			extract.Script = @"
+					using System;
+					using System.Linq;
+
+					public class Script
+					{
+						public object GetData(SenDev.Xaf.Dashboards.Scripting.ScriptContext context) => null;
+					}";
+
+			objectSpace.CommitChanges();
+			var dataManager = new DataExtractDataManager(application);
+			dataManager.UpdateDataExtractByKey(extract.Oid);
+			extract.Reload();
+			Assert.Null(extract.ExtractData);
+		}
+
+		[Fact]
+		public void EmptyCollectionTest()
+		{
+			using var application = XpoInMemoryXafApplication.CreateInstance();
+			using var objectSpace = application.CreateObjectSpace();
+			var extract = objectSpace.CreateObject<DashboardDataExtract>();
+			extract.ExtractData = new byte[] { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 };
+			var testObject = objectSpace.CreateObject<TestClassWithNameAndNumber>();
+			testObject.Name = "Name 1";
+			testObject.SequentialNumber = 1;
+			extract.Script = @"
+					using System;
+					using System.Linq;
+
+					public class Script
+					{
+						public object GetData(SenDev.Xaf.Dashboards.Scripting.ScriptContext context) => new object[0];
+					}";
+
+			objectSpace.CommitChanges();
+			var dataManager = new DataExtractDataManager(application);
+			dataManager.UpdateDataExtractByKey(extract.Oid);
+			extract.Reload();
+			Assert.Null(extract.ExtractData);
+		}
+
+
 	}
 }
