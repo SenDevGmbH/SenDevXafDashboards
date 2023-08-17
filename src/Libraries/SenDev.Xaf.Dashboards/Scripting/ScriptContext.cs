@@ -19,11 +19,12 @@ namespace SenDev.Xaf.Dashboards.Scripting
 			Parameters = parameters;
 		}
 
-		public ScriptContext(Func<IObjectSpace> createObjectSpaceFunc, IDictionary<string, object> parameters, CancellationToken cancellationToken)
+		public ScriptContext(Func<IObjectSpace> createObjectSpaceFunc, IDictionary<string, object> parameters, IServiceProvider serviceProvider, CancellationToken cancellationToken)
 		{
 			CreateObjectSpaceFunc = createObjectSpaceFunc ?? throw new ArgumentNullException(nameof(createObjectSpaceFunc));
 			CancellationToken = cancellationToken;
 			Parameters = parameters ?? throw new ArgumentNullException(nameof(parameters));
+			ServiceProvider = serviceProvider ?? throw new ArgumentNullException(nameof(serviceProvider));
 			ObjectSpace = CreateObjectSpace();
 		}
 
@@ -38,6 +39,11 @@ namespace SenDev.Xaf.Dashboards.Scripting
 		{
 			get;
 		}
+		public IServiceProvider ServiceProvider
+		{
+			get;
+		}
+
 		public IQueryable<T> Query<T>() => ObjectSpace.GetObjectsQuery<T>();
 
 		public Session Session => ((XPObjectSpace)ObjectSpace).Session;

@@ -13,12 +13,18 @@ namespace SenDev.Xaf.Dashboards.Scripting
 	public class DataExtractDataManager
 	{
 
-		public DataExtractDataManager(XafApplication application)
+		public DataExtractDataManager(XafApplication application) : this(application, new EmptyServiceProvider()) { }
+		public DataExtractDataManager(XafApplication application, IServiceProvider serviceProvider)
 		{
-			Application = application;
+			Application = application ?? throw new ArgumentNullException(nameof(application));
+			ServiceProvider = serviceProvider ?? throw new ArgumentNullException(nameof(serviceProvider));
 		}
 
 		private XafApplication Application
+		{
+			get;
+		}
+		private IServiceProvider ServiceProvider
 		{
 			get;
 		}
@@ -67,7 +73,7 @@ namespace SenDev.Xaf.Dashboards.Scripting
 				return;
 
 
-			ScriptDataSource dataSource = CreateScriptDataSource(extract, Application, cancellationToken);
+			ScriptDataSource dataSource = CreateScriptDataSource(extract, Application, ServiceProvider, cancellationToken);
 			object data = dataSource.GetDataForDataExtract();
 			if (data == null)
 			{
@@ -106,8 +112,8 @@ namespace SenDev.Xaf.Dashboards.Scripting
 			}
 		}
 
-		protected virtual ScriptDataSource CreateScriptDataSource(IDashboardDataExtract extract, XafApplication application, CancellationToken cancellationToken) =>
-			new ScriptDataSource(extract.Script, cancellationToken) { Application = application };
+		protected virtual ScriptDataSource CreateScriptDataSource(IDashboardDataExtract extract, XafApplication application, IServiceProvider serviceProvider, CancellationToken cancellationToken) =>
+			new ScriptDataSource(extract.Script, serviceProvider, cancellationToken) { Application = application };
 
 		private static void SetDataExtractContent(IDashboardDataExtract extract, byte[] fileData)
 		{

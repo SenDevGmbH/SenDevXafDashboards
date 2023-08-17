@@ -13,10 +13,11 @@ namespace SenDev.Xaf.Dashboards.Scripting
 {
 	public class ScriptDataSource
 	{
-		public ScriptDataSource(string script) : this(script, CancellationToken.None) { }
-		public ScriptDataSource(string script, CancellationToken cancellationToken)
+		public ScriptDataSource(string script) : this(script, new EmptyServiceProvider(), CancellationToken.None) { }
+		public ScriptDataSource(string script, IServiceProvider serviceProvider, CancellationToken cancellationToken)
 		{
 			Script = script;
+			ServiceProvider = serviceProvider ?? throw new ArgumentNullException(nameof(serviceProvider));
 			CancellationToken = cancellationToken;
 		}
 
@@ -26,6 +27,10 @@ namespace SenDev.Xaf.Dashboards.Scripting
 		}
 
 		public string Script
+		{
+			get;
+		}
+		private IServiceProvider ServiceProvider
 		{
 			get;
 		}
@@ -47,7 +52,7 @@ namespace SenDev.Xaf.Dashboards.Scripting
 
 		private object GetDataCore(IDictionary<string, object> parameters, out IObjectSpace objectSpace)
 		{
-			var context = new ScriptContext(() => (XPObjectSpace)Application.CreateObjectSpace(), parameters, CancellationToken);
+			var context = new ScriptContext(() => (XPObjectSpace)Application.CreateObjectSpace(), parameters, ServiceProvider, CancellationToken);
 			var compilationHelper = new ScriptCompilationHelper(AssembliesHelper.GetReferencedAssembliesPaths(Application));
 			dynamic scriptObject = compilationHelper.CreateObject(Script);
 			CancellationToken.ThrowIfCancellationRequested();
