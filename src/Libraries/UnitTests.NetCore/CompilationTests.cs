@@ -1,4 +1,8 @@
-﻿using SenDev.Xaf.Dashboards.BusinessObjects;
+﻿using System;
+using System.Linq;
+using System.Threading;
+using System.Threading.Tasks;
+using SenDev.Xaf.Dashboards.BusinessObjects;
 using SenDev.Xaf.Dashboards.Scripting;
 using Xunit;
 
@@ -74,6 +78,65 @@ public class Script
 			extract.Reload();
 			Assert.NotEmpty(extract.ExtractData);
 			Assert.Equal(2, extract.RowCount);
+
+		}
+
+
+		[Fact]
+		public void CancellationTest()
+		{
+			var script = @"
+using System;
+using System.Linq;
+using DevExpress.Xpo;	
+using SenDev.Xaf.Dashboards.Scripting;
+using UnitTests;		
+
+
+public class Script
+{
+    public object GetData(ScriptContext context)
+    {
+        for(int i = 0; true;i++)
+		{
+			if (i > 1000) context.CancellationToken.ThrowIfCancellationRequested();
+		}
+    }
+}";
+
+
+			CancellationTokenSource cancellationTokenSource = new CancellationTokenSource();
+			using var application = XpoInMemoryXafApplication.CreateInstance();
+			using var objectSpace = application.CreateObjectSpace();
+			var extract = objectSpace.CreateObject<DashboardDataExtract>();
+			var testObject1 = objectSpace.CreateObject<TestClassWithNameAndNumber>();
+			testObject1.Name = "Name 1";
+			testObject1.SequentialNumber = 1;
+
+			var testObject2 = objectSpace.CreateObject<TestClassWithNameAndNumber>();
+			testObject1.Name = "Name 2";
+			testObject2.SequentialNumber = 2;
+			extract.Script = script;
+			objectSpace.CommitChanges();
+
+			Assert.NotNull(application.TypesInfo);
+			var task = Task.Run(() =>
+			{
+				Assert.NotNull(application.TypesInfo);
+				var dataManager = new DataExtractDataManager(application);
+				dataManager.UpdateDataExtractByKey(extract.Oid, cancellationTokenSource.Token);
+			}, cancellationTokenSource.Token);
+			
+			cancellationTokenSource.Cancel();
+			try
+			{
+				task.Wait();
+
+			}
+			catch (AggregateException aex)
+			{
+				Assert.IsType<TaskCanceledException>(aex.InnerExceptions.Single());
+			}
 
 		}
 

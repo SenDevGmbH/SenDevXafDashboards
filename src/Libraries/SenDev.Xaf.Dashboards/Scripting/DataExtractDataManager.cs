@@ -2,6 +2,7 @@
 using System.Collections;
 using System.IO;
 using System.Linq;
+using System.Threading;
 using DevExpress.DashboardCommon;
 using DevExpress.ExpressApp;
 using SenDev.Xaf.Dashboards.BusinessObjects;
@@ -22,7 +23,8 @@ namespace SenDev.Xaf.Dashboards.Scripting
 			get;
 		}
 
-		public void UpdateAllExtracts()
+		public void UpdateAllExtracts() => UpdateAllExtracts(CancellationToken.None);
+		public void UpdateAllExtracts(CancellationToken cancellationToken)
 		{
 			using (var objectSpace = Application.CreateObjectSpace())
 			{
@@ -32,13 +34,15 @@ namespace SenDev.Xaf.Dashboards.Scripting
 
 				foreach (var extract in extracts)
 				{
-					UpdateDataExtract(extract);
+					cancellationToken.ThrowIfCancellationRequested();
+					UpdateDataExtract(extract, cancellationToken);
 					objectSpace.CommitChanges();
 				}
 			}
 		}
 
-		public void UpdateDataExtractByKey(object key)
+		public void UpdateDataExtractByKey(object key) => UpdateDataExtractByKey(key, CancellationToken.None);
+		public void UpdateDataExtractByKey(object key, CancellationToken cancellationToken)
 		{
 			if (key == null)
 				throw new ArgumentNullException(nameof(key));
@@ -51,11 +55,11 @@ namespace SenDev.Xaf.Dashboards.Scripting
 					throw new ArgumentException($"No DashboardExtract found for the key '{key}'", nameof(key));
 				}
 
-				UpdateDataExtract(extract);
+				UpdateDataExtract(extract, cancellationToken);
 				objectSpace.CommitChanges();
 			}
 		}
-		private void UpdateDataExtract(IDashboardDataExtract extract)
+		private void UpdateDataExtract(IDashboardDataExtract extract, CancellationToken cancellationToken)
 		{
 			if (extract == null)
 				throw new ArgumentNullException(nameof(extract));
@@ -63,7 +67,7 @@ namespace SenDev.Xaf.Dashboards.Scripting
 				return;
 
 
-			ScriptDataSource dataSource = CreateScriptDataSource(extract, Application);
+			ScriptDataSource dataSource = CreateScriptDataSource(extract, Application, cancellationToken);
 			object data = dataSource.GetDataForDataExtract();
 			if (data == null)
 			{
@@ -87,7 +91,7 @@ namespace SenDev.Xaf.Dashboards.Scripting
 					{
 						extractDataSource.ExtractSourceOptions.DataSource = ods;
 						extractDataSource.FileName = fileName;
-						extractDataSource.UpdateExtractFile();
+						extractDataSource.UpdateExtractFile(cancellationToken);
 						SetDataExtractContent(extract, File.ReadAllBytes(fileName));
 						if (data is ICollection collection)
 							extract.RowCount = collection.Count;
@@ -102,8 +106,8 @@ namespace SenDev.Xaf.Dashboards.Scripting
 			}
 		}
 
-		protected virtual ScriptDataSource CreateScriptDataSource(IDashboardDataExtract extract, XafApplication application) =>
-			new ScriptDataSource(extract.Script) { Application = application };
+		protected virtual ScriptDataSource CreateScriptDataSource(IDashboardDataExtract extract, XafApplication application, CancellationToken cancellationToken) =>
+			new ScriptDataSource(extract.Script, cancellationToken) { Application = application };
 
 		private static void SetDataExtractContent(IDashboardDataExtract extract, byte[] fileData)
 		{

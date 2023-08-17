@@ -7,14 +7,17 @@ using System.Data;
 using System.Dynamic;
 using System.Linq;
 using System.Reflection;
+using System.Threading;
 
 namespace SenDev.Xaf.Dashboards.Scripting
 {
 	public class ScriptDataSource
 	{
-		public ScriptDataSource(string script)
+		public ScriptDataSource(string script) : this(script, CancellationToken.None) { }
+		public ScriptDataSource(string script, CancellationToken cancellationToken)
 		{
 			Script = script;
+			CancellationToken = cancellationToken;
 		}
 
 		public XafApplication Application
@@ -23,6 +26,10 @@ namespace SenDev.Xaf.Dashboards.Scripting
 		}
 
 		public string Script
+		{
+			get;
+		}
+		public CancellationToken CancellationToken
 		{
 			get;
 		}
@@ -38,12 +45,13 @@ namespace SenDev.Xaf.Dashboards.Scripting
 		}
 
 
-		private object GetDataCore(IDictionary<string, object> parameters, out XPObjectSpace objectSpace)
+		private object GetDataCore(IDictionary<string, object> parameters, out IObjectSpace objectSpace)
 		{
-			objectSpace = (XPObjectSpace)Application.CreateObjectSpace();
-			var context = new ScriptContext(objectSpace, parameters);
+			var context = new ScriptContext(() => (XPObjectSpace)Application.CreateObjectSpace(), parameters, CancellationToken);
 			var compilationHelper = new ScriptCompilationHelper(AssembliesHelper.GetReferencedAssembliesPaths(Application));
 			dynamic scriptObject = compilationHelper.CreateObject(Script);
+			CancellationToken.ThrowIfCancellationRequested();
+			objectSpace = context.ObjectSpace;
 			return scriptObject.GetData(context);
 		}
 
@@ -54,16 +62,16 @@ namespace SenDev.Xaf.Dashboards.Scripting
 				return false;
 			var type = obj.GetType();
 			return type.IsGenericType && type.GetGenericTypeDefinition() == typeof(ICollection<>);
-			
+
 		}
 		public object GetDataForDataExtract()
 		{
-			var data = GetDataCore(new Dictionary<string, object>(), out var os);
+			var data = GetDataCore(new Dictionary<string, object>(), out _);
 			if (data == null || data is IEnumerable enumerable && !enumerable.Cast<object>().Any())
 				return null;
 			if (data is byte[])
 				return data;
-			
+
 			if (data is IDataReader reader)
 				return new DataReaderList(reader);
 
