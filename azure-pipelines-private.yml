@@ -26,7 +26,16 @@ steps:
     packageType: 'sdk'
     includePreviewVersions: true
     installationPath: $(Agent.ToolsDirectory)/dotnet
+
+- task: UseDotNet@2
+  displayName: 'Use .NET Core 8 sdk'
+  inputs:
+    version: '8.0.200'
+    packageType: 'sdk'
+    includePreviewVersions: true
+    installationPath: $(Agent.ToolsDirectory)/dotnet
     
+
 - task: NuGetToolInstaller@1
 
 - task: NuGetAuthenticate@0
