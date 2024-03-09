@@ -3,12 +3,14 @@ using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.CSharp;
 using Microsoft.CodeAnalysis.Emit;
 using System;
+using System.Collections;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Data;
 using System.IO;
 using System.Linq;
 using System.Reflection;
+using System.Runtime;
 
 namespace SenDev.Xaf.Dashboards.Scripting
 {
@@ -25,9 +27,12 @@ namespace SenDev.Xaf.Dashboards.Scripting
 		private readonly IList<MetadataReference> references = new List<MetadataReference>()
 		{
 			MetadataReference.CreateFromFile(typeof(object).Assembly.Location),
+			MetadataReference.CreateFromFile(typeof(GCSettings).Assembly.Location),
 			MetadataReference.CreateFromFile(typeof(Enumerable).Assembly.Location),
 			MetadataReference.CreateFromFile(typeof(CriteriaOperator).Assembly.Location),
-			MetadataReference.CreateFromFile(typeof(IDataReader).Assembly.Location)
+			MetadataReference.CreateFromFile(typeof(IDataReader).Assembly.Location),
+			MetadataReference.CreateFromFile(typeof(BitArray).Assembly.Location),
+			MetadataReference.CreateFromFile(typeof(Queryable).Assembly.Location)
 		};
 
 		public ScriptCompilationHelper(string[] referencedAssemblies)

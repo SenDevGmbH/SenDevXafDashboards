@@ -26,7 +26,16 @@ steps:
     packageType: 'sdk'
     includePreviewVersions: true
     installationPath: $(Agent.ToolsDirectory)/dotnet
+
+- task: UseDotNet@2
+  displayName: 'Use .NET Core 8 sdk'
+  inputs:
+    version: '8.0.200'
+    packageType: 'sdk'
+    includePreviewVersions: true
+    installationPath: $(Agent.ToolsDirectory)/dotnet
     
+
 - task: NuGetToolInstaller@1
 
 - task: NuGetAuthenticate@0
@@ -53,21 +62,32 @@ steps:
     publishLocation: 'Container'
   condition: succeededOrFailed()
 
-- task: NuGetAuthenticate@0
-  displayName: 'NuGet Authenticate'
-- task: NuGetCommand@2
-  displayName: 'NuGet push'
-  inputs:
-    command: push
-    packagesToPush: '$(Build.ArtifactStagingDirectory)/*.nupkg'
-    publishVstsFeed: 'DevExpress/Release'
-    allowPackageConflicts: false
-
-- task: VSTest@2
+- task: VSTest@3
+  displayName: 'VSTest - Net Framework'  
   inputs:
     platform: '$(buildPlatform)'
     configuration: '$(buildConfiguration)'
     testSelector: 'testAssemblies'
     testAssemblyVer2: |
       src\bin\**\UnitTests.dll
-      src\bin\**\UnitTests.NetCore.dll
+
+- task: VSTest@3
+  displayName: 'VSTest - Net Core'  
+  inputs:
+    platform: '$(buildPlatform)'
+    configuration: '$(buildConfiguration)'
+    testSelector: 'testAssemblies'
+    testAssemblyVer2: |
+      src\bin\**\UnitTests.NetCore.dll      
+
+- task: NuGetAuthenticate@0
+  displayName: 'NuGet Authenticate'
+- task: NuGetCommand@2
+  displayName: 'NuGet push'
+  condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/master'))
+  inputs:
+    command: push
+    packagesToPush: '$(Build.ArtifactStagingDirectory)/*.nupkg'
+    publishVstsFeed: 'DevExpress/Release'
+    allowPackageConflicts: false
+
