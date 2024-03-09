@@ -53,7 +53,7 @@ steps:
     publishLocation: 'Container'
   condition: succeededOrFailed()
 
-- task: VSTest@2
+- task: VSTest@3
   displayName: 'VSTest - Net Framework'  
   inputs:
     platform: '$(buildPlatform)'
@@ -62,12 +62,11 @@ steps:
     testAssemblyVer2: |
       src\bin\**\UnitTests.dll
 
-- task: VSTest@2
+- task: VSTest@3
   displayName: 'VSTest - Net Core'  
   inputs:
     platform: '$(buildPlatform)'
     configuration: '$(buildConfiguration)'
-    overrideTestrunParameters: '-Framework:.NETCoreApp,Version=v6.0'
     testSelector: 'testAssemblies'
     testAssemblyVer2: |
       src\bin\**\UnitTests.NetCore.dll      
