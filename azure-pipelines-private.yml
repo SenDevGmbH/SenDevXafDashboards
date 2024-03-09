@@ -67,6 +67,7 @@ steps:
   inputs:
     platform: '$(buildPlatform)'
     configuration: '$(buildConfiguration)'
+    overrideTestrunParameters: '-Framework:.NETCoreApp,Version=v6.0'
     testSelector: 'testAssemblies'
     testAssemblyVer2: |
       src\bin\**\UnitTests.NetCore.dll      
