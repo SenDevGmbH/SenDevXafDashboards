@@ -53,21 +53,32 @@ steps:
     publishLocation: 'Container'
   condition: succeededOrFailed()
 
-- task: NuGetAuthenticate@0
-  displayName: 'NuGet Authenticate'
-- task: NuGetCommand@2
-  displayName: 'NuGet push'
-  inputs:
-    command: push
-    packagesToPush: '$(Build.ArtifactStagingDirectory)/*.nupkg'
-    publishVstsFeed: 'DevExpress/Release'
-    allowPackageConflicts: false
-
 - task: VSTest@2
+  displayName: 'VSTest - Net Framework'  
   inputs:
     platform: '$(buildPlatform)'
     configuration: '$(buildConfiguration)'
     testSelector: 'testAssemblies'
     testAssemblyVer2: |
       src\bin\**\UnitTests.dll
-      src\bin\**\UnitTests.NetCore.dll
+
+- task: VSTest@2
+  displayName: 'VSTest - Net Core'  
+  inputs:
+    platform: '$(buildPlatform)'
+    configuration: '$(buildConfiguration)'
+    testSelector: 'testAssemblies'
+    testAssemblyVer2: |
+      src\bin\**\UnitTests.NetCore.dll      
+
+- task: NuGetAuthenticate@0
+  displayName: 'NuGet Authenticate'
+- task: NuGetCommand@2
+  displayName: 'NuGet push'
+  condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/master'))
+  inputs:
+    command: push
+    packagesToPush: '$(Build.ArtifactStagingDirectory)/*.nupkg'
+    publishVstsFeed: 'DevExpress/Release'
+    allowPackageConflicts: false
+
