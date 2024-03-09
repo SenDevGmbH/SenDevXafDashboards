@@ -1,4 +1,5 @@
-﻿using System.IO;
+﻿using System;
+using System.IO;
 using System.Linq;
 using DevExpress.ExpressApp;
 using Microsoft.CodeAnalysis;
@@ -27,17 +28,15 @@ namespace SenDev.Xaf.Dashboards.Controllers
 		{
 			var compilationHelper = new ScriptCompilationHelper(AssembliesHelper.GetReferencedAssembliesPaths(Application));
 			var script = (e.Object as IDashboardDataExtract).Script;
-			var tempFile = Path.GetTempFileName();
-			var compileResult = compilationHelper.Compile(script, tempFile);
-			File.Delete(tempFile);
 
-			if (!compileResult.Success)
+			try
 			{
-				var errors = compileResult.Diagnostics
-					.Where(o => o.Severity == DiagnosticSeverity.Error)
-					.Select(o => o.ToString());
 
-				throw new UserFriendlyException(string.Join("\n", errors));
+				var compileResult = compilationHelper.CreateObject(script);
+			}
+			catch (InvalidOperationException ex)
+			{
+				throw new UserFriendlyException(ex.Message, ex);
 			}
 		}
 	}

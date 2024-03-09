@@ -67,8 +67,7 @@
 			Version="$(DevExpressPackageVersion)" />
 		<PackageReference Include="DevExpress.Spreadsheet.Core"
 			Version="$(DevExpressPackageVersion)" />
-		<PackageReference Include="Microsoft.CodeAnalysis.Compilers" Version="4.9.2" />
-		<PackageReference Include="Microsoft.CSharp" Version="4.7.0" />
+		<PackageReference Include="CS-Script" Version="4.8.14" />
 	</ItemGroup>
 
 	<ItemGroup>

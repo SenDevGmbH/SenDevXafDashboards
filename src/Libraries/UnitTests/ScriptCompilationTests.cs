@@ -76,6 +76,7 @@ namespace UnitTests
 		[Fact]
 		public void CSharp8SyntaxTest()
 		{
+
 			using (var application = XpoInMemoryXafApplication.CreateInstance())
 			using (var objectSpace = application.CreateObjectSpace())
 			{

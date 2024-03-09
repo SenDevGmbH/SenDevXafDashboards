@@ -23,13 +23,11 @@
   <ItemGroup>
     <PackageReference Include="DevExpress.ExpressApp" Version="$(DevExpressPackageVersion)" />
     <PackageReference Include="DevExpress.ExpressApp.Blazor" Version="$(DevExpressPackageVersion)" />
-    <PackageReference Include="DevExpress.ExpressApp.CodeAnalysis" Version="$(DevExpressPackageVersion)" />
     <PackageReference Include="DevExpress.ExpressApp.Xpo" Version="$(DevExpressPackageVersion)" />
     <PackageReference Include="DevExpress.Persistent.Base" Version="$(DevExpressPackageVersion)" />
     <PackageReference Include="DevExpress.Persistent.BaseImpl.Xpo" Version="$(DevExpressPackageVersion)" />
     <PackageReference Include="DevExpress.ExpressApp.WebApi" Version="$(DevExpressPackageVersion)" />
 	  <PackageReference Include="DevExpress.ExpressApp.FileAttachment.Blazor" Version="$(DevExpressPackageVersion)" />
-    <PackageReference Include="Microsoft.CodeAnalysis.Common" Version="4.9.2" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.4.0" />
 	<PackageReference Include="Hangfire.Core" Version="1.7.31" />
 	<PackageReference Include="Hangfire.SqlServer" Version="1.7.31" />

@@ -8,8 +8,8 @@ using Xunit;
 
 namespace UnitTests.NetCore
 {
-    public class CompilationTests
-    {
+	public class CompilationTests
+	{
 		[Fact]
 		public void CSharp8SyntaxTest()
 		{
@@ -39,7 +39,7 @@ namespace UnitTests.NetCore
 			Assert.Equal(new byte[] { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 }, extract.ExtractData);
 		}
 
-		
+
 		[Fact]
 		public void QueryObjectsScriptTest()
 		{
@@ -72,7 +72,7 @@ public class Script
 			testObject2.SequentialNumber = 2;
 			extract.Script = script;
 			objectSpace.CommitChanges();
-		
+
 			var dataManager = new DataExtractDataManager(application);
 			dataManager.UpdateDataExtractByKey(extract.Oid);
 			extract.Reload();
@@ -168,7 +168,7 @@ public class Script
 				var dataManager = new DataExtractDataManager(application);
 				dataManager.UpdateDataExtractByKey(extract.Oid, cancellationTokenSource.Token);
 			}, cancellationTokenSource.Token);
-			
+
 			cancellationTokenSource.Cancel();
 			try
 			{
@@ -235,5 +235,10 @@ public class Script
 		}
 
 
+		[Fact]
+		public void ScriptCompilationErrorTest()
+		{
+			Assert.Throws<InvalidOperationException>(() => new ScriptCompilationHelper().CreateObject("aaa"));
+		}
 	}
 }
