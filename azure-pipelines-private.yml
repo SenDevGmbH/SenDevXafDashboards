@@ -53,7 +53,7 @@ steps:
     publishLocation: 'Container'
   condition: succeededOrFailed()
 
-- task: VSTest@3
+- task: VSTest@2
   displayName: 'VSTest - Net Framework'  
   inputs:
     platform: '$(buildPlatform)'
@@ -62,7 +62,7 @@ steps:
     testAssemblyVer2: |
       src\bin\**\UnitTests.dll
 
-- task: VSTest@3
+- task: VSTest@2
   displayName: 'VSTest - Net Core'  
   inputs:
     platform: '$(buildPlatform)'
