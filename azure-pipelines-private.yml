@@ -53,6 +53,14 @@ steps:
     publishLocation: 'Container'
   condition: succeededOrFailed()
 
+- task: MSBuild@1
+  display: Build net framework unit tests
+  inputs:
+    solution: 'src\Libraries\UnitTests\UnitTests.csproj'
+    platform: '$(buildPlatform)'
+    configuration: '$(buildConfiguration)'
+    msbuildArguments: '/bl:$(BinLogDirectory)\build_unittests.binlog'
+
 - task: VSTest@2
   displayName: 'VSTest - Net Framework'  
   inputs:
@@ -60,7 +68,7 @@ steps:
     configuration: '$(buildConfiguration)'
     testSelector: 'testAssemblies'
     testAssemblyVer2: |
-      src\bin\**\UnitTests.dll
+      src\Libraries\UnitTests\**\UnitTests.dll
 
 - task: VSTest@2
   displayName: 'VSTest - Net Core'  
