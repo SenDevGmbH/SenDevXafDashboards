@@ -54,7 +54,7 @@ steps:
   condition: succeededOrFailed()
 
 - task: MSBuild@1
-  display: Build net framework unit tests
+  displayName: Build net framework unit tests
   inputs:
     solution: 'src\Libraries\UnitTests\UnitTests.csproj'
     platform: '$(buildPlatform)'
