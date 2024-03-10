@@ -54,12 +54,20 @@ steps:
   condition: succeededOrFailed()
 
 - task: MSBuild@1
-  displayName: Build net framework unit tests
+  displayName: Build net48 unit tests
   inputs:
     solution: 'src\Libraries\UnitTests\UnitTests.csproj'
     platform: '$(buildPlatform)'
     configuration: '$(buildConfiguration)'
     msbuildArguments: '/bl:$(BinLogDirectory)\build_unittests.binlog /p:OutDir=$(Build.SourcesDirectory)\FrameworkTests'
+
+- task: MSBuild@1
+  displayName: Build net60 unit tests
+  inputs:
+    solution: 'src\Libraries\UnitTests.Core\UnitTests.Core.csproj'
+    platform: '$(buildPlatform)'
+    configuration: '$(buildConfiguration)'
+    msbuildArguments: '/bl:$(BinLogDirectory)\build_unittests.core.binlog /p:OutDir=$(Build.SourcesDirectory)\NetCoreTests'
 
 - task: VSTest@2
   displayName: 'VSTest - Net Framework'  
@@ -77,7 +85,7 @@ steps:
     configuration: '$(buildConfiguration)'
     testSelector: 'testAssemblies'
     testAssemblyVer2: |
-      src\bin\**\UnitTests.NetCore.dll      
+      $(Build.SourcesDirectory)\NetCoreTests\**\UnitTests.NetCore.dll      
 
 - task: NuGetAuthenticate@0
   displayName: 'NuGet Authenticate'
