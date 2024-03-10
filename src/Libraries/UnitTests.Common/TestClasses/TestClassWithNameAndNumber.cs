@@ -24,5 +24,13 @@ namespace UnitTests
 			get => sequentialNuber;
 			set => SetPropertyValue(nameof(SequentialNumber), ref sequentialNuber, value);
 		}
+
+
+		private int? nullableNumber;
+		public int? NullableNumber
+		{
+			get => nullableNumber;
+			set => SetPropertyValue(nameof(NullableNumber), ref nullableNumber, value);
+		}
 	}
 }

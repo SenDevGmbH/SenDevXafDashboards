@@ -8,8 +8,8 @@ using Xunit;
 
 namespace UnitTests.NetCore
 {
-    public class CompilationTests
-    {
+	public class CompilationTests
+	{
 		[Fact]
 		public void CSharp8SyntaxTest()
 		{
@@ -39,7 +39,7 @@ namespace UnitTests.NetCore
 			Assert.Equal(new byte[] { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 }, extract.ExtractData);
 		}
 
-		
+
 		[Fact]
 		public void QueryObjectsScriptTest()
 		{
@@ -66,13 +66,55 @@ public class Script
 			var testObject1 = objectSpace.CreateObject<TestClassWithNameAndNumber>();
 			testObject1.Name = "Name 1";
 			testObject1.SequentialNumber = 1;
-
+			testObject1.NullableNumber = 33;
 			var testObject2 = objectSpace.CreateObject<TestClassWithNameAndNumber>();
 			testObject1.Name = "Name 2";
 			testObject2.SequentialNumber = 2;
 			extract.Script = script;
 			objectSpace.CommitChanges();
-		
+
+			var dataManager = new DataExtractDataManager(application);
+			dataManager.UpdateDataExtractByKey(extract.Oid);
+			extract.Reload();
+			Assert.NotEmpty(extract.ExtractData);
+			Assert.Equal(2, extract.RowCount);
+
+		}
+
+
+		[Fact]
+		public void AsQueryableTest()
+		{
+			var script = @"
+using System;
+using System.Linq;
+using DevExpress.Xpo;	
+using SenDev.Xaf.Dashboards.Scripting;
+using UnitTests;		
+
+
+public class Script
+{
+    public object GetData(ScriptContext context)
+    {
+        return context.Query<TestClassWithNameAndNumber>().ToList().AsQueryable();
+    }
+}";
+
+
+			using var application = XpoInMemoryXafApplication.CreateInstance();
+			using var objectSpace = application.CreateObjectSpace();
+			var extract = objectSpace.CreateObject<DashboardDataExtract>();
+			var testObject1 = objectSpace.CreateObject<TestClassWithNameAndNumber>();
+			testObject1.Name = "Name 1";
+			testObject1.SequentialNumber = 1;
+			testObject1.NullableNumber = 33;
+			var testObject2 = objectSpace.CreateObject<TestClassWithNameAndNumber>();
+			testObject1.Name = "Name 2";
+			testObject2.SequentialNumber = 2;
+			extract.Script = script;
+			objectSpace.CommitChanges();
+
 			var dataManager = new DataExtractDataManager(application);
 			dataManager.UpdateDataExtractByKey(extract.Oid);
 			extract.Reload();
@@ -126,7 +168,7 @@ public class Script
 				var dataManager = new DataExtractDataManager(application);
 				dataManager.UpdateDataExtractByKey(extract.Oid, cancellationTokenSource.Token);
 			}, cancellationTokenSource.Token);
-			
+
 			cancellationTokenSource.Cancel();
 			try
 			{
@@ -193,5 +235,10 @@ public class Script
 		}
 
 
+		[Fact]
+		public void ScriptCompilationErrorTest()
+		{
+			Assert.Throws<InvalidOperationException>(() => new ScriptCompilationHelper().CreateObject("aaa"));
+		}
 	}
 }
