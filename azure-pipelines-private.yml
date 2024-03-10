@@ -64,7 +64,7 @@ steps:
 - task: MSBuild@1
   displayName: Build net60 unit tests
   inputs:
-    solution: 'src\Libraries\UnitTests.Core\UnitTests.Core.csproj'
+    solution: 'src\Libraries\UnitTests.NetCore\UnitTests.NetCore.csproj'
     platform: '$(buildPlatform)'
     configuration: '$(buildConfiguration)'
     msbuildArguments: '/bl:$(BinLogDirectory)\build_unittests.core.binlog /p:OutDir=$(Build.SourcesDirectory)\NetCoreTests'
