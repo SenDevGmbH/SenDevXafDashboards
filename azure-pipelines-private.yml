@@ -59,7 +59,7 @@ steps:
     solution: 'src\Libraries\UnitTests\UnitTests.csproj'
     platform: '$(buildPlatform)'
     configuration: '$(buildConfiguration)'
-    msbuildArguments: '/bl:$(BinLogDirectory)\build_unittests.binlog'
+    msbuildArguments: '/bl:$(BinLogDirectory)\build_unittests.binlog /p:OutDir=$(Build.SourcesDirectory)\FrameworkTests'
 
 - task: VSTest@2
   displayName: 'VSTest - Net Framework'  
@@ -68,7 +68,7 @@ steps:
     configuration: '$(buildConfiguration)'
     testSelector: 'testAssemblies'
     testAssemblyVer2: |
-      src\Libraries\UnitTests\**\UnitTests.dll
+      $(Build.SourcesDirectory)\FrameworkTests\**\UnitTests.dll
 
 - task: VSTest@2
   displayName: 'VSTest - Net Core'  
