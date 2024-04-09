@@ -6,9 +6,9 @@
     <FileVersion>1.0.0.0</FileVersion>
     <Configurations>Debug;Release;EasyTest</Configurations>
   </PropertyGroup>
-	<PropertyGroup>
-		<UseRazorSourceGenerator>false</UseRazorSourceGenerator>
-	</PropertyGroup>
+  <PropertyGroup>
+    <UseRazorSourceGenerator>false</UseRazorSourceGenerator>
+  </PropertyGroup>
   <ItemGroup>
     <None Remove="Model.xafml" />
   </ItemGroup>
@@ -18,33 +18,39 @@
     </Content>
   </ItemGroup>
   <ItemGroup Condition=" '$(Configuration)' == 'EasyTest' ">
-    <PackageReference Include="DevExpress.ExpressApp.EasyTest.BlazorAdapter" Version="$(DevExpressPackageVersion)" />
+    <PackageReference Include="DevExpress.ExpressApp.EasyTest.BlazorAdapter"
+      Version="$(DevExpressPackageVersion)" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="DevExpress.ExpressApp" Version="$(DevExpressPackageVersion)" />
     <PackageReference Include="DevExpress.ExpressApp.Blazor" Version="$(DevExpressPackageVersion)" />
-    <PackageReference Include="DevExpress.ExpressApp.CodeAnalysis" Version="$(DevExpressPackageVersion)" />
+    <PackageReference Include="DevExpress.ExpressApp.CodeAnalysis"
+      Version="$(DevExpressPackageVersion)" />
     <PackageReference Include="DevExpress.ExpressApp.Xpo" Version="$(DevExpressPackageVersion)" />
     <PackageReference Include="DevExpress.Persistent.Base" Version="$(DevExpressPackageVersion)" />
-    <PackageReference Include="DevExpress.Persistent.BaseImpl.Xpo" Version="$(DevExpressPackageVersion)" />
+    <PackageReference Include="DevExpress.Persistent.BaseImpl.Xpo"
+      Version="$(DevExpressPackageVersion)" />
     <PackageReference Include="DevExpress.ExpressApp.WebApi" Version="$(DevExpressPackageVersion)" />
-	  <PackageReference Include="DevExpress.ExpressApp.FileAttachment.Blazor" Version="$(DevExpressPackageVersion)" />
+    <PackageReference Include="DevExpress.ExpressApp.FileAttachment.Blazor"
+      Version="$(DevExpressPackageVersion)" />
     <PackageReference Include="Microsoft.CodeAnalysis" Version="4.2.0" />
     <PackageReference Include="Microsoft.CodeAnalysis.Compilers" Version="4.2.0" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.4.0" />
-	<PackageReference Include="Hangfire.Core" Version="1.7.31" />
-	<PackageReference Include="Hangfire.SqlServer" Version="1.7.31" />
-	<PackageReference Include="Hangfire.AspNetCore" Version="1.7.31" />
+    <PackageReference Include="Hangfire.Core" Version="1.7.31" />
+    <PackageReference Include="Hangfire.SqlServer" Version="1.7.31" />
+    <PackageReference Include="Hangfire.AspNetCore" Version="1.7.31" />
+    <PackageReference Include="System.ServiceModel.Primitives" Version="4.10.3"/> 
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\SenDev.DashboardsDemo.Module.Blazor\SenDev.DashboardsDemo.Module.Blazor.csproj">
-     <Project> {250F6594-4B7E-43BE-A358-9DCD824CB512}</Project>
-	      <Name>SenDev.DashboardsDemo.Module.Blazor</Name>
+    <ProjectReference
+      Include="..\SenDev.DashboardsDemo.Module.Blazor\SenDev.DashboardsDemo.Module.Blazor.csproj">
+      <Project> {250F6594-4B7E-43BE-A358-9DCD824CB512}</Project>
+      <Name>SenDev.DashboardsDemo.Module.Blazor</Name>
     </ProjectReference>
     <ProjectReference Include="..\SenDev.DashboardsDemo.Module\SenDev.DashboardsDemo.Module.csproj">
       <Project>{5F15837D-D1E5-44DC-92F0-4F2EBE9C3F8D}</Project>
       <Name>SenDev.DashboardsDemo.Module</Name>
     </ProjectReference>
-  
+
   </ItemGroup>
 </Project>
