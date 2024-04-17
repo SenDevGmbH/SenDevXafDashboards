@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
-		<TargetFrameworks>netstandard2.0</TargetFrameworks>
+		<TargetFrameworks>net48;net6.0</TargetFrameworks>
 		<Deterministic>false</Deterministic>
 		<EnableDefaultEmbeddedResourceItems>false</EnableDefaultEmbeddedResourceItems>
 		<PackageDescription>SenDev XAF Dashboards platform agnostic module</PackageDescription>
@@ -67,7 +67,8 @@
 			Version="$(DevExpressPackageVersion)" />
 		<PackageReference Include="DevExpress.Spreadsheet.Core"
 			Version="$(DevExpressPackageVersion)" />
-		
+		<PackageReference Include="Microsoft.CodeAnalysis" Version="4.9.2" />
+		<PackageReference Include="Microsoft.CSharp" Version="4.7.0" />
 	</ItemGroup>
 
 	<ItemGroup>

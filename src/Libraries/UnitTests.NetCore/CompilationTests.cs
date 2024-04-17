@@ -238,7 +238,9 @@ public class Script
 		[Fact]
 		public void ScriptCompilationErrorTest()
 		{
-			Assert.Throws<InvalidOperationException>(() => new ScriptCompilationHelper().CreateObject("aaa"));
+			using var application = XpoInMemoryXafApplication.CreateInstance();
+			var compiler = application.CreateCompiler();
+			Assert.Throws<InvalidOperationException>(() => compiler.CreateObject("aaa"));
 		}
 	}
 }
