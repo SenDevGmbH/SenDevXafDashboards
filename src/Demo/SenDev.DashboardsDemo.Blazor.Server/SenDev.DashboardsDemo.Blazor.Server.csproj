@@ -18,25 +18,31 @@
     </Content>
   </ItemGroup>
   <ItemGroup Condition=" '$(Configuration)' == 'EasyTest' ">
-    <PackageReference Include="DevExpress.ExpressApp.EasyTest.BlazorAdapter" Version="$(DevExpressPackageVersion)" />
+    <PackageReference Include="DevExpress.ExpressApp.EasyTest.BlazorAdapter"
+      Version="$(DevExpressPackageVersion)" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="DevExpress.ExpressApp" Version="$(DevExpressPackageVersion)" />
     <PackageReference Include="DevExpress.ExpressApp.Blazor" Version="$(DevExpressPackageVersion)" />
-    <PackageReference Include="DevExpress.ExpressApp.CodeAnalysis" Version="$(DevExpressPackageVersion)" />
+    <PackageReference Include="DevExpress.ExpressApp.CodeAnalysis"
+      Version="$(DevExpressPackageVersion)" />
     <PackageReference Include="DevExpress.ExpressApp.Xpo" Version="$(DevExpressPackageVersion)" />
     <PackageReference Include="DevExpress.Persistent.Base" Version="$(DevExpressPackageVersion)" />
-    <PackageReference Include="DevExpress.Persistent.BaseImpl.Xpo" Version="$(DevExpressPackageVersion)" />
+    <PackageReference Include="DevExpress.Persistent.BaseImpl.Xpo"
+      Version="$(DevExpressPackageVersion)" />
     <PackageReference Include="DevExpress.ExpressApp.WebApi" Version="$(DevExpressPackageVersion)" />
-	  <PackageReference Include="DevExpress.ExpressApp.FileAttachment.Blazor" Version="$(DevExpressPackageVersion)" />
+    <PackageReference Include="DevExpress.ExpressApp.FileAttachment.Blazor"
+      Version="$(DevExpressPackageVersion)" />
     <PackageReference Include="Microsoft.CodeAnalysis.Common" Version="4.9.2" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.4.0" />
 	<PackageReference Include="Hangfire.Core" Version="1.7.31" />
 	<PackageReference Include="Hangfire.SqlServer" Version="1.7.31" />
 	<PackageReference Include="Hangfire.AspNetCore" Version="1.7.31" />
+    <PackageReference Include="System.ServiceModel.Primitives" Version="4.10.3"/> 
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\SenDev.DashboardsDemo.Module.Blazor\SenDev.DashboardsDemo.Module.Blazor.csproj">
+    <ProjectReference
+      Include="..\SenDev.DashboardsDemo.Module.Blazor\SenDev.DashboardsDemo.Module.Blazor.csproj">
      <Project> {250F6594-4B7E-43BE-A358-9DCD824CB512}</Project>
 	      <Name>SenDev.DashboardsDemo.Module.Blazor</Name>
     </ProjectReference>

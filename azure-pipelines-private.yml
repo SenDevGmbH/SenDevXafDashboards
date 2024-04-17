@@ -29,7 +29,7 @@ steps:
     
 - task: NuGetToolInstaller@1
 
-- task: NuGetAuthenticate@0
+- task: NuGetAuthenticate@1
 
 - task: NuGetCommand@2
   displayName: "NuGet restore"
