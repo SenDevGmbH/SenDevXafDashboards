@@ -1,0 +1,15 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFramework>net6.0</TargetFramework>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<Nullable>enable</Nullable>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<ProjectReference Include="..\Libraries\SenDev.Xaf.Dashboards\SenDev.Xaf.Dashboards.csproj" />
+	</ItemGroup>
+	<ItemGroup>
+		<PackageReference Include="CS-Script" Version="4.8.14" />
+	</ItemGroup>
+</Project>

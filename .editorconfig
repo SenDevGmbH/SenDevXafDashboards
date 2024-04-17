@@ -99,6 +99,7 @@ dotnet_naming_rule.type_rule.severity                              = warning
 
 dotnet_naming_symbols.all_types.applicable_kinds                   = class, struct, enum
 dotnet_naming_symbols.all_types.applicable_accessibilities         = *
+dotnet_style_predefined_type_for_locals_parameters_members         = true
 
 # async Task SomeMethodAsync
 

@@ -26,12 +26,11 @@ namespace SenDev.Xaf.Dashboards.Controllers
 
 		private void ObjectSaving(object sender, ObjectManipulatingEventArgs e)
 		{
-			var compilationHelper = new ScriptCompilationHelper(AssembliesHelper.GetReferencedAssembliesPaths(Application));
+			IScriptCompiler compilationHelper = Application.CreateCompiler(AssembliesHelper.GetReferencedAssembliesPaths(Application));
 			var script = (e.Object as IDashboardDataExtract).Script;
 
 			try
 			{
-
 				var compileResult = compilationHelper.CreateObject(script);
 			}
 			catch (InvalidOperationException ex)

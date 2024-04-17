@@ -33,7 +33,6 @@ namespace SenDev.Xaf.Dashboards.Scripting
 				assemblyNames.Add(systemRuntimePath);
 
 			assemblyNames.Add(typeof(System.Runtime.AssemblyTargetedPatchBandAttribute).Assembly.Location);
-			assemblyNames.Add(typeof(Microsoft.CSharp.RuntimeBinder.CSharpArgumentInfo).Assembly.Location);
 			assemblyNames.Add(typeof(IQueryable<>).Assembly.Location);
           
 			var assemblies = new HashSet<string>(assemblyNames, StringComparer.OrdinalIgnoreCase);

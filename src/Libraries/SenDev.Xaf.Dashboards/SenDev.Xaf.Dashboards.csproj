@@ -67,7 +67,7 @@
 			Version="$(DevExpressPackageVersion)" />
 		<PackageReference Include="DevExpress.Spreadsheet.Core"
 			Version="$(DevExpressPackageVersion)" />
-		<PackageReference Include="CS-Script" Version="4.8.14" />
+		
 	</ItemGroup>
 
 	<ItemGroup>

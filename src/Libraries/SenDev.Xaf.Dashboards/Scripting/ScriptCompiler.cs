@@ -1,10 +1,4 @@
-﻿using CSScriptLib;
-using DevExpress.CodeParser;
-using DevExpress.Data.Filtering;
-using Microsoft.CodeAnalysis;
-using Microsoft.CodeAnalysis.CSharp;
-using Microsoft.CodeAnalysis.Emit;
-using System;
+﻿using System;
 using System.Collections;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
@@ -13,10 +7,14 @@ using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Runtime;
+using DevExpress.Data.Filtering;
+using Microsoft.CodeAnalysis;
+using Microsoft.CodeAnalysis.CSharp;
+using Microsoft.CodeAnalysis.Emit;
 
 namespace SenDev.Xaf.Dashboards.Scripting
 {
-	public class ScriptCompilationHelper
+	public class ScriptCompiler : IScriptCompiler
 	{
 
 
@@ -38,25 +36,17 @@ namespace SenDev.Xaf.Dashboards.Scripting
 			MetadataReference.CreateFromFile(typeof(Queryable).Assembly.Location)
 		};
 
-		public ScriptCompilationHelper(string[] referencedAssemblies)
+		public void AddReferences(IEnumerable<string> referencedAssembliesPaths)
 		{
-			foreach (var assembly in referencedAssemblies)
+			foreach (var assembly in referencedAssembliesPaths)
 			{
 				references.Add(MetadataReference.CreateFromFile(assembly));
 			}
 		}
-
-		public ScriptCompilationHelper() : this(Array.Empty<string>())
-		{
-
-		}
-
 		public EmitResult Compile(string script, string outputPath)
 		{
 			var syntaxTree = CSharpSyntaxTree.ParseText(script);
-
 			var compilation = CSharpCompilation.Create(Path.GetFileName(outputPath), new SyntaxTree[] { syntaxTree }, references, compilationOptions);
-
 			return compilation.Emit(outputPath);
 		}
 
@@ -85,31 +75,11 @@ namespace SenDev.Xaf.Dashboards.Scripting
 			throw new InvalidOperationException("Compilation failed:\n" + string.Join("\n", errors));
 		}
 
-
-#if NET5_0_OR_GREATER
-		public dynamic CreateObject(string script)
-		{
-
-			try
-			{
-				return CSScript.Evaluator.LoadCode(script);
-			}
-			catch (Exception ex)
-			{
-
-				throw new InvalidOperationException("Compilation failed:\n" + ex.Message, ex);
-			}
-		}
-#else
 		public dynamic CreateObject(string script)
 		{
 			var assembly = GetScriptAssembly(script);
 			return assembly.CreateInstance(assembly.GetExportedTypes().Single().FullName);
 		}
-#endif
-
-
-
 	}
 
 }

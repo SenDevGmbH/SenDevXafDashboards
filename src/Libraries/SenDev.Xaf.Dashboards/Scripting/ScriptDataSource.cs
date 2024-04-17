@@ -53,7 +53,7 @@ namespace SenDev.Xaf.Dashboards.Scripting
 		private object GetDataCore(IDictionary<string, object> parameters, out IObjectSpace objectSpace)
 		{
 			var context = new ScriptContext(() => (XPObjectSpace)Application.CreateObjectSpace(), parameters, ServiceProvider, CancellationToken);
-			var compilationHelper = new ScriptCompilationHelper(AssembliesHelper.GetReferencedAssembliesPaths(Application));
+			var compilationHelper = Application.CreateCompiler(AssembliesHelper.GetReferencedAssembliesPaths(Application));
 			dynamic scriptObject = compilationHelper.CreateObject(Script);
 			CancellationToken.ThrowIfCancellationRequested();
 			objectSpace = context.ObjectSpace;

@@ -6,6 +6,7 @@ using DevExpress.ExpressApp.DC;
 using DevExpress.ExpressApp.Updating;
 using DevExpress.ExpressApp.Xpo;
 using DevExpress.Persistent.BaseImpl;
+using DevExpress.XtraReports.Diagnostics;
 using SenDev.Xaf.Dashboards.BusinessObjects;
 using SenDev.Xaf.Dashboards.Scripting;
 
@@ -45,6 +46,7 @@ namespace SenDev.Xaf.Dashboards
 		/// Sets or returns type 
 		/// </summary>
 		public Type DashboardExtractType { get; set; } = typeof(DashboardDataExtract);
+		public Type ScriptCompilerType { get; set; } = typeof(ScriptCompiler);
 
 		public static Type GetDashboardDataExtractType(XafApplication application)
 		{

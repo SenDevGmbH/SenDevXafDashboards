@@ -19,11 +19,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SenDev.DashboardsDemo.Modul
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SenDev.DashboardsDemo.Web", "Demo\SenDev.DashboardsDemo.Web\SenDev.DashboardsDemo.Web.csproj", "{82A6DBC9-B1B4-44E4-9718-55DF930CD349}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SenDev.DashboardsDemo.Win", "Demo\SenDev.DashboardsDemo.Win\SenDev.DashboardsDemo.Win.csproj", "{D05D93DF-312D-4D4E-B980-726871EC7833}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SenDev.DashboardsDemo.Win", "Demo\SenDev.DashboardsDemo.Win\SenDev.DashboardsDemo.Win.csproj", "{D05D93DF-312D-4D4E-B980-726871EC7833}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Libraries", "Libraries", "{A4F7E23B-BBF6-485A-A5CE-9BB4CD0570BC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTests", "Libraries\UnitTests\UnitTests.csproj", "{B30E1547-3CC8-4A2A-8B33-926E1074E914}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UnitTests", "Libraries\UnitTests\UnitTests.csproj", "{B30E1547-3CC8-4A2A-8B33-926E1074E914}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SenDev.Xaf.Dashboards.Blazor", "Libraries\SenDev.Xaf.Dashboards.Blazor\SenDev.Xaf.Dashboards.Blazor.csproj", "{624ED9B8-4DCE-47F5-B474-FA904897EFEC}"
 EndProject
@@ -34,6 +34,8 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UnitTests.NetCore", "Libraries\UnitTests.NetCore\UnitTests.NetCore.csproj", "{D1E569EF-C194-45A4-ABE7-342FCC4E9C21}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UnitTests.Common", "Libraries\UnitTests.Common\UnitTests.Common.csproj", "{BD130A27-6FF9-4CD6-A7F7-1964DFDA3036}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SenDev.Xaf.Dashboard.CSScriptCompiler", "SenDev.Xaf.Dashboard.CSScript\SenDev.Xaf.Dashboard.CSScriptCompiler.csproj", "{648948B0-80FF-47F4-93D5-7B39329BF2F3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -126,6 +128,12 @@ Global
 		{BD130A27-6FF9-4CD6-A7F7-1964DFDA3036}.EasyTest|Any CPU.Build.0 = Debug|Any CPU
 		{BD130A27-6FF9-4CD6-A7F7-1964DFDA3036}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BD130A27-6FF9-4CD6-A7F7-1964DFDA3036}.Release|Any CPU.Build.0 = Release|Any CPU
+		{648948B0-80FF-47F4-93D5-7B39329BF2F3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{648948B0-80FF-47F4-93D5-7B39329BF2F3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{648948B0-80FF-47F4-93D5-7B39329BF2F3}.EasyTest|Any CPU.ActiveCfg = Debug|Any CPU
+		{648948B0-80FF-47F4-93D5-7B39329BF2F3}.EasyTest|Any CPU.Build.0 = Debug|Any CPU
+		{648948B0-80FF-47F4-93D5-7B39329BF2F3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{648948B0-80FF-47F4-93D5-7B39329BF2F3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -145,6 +153,7 @@ Global
 		{FCD73F1C-8D26-4195-A745-D201C45B1451} = {2E0BB36F-BE22-474D-B62B-1B53E04E199C}
 		{D1E569EF-C194-45A4-ABE7-342FCC4E9C21} = {A4F7E23B-BBF6-485A-A5CE-9BB4CD0570BC}
 		{BD130A27-6FF9-4CD6-A7F7-1964DFDA3036} = {A4F7E23B-BBF6-485A-A5CE-9BB4CD0570BC}
+		{648948B0-80FF-47F4-93D5-7B39329BF2F3} = {A4F7E23B-BBF6-485A-A5CE-9BB4CD0570BC}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {6AAB11CF-4CB4-421E-99E6-E9EAA81181F8}
