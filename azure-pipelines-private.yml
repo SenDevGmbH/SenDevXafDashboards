@@ -31,6 +31,8 @@ steps:
 
 - task: NuGetAuthenticate@1
 
+
+
 - task: NuGetCommand@2
   displayName: "NuGet restore"
   inputs:
@@ -83,9 +85,10 @@ steps:
   inputs:
     platform: '$(buildPlatform)'
     configuration: '$(buildConfiguration)'
+    overrideTestrunParameters: '-Framework:.NETCoreApp,Version=v6.0'
     testSelector: 'testAssemblies'
     testAssemblyVer2: |
-      $(Build.SourcesDirectory)\NetCoreTests\**\UnitTests.NetCore.dll      
+      src\bin\**\UnitTests.NetCore.dll      
 
 - task: NuGetAuthenticate@0
   displayName: 'NuGet Authenticate'

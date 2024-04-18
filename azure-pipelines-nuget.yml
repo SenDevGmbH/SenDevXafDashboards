@@ -17,7 +17,7 @@ variables:
   NugetTargetDir: '$(Build.ArtifactStagingDirectory)'
   VersionRevision: $[counter('revisionCounter', 142)]
   NetSdkVersion: '6.0.201'
-  
+  BinLogDirectory: $(Build.ArtifactStagingDirectory)\Log  
 steps:
 - task: UseDotNet@2
   displayName: 'Use .NET Core sdk'
@@ -53,7 +53,7 @@ steps:
     solution: '$(solution)'
     platform: '$(buildPlatform)'
     configuration: '$(buildConfiguration)'
-    msbuildArguments: '/bl:$(Build.ArtifactStagingDirectory)\Log\build.binlog /t:NuGet /p:BuildNumber=$(VersionRevision) /p:PackageOutputPath=$(Build.ArtifactStagingDirectory) /p:TargetDevExpressVersions="$(TargetDevExpressVersions)" /p:NugetSource=$(NugetSource)'
+    msbuildArguments: '/bl:$(BinLogDirectory)\build.binlog /t:NuGet /p:BuildNumber=$(VersionRevision) /p:PackageOutputPath=$(Build.ArtifactStagingDirectory) /p:TargetDevExpressVersions="$(TargetDevExpressVersions)" /p:NugetSource=$(NugetSource)'
 
 - task: PublishBuildArtifacts@1
   displayName: 'Publish binary log'
@@ -63,6 +63,22 @@ steps:
     publishLocation: 'Container'
   condition: succeededOrFailed()
 
+- task: MSBuild@1
+  displayName: Build net48 unit tests
+  inputs:
+    solution: 'src\Libraries\UnitTests\UnitTests.csproj'
+    platform: '$(buildPlatform)'
+    configuration: '$(buildConfiguration)'
+    msbuildArguments: '/bl:$(BinLogDirectory)\build_unittests.binlog /p:OutDir=$(Build.SourcesDirectory)\FrameworkTests'
+
+- task: MSBuild@1
+  displayName: Build net60 unit tests
+  inputs:
+    solution: 'src\Libraries\UnitTests.NetCore\UnitTests.NetCore.csproj'
+    platform: '$(buildPlatform)'
+    configuration: '$(buildConfiguration)'
+    msbuildArguments: '/bl:$(BinLogDirectory)\build_unittests.core.binlog /p:OutDir=$(Build.SourcesDirectory)\NetCoreTests'
+
 - task: VSTest@2
   displayName: 'VSTest - Net Framework'  
   inputs:
@@ -70,7 +86,7 @@ steps:
     configuration: '$(buildConfiguration)'
     testSelector: 'testAssemblies'
     testAssemblyVer2: |
-      src\bin\**\UnitTests.dll
+      $(Build.SourcesDirectory)\FrameworkTests\**\UnitTests.dll
 
 - task: VSTest@2
   displayName: 'VSTest - Net Core'  
