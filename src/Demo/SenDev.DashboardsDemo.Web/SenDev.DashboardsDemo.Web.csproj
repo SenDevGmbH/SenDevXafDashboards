@@ -109,24 +109,17 @@
     </Compile>
     <Compile Include="Services\JobSchedulerService.cs" />
     <Compile Include="Services\JobSchedulerServiceFactory.cs" />
-    <Compile Include="Services\ServerSideApplication.cs">
-      <SubType>Component</SubType>
-    </Compile>
+    <Compile Include="Services\ServerSideApplication.cs" />
     <Compile Include="Startup.cs" />
-    <Compile Include="WebApplication.cs">
-      <SubType>Component</SubType>
-    </Compile>
+    <Compile Include="WebApplication.cs" />
     <Compile Include="Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Error.aspx.cs">
       <DependentUpon>Error.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Login.aspx.cs">
       <DependentUpon>Login.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

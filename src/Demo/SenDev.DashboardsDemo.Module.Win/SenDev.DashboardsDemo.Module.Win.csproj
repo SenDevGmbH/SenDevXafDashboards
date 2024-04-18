@@ -72,9 +72,7 @@
     <PackageReference Include="System.Xml.Linq" Version=" 3.5.21022.801 " />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="WinModule.cs">
-      <SubType>Component</SubType>
-    </Compile>
+    <Compile Include="WinModule.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="WinModule.Designer.cs">
       <DependentUpon>WinModule.cs</DependentUpon>

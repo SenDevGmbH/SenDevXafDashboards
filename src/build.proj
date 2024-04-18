@@ -46,9 +46,6 @@
   <Target Name="NuGet" DependsOnTargets="CreateVersions" Inputs="@(OutputPackage)"
     Outputs="$(PackageOutputPath)*%(OutputPackage.PackageVersion)*.nupkg">
 
-    <Exec
-      Command="&quot;$(MSBuildBinPath)\msbuild.exe&quot;  $(ProjectToBuild) /bl:$(BinLogDirectory)/%(OutputPackage.Identity).binlog /t:Restore;NuGet /p:OutDir=$(MSBuildProjectDirectory)\bin\%(OutputPackage.Identity) /p:DevExpressPackageVersion=%(OutputPackage.Identity) /p:AssemblyVersion=%(OutputPackage.PackageVersion) /p:PackageVersion=%(OutputPackage.PackageVersion)  /p:RestoreForce=True /p:PackageOutputPath=$(PackageOutputPath) /p:PackageIdSuffix=$(PackageIdSuffix) /p:RestoreSources=$(NugetSource)" />
-    <MakeDir Directories="$(PackageOutputPath)" />
     <PropertyGroup>
       <PackageVersion
         Condition="$(BranchName)=='' OR $(BranchName)=='master' OR $(IsReleaseBuild)==true">
@@ -57,5 +54,9 @@
         Condition="$(BranchName)!='' AND $(BranchName)!='master' AND $(IsReleaseBuild)!=true">
         $(Version)-$(BranchName)</PackageVersion>
     </PropertyGroup>
+
+    <Exec
+      Command="&quot;$(MSBuildBinPath)\msbuild.exe&quot;  $(ProjectToBuild) /bl:$(BinLogDirectory)/%(OutputPackage.Identity).binlog /t:Restore;NuGet  /p:DevExpressPackageVersion=%(OutputPackage.Identity) /p:AssemblyVersion=%(OutputPackage.PackageVersion) /p:PackageVersion=%(OutputPackage.PackageVersion)  /p:RestoreForce=True /p:PackageOutputPath=$(PackageOutputPath) /p:PackageIdSuffix=$(PackageIdSuffix) /p:RestoreSources=$(NugetSource)" />
+    <MakeDir Directories="$(PackageOutputPath)" />
   </Target>
 </Project>
