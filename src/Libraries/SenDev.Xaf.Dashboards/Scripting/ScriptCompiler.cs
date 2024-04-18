@@ -17,7 +17,6 @@ namespace SenDev.Xaf.Dashboards.Scripting
 	public class ScriptCompiler : IScriptCompiler
 	{
 
-
 		private static readonly ConcurrentDictionary<string, Assembly> scriptAssemblyCache = new ConcurrentDictionary<string, Assembly>();
 
 		private static readonly IList<string> namespaces = new List<string>() { "System" };

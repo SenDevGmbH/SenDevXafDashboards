@@ -5,7 +5,14 @@ namespace SenDev.Xaf.Dashboard.CSScriptCompiler
 {
 	public class DataExtractCSScriptCompiler : IScriptCompiler
 	{
-		public void AddReferences(IEnumerable<string> referencedAssembliesPaths) => throw new NotImplementedException();
+		/// <summary>
+		/// Adding references is not supported yet by this class
+		/// </summary>
+		/// <param name="referencedAssembliesPaths"></param>
+		public void AddReferences(IEnumerable<string> referencedAssembliesPaths)
+		{
+
+		}
 		public dynamic CreateObject(string script)
 		{
 

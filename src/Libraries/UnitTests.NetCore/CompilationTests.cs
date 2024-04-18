@@ -2,6 +2,8 @@
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
+using SenDev.Xaf.Dashboard.CSScriptCompiler;
+using SenDev.Xaf.Dashboards;
 using SenDev.Xaf.Dashboards.BusinessObjects;
 using SenDev.Xaf.Dashboards.Scripting;
 using Xunit;
@@ -10,10 +12,12 @@ namespace UnitTests.NetCore
 {
 	public class CompilationTests
 	{
-		[Fact]
-		public void CSharp8SyntaxTest()
+		[Theory]
+		[InlineData(typeof(ScriptCompiler))]
+		[InlineData(typeof(DataExtractCSScriptCompiler))]
+		public void CSharp8SyntaxTest(Type compilerType)
 		{
-			using var application = XpoInMemoryXafApplication.CreateInstance();
+			using XpoInMemoryXafApplication application = CreateApplication(compilerType);
 			using var objectSpace = application.CreateObjectSpace();
 			var extract = objectSpace.CreateObject<DashboardDataExtract>();
 			var testObject = objectSpace.CreateObject<TestClassWithNameAndNumber>();
@@ -39,9 +43,17 @@ namespace UnitTests.NetCore
 			Assert.Equal(new byte[] { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 }, extract.ExtractData);
 		}
 
+		private static XpoInMemoryXafApplication CreateApplication(Type compilerType)
+		{
+			var application = XpoInMemoryXafApplication.CreateInstance();
+			application.Modules.FindModule<SenDevDashboardsModule>().ScriptCompilerType = compilerType;
+			return application;
+		}
 
-		[Fact]
-		public void QueryObjectsScriptTest()
+		[Theory]
+		[InlineData(typeof(ScriptCompiler))]
+		[InlineData(typeof(DataExtractCSScriptCompiler))]
+		public void QueryObjectsScriptTest(Type compilerType)
 		{
 			var script = @"
 using System;
@@ -60,7 +72,7 @@ public class Script
 }";
 
 
-			using var application = XpoInMemoryXafApplication.CreateInstance();
+			using var application = CreateApplication(compilerType);
 			using var objectSpace = application.CreateObjectSpace();
 			var extract = objectSpace.CreateObject<DashboardDataExtract>();
 			var testObject1 = objectSpace.CreateObject<TestClassWithNameAndNumber>();
@@ -82,8 +94,11 @@ public class Script
 		}
 
 
-		[Fact]
-		public void AsQueryableTest()
+		[Theory]
+		[InlineData(typeof(ScriptCompiler))]
+		[InlineData(typeof(DataExtractCSScriptCompiler))]
+
+		public void AsQueryableTest(Type compilerType)
 		{
 			var script = @"
 using System;
@@ -102,7 +117,7 @@ public class Script
 }";
 
 
-			using var application = XpoInMemoryXafApplication.CreateInstance();
+			using var application = CreateApplication(compilerType);
 			using var objectSpace = application.CreateObjectSpace();
 			var extract = objectSpace.CreateObject<DashboardDataExtract>();
 			var testObject1 = objectSpace.CreateObject<TestClassWithNameAndNumber>();
@@ -124,8 +139,11 @@ public class Script
 		}
 
 
-		[Fact]
-		public void CancellationTest()
+		[Theory]
+		[InlineData(typeof(ScriptCompiler))]
+		[InlineData(typeof(DataExtractCSScriptCompiler))]
+
+		public void CancellationTest(Type compilerType)
 		{
 			var script = @"
 using System;
@@ -148,7 +166,7 @@ public class Script
 
 
 			CancellationTokenSource cancellationTokenSource = new CancellationTokenSource();
-			using var application = XpoInMemoryXafApplication.CreateInstance();
+			using var application = CreateApplication(compilerType);
 			using var objectSpace = application.CreateObjectSpace();
 			var extract = objectSpace.CreateObject<DashboardDataExtract>();
 			var testObject1 = objectSpace.CreateObject<TestClassWithNameAndNumber>();
@@ -182,10 +200,13 @@ public class Script
 
 		}
 
-		[Fact]
-		public void NullReturnTest()
+		[Theory]
+		[InlineData(typeof(ScriptCompiler))]
+		[InlineData(typeof(DataExtractCSScriptCompiler))]
+
+		public void NullReturnTest(Type compilerType)
 		{
-			using var application = XpoInMemoryXafApplication.CreateInstance();
+			using var application = CreateApplication(compilerType);
 			using var objectSpace = application.CreateObjectSpace();
 			var extract = objectSpace.CreateObject<DashboardDataExtract>();
 			extract.ExtractData = new byte[] { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 };
@@ -208,10 +229,13 @@ public class Script
 			Assert.Null(extract.ExtractData);
 		}
 
-		[Fact]
-		public void EmptyCollectionTest()
+		[Theory]
+		[InlineData(typeof(ScriptCompiler))]
+		[InlineData(typeof(DataExtractCSScriptCompiler))]
+
+		public void EmptyCollectionTest(Type compilerType)
 		{
-			using var application = XpoInMemoryXafApplication.CreateInstance();
+			using var application = CreateApplication(compilerType);
 			using var objectSpace = application.CreateObjectSpace();
 			var extract = objectSpace.CreateObject<DashboardDataExtract>();
 			extract.ExtractData = new byte[] { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 };
@@ -235,10 +259,13 @@ public class Script
 		}
 
 
-		[Fact]
-		public void ScriptCompilationErrorTest()
+		[Theory]
+		[InlineData(typeof(ScriptCompiler))]
+		[InlineData(typeof(DataExtractCSScriptCompiler))]
+
+		public void ScriptCompilationErrorTest(Type compilerType)
 		{
-			using var application = XpoInMemoryXafApplication.CreateInstance();
+			using var application = CreateApplication(compilerType);
 			var compiler = application.CreateCompiler();
 			Assert.Throws<InvalidOperationException>(() => compiler.CreateObject("aaa"));
 		}
