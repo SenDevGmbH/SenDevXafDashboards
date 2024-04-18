@@ -35,7 +35,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UnitTests.NetCore", "Librar
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UnitTests.Common", "Libraries\UnitTests.Common\UnitTests.Common.csproj", "{BD130A27-6FF9-4CD6-A7F7-1964DFDA3036}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SenDev.Xaf.Dashboard.CSScriptCompiler", "SenDev.Xaf.Dashboard.CSScript\SenDev.Xaf.Dashboard.CSScriptCompiler.csproj", "{648948B0-80FF-47F4-93D5-7B39329BF2F3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SenDev.Xaf.Dashboard.CSScriptCompiler", "Libraries\SenDev.Xaf.Dashboard.CSScript\SenDev.Xaf.Dashboard.CSScriptCompiler.csproj", "{648948B0-80FF-47F4-93D5-7B39329BF2F3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -20,7 +20,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\SenDev.Xaf.Dashboard.CSScript\SenDev.Xaf.Dashboard.CSScriptCompiler.csproj" />
+    <ProjectReference Include="..\SenDev.Xaf.Dashboard.CSScript\SenDev.Xaf.Dashboard.CSScriptCompiler.csproj" />
     <ProjectReference Include="..\UnitTests.Common\UnitTests.Common.csproj" />
   </ItemGroup>
 
