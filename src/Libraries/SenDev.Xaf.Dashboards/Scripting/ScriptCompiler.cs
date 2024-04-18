@@ -38,6 +38,9 @@ namespace SenDev.Xaf.Dashboards.Scripting
 
 		public void AddReferences(IEnumerable<string> referencedAssembliesPaths)
 		{
+			if (referencedAssembliesPaths == null)
+				return;
+
 			foreach (var assembly in referencedAssembliesPaths)
 			{
 				references.Add(MetadataReference.CreateFromFile(assembly));
