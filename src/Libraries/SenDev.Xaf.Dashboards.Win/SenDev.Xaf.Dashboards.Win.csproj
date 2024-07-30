@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
@@ -48,15 +48,15 @@
 		<EmbeddedResource Include="Model.DesignedDiffs.xafml" />
 	</ItemGroup>
   <ItemGroup>
-    <PackageReference Include="DevExpress.Xpo" Version="$(DevExpressPackageVersion)" />
-    <PackageReference Include="DevExpress.Win.Dashboard " Version="$(DevExpressPackageVersion)" />
-    <PackageReference Include="DevExpress.ExpressApp" Version="$(DevExpressPackageVersion)" />
-    <PackageReference Include="DevExpress.ExpressApp.Xpo" Version="$(DevExpressPackageVersion)" />
-    <PackageReference Include="DevExpress.ExpressApp.Win" Version="$(DevExpressPackageVersion)" />
-    <PackageReference Include="DevExpress.ExpressApp.Dashboards.Win" Version="$(DevExpressPackageVersion)" />
-    <PackageReference Include="DevExpress.Win.RichEdit " Version="$(DevExpressPackageVersion)" />
-    <PackageReference Include="DevExpress.Utils" Version="$(DevExpressPackageVersion)" />
-    <PackageReference Include="DevExpress.Persistent.BaseImpl.Xpo" Version="$(DevExpressPackageVersion)" />
+    <PackageReference Include="DevExpress.Xpo" />
+    <PackageReference Include="DevExpress.Win.Dashboard " />
+    <PackageReference Include="DevExpress.ExpressApp" />
+    <PackageReference Include="DevExpress.ExpressApp.Xpo" />
+    <PackageReference Include="DevExpress.ExpressApp.Win" />
+    <PackageReference Include="DevExpress.ExpressApp.Dashboards.Win" />
+    <PackageReference Include="DevExpress.Win.RichEdit " />
+    <PackageReference Include="DevExpress.Utils" />
+    <PackageReference Include="DevExpress.Persistent.BaseImpl.Xpo" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\SenDev.Xaf.Dashboards\SenDev.Xaf.Dashboards.csproj">

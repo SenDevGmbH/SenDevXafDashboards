@@ -1,4 +1,4 @@
-﻿<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="14.0">
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="14.0">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -55,32 +55,32 @@
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="DevExpress.Web" Version="$(DevExpressPackageVersion)" />
-    <PackageReference Include="DevExpress.Xpo" Version="$(DevExpressPackageVersion)" />
-    <PackageReference Include="DevExpress.Utils" Version="$(DevExpressPackageVersion)" />
-    <PackageReference Include="DevExpress.Persistent.BaseImpl.Xpo" Version="$(DevExpressPackageVersion)" />
-    <PackageReference Include="DevExpress.Persistent.Base" Version="$(DevExpressPackageVersion)" />
-    <PackageReference Include="DevExpress.Data" Version="$(DevExpressPackageVersion)" />
-    <PackageReference Include="DevExpress.DataAccess" Version="$(DevExpressPackageVersion)" />
-    <PackageReference Include="DevExpress.Dashboard.Core" Version="$(DevExpressPackageVersion)" />
-    <PackageReference Include="DevExpress.Web.Dashboard" Version="$(DevExpressPackageVersion)" />
-    <PackageReference Include="DevExpress.ExpressApp" Version="$(DevExpressPackageVersion)" />
-    <PackageReference Include="DevExpress.ExpressApp.Web" Version="$(DevExpressPackageVersion)" />
-    <PackageReference Include="DevExpress.ExpressApp.Xpo" Version="$(DevExpressPackageVersion)" />
-    <PackageReference Include="DevExpress.ExpressApp.Dashboards" Version="$(DevExpressPackageVersion)" />
-    <PackageReference Include="DevExpress.ExpressApp.Dashboards.Web" Version="$(DevExpressPackageVersion)" />
-    <PackageReference Include="DevExpress.Printing.Core" Version="$(DevExpressPackageVersion)" />
-    <PackageReference Include="System.ComponentModel " Version="4.3.0" />
-    <PackageReference Include="System.Net.Http " Version="4.3.4" />
-    <PackageReference Include="System.Xml.Linq" Version=" 3.5.21022.801 " />
-    <PackageReference Include="Hangfire.Core" Version="1.7.31" />
-    <PackageReference Include="Hangfire.SqlServer" Version="1.7.31" />
-    <PackageReference Include="Microsoft.Owin" Version="4.2.2" />
-    <PackageReference Include="Microsoft.Owin.Host.SystemWeb" Version="4.2.2" />
-    <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
-    <PackageReference Include="Owin" Version="1.0.0.0" />
-    <PackageReference Include="System.Data.SqlClient" Version="4.8.3" />
-    <PackageReference Include="System.Configuration.ConfigurationManager" Version="6.0.0" />
+    <PackageReference Include="DevExpress.Web" />
+    <PackageReference Include="DevExpress.Xpo" />
+    <PackageReference Include="DevExpress.Utils" />
+    <PackageReference Include="DevExpress.Persistent.BaseImpl.Xpo" />
+    <PackageReference Include="DevExpress.Persistent.Base" />
+    <PackageReference Include="DevExpress.Data" />
+    <PackageReference Include="DevExpress.DataAccess" />
+    <PackageReference Include="DevExpress.Dashboard.Core" />
+    <PackageReference Include="DevExpress.Web.Dashboard" />
+    <PackageReference Include="DevExpress.ExpressApp" />
+    <PackageReference Include="DevExpress.ExpressApp.Web" />
+    <PackageReference Include="DevExpress.ExpressApp.Xpo" />
+    <PackageReference Include="DevExpress.ExpressApp.Dashboards" />
+    <PackageReference Include="DevExpress.ExpressApp.Dashboards.Web" />
+    <PackageReference Include="DevExpress.Printing.Core" />
+    <PackageReference Include="System.ComponentModel " />
+    <PackageReference Include="System.Net.Http " />
+    <PackageReference Include="System.Xml.Linq" />
+    <PackageReference Include="Hangfire.Core" />
+    <PackageReference Include="Hangfire.SqlServer" />
+    <PackageReference Include="Microsoft.Owin" />
+    <PackageReference Include="Microsoft.Owin.Host.SystemWeb" />
+    <PackageReference Include="Newtonsoft.Json" />
+    <PackageReference Include="Owin" />
+    <PackageReference Include="System.Data.SqlClient" />
+    <PackageReference Include="System.Configuration.ConfigurationManager" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System.ServiceModel" />

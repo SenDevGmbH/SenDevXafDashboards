@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
@@ -42,22 +42,22 @@
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="DevExpress.Xpo" Version="$(DevExpressPackageVersion)" />
-    <PackageReference Include="DevExpress.DataAccess" Version="$(DevExpressPackageVersion)" />
-    <PackageReference Include="DevExpress.Win.Dashboard " Version="$(DevExpressPackageVersion)" />
-    <PackageReference Include="DevExpress.ExpressApp" Version="$(DevExpressPackageVersion)" />
-    <PackageReference Include="DevExpress.ExpressApp.Xpo" Version="$(DevExpressPackageVersion)" />
-    <PackageReference Include="DevExpress.ExpressApp.Win" Version="$(DevExpressPackageVersion)" />
-    <PackageReference Include="DevExpress.ExpressApp.Dashboards.Win" Version="$(DevExpressPackageVersion)" />
-    <PackageReference Include="DevExpress.Utils" Version="$(DevExpressPackageVersion)" />
-    <PackageReference Include="DevExpress.Persistent.BaseImpl.Xpo" Version="$(DevExpressPackageVersion)" />
-    <PackageReference Include="DevExpress.Printing.Core" Version="$(DevExpressPackageVersion)" />
-    <PackageReference Include="DevExpress.Data" Version="$(DevExpressPackageVersion)" />
-    <PackageReference Include="System.Xml.Linq" Version=" 3.5.21022.801" Condition="$(TargetFramework)=='net48'" />
-    <PackageReference Include="System.ValueTuple" Version="4.5.0" />
-    <PackageReference Include="System.Configuration.ConfigurationManager" Version="6.0.0" />
-    <PackageReference Include="System.Data.SqlClient" Version="4.8.3" />
-    <PackageReference Include="System.ServiceModel.Primitives" Version="4.10.3"/> 
+    <PackageReference Include="DevExpress.Xpo" />
+    <PackageReference Include="DevExpress.DataAccess" />
+    <PackageReference Include="DevExpress.Win.Dashboard " />
+    <PackageReference Include="DevExpress.ExpressApp" />
+    <PackageReference Include="DevExpress.ExpressApp.Xpo" />
+    <PackageReference Include="DevExpress.ExpressApp.Win" />
+    <PackageReference Include="DevExpress.ExpressApp.Dashboards.Win" />
+    <PackageReference Include="DevExpress.Utils" />
+    <PackageReference Include="DevExpress.Persistent.BaseImpl.Xpo" />
+    <PackageReference Include="DevExpress.Printing.Core" />
+    <PackageReference Include="DevExpress.Data" />
+    <PackageReference Include="System.Xml.Linq" Condition="$(TargetFramework)=='net48'" />
+    <PackageReference Include="System.ValueTuple" />
+    <PackageReference Include="System.Configuration.ConfigurationManager" />
+    <PackageReference Include="System.Data.SqlClient" />
+    <PackageReference Include="System.ServiceModel.Primitives" /> 
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

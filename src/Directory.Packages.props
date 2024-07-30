@@ -1,0 +1,81 @@
+<Project>
+  <PropertyGroup>
+    <ManagePackageVersionsCentrally>true</ManagePackageVersionsCentrally>
+    <CentralPackageTransitivePinningEnabled>false</CentralPackageTransitivePinningEnabled>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageVersion Include="coverlet.collector" Version="3.1.2" />
+    <PackageVersion Include="CS-Script" Version="4.8.17" />
+    <PackageVersion Include="CsvHelper" Version="28.0.1" />
+    <PackageVersion Include="DevExpress.Dashboard.Core" Version="$(DevExpressPackageVersion)" />
+    <PackageVersion Include="DevExpress.Data" Version="$(DevExpressPackageVersion)" />
+    <PackageVersion Include="DevExpress.DataAccess" Version="$(DevExpressPackageVersion)" />
+    <PackageVersion Include="DevExpress.ExpressApp" Version="$(DevExpressPackageVersion)" />
+    <PackageVersion Include="DevExpress.ExpressApp.Blazor" Version="$(DevExpressPackageVersion)" />
+    <PackageVersion Include="DevExpress.ExpressApp.CloneObject.Xpo" Version="$(DevExpressPackageVersion)" />
+    <PackageVersion Include="DevExpress.ExpressApp.CodeAnalysis" Version="$(DevExpressPackageVersion)" />
+    <PackageVersion Include="DevExpress.ExpressApp.ConditionalAppearance" Version="$(DevExpressPackageVersion)" />
+    <PackageVersion Include="DevExpress.ExpressApp.Dashboards" Version="$(DevExpressPackageVersion)" />
+    <PackageVersion Include="DevExpress.ExpressApp.Dashboards.Blazor" Version="$(DevExpressPackageVersion)" />
+    <PackageVersion Include="DevExpress.ExpressApp.Dashboards.Web" Version="$(DevExpressPackageVersion)" />
+    <PackageVersion Include="DevExpress.ExpressApp.Dashboards.Win" Version="$(DevExpressPackageVersion)" />
+    <PackageVersion Include="DevExpress.ExpressApp.FileAttachment.Blazor" Version="$(DevExpressPackageVersion)" />
+    <PackageVersion Include="DevExpress.ExpressApp.Objects" Version="$(DevExpressPackageVersion)" />
+    <PackageVersion Include="DevExpress.ExpressApp.PivotGrid" Version="$(DevExpressPackageVersion)" />
+    <PackageVersion Include="DevExpress.ExpressApp.Security" Version="$(DevExpressPackageVersion)" />
+    <PackageVersion Include="DevExpress.ExpressApp.Security.Xpo" Version="$(DevExpressPackageVersion)" />
+    <PackageVersion Include="DevExpress.ExpressApp.TreeListEditors" Version="$(DevExpressPackageVersion)" />
+    <PackageVersion Include="DevExpress.ExpressApp.Validation" Version="$(DevExpressPackageVersion)" />
+    <PackageVersion Include="DevExpress.ExpressApp.ViewVariantsModule" Version="$(DevExpressPackageVersion)" />
+    <PackageVersion Include="DevExpress.ExpressApp.Web" Version="$(DevExpressPackageVersion)" />
+    <PackageVersion Include="DevExpress.ExpressApp.WebApi" Version="$(DevExpressPackageVersion)" />
+    <PackageVersion Include="DevExpress.ExpressApp.Win" Version="$(DevExpressPackageVersion)" />
+    <PackageVersion Include="DevExpress.ExpressApp.Xpo" Version="$(DevExpressPackageVersion)" />
+    <PackageVersion Include="DevExpress.Persistent.Base" Version="$(DevExpressPackageVersion)" />
+    <PackageVersion Include="DevExpress.Persistent.BaseImpl.Xpo" Version="$(DevExpressPackageVersion)" />
+    <PackageVersion Include="DevExpress.Printing.Core" Version="$(DevExpressPackageVersion)" />
+    <PackageVersion Include="DevExpress.Spreadsheet.Core" Version="$(DevExpressPackageVersion)" />
+    <PackageVersion Include="DevExpress.Utils" Version="$(DevExpressPackageVersion)" />
+    <PackageVersion Include="DevExpress.Web" Version="$(DevExpressPackageVersion)" />
+    <PackageVersion Include="DevExpress.Web.Dashboard" Version="$(DevExpressPackageVersion)" />
+    <PackageVersion Include="DevExpress.Win.Dashboard " Version="$(DevExpressPackageVersion)" />
+    <PackageVersion Include="DevExpress.Win.RichEdit " Version="$(DevExpressPackageVersion)" />
+    <PackageVersion Include="DevExpress.Xpo" Version="$(DevExpressPackageVersion)" />
+    <PackageVersion Include="DevExpress.ExpressApp.EasyTest.BlazorAdapter" Version="$(DevExpressPackageVersion)" />
+    <PackageVersion Include="Hangfire.AspNetCore" Version="1.7.31" />
+    <PackageVersion Include="Hangfire.Core" Version="1.7.31" />
+    <PackageVersion Include="Hangfire.SqlServer" Version="1.7.31" />
+    <PackageVersion Include="Microsoft.CodeAnalysis" Version="4.10.0" />
+    <PackageVersion Include="Microsoft.CodeAnalysis.Common" Version="4.10.0" />
+    <PackageVersion Include="Microsoft.CodeAnalysis.Compilers" Version="4.2.0" />
+    <PackageVersion Include="Microsoft.CodeAnalysis.CSharp" Version="4.10.0" />
+    <PackageVersion Include="Microsoft.CSharp" Version="4.7.0" />
+    <PackageVersion Include="Microsoft.NET.Test.Sdk" Version="17.9.0" />
+    <PackageVersion Include="Microsoft.Owin" Version="4.2.2" />
+    <PackageVersion Include="Microsoft.Owin.Host.SystemWeb" Version="4.2.2" />
+    <PackageVersion Include="Newtonsoft.Json" Version="13.0.1" />
+    <PackageVersion Include="Owin" Version="1.0.0" />
+    <PackageVersion Include="Swashbuckle.AspNetCore" Version="6.4.0" />
+    <PackageVersion Include="System.ComponentModel " Version="4.3.0" />
+    <PackageVersion Include="System.Configuration.ConfigurationManager" Version="6.0.0" />
+    <PackageVersion Include="System.Data.SqlClient" Version="4.8.6" />
+    <PackageVersion Include="System.Net.Http " Version="4.3.4" />
+    <PackageVersion Include="System.ValueTuple" Version="4.5.0" />
+    <PackageVersion Include="System.Windows.Forms" Version="4.0.0" />
+    <PackageVersion Include="System.Xml.Linq" Version="3.5.21022.801" />
+    <PackageVersion Include="xunit" Version="2.7.0" />
+    <PackageVersion Include="xunit.abstractions" Version="2.0.3" />
+    <PackageVersion Include="xunit.assert" Version="2.4.2" />
+    <PackageVersion Include="xunit.core" Version="2.4.2" />
+    <PackageVersion Include="xunit.runner.visualstudio" Version="2.5.7" />
+  </ItemGroup>
+  <ItemGroup Condition="$(TargetFramework)=='net48'">
+    <PackageVersion Include="System.ServiceModel.Http" Version="4.10.3" />
+    <PackageVersion Include="System.ServiceModel.Primitives" Version="4.10.3" />
+  </ItemGroup>
+
+  <ItemGroup Condition="$(TargetFramework)!='net48'">
+    <PackageVersion Include="System.ServiceModel.Http" Version="6.2.0" />
+    <PackageVersion Include="System.ServiceModel.Primitives" Version="6.2.0" />
+  </ItemGroup>
+</Project>

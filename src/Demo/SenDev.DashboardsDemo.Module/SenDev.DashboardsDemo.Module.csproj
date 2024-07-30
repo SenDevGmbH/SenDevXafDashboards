@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
 		<TargetFrameworks>net48;net6.0</TargetFrameworks>
@@ -48,16 +48,16 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="DevExpress.ExpressApp" Version="$(DevExpressPackageVersion)" />
-    <PackageReference Include="DevExpress.Data" Version="$(DevExpressPackageVersion)" />
-    <PackageReference Include="DevExpress.ExpressApp.Xpo" Version="$(DevExpressPackageVersion)" />
-    <PackageReference Include="DevExpress.Persistent.BaseImpl.Xpo" Version="$(DevExpressPackageVersion)" />
-    <PackageReference Include="DevExpress.ExpressApp.Dashboards" Version="$(DevExpressPackageVersion)" />
-    <PackageReference Include="System.Net.Http" Version="4.3.4" />
-    <PackageReference Include="System.ServiceModel.Primitives" Version="4.10.3" />
-	  <PackageReference Include="CsvHelper" Version="28.0.1" />
-    <PackageReference Include="System.ServiceModel.Http" Version="4.10.3" />
-	  <PackageReference Include="Microsoft.CodeAnalysis.Common" Version="4.9.2" />
+    <PackageReference Include="DevExpress.ExpressApp" />
+    <PackageReference Include="DevExpress.Data" />
+    <PackageReference Include="DevExpress.ExpressApp.Xpo" />
+    <PackageReference Include="DevExpress.Persistent.BaseImpl.Xpo" />
+    <PackageReference Include="DevExpress.ExpressApp.Dashboards" />
+    <PackageReference Include="System.Net.Http" />
+    <PackageReference Include="System.ServiceModel.Primitives" />
+	  <PackageReference Include="CsvHelper" />
+    <PackageReference Include="System.ServiceModel.Http" />
+	  <PackageReference Include="Microsoft.CodeAnalysis.Common" />
 
   </ItemGroup>
   <ItemGroup>

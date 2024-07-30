@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
 		<TargetFrameworks>net48;net6.0</TargetFrameworks>
@@ -45,30 +45,20 @@
 		<None Remove="Scripting\ScriptTemplate.template" />
 	</ItemGroup>
 	<ItemGroup>
-		<PackageReference Include="DevExpress.Dashboard.Core" Version="$(DevExpressPackageVersion)" />
-		<PackageReference Include="DevExpress.ExpressApp" Version="$(DevExpressPackageVersion)" />
-		<PackageReference Include="DevExpress.ExpressApp.CloneObject.Xpo"
-			Version="$(DevExpressPackageVersion)" />
-		<PackageReference Include="DevExpress.ExpressApp.ConditionalAppearance"
-			Version="$(DevExpressPackageVersion)" />
-		<PackageReference Include="DevExpress.ExpressApp.Dashboards"
-			Version="$(DevExpressPackageVersion)" />
-		<PackageReference Include="DevExpress.ExpressApp.Security"
-			Version="$(DevExpressPackageVersion)" />
-		<PackageReference Include="DevExpress.ExpressApp.Security.Xpo"
-			Version="$(DevExpressPackageVersion)" />
-		<PackageReference Include="DevExpress.ExpressApp.TreeListEditors"
-			Version="$(DevExpressPackageVersion)" />
-		<PackageReference Include="DevExpress.ExpressApp.Validation"
-			Version="$(DevExpressPackageVersion)" />
-		<PackageReference Include="DevExpress.ExpressApp.ViewVariantsModule"
-			Version="$(DevExpressPackageVersion)" />
-		<PackageReference Include="DevExpress.Persistent.BaseImpl.Xpo"
-			Version="$(DevExpressPackageVersion)" />
-		<PackageReference Include="DevExpress.Spreadsheet.Core"
-			Version="$(DevExpressPackageVersion)" />
-		<PackageReference Include="Microsoft.CodeAnalysis" Version="4.9.2" />
-		<PackageReference Include="Microsoft.CSharp" Version="4.7.0" />
+		<PackageReference Include="DevExpress.Dashboard.Core" />
+		<PackageReference Include="DevExpress.ExpressApp" />
+		<PackageReference Include="DevExpress.ExpressApp.CloneObject.Xpo" />
+		<PackageReference Include="DevExpress.ExpressApp.ConditionalAppearance" />
+		<PackageReference Include="DevExpress.ExpressApp.Dashboards" />
+		<PackageReference Include="DevExpress.ExpressApp.Security" />
+		<PackageReference Include="DevExpress.ExpressApp.Security.Xpo" />
+		<PackageReference Include="DevExpress.ExpressApp.TreeListEditors" />
+		<PackageReference Include="DevExpress.ExpressApp.Validation" />
+		<PackageReference Include="DevExpress.ExpressApp.ViewVariantsModule" />
+		<PackageReference Include="DevExpress.Persistent.BaseImpl.Xpo" />
+		<PackageReference Include="DevExpress.Spreadsheet.Core" />
+		<PackageReference Include="Microsoft.CodeAnalysis" />
+		<PackageReference Include="Microsoft.CSharp" />
 	</ItemGroup>
 
 	<ItemGroup>
