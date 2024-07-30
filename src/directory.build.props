@@ -2,6 +2,7 @@
  <PropertyGroup>
     <DevExpressVersion>24.1</DevExpressVersion>
     <DevExpressPackageVersion>24.1.4</DevExpressPackageVersion>
-    <NoWarn>NU1507</NoWarn>
- </PropertyGroup>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+    <NoWarn>1701;1702;NU1701;NU1507</NoWarn>
+</PropertyGroup>
 </Project>

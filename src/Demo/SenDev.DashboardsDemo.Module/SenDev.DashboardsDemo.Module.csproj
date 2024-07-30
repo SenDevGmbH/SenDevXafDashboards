@@ -11,7 +11,6 @@
 		<GenerateAssemblyTitleAttribute>false</GenerateAssemblyTitleAttribute>
 		<Deterministic>false</Deterministic>
     <EnableDefaultEmbeddedResourceItems>false</EnableDefaultEmbeddedResourceItems>
-    <NoWarn>NU1507</NoWarn>
 	</PropertyGroup>
 
 	<PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -22,8 +21,6 @@
 		<DefineConstants>DEBUG;TRACE</DefineConstants>
 		<ErrorReport>prompt</ErrorReport>
 		<WarningLevel>4</WarningLevel>
-		<TreatWarningsAsErrors>true</TreatWarningsAsErrors>
-		<NoWarn>1701;1702;NU1701</NoWarn>
 	</PropertyGroup>
 	<PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
 		<DebugType>pdbonly</DebugType>
