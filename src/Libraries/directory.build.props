@@ -3,5 +3,6 @@
     <DevExpressVersion>24.1</DevExpressVersion>
     <DevExpressPackageVersion>24.1.4</DevExpressPackageVersion>
 	<MicrosoftBciVersion>6.0.0</MicrosoftBciVersion>
+    <NoWarn>NU1507</NoWarn>
  </PropertyGroup>
 </Project>
