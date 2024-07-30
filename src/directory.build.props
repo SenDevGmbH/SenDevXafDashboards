@@ -2,5 +2,6 @@
  <PropertyGroup>
     <DevExpressVersion>24.1</DevExpressVersion>
     <DevExpressPackageVersion>24.1.4</DevExpressPackageVersion>
+    <NoWarn>NU1507</NoWarn>
  </PropertyGroup>
 </Project>
