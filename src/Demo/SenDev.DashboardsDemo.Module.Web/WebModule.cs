@@ -12,6 +12,8 @@ using DevExpress.ExpressApp.Updating;
 using DevExpress.ExpressApp.Model.Core;
 using DevExpress.ExpressApp.Model.DomainLogics;
 using DevExpress.ExpressApp.Model.NodeGenerators;
+using SenDev.Xaf.Dashboards.Web;
+using SenDev.Xaf.Dashboards;
 
 namespace SenDev.DashboardsDemo.Module.Web {
     [ToolboxItemFilter("Xaf.Platform.Web")]

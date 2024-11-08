@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using DevExpress.Data.Internal;
 using DevExpress.ExpressApp;
 using DevExpress.ExpressApp.DC;
 using DevExpress.ExpressApp.Updating;
@@ -7,6 +8,7 @@ using DevExpress.ExpressApp.Xpo;
 using DevExpress.Persistent.BaseImpl;
 using SenDev.DashboardsDemo.Module.BusinessObjects;
 using SenDev.Xaf.Dashboards;
+using SenDev.Xaf.Dashboards.Scripting;
 
 namespace SenDev.DashboardsDemo.Module
 {
@@ -22,6 +24,7 @@ namespace SenDev.DashboardsDemo.Module
         }
         public override void Setup(XafApplication application) {
             base.Setup(application);
+			SafeSerializationBinder.RegisterKnownType(typeof(ScriptDataSource));
 			Application.SetupComplete += Application_SetupComplete;
 			// Manage various aspects of the application UI and behavior at the module level.
 		}

@@ -4,6 +4,8 @@ using System.ComponentModel;
 using DevExpress.ExpressApp.Web;
 using System.Collections.Generic;
 using DevExpress.ExpressApp.Xpo;
+using DevExpress.XtraSpreadsheet.Model.History;
+using SenDev.DashboardsDemo.Web.Services;
 
 namespace SenDev.DashboardsDemo.Web {
     // For more typical usage scenarios, be sure to check out https://documentation.devexpress.com/eXpressAppFramework/DevExpressExpressAppWebWebApplicationMembersTopicAll.aspx
@@ -15,9 +17,9 @@ namespace SenDev.DashboardsDemo.Web {
         private DevExpress.ExpressApp.Objects.BusinessClassLibraryCustomizationModule objectsModule;
         private DevExpress.ExpressApp.Dashboards.DashboardsModule dashboardsModule;
         private DevExpress.ExpressApp.Dashboards.Web.DashboardsAspNetModule dashboardsAspNetModule;
-
-        #region Default XAF configuration options (https://www.devexpress.com/kb=T501418)
-        static DashboardsDemoAspNetApplication() {
+		private SenDev.Xaf.Dashboards.SenDevDashboardsModule senDevDashboardsModule;
+		#region Default XAF configuration options (https://www.devexpress.com/kb=T501418)
+		static DashboardsDemoAspNetApplication() {
 			EnableMultipleBrowserTabsSupport = true;
             DevExpress.ExpressApp.Web.Editors.ASPx.ASPxGridListEditor.AllowFilterControlHierarchy = true;
             DevExpress.ExpressApp.Web.Editors.ASPx.ASPxGridListEditor.MaxFilterControlHierarchyDepth = 3;
@@ -34,6 +36,7 @@ namespace SenDev.DashboardsDemo.Web {
         public DashboardsDemoAspNetApplication() {
             InitializeComponent();
 			InitializeDefaults();
+			senDevDashboardsModule.JobScheduler = new HangfireJobScheduler();
         }
         protected override void CreateDefaultObjectSpaceProvider(CreateCustomObjectSpaceProviderEventArgs args) {
             args.ObjectSpaceProvider = new XPObjectSpaceProvider(GetDataStoreProvider(args.ConnectionString, args.Connection), true);
@@ -89,9 +92,11 @@ namespace SenDev.DashboardsDemo.Web {
             // dashboardsModule
             //
             this.dashboardsModule.DashboardDataType = typeof(DevExpress.Persistent.BaseImpl.DashboardData);
-            // 
-            // DashboardsDemoAspNetApplication
-            // 
+			// 
+			// DashboardsDemoAspNetApplication
+			// 
+
+			senDevDashboardsModule = new Xaf.Dashboards.SenDevDashboardsModule();
             this.ApplicationName = "SenDev.DashboardsDemo";
             this.CheckCompatibilityType = DevExpress.ExpressApp.CheckCompatibilityType.DatabaseSchema;
             this.Modules.Add(this.module1);
@@ -101,7 +106,8 @@ namespace SenDev.DashboardsDemo.Web {
             this.Modules.Add(this.objectsModule);
             this.Modules.Add(this.dashboardsModule);
             this.Modules.Add(this.dashboardsAspNetModule);
-            this.DatabaseVersionMismatch += new System.EventHandler<DevExpress.ExpressApp.DatabaseVersionMismatchEventArgs>(this.DashboardsDemoAspNetApplication_DatabaseVersionMismatch);
+			this.Modules.Add(this.senDevDashboardsModule);
+			this.DatabaseVersionMismatch += new System.EventHandler<DevExpress.ExpressApp.DatabaseVersionMismatchEventArgs>(this.DashboardsDemoAspNetApplication_DatabaseVersionMismatch);
             ((System.ComponentModel.ISupportInitialize)(this)).EndInit();
 
         }
