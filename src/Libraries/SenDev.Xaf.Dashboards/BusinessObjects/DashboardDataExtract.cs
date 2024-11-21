@@ -120,7 +120,7 @@ namespace SenDev.Xaf.Dashboards.BusinessObjects
 		private DateTime finishTime;
 
 		[VisibleInDetailView(false)]
-		[VisibleInListView(false)]
+		[VisibleInListView(true)]
 		[VisibleInLookupListView(false)]
 		[ModelDefault(nameof(IModelMember.Caption), "Endzeit")]
 		[ModelDefault(nameof(IModelMember.DisplayFormat), "{0:g}")]
@@ -140,7 +140,7 @@ namespace SenDev.Xaf.Dashboards.BusinessObjects
 
 
 		[VisibleInDetailView(true)]
-		[VisibleInListView(false)]
+		[VisibleInListView(true)]
 		[VisibleInLookupListView(false)]
 		[NonPersistent]
 		public TimeSpan Duration => FinishTime - StartTime;
