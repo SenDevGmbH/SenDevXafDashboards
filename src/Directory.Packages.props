@@ -75,7 +75,7 @@
   </ItemGroup>
 
   <ItemGroup Condition="$(TargetFramework)!='net48'">
-    <PackageVersion Include="System.ServiceModel.Http" Version="6.2.0" />
-    <PackageVersion Include="System.ServiceModel.Primitives" Version="6.2.0" />
+    <PackageVersion Include="System.ServiceModel.Http" Version="8.1.0" />
+    <PackageVersion Include="System.ServiceModel.Primitives" Version="8.1.0" />
   </ItemGroup>
 </Project>

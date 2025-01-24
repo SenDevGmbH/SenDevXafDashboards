@@ -1,7 +1,7 @@
 ﻿<Project>
  <PropertyGroup>
-    <DevExpressVersion>24.1</DevExpressVersion>
-    <DevExpressPackageVersion>24.1.4</DevExpressPackageVersion>
+    <DevExpressVersion>24.2</DevExpressVersion>
+    <DevExpressPackageVersion>24.2.3</DevExpressPackageVersion>
 	<MicrosoftBciVersion>6.0.0</MicrosoftBciVersion>
  </PropertyGroup>
 </Project>

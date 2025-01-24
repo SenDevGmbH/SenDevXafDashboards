@@ -19,7 +19,7 @@ namespace SenDev.Xaf.Dashboards.Win.DataSourceWizard
 			ParamsObjectSpace = application.CreateObjectSpace();
 			paramsView = CreateDetailView(ParamsObjectSpace);
 			paramsView.CreateControls();
-			paramsView.LayoutManager.CustomizationEnabled = false;
+			paramsView.LayoutManager.CustomizationFormEnabled = false;
 			panelBaseContent.Controls.Add((XafLayoutControl)paramsView.LayoutManager.Container);
 		}
 
