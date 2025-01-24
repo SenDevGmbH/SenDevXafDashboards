@@ -16,7 +16,7 @@ variables:
   buildConfiguration: 'Debug'
   NugetTargetDir: '$(Build.ArtifactStagingDirectory)'
   VersionRevision: $[counter('revisionCounter', 142)]
-  NetSdkVersion: '6.0.201'
+  NetSdkVersion: '8.0.405'
   BinLogDirectory: $(Build.ArtifactStagingDirectory)\Log  
 steps:
 - task: UseDotNet@2
