@@ -10,6 +10,7 @@ end_of_line                                                        = crlf
 indent_style                                                       = tab
 
 csharp_style_conditional_delegate_call                             = true : suggestion
+csharp_preserve_single_line_properties                             = true : suggestion
 csharp_style_expression_bodied_accessors                           = true : suggestion
 csharp_style_expression_bodied_constructors                        = true : suggestion
 csharp_style_expression_bodied_indexers                            = true : suggestion
