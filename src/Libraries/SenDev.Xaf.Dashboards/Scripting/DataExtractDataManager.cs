@@ -61,7 +61,18 @@ namespace SenDev.Xaf.Dashboards.Scripting
 					throw new ArgumentException($"No DashboardExtract found for the key '{key}'", nameof(key));
 				}
 
-				UpdateDataExtract(extract, cancellationToken);
+				try
+				{
+
+					UpdateDataExtract(extract, cancellationToken);
+				}
+				catch (Exception ex)
+				{
+					extract.LastError = ex.ToString();
+					objectSpace.CommitChanges();
+					throw;
+				}
+				
 				objectSpace.CommitChanges();
 			}
 		}
@@ -119,6 +130,8 @@ namespace SenDev.Xaf.Dashboards.Scripting
 		{
 			extract.ExtractData = fileData;
 			extract.ExtractDataSize = extract.ExtractData.LongLength;
+			extract.LastError = null;
+			extract.LastExtractDataUpdateDate = DateTime.Now;
 		}
 	}
 }
