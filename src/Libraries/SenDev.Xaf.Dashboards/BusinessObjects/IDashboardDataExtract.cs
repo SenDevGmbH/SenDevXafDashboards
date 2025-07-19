@@ -22,6 +22,9 @@ namespace SenDev.Xaf.Dashboards.BusinessObjects
 
 		int RowCount { get; set; }
 
+		string LastError { get; set;}
+		DateTime LastExtractDataUpdateDate { get; set; }
+
 		void ConfigureConnectionParameters(XafApplication application, ExtractDataSourceConnectionParameters parameters);
 		string EnsureTempFileCreated(XafApplication application);
 		string GetKeyAsString();

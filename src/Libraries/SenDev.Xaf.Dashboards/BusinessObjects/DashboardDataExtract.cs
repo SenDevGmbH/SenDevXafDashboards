@@ -161,7 +161,7 @@ namespace SenDev.Xaf.Dashboards.BusinessObjects
 
 
 		private int rowCount;
-		[VisibleInDetailView(false)]
+        [VisibleInDetailView(false)]
 		[VisibleInListView(true)]
 		[VisibleInLookupListView(false)]
 		[ModelDefault(nameof(IModelMember.Caption), "Row Count")]
@@ -171,6 +171,11 @@ namespace SenDev.Xaf.Dashboards.BusinessObjects
 			set => SetPropertyValue(nameof(RowCount), ref rowCount, value);
 		}
 
+
+
+
+
+		
 		[NonPersistent]
 		public bool PreserveTempFile
 		{
@@ -178,6 +183,34 @@ namespace SenDev.Xaf.Dashboards.BusinessObjects
 			set;
 		}
 
+		private string lastError;
+        [VisibleInDetailView(true)]
+        [VisibleInListView(true)]
+        [VisibleInLookupListView(false)]
+		[Size(SizeAttribute.Unlimited)]
+		[ModelDefault(nameof(IModelMember.Caption), "Last Error")]
+		[ModelDefault(nameof(IModelMember.AllowEdit), "False")]
+        public string LastError
+        {
+            get => lastError;
+            set => SetPropertyValue(nameof(LastError), ref lastError, value);
+        }
+
+		private DateTime lastExtractDataUpdateDate;
+		[VisibleInDetailView(true)]
+        [VisibleInListView(true)]
+        [VisibleInLookupListView(false)]
+        [ModelDefault(nameof(IModelMember.Caption), "Last ExtractData Update Date")]
+        [ModelDefault(nameof(IModelMember.DisplayFormat), "{0:g}")]
+        [ModelDefault(nameof(IModelMember.EditMask), "g")]
+        public DateTime LastExtractDataUpdateDate
+        {
+            get => lastExtractDataUpdateDate;
+            set => SetPropertyValue(nameof(LastExtractDataUpdateDate), ref lastExtractDataUpdateDate, value);
+        }
+
+
+		
 		public void ConfigureConnectionParameters(XafApplication application, ExtractDataSourceConnectionParameters parameters)
 		{
 			parameters.FileName = EnsureTempFileCreated(application);
