@@ -63,12 +63,12 @@ namespace SenDev.Xaf.Dashboards.Scripting
 
 				try
 				{
-
 					UpdateDataExtract(extract, cancellationToken);
 				}
 				catch (Exception ex)
 				{
 					extract.LastError = ex.ToString();
+					extract.ExtractData = null;
 					objectSpace.CommitChanges();
 					throw;
 				}
