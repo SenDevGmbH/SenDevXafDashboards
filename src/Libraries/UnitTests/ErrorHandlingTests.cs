@@ -31,12 +31,14 @@ namespace UnitTests
 					}";
 
 				extract.ExtractData = new byte[] { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 };
+				extract.ExtractDataSize = extract.ExtractData.Length;
 				objectSpace.CommitChanges();
 				var dataManager = new DataExtractDataManager(application);
 				Assert.Throws<InvalidOperationException>(() => dataManager.UpdateDataExtractByKey(extract.Oid));
 				extract.Reload();
 				Assert.Contains("Test exception", extract.LastError);
-				Assert.Null(extract.ExtractData);	
+				Assert.Null(extract.ExtractData);
+				Assert.Equal(0, extract.ExtractDataSize);
 			}
 		}
 		
@@ -67,6 +69,7 @@ namespace UnitTests
 				extract.Reload();
 				Assert.Null(extract.LastError);
 				Assert.Equal(new byte[] { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 }, extract.ExtractData);
+				Assert.Equal(10, extract.ExtractDataSize);
 
 			}
 		}

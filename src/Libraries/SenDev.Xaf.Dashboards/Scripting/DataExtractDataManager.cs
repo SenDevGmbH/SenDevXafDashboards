@@ -69,6 +69,7 @@ namespace SenDev.Xaf.Dashboards.Scripting
 				{
 					extract.LastError = ex.ToString();
 					extract.ExtractData = null;
+					extract.ExtractDataSize = 0;	
 					objectSpace.CommitChanges();
 					throw;
 				}
@@ -129,7 +130,7 @@ namespace SenDev.Xaf.Dashboards.Scripting
 		private static void SetDataExtractContent(IDashboardDataExtract extract, byte[] fileData)
 		{
 			extract.ExtractData = fileData;
-			extract.ExtractDataSize = extract.ExtractData.LongLength;
+			extract.ExtractDataSize = fileData?.LongLength ?? 0;
 			extract.LastError = null;
 			extract.LastExtractDataUpdateDate = DateTime.Now;
 		}
