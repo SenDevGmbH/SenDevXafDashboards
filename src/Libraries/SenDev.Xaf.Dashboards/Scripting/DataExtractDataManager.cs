@@ -70,6 +70,7 @@ namespace SenDev.Xaf.Dashboards.Scripting
 					extract.LastError = ex.ToString();
 					extract.ExtractData = null;
 					extract.ExtractDataSize = 0;	
+					extract.RowCount = 0;
 					objectSpace.CommitChanges();
 					throw;
 				}

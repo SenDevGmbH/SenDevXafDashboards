@@ -32,6 +32,7 @@ namespace UnitTests
 
 				extract.ExtractData = new byte[] { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 };
 				extract.ExtractDataSize = extract.ExtractData.Length;
+				extract.RowCount = 10;
 				objectSpace.CommitChanges();
 				var dataManager = new DataExtractDataManager(application);
 				Assert.Throws<InvalidOperationException>(() => dataManager.UpdateDataExtractByKey(extract.Oid));
@@ -39,6 +40,7 @@ namespace UnitTests
 				Assert.Contains("Test exception", extract.LastError);
 				Assert.Null(extract.ExtractData);
 				Assert.Equal(0, extract.ExtractDataSize);
+				Assert.Equal(0, extract.RowCount);
 			}
 		}
 		
