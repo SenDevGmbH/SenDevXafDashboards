@@ -35,6 +35,7 @@ namespace SenDev.Xaf.Dashboards.Scripting
 			MetadataReference.CreateFromFile(typeof(Queryable).Assembly.Location)
 		};
 
+
 		public void AddReferences(IEnumerable<string> referencedAssembliesPaths)
 		{
 			if (referencedAssembliesPaths == null)
@@ -57,8 +58,7 @@ namespace SenDev.Xaf.Dashboards.Scripting
 		{
 			if (scriptAssemblyCache.TryGetValue(script, out var cachedAssembly))
 				return cachedAssembly;
-
-			var assemblyFilePath = Path.GetTempFileName();
+			string assemblyFilePath = GetOutputAssemblyFilePath();
 
 			var compileResult = Compile(script, assemblyFilePath);
 
@@ -76,6 +76,8 @@ namespace SenDev.Xaf.Dashboards.Scripting
 
 			throw new InvalidOperationException("Compilation failed:\n" + string.Join("\n", errors));
 		}
+
+		protected virtual string GetOutputAssemblyFilePath() => Path.GetTempFileName();
 
 		public dynamic CreateObject(string script)
 		{
