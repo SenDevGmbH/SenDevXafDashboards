@@ -9,8 +9,8 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>SenDev.Xaf.Dashboards.Web</RootNamespace>
     <AssemblyName>SenDev.Xaf.Dashboards.Web</AssemblyName>
-    <TargetFrameworks>net48</TargetFrameworks>
-    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <TargetFrameworks>net472</TargetFrameworks>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <PackageDescription>SenDev XAF Dashboards Web module</PackageDescription>
   </PropertyGroup>
   <PropertyGroup>

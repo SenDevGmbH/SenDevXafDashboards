@@ -36,6 +36,7 @@
     <PackageReference Include="Hangfire.SqlServer" />
     <PackageReference Include="Hangfire.AspNetCore" />
     <PackageReference Include="System.ServiceModel.Primitives" /> 
+    <PackageReference Include="Newtonsoft.Json"/>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\SenDev.DashboardsDemo.Module.Blazor\SenDev.DashboardsDemo.Module.Blazor.csproj">

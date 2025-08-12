@@ -10,7 +10,7 @@
     <ApplicationIcon>ExpressApp.ico</ApplicationIcon>
     <ApplicationRevision>0</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
-    <TargetFrameworks>net48</TargetFrameworks>
+    <TargetFrameworks>net472</TargetFrameworks>
     <UseWindowsForms>true</UseWindowsForms>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -53,7 +53,7 @@
     <PackageReference Include="DevExpress.Persistent.BaseImpl.Xpo" />
     <PackageReference Include="DevExpress.Printing.Core" />
     <PackageReference Include="DevExpress.Data" />
-    <PackageReference Include="System.Xml.Linq" Condition="$(TargetFramework)=='net48'" />
+    <PackageReference Include="System.Xml.Linq" Condition="$(TargetFramework)=='net472'" />
     <PackageReference Include="System.ValueTuple" />
     <PackageReference Include="System.Configuration.ConfigurationManager" />
     <PackageReference Include="System.Data.SqlClient" />
@@ -78,7 +78,7 @@
     <ProjectReference Include="..\..\Libraries\SenDev.Xaf.Dashboards.Win\SenDev.Xaf.Dashboards.Win.csproj">
       <Project>{DA2F9100-A85C-424F-90AA-AB8CF8504A98}</Project>
       <Name>SenDev.Xaf.Dashboards.Win</Name>
-      <SetTargetFramework>TargetFramework=net48</SetTargetFramework>
+      <SetTargetFramework>TargetFramework=net472</SetTargetFramework>
     </ProjectReference>
     <ProjectReference Include="..\..\Libraries\SenDev.Xaf.Dashboards\SenDev.Xaf.Dashboards.csproj">
       <Project>{4D917657-12F3-4391-9DA4-32FD3756579E}</Project>
