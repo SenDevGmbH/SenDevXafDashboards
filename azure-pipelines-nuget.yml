@@ -18,6 +18,7 @@ variables:
   VersionRevision: $[counter('revisionCounter', 142)]
   NetSdkVersion: '8.0.405'
   BinLogDirectory: $(Build.ArtifactStagingDirectory)\Log  
+  TargetDevExpressVersions: 24.2.3
 steps:
 - task: UseDotNet@2
   displayName: 'Use .NET Core sdk'
