@@ -137,29 +137,7 @@ namespace UnitTests
 		}
 
 
-		private void CreateDomainAndUpdateDataExtract(string dataExtractId)
-		{
-			var applicationBase = AppDomain.CurrentDomain.SetupInformation.ApplicationBase;
-			var appDomain = AppDomain.CreateDomain("TestDomainForDataExtract", null, AppDomain.CurrentDomain.SetupInformation);
-			try
-			{
-				var service = (ScriptCompilationTests)appDomain.CreateInstanceAndUnwrap(GetType().Assembly.FullName, GetType().FullName);
-				service.UpdateDataExtractCore(dataExtractId);
-			}
-			finally
-			{
-				AppDomain.Unload(appDomain);
-			}
-		}
 
-		public void UpdateDataExtractCore(string dataExtractId)
-		{
-			using (var application = XpoInMemoryXafApplication.CreateInstance())
-			{
-
-
-			}
-		}
 
 	}
 }
