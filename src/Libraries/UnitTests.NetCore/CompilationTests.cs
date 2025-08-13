@@ -143,7 +143,7 @@ public class Script
 		[InlineData(typeof(ScriptCompiler))]
 		[InlineData(typeof(DataExtractCSScriptCompiler))]
 
-		public void CancellationTest(Type compilerType)
+		public async Task CancellationTestAsync(Type compilerType)
 		{
 			var script = @"
 using System;
@@ -188,15 +188,8 @@ public class Script
 			}, cancellationTokenSource.Token);
 
 			cancellationTokenSource.Cancel();
-			try
-			{
-				task.Wait();
+			await Assert.ThrowsAsync<TaskCanceledException>(() => task);
 
-			}
-			catch (AggregateException aex)
-			{
-				Assert.IsType<TaskCanceledException>(aex.InnerExceptions.Single());
-			}
 
 		}
 
