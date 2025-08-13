@@ -20,12 +20,11 @@ namespace SenDev.Xaf.Dashboards.Blazor
 			Guard.ArgumentNotNullOrEmpty(dashboardEndpoint, nameof(dashboardEndpoint));
 			var urlProviderServiceType = typeof(DashboardsBlazorModule).Assembly.GetTypes().FirstOrDefault(t => t.Name == "IDashboardEndpointUrlProvider");
 			var service = endpoints.ServiceProvider.GetService(urlProviderServiceType);
-			var method = service?.GetType().GetMethod(setDashboardEndpointMethodName);
-			if (method == null)
-				throw new InvalidOperationException($"Method {setDashboardEndpointMethodName} not found.");
+			var method = (service?.GetType().GetMethod(setDashboardEndpointMethodName)) 
+				?? throw new InvalidOperationException($"Method {setDashboardEndpointMethodName} not found.");
 
 			method.Invoke(service, new[] { dashboardEndpoint });
-			EndpointRouteBuilderExtension.MapDashboardRoute(endpoints, dashboardEndpoint, dashboardControllerName);
+			endpoints.MapDashboardRoute(dashboardEndpoint, dashboardControllerName);
 		}
 	}
 }
