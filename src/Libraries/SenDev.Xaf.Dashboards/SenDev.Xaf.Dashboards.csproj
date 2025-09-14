@@ -45,7 +45,7 @@
 	<ItemGroup>
 		<PackageReference Include="DevExpress.Dashboard.Core" />
 		<PackageReference Include="DevExpress.ExpressApp" />
-		<PackageReference Include="DevExpress.ExpressApp.CloneObject.Xpo" />
+		<PackageReference Include="DevExpress.ExpressApp.CloneObject" />
 		<PackageReference Include="DevExpress.ExpressApp.ConditionalAppearance" />
 		<PackageReference Include="DevExpress.ExpressApp.Dashboards" />
 		<PackageReference Include="DevExpress.ExpressApp.Security" />

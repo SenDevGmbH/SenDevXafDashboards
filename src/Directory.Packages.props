@@ -12,7 +12,7 @@
     <PackageVersion Include="DevExpress.DataAccess" Version="$(DevExpressPackageVersion)" />
     <PackageVersion Include="DevExpress.ExpressApp" Version="$(DevExpressPackageVersion)" />
     <PackageVersion Include="DevExpress.ExpressApp.Blazor" Version="$(DevExpressPackageVersion)" />
-    <PackageVersion Include="DevExpress.ExpressApp.CloneObject.Xpo" Version="$(DevExpressPackageVersion)" />
+    <PackageVersion Include="DevExpress.ExpressApp.CloneObject" Version="$(DevExpressPackageVersion)" />
     <PackageVersion Include="DevExpress.ExpressApp.CodeAnalysis" Version="$(DevExpressPackageVersion)" />
     <PackageVersion Include="DevExpress.ExpressApp.ConditionalAppearance" Version="$(DevExpressPackageVersion)" />
     <PackageVersion Include="DevExpress.ExpressApp.Dashboards" Version="$(DevExpressPackageVersion)" />
@@ -75,7 +75,7 @@
   </ItemGroup>
 
   <ItemGroup Condition="$(TargetFramework)!='net48'">
-    <PackageVersion Include="System.ServiceModel.Http" Version="8.1.0" />
-    <PackageVersion Include="System.ServiceModel.Primitives" Version="8.1.0" />
+    <PackageVersion Include="System.ServiceModel.Http" Version="8.1.2" />
+    <PackageVersion Include="System.ServiceModel.Primitives" Version="8.1.2" />
   </ItemGroup>
 </Project>
