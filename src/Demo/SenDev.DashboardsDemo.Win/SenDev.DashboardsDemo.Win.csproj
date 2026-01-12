@@ -10,7 +10,7 @@
     <ApplicationIcon>ExpressApp.ico</ApplicationIcon>
     <ApplicationRevision>0</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
-    <TargetFramework>net8.0</TargetFramework>
+    <TargetFramework>net8.0-windows</TargetFramework>
     <UseWindowsForms>true</UseWindowsForms>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -74,23 +74,10 @@
     <None Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\Libraries\SenDev.Xaf.Dashboards.Win\SenDev.Xaf.Dashboards.Win.csproj">
-      <Project>{DA2F9100-A85C-424F-90AA-AB8CF8504A98}</Project>
-      <Name>SenDev.Xaf.Dashboards.Win</Name>
-      <SetTargetFramework>TargetFramework=net472</SetTargetFramework>
-    </ProjectReference>
-    <ProjectReference Include="..\..\Libraries\SenDev.Xaf.Dashboards\SenDev.Xaf.Dashboards.csproj">
-      <Project>{4D917657-12F3-4391-9DA4-32FD3756579E}</Project>
-      <Name>SenDev.Xaf.Dashboards</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\SenDev.DashboardsDemo.Module.Win\SenDev.DashboardsDemo.Module.Win.csproj">
-      <Project>{7964F87D-BC5D-4C4E-8B2F-71E89739AA97}</Project>
-      <Name>SenDev.DashboardsDemo.Module.Win</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\SenDev.DashboardsDemo.Module\SenDev.DashboardsDemo.Module.csproj">
-      <Project>{5F15837D-D1E5-44DC-92F0-4F2EBE9C3F8D}</Project>
-      <Name>SenDev.DashboardsDemo.Module</Name>
-    </ProjectReference>
+    <ProjectReference Include="..\..\Libraries\SenDev.Xaf.Dashboards.Win\SenDev.Xaf.Dashboards.Win.csproj" />
+    <ProjectReference Include="..\..\Libraries\SenDev.Xaf.Dashboards\SenDev.Xaf.Dashboards.csproj" />
+    <ProjectReference Include="..\SenDev.DashboardsDemo.Module.Win\SenDev.DashboardsDemo.Module.Win.csproj" />
+    <ProjectReference Include="..\SenDev.DashboardsDemo.Module\SenDev.DashboardsDemo.Module.csproj" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System" />

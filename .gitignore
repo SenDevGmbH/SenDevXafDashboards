@@ -248,3 +248,6 @@ ModelManifest.xml
 /src/Libraries/SenDev.Xaf.Dashboards.Win/*.bak
 /src/Libraries/SenDev.Xaf.Dashboards/*.bak
 **/*.bak
+
+# Claude
+.claude

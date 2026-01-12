@@ -24,11 +24,10 @@ namespace SenDev.DashboardsDemo.Module {
 		/// the contents of this method with the code editor.
 		/// </summary>
 		private void InitializeComponent() {
-			// 
+			//
 			// DashboardsDemoModule
-			// 
+			//
 			this.RequiredModuleTypes.Add(typeof(DevExpress.ExpressApp.SystemModule.SystemModule));
-			this.RequiredModuleTypes.Add(typeof(DevExpress.ExpressApp.Objects.BusinessClassLibraryCustomizationModule));
 			this.RequiredModuleTypes.Add(typeof(DevExpress.ExpressApp.Dashboards.DashboardsModule));
 			this.RequiredModuleTypes.Add(typeof(Xaf.Dashboards.SenDevDashboardsModule));
 		}

@@ -27,7 +27,6 @@
             this.module2 = new DevExpress.ExpressApp.Win.SystemModule.SystemWindowsFormsModule();
             this.module3 = new SenDev.DashboardsDemo.Module.DashboardsDemoModule();
             this.module4 = new SenDev.DashboardsDemo.Module.Win.DashboardsDemoWindowsFormsModule();
-            this.objectsModule = new DevExpress.ExpressApp.Objects.BusinessClassLibraryCustomizationModule();
             this.dashboardsModule = new DevExpress.ExpressApp.Dashboards.DashboardsModule();
             this.dashboardsWindowsFormsModule = new DevExpress.ExpressApp.Dashboards.Win.DashboardsWindowsFormsModule();
             this.senDevDashboardsModule = new SenDev.Xaf.Dashboards.SenDevDashboardsModule();
@@ -52,7 +51,6 @@
             this.CheckCompatibilityType = DevExpress.ExpressApp.CheckCompatibilityType.DatabaseSchema;
             this.Modules.Add(this.module1);
             this.Modules.Add(this.module2);
-            this.Modules.Add(this.objectsModule);
             this.Modules.Add(this.dashboardsModule);
             this.Modules.Add(this.senDevDashboardsModule);
             this.Modules.Add(this.module3);
@@ -72,7 +70,6 @@
         private DevExpress.ExpressApp.Win.SystemModule.SystemWindowsFormsModule module2;
         private SenDev.DashboardsDemo.Module.DashboardsDemoModule module3;
         private SenDev.DashboardsDemo.Module.Win.DashboardsDemoWindowsFormsModule module4;
-        private DevExpress.ExpressApp.Objects.BusinessClassLibraryCustomizationModule objectsModule;
         private DevExpress.ExpressApp.Dashboards.DashboardsModule dashboardsModule;
         private DevExpress.ExpressApp.Dashboards.Win.DashboardsWindowsFormsModule dashboardsWindowsFormsModule;
 		private Xaf.Dashboards.SenDevDashboardsModule senDevDashboardsModule;

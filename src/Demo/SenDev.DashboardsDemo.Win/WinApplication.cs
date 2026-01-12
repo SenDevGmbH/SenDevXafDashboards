@@ -12,8 +12,6 @@ namespace SenDev.DashboardsDemo.Win
 		#region Default XAF configuration options (https://www.devexpress.com/kb=T501418)
 		static DashboardsDemoWindowsFormsApplication()
 		{
-			DevExpress.Persistent.Base.PasswordCryptographer.EnableRfc2898 = true;
-			DevExpress.Persistent.Base.PasswordCryptographer.SupportLegacySha512 = false;
 			DevExpress.ExpressApp.Utils.ImageLoader.Instance.UseSvgImages = true;
 		}
 		private void InitializeDefaults()
