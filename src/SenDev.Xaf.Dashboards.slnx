@@ -1,0 +1,34 @@
+<Solution>
+  <Configurations>
+    <BuildType Name="Debug" />
+    <BuildType Name="EasyTest" />
+    <BuildType Name="Release" />
+  </Configurations>
+  <Folder Name="/Demo/">
+    <Project Path="Demo/SenDev.DashboardsDemo.Blazor.Server/SenDev.DashboardsDemo.Blazor.Server.csproj" />
+    <Project Path="Demo/SenDev.DashboardsDemo.Module.Blazor/SenDev.DashboardsDemo.Module.Blazor.csproj" />
+    <Project Path="Demo/SenDev.DashboardsDemo.Module.Web/SenDev.DashboardsDemo.Module.Web.csproj" />
+    <Project Path="Demo/SenDev.DashboardsDemo.Module.Win/SenDev.DashboardsDemo.Module.Win.csproj" />
+    <Project Path="Demo/SenDev.DashboardsDemo.Module/SenDev.DashboardsDemo.Module.csproj" />
+    <Project Path="Demo/SenDev.DashboardsDemo.Web/SenDev.DashboardsDemo.Web.csproj" />
+    <Project Path="Demo/SenDev.DashboardsDemo.Win/SenDev.DashboardsDemo.Win.csproj" />
+  </Folder>
+  <Folder Name="/Libraries/">
+    <Project Path="Libraries/SenDev.Xaf.Dashboard.CSScript/SenDev.Xaf.Dashboard.CSScriptCompiler.csproj">
+      <BuildType Solution="EasyTest|*" Project="Debug" />
+    </Project>
+    <Project Path="Libraries/SenDev.Xaf.Dashboards.Blazor/SenDev.Xaf.Dashboards.Blazor.csproj" />
+    <Project Path="Libraries/SenDev.Xaf.Dashboards.Web/SenDev.Xaf.Dashboards.Web.csproj" />
+    <Project Path="Libraries/SenDev.Xaf.Dashboards.Win/SenDev.Xaf.Dashboards.Win.csproj" />
+    <Project Path="Libraries/SenDev.Xaf.Dashboards/SenDev.Xaf.Dashboards.csproj" />
+    <Project Path="Libraries/UnitTests.Common/UnitTests.Common.csproj">
+      <BuildType Solution="EasyTest|*" Project="Debug" />
+    </Project>
+    <Project Path="Libraries/UnitTests.NetCore/UnitTests.NetCore.csproj">
+      <BuildType Solution="EasyTest|*" Project="Debug" />
+    </Project>
+    <Project Path="Libraries/UnitTests/UnitTests.csproj">
+      <BuildType Solution="EasyTest|*" Project="Release" />
+    </Project>
+  </Folder>
+</Solution>
