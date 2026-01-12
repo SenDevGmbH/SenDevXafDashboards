@@ -1,7 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
-		<TargetFrameworks>net472;net8.0</TargetFrameworks>
+		<TargetFramework>net8.0</TargetFramework>
 		<Deterministic>false</Deterministic>
 		<EnableDefaultEmbeddedResourceItems>false</EnableDefaultEmbeddedResourceItems>
 		<PackageDescription>SenDev XAF Dashboards platform agnostic module</PackageDescription>

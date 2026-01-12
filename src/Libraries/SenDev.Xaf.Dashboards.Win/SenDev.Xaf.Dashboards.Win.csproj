@@ -10,7 +10,7 @@
     <RootNamespace>SenDev.Xaf.Dashboards.Win</RootNamespace>
     <AssemblyName>SenDev.Xaf.Dashboards.Win</AssemblyName>
     <PackageDescription>SenDev XAF Dashboards windows module</PackageDescription>
-    <TargetFrameworks>net8-windows;net472</TargetFrameworks>
+    <TargetFramework>net8-windows</TargetFramework>
     <SignAssembly>true</SignAssembly>
     <AssemblyOriginatorKeyFile>..\StrongKey.snk</AssemblyOriginatorKeyFile>
   </PropertyGroup>

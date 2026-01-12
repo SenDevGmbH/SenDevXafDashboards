@@ -10,7 +10,7 @@
     <ApplicationIcon>ExpressApp.ico</ApplicationIcon>
     <ApplicationRevision>0</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
-    <TargetFrameworks>net472</TargetFrameworks>
+    <TargetFramework>net8.0</TargetFramework>
     <UseWindowsForms>true</UseWindowsForms>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -53,7 +53,6 @@
     <PackageReference Include="DevExpress.Persistent.BaseImpl.Xpo" />
     <PackageReference Include="DevExpress.Printing.Core" />
     <PackageReference Include="DevExpress.Data" />
-    <PackageReference Include="System.Xml.Linq" Condition="$(TargetFramework)=='net472'" />
     <PackageReference Include="System.ValueTuple" />
     <PackageReference Include="System.Configuration.ConfigurationManager" />
     <PackageReference Include="System.Data.SqlClient" />

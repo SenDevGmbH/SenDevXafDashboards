@@ -17,7 +17,6 @@
 	<ItemGroup>
 		<FrameworkReference Include="Microsoft.AspNetCore.App" />
 		<PackageReference Include="DevExpress.ExpressApp" />
-		<PackageReference Include="DevExpress.ExpressApp.Objects" />
 		<PackageReference Include="DevExpress.ExpressApp.Xpo" />
 		<PackageReference Include="DevExpress.ExpressApp.Dashboards.Blazor" />
 		<PackageReference Include="DevExpress.Persistent.Base" />
