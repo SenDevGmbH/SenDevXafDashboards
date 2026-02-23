@@ -55,7 +55,7 @@
     <PackageReference Include="DevExpress.Data" />
     <PackageReference Include="System.ValueTuple" />
     <PackageReference Include="System.Configuration.ConfigurationManager" />
-    <PackageReference Include="System.Data.SqlClient" />
+    <PackageReference Include="Microsoft.Data.SqlClient" />
     <PackageReference Include="System.ServiceModel.Primitives" /> 
   </ItemGroup>
   <ItemGroup>
