@@ -56,6 +56,8 @@
 		<PackageReference Include="DevExpress.Persistent.BaseImpl.Xpo" />
 		<PackageReference Include="DevExpress.Spreadsheet.Core" />
 		<PackageReference Include="Microsoft.CodeAnalysis" />
+	    <PackageReference Include="Microsoft.CodeAnalysis.CSharp.Scripting" />
+
 		<PackageReference Include="Microsoft.CSharp" />
 	</ItemGroup>
 

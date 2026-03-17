@@ -1,9 +1,8 @@
-<Project Sdk="Microsoft.NET.Sdk.Web">
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
   <PropertyGroup>
     <TargetFramework>net8.0</TargetFramework>
     <Deterministic>false</Deterministic>
-    <AssemblyVersion>1.0.*</AssemblyVersion>
-    <FileVersion>1.0.0.0</FileVersion>
+    <AssemblyVersion>1.0.0</AssemblyVersion>
     <Configurations>Debug;Release;EasyTest</Configurations>
   </PropertyGroup>
   <PropertyGroup>
@@ -31,12 +30,12 @@
     <PackageReference Include="DevExpress.ExpressApp.FileAttachment.Blazor" />
 
     <PackageReference Include="Microsoft.CodeAnalysis.Common" />
-    <PackageReference Include="Swashbuckle.AspNetCore" />
     <PackageReference Include="Hangfire.Core" />
     <PackageReference Include="Hangfire.SqlServer" />
     <PackageReference Include="Hangfire.AspNetCore" />
     <PackageReference Include="System.ServiceModel.Primitives" /> 
     <PackageReference Include="Newtonsoft.Json"/>
+    <PackageReference Include="Microsoft.Data.SqlClient"/>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\SenDev.DashboardsDemo.Module.Blazor\SenDev.DashboardsDemo.Module.Blazor.csproj">

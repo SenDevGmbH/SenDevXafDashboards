@@ -1,7 +1,7 @@
 <Project>
  <PropertyGroup>
     <DevExpressVersion>25.2</DevExpressVersion>
-    <DevExpressPackageVersion>25.2.3.66</DevExpressPackageVersion>
+    <DevExpressPackageVersion>25.2.4.82</DevExpressPackageVersion>
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
     <NoWarn>1701;1702;NU1701;NU1507</NoWarn>
 </PropertyGroup>
