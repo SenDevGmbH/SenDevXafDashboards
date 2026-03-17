@@ -43,6 +43,11 @@ namespace SenDev.DashboardsDemo.Blazor.Server
 			services.AddXaf(Configuration, builder => {
 				builder.UseApplication<DashboardsDemoBlazorApplication>();
 				builder.Modules
+         			.AddConditionalAppearance()
+                    .AddValidation(options =>
+                    {
+                        options.AllowValidationDetailsAccess = false;
+                    })				
 					.AddDashboards(options => {
 						options.DashboardDataType = typeof(DevExpress.Persistent.BaseImpl.DashboardData);
 					})

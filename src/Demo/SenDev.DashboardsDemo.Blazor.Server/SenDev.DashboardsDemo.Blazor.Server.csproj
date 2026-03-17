@@ -4,9 +4,7 @@
     <Deterministic>false</Deterministic>
     <AssemblyVersion>1.0.0</AssemblyVersion>
     <Configurations>Debug;Release;EasyTest</Configurations>
-  </PropertyGroup>
-  <PropertyGroup>
-    <UseRazorSourceGenerator>false</UseRazorSourceGenerator>
+    <ImplicitUsings>enable</ImplicitUsings>
   </PropertyGroup>
   <ItemGroup>
     <None Remove="Model.xafml" />
@@ -26,7 +24,7 @@
     <PackageReference Include="DevExpress.Persistent.Base" />
     <PackageReference Include="DevExpress.Persistent.BaseImpl.Xpo" />
     <PackageReference Include="DevExpress.ExpressApp.WebApi" />
-
+	<PackageReference Include="DevExpress.ExpressApp.Validation.Blazor"/>
     <PackageReference Include="DevExpress.ExpressApp.FileAttachment.Blazor" />
 
     <PackageReference Include="Microsoft.CodeAnalysis.Common" />

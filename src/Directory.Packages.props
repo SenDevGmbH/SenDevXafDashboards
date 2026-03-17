@@ -12,6 +12,7 @@
     <PackageVersion Include="DevExpress.DataAccess" Version="$(DevExpressPackageVersion)" />
     <PackageVersion Include="DevExpress.ExpressApp" Version="$(DevExpressPackageVersion)" />
     <PackageVersion Include="DevExpress.ExpressApp.Blazor" Version="$(DevExpressPackageVersion)" />
+    <PackageVersion Include="DevExpress.ExpressApp.Validation.Blazor" Version="$(DevExpressPackageVersion)" />
     <PackageVersion Include="DevExpress.ExpressApp.CloneObject" Version="$(DevExpressPackageVersion)" />
     <PackageVersion Include="DevExpress.ExpressApp.CodeAnalysis" Version="$(DevExpressPackageVersion)" />
     <PackageVersion Include="DevExpress.ExpressApp.ConditionalAppearance" Version="$(DevExpressPackageVersion)" />

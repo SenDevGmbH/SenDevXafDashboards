@@ -8,6 +8,7 @@ using DevExpress.ExpressApp;
 using DevExpress.ExpressApp.Blazor.DesignTime;
 using DevExpress.ExpressApp.Blazor.Services;
 using DevExpress.ExpressApp.Design;
+using DevExpress.ExpressApp.Utils;
 using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.DependencyInjection;
@@ -27,19 +28,23 @@ namespace SenDev.DashboardsDemo.Blazor.Server {
                 Console.WriteLine("--forceUpdate - Marks that the database must be updated whether its version matches the application's version or not.");
                 Console.WriteLine("--silent - Marks that database update proceeds automatically and does not require any interaction with the user.");
                 Console.WriteLine();
-                Console.WriteLine($"Exit codes: 0 - {DBUpdater.StatusUpdateCompleted}");
-                Console.WriteLine($"            1 - {DBUpdater.StatusUpdateError}");
-                Console.WriteLine($"            2 - {DBUpdater.StatusUpdateNotNeeded}");
+                Console.WriteLine($"Exit codes: 0 - {DBUpdaterStatus.UpdateCompleted}");
+                Console.WriteLine($"            1 - {DBUpdaterStatus.UpdateError}");
+                Console.WriteLine($"            2 - {DBUpdaterStatus.UpdateNotNeeded}");
             }
-            else {
+            else
+            {
                 DevExpress.ExpressApp.FrameworkSettings.DefaultSettingsCompatibilityMode = DevExpress.ExpressApp.FrameworkSettingsCompatibilityMode.Latest;
                 IHost host = CreateHostBuilder(args).Build();
-                if(ContainsArgument(args, "updateDatabase")) {
-                    using(var serviceScope = host.Services.CreateScope()) {
-                        return serviceScope.ServiceProvider.GetRequiredService<IDBUpdater>().Update(ContainsArgument(args, "forceUpdate"), ContainsArgument(args, "silent"));
+                if (ContainsArgument(args, "updateDatabase"))
+                {
+                    using (var serviceScope = host.Services.CreateScope())
+                    {
+                        return serviceScope.ServiceProvider.GetRequiredService<DevExpress.ExpressApp.Utils.IDBUpdater>().Update(ContainsArgument(args, "forceUpdate"), ContainsArgument(args, "silent"));
                     }
                 }
-                else {
+                else
+                {
                     host.Run();
                 }
             }
@@ -47,10 +52,12 @@ namespace SenDev.DashboardsDemo.Blazor.Server {
         }
         public static IHostBuilder CreateHostBuilder(string[] args) =>
             Host.CreateDefaultBuilder(args)
-                .ConfigureWebHostDefaults(webBuilder => {
+                .ConfigureWebHostDefaults(webBuilder =>
+                {
                     webBuilder.UseStartup<Startup>();
                 });
-        XafApplication IDesignTimeApplicationFactory.Create() {
+        XafApplication IDesignTimeApplicationFactory.Create()
+        {
             IHostBuilder hostBuilder = CreateHostBuilder(Array.Empty<string>());
             return DesignTimeApplicationFactoryHelper.Create(hostBuilder);
         }
