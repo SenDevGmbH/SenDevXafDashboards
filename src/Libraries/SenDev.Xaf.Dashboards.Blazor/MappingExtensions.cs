@@ -28,7 +28,7 @@ namespace SenDev.Xaf.Dashboards.Blazor
 		{
 			dashboardEndpoint ??= "api/sendevxafdashboard";
 			dashboardControllerName ??= "SenDevXafDashboard";
-
+			endpoints.MapXafDashboards(dashboardControllerName: dashboardControllerName);
 			Guard.ArgumentNotNullOrEmpty(dashboardEndpoint, nameof(dashboardEndpoint));
 
 
