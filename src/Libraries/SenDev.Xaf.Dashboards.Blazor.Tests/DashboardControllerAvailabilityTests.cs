@@ -57,7 +57,6 @@ internal sealed class DashboardControllerTestFactory : WebApplicationFactory<Pro
                     services.AddDataProtection();
                     services.AddSingleton(new DashboardConfigurator());
                     services.AddSingleton<IXafApplicationProvider, StubXafApplicationProvider>();
-                    services.AddSingleton<IFilterProvider, BypassXafFiltersProvider>();
                     services.AddControllers().AddSenDevDashboardsController();
                 });
                 webBuilder.Configure(app =>
@@ -80,20 +79,7 @@ internal sealed class DashboardControllerTestFactory : WebApplicationFactory<Pro
 /// Runs before DefaultFilterProvider (Order -1000) and strips ServiceFilter/TypeFilter
 /// attributes on the HealthCheck action so XAF services are not required in the test.
 /// </summary>
-internal sealed class BypassXafFiltersProvider : IFilterProvider
-{
-    public int Order => -2000;
 
-    public void OnProvidersExecuting(FilterProviderContext context)
-    {
-        if (context.ActionContext.ActionDescriptor is ControllerActionDescriptor { ActionName: nameof(SenDevXafDashboardController.HealthCheck) })
-        {
-            context.Results.Clear();
-        }
-    }
-
-    public void OnProvidersExecuted(FilterProviderContext context) { }
-}
 
 internal sealed class StubXafApplicationProvider : IXafApplicationProvider
 {

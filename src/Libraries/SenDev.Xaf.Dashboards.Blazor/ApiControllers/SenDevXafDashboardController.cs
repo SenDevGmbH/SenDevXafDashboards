@@ -7,6 +7,7 @@ using SenDev.Xaf.Dashboards.Utils;
 
 namespace SenDev.Xaf.Dashboards.Blazor.ApiControllers
 {
+
 	public class SenDevXafDashboardController  : XafBlazorDashboardController
 	{
 		public SenDevXafDashboardController(DashboardConfigurator configurator, IDataProtectionProvider dataProtectionProvider, 

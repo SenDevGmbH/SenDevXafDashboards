@@ -11,6 +11,7 @@
 		<GenerateAssemblyTitleAttribute>false</GenerateAssemblyTitleAttribute>
 		<Deterministic>false</Deterministic>
     <EnableDefaultEmbeddedResourceItems>false</EnableDefaultEmbeddedResourceItems>
+    <ImplicitUsings>enable</ImplicitUsings>
 	</PropertyGroup>
 
 	<PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -56,6 +57,7 @@
 	  <PackageReference Include="CsvHelper" />
     <PackageReference Include="System.ServiceModel.Http" />
 	  <PackageReference Include="Microsoft.CodeAnalysis.Common" />
+    <PackageReference Include="DevExpress.ExpressApp.Security.Xpo"/>
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
