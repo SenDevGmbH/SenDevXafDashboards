@@ -35,7 +35,7 @@ namespace SenDev.DashboardsDemo.Blazor.Server
 		{
 			services.AddSingleton(typeof(Microsoft.AspNetCore.SignalR.HubConnectionHandler<>), typeof(ProxyHubConnectionHandler<>));
 
-			services.AddRazorPages();
+			services.AddRazorPages();//.AddSenDevDashboardsController();
 			services.AddServerSideBlazor();
 			services.AddHttpContextAccessor();
 			services.AddSingleton<XpoDataStoreProviderAccessor>();
@@ -72,7 +72,6 @@ namespace SenDev.DashboardsDemo.Blazor.Server
 					})
 					.AddNonPersistent();
 			});
-		
 
 		// Add Hangfire services.
 		services.AddHangfire(configuration => configuration
@@ -118,9 +117,10 @@ namespace SenDev.DashboardsDemo.Blazor.Server
 				endpoints.MapFallbackToPage("/_Host");
 				endpoints.MapControllers();
 				endpoints.MapHangfireDashboard();
-				endpoints.MapXafDashboards();
 				endpoints.MapSenDevDashboardsController();
 			});
+
+
 		}
 	}
 }

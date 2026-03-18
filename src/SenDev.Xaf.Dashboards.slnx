@@ -18,6 +18,9 @@
     <Project Path="Libraries/SenDev.Xaf.Dashboards.Blazor/SenDev.Xaf.Dashboards.Blazor.csproj" />
     <Project Path="Libraries/SenDev.Xaf.Dashboards.Win/SenDev.Xaf.Dashboards.Win.csproj" />
     <Project Path="Libraries/SenDev.Xaf.Dashboards/SenDev.Xaf.Dashboards.csproj" />
+    <Project Path="Libraries/SenDev.Xaf.Dashboards.Blazor.Tests/SenDev.Xaf.Dashboards.Blazor.Tests.csproj">
+      <BuildType Solution="EasyTest|*" Project="Debug" />
+    </Project>
     <Project Path="Libraries/UnitTests.Common/UnitTests.Common.csproj">
       <BuildType Solution="EasyTest|*" Project="Debug" />
     </Project>

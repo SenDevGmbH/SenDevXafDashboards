@@ -1,17 +1,16 @@
-﻿using System;
-using DevExpress.DashboardWeb;
+﻿using DevExpress.DashboardWeb;
 using DevExpress.ExpressApp.Blazor.Services;
 using DevExpress.ExpressApp.Dashboards.Blazor;
 using Microsoft.AspNetCore.DataProtection;
+using Microsoft.AspNetCore.Mvc;
 using SenDev.Xaf.Dashboards.Utils;
-using static System.Net.Mime.MediaTypeNames;
 
-namespace SenDev.Xaf.Dashboards.Blazor
+namespace SenDev.Xaf.Dashboards.Blazor.ApiControllers
 {
-	public class SenDevXafDashboardController : XafBlazorDashboardController
+	public class SenDevXafDashboardController  : XafBlazorDashboardController
 	{
 		public SenDevXafDashboardController(DashboardConfigurator configurator, IDataProtectionProvider dataProtectionProvider, 
-			IXafApplicationProvider xafApplicationProvider) : base(configurator, dataProtectionProvider)
+			IXafApplicationProvider xafApplicationProvider)  : base(configurator, dataProtectionProvider)
 		{
 			configurator.ConfigureDataConnection += Configurator_ConfigureDataConnection;
 			XafApplicationProvider = xafApplicationProvider;
@@ -30,6 +29,8 @@ namespace SenDev.Xaf.Dashboards.Blazor
 			var extract = connectionHelper.ConfigureDataConnection(e.ConnectionParameters);
 			extract.PreserveTempFile = true;
 		}
+
+
 
 	}
 }

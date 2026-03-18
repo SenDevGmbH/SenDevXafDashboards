@@ -3,7 +3,11 @@ using System.Linq;
 using DevExpress.DashboardAspNetCore;
 using DevExpress.ExpressApp.Dashboards.Blazor;
 using DevExpress.ExpressApp.Utils;
+using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Routing;
+using Microsoft.Extensions.DependencyInjection;
+using SenDev.Xaf.Dashboards.Blazor.ApiControllers;
 
 namespace SenDev.Xaf.Dashboards.Blazor
 {
@@ -11,20 +15,23 @@ namespace SenDev.Xaf.Dashboards.Blazor
 	{
 		private const string setDashboardEndpointMethodName = "SetDashboardEndpoint";
 
+		public static IMvcBuilder AddSenDevDashboardsController(this IMvcBuilder mvcBuilder)
+		{
+			return mvcBuilder.AddApplicationPart(typeof(SenDevXafDashboardController).Assembly);
+		}
+
 		public static void MapSenDevDashboardsController(
 				this IEndpointRouteBuilder endpoints,
-				string dashboardEndpoint = "api/sendevdashboard",
-				string dashboardControllerName = "SenDevXafDashboard")
+				string dashboardEndpoint = null,
+				string dashboardControllerName = null)
 
 		{
-			Guard.ArgumentNotNullOrEmpty(dashboardEndpoint, nameof(dashboardEndpoint));
-			var urlProviderServiceType = typeof(DashboardsBlazorModule).Assembly.GetTypes().FirstOrDefault(t => t.Name == "IDashboardEndpointUrlProvider");
-			var service = endpoints.ServiceProvider.GetService(urlProviderServiceType);
-			var method = (service?.GetType().GetMethod(setDashboardEndpointMethodName)) 
-				?? throw new InvalidOperationException($"Method {setDashboardEndpointMethodName} not found.");
+			dashboardEndpoint ??= "api/sendevxafdashboard";
+			dashboardControllerName ??= "SenDevXafDashboard";
 
-			method.Invoke(service, new[] { dashboardEndpoint });
-			endpoints.MapDashboardRoute(dashboardEndpoint, dashboardControllerName);
+			Guard.ArgumentNotNullOrEmpty(dashboardEndpoint, nameof(dashboardEndpoint));
+
+
 		}
 	}
 }

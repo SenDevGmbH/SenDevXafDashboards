@@ -1,7 +1,6 @@
 ﻿using System;
 using System.ServiceModel;
 using SenDev.DashboardsDemo.Module;
-using SenDev.DashboardsDemo.Module.Utils;
 using SenDev.Xaf.Dashboards;
 using SenDev.Xaf.Dashboards.BusinessObjects;
 
@@ -14,7 +13,7 @@ namespace SenDev.DashboardsDemo.Win
 			Uri = uri;
 		}
 
-		private IJobSchedulerService CreateChannel() => new ChannelFactory<IJobSchedulerService>(BindingFactory.CreateBasicHttpBinding(new[] { Uri }), new EndpointAddress(Uri)).CreateChannel();
+		private IJobSchedulerService CreateChannel() => throw new NotImplementedException();// new ChannelFactory<IJobSchedulerService>(BindingFactory.CreateBasicHttpBinding(new[] { Uri }), new EndpointAddress(Uri)).CreateChannel();
 
 		private Uri Uri
 		{
