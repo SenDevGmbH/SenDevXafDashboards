@@ -15,8 +15,14 @@ namespace SenDev.Xaf.Dashboards.Blazor
 	{
 		private const string setDashboardEndpointMethodName = "SetDashboardEndpoint";
 
-		public static IMvcBuilder AddSenDevDashboardsController(this IMvcBuilder mvcBuilder)
+		public static IMvcBuilder AddSenDevDashboards(this IMvcBuilder mvcBuilder, Action<SenDevDashboardsOptions> configureOptions = null)
 		{
+			var services = mvcBuilder.Services;
+			if (configureOptions != null)
+				services.Configure(configureOptions);
+			else
+				services.Configure<SenDevDashboardsOptions>(_ => { });
+
 			return mvcBuilder.AddApplicationPart(typeof(SenDevXafDashboardController).Assembly);
 		}
 

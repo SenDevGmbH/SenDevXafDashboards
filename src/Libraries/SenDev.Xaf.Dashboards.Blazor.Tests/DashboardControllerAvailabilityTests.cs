@@ -56,7 +56,9 @@ internal sealed class DashboardControllerTestFactory : WebApplicationFactory<Pro
                     services.AddDataProtection();
                     services.AddSingleton(new DashboardConfigurator());
                     services.AddSingleton<INonSecuredObjectSpaceFactory, StubNonSecuredObjectSpaceFactory>();
-                    services.AddControllers().AddSenDevDashboardsController();
+                    services
+						.AddControllers()
+						.AddSenDevDashboards();
                 });
                 webBuilder.Configure(app =>
                 {
