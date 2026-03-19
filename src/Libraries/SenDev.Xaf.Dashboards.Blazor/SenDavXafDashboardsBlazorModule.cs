@@ -4,7 +4,8 @@ using DevExpress.ExpressApp;
 using DevExpress.ExpressApp.DC;
 using DevExpress.ExpressApp.Updating;
 using DevExpress.ExpressApp.Xpo;
-using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Options;
 
 namespace SenDev.Xaf.Dashboards.Blazor
 {
@@ -16,7 +17,13 @@ namespace SenDev.Xaf.Dashboards.Blazor
         }
         public override void Setup(XafApplication application) {
             base.Setup(application);
-            // Manage various aspects of the application UI and behavior at the module level.
+            var options = application.ServiceProvider?.GetService<IOptions<SenDevDashboardsOptions>>()?.Value;
+            if (options != null)
+            {
+                var dashboardsModule = application.Modules.FindModule<SenDevDashboardsModule>();
+                if (dashboardsModule != null)
+                    dashboardsModule.DashboardExtractType = options.ExtractType;
+            }
         }
         public override void CustomizeTypesInfo(ITypesInfo typesInfo) {
             base.CustomizeTypesInfo(typesInfo);
