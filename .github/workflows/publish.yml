@@ -1,0 +1,14 @@
+name: Publish to NuGet
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [ "master", "main" ]
+
+jobs:
+  build-and-publish:
+    uses: SenDevGmbH/github-workflows/.github/workflows/publish.yml@main
+    with:
+      solution-path: ./src/SenDev.Xaf.Dashboards.slnx  
+      package-name-pattern: SenDev.Xaf.Dashboards
+    secrets: inherit
