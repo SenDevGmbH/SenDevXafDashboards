@@ -4,5 +4,17 @@
     <DevExpressPackageVersion>25.2.4.82</DevExpressPackageVersion>
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
     <NoWarn>1701;1702;NU1701;NU1507</NoWarn>
+    <Company>SenDev GmbH</Company>
+    <Authors>SenDev GmbH</Authors>
+    <Product>SenDev.Xaf.Dashboards</Product>
+    <Copyright>Copyright (c) SenDev GmbH 2026</Copyright>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <RepositoryUrl>https://github.com/SenDevGmbH/SenDevXafDashboards</RepositoryUrl>
+    <PackageProjectUrl>$(RepositoryUrl)</PackageProjectUrl>
+    <Description>
+        An XAF module that adds C# Script Data Source and Data Extract Data Source to DevExpress XAF Dashboards.
+        Script data sources allow specifying dashboard data through C# scripts at runtime.
+        Data extracts store large datasets in an optimized format for fast dashboard loading.
+    </Description>
 </PropertyGroup>
 </Project>
