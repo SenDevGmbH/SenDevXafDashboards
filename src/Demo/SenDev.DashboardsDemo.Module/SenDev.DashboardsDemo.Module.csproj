@@ -12,6 +12,7 @@
 		<Deterministic>false</Deterministic>
     <EnableDefaultEmbeddedResourceItems>false</EnableDefaultEmbeddedResourceItems>
     <ImplicitUsings>enable</ImplicitUsings>
+    <IsPackable>false</IsPackable>
 	</PropertyGroup>
 
 	<PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
