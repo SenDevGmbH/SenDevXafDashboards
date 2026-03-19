@@ -34,24 +34,8 @@ namespace SenDev.DashboardsDemo.Blazor.Server
 			}
 #endif
 		}
-		protected override void CreateDefaultObjectSpaceProvider(CreateCustomObjectSpaceProviderEventArgs args)
-		{
-			IXpoDataStoreProvider dataStoreProvider = GetDataStoreProvider(args.ConnectionString, args.Connection);
-			args.ObjectSpaceProviders.Add(new XPObjectSpaceProvider(ServiceProvider, dataStoreProvider, true));
-			args.ObjectSpaceProviders.Add(new NonPersistentObjectSpaceProvider(ServiceProvider, TypesInfo, null));
-		}
-		private IXpoDataStoreProvider GetDataStoreProvider(string connectionString, System.Data.IDbConnection connection)
-		{
-			XpoDataStoreProviderAccessor accessor = ServiceProvider.GetRequiredService<XpoDataStoreProviderAccessor>();
-			lock (accessor)
-			{
-				if (accessor.DataStoreProvider == null)
-				{
-					accessor.DataStoreProvider = XPObjectSpaceProvider.GetDataStoreProvider(connectionString, connection, true);
-				}
-			}
-			return accessor.DataStoreProvider;
-		}
+		
+		
 		private void DashboardsDemoBlazorApplication_DatabaseVersionMismatch(object sender, DatabaseVersionMismatchEventArgs e)
 		{
 #if EASYTEST
