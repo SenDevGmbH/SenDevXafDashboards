@@ -1,8 +1,7 @@
 ﻿using System.Net;
 using DevExpress.DashboardAspNetCore;
 using DevExpress.DashboardWeb;
-using DevExpress.ExpressApp.Blazor;
-using DevExpress.ExpressApp.Blazor.Services;
+using DevExpress.ExpressApp;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -56,7 +55,7 @@ internal sealed class DashboardControllerTestFactory : WebApplicationFactory<Pro
                 {
                     services.AddDataProtection();
                     services.AddSingleton(new DashboardConfigurator());
-                    services.AddSingleton<IXafApplicationProvider, StubXafApplicationProvider>();
+                    services.AddSingleton<INonSecuredObjectSpaceFactory, StubNonSecuredObjectSpaceFactory>();
                     services.AddControllers().AddSenDevDashboardsController();
                 });
                 webBuilder.Configure(app =>
@@ -81,8 +80,8 @@ internal sealed class DashboardControllerTestFactory : WebApplicationFactory<Pro
 /// </summary>
 
 
-internal sealed class StubXafApplicationProvider : IXafApplicationProvider
+internal sealed class StubNonSecuredObjectSpaceFactory : INonSecuredObjectSpaceFactory
 {
-    public BlazorApplication GetApplication() =>
-        throw new NotSupportedException("XAF application is not available in this test context.");
+    public IObjectSpace CreateNonSecuredObjectSpace(Type objectType) =>
+        throw new NotSupportedException("Object space is not available in this test context.");
 }

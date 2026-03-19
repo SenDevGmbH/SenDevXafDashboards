@@ -8,10 +8,18 @@ namespace SenDev.Xaf.Dashboards.Utils
 {
 	public class DashboardConnectionHelper
 	{
+		private readonly Type extractType;
+
 		public DashboardConnectionHelper(XafApplication application, IObjectSpace objectSpace)
 		{
 			Application = application;
 			ObjectSpace = objectSpace;
+		}
+
+		public DashboardConnectionHelper(IObjectSpace objectSpace, Type extractType)
+		{
+			ObjectSpace = objectSpace;
+			this.extractType = extractType;
 		}
 
 		public XafApplication Application
@@ -40,7 +48,10 @@ namespace SenDev.Xaf.Dashboards.Utils
 
 		protected virtual IDashboardDataExtract GetDataExtract(Guid id)
 		{
-			return (IDashboardDataExtract)ObjectSpace.GetObjectByKey(SenDevDashboardsModule.GetDashboardDataExtractType(Application), id);
+			var type = Application != null
+				? SenDevDashboardsModule.GetDashboardDataExtractType(Application)
+				: extractType;
+			return (IDashboardDataExtract)ObjectSpace.GetObjectByKey(type, id);
 		}
 
 
