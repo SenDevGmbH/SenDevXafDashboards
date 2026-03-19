@@ -11,8 +11,15 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.NET.Test.Sdk" />
+    <PackageReference Include="DevExpress.ExpressApp.Blazor" />
+    <PackageReference Include="DevExpress.ExpressApp.Dashboards.Blazor" />
+    <PackageReference Include="DevExpress.ExpressApp.Xpo" />
+    <PackageReference Include="DevExpress.ExpressApp.Security" />
+    <PackageReference Include="DevExpress.ExpressApp.Security.Xpo" />
+    <PackageReference Include="DevExpress.Persistent.BaseImpl.Xpo" />
     <PackageReference Include="Microsoft.AspNetCore.Mvc.Testing" />
+    <PackageReference Include="Microsoft.Data.Sqlite" />
+    <PackageReference Include="Microsoft.NET.Test.Sdk" />
     <PackageReference Include="xunit" />
     <PackageReference Include="xunit.runner.visualstudio" />
     <PackageReference Include="coverlet.collector" />
