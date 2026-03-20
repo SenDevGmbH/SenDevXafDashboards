@@ -12,12 +12,14 @@
     <Project Path="Demo/SenDev.DashboardsDemo.Win/SenDev.DashboardsDemo.Win.csproj" />
   </Folder>
   <Folder Name="/Libraries/">
-    <Project Path="Libraries/SenDev.Xaf.Dashboard.CSScript/SenDev.Xaf.Dashboard.CSScriptCompiler.csproj">
+    <Project Path="Libraries/SenDev.Xaf.Dashboard.CSScript/SenDev.Xaf.Dashboards.CSScriptCompiler.csproj">
       <BuildType Solution="EasyTest|*" Project="Debug" />
     </Project>
     <Project Path="Libraries/SenDev.Xaf.Dashboards.Blazor/SenDev.Xaf.Dashboards.Blazor.csproj" />
     <Project Path="Libraries/SenDev.Xaf.Dashboards.Win/SenDev.Xaf.Dashboards.Win.csproj" />
     <Project Path="Libraries/SenDev.Xaf.Dashboards/SenDev.Xaf.Dashboards.csproj" />
+  </Folder>
+  <Folder Name="/Tests/">
     <Project Path="Libraries/SenDev.Xaf.Dashboards.Blazor.Tests/SenDev.Xaf.Dashboards.Blazor.Tests.csproj">
       <BuildType Solution="EasyTest|*" Project="Debug" />
     </Project>

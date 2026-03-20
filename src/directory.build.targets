@@ -2,6 +2,7 @@
    <PropertyGroup>
       <PackageOutputPath>$(OutDir)</PackageOutputPath>
       <Authors>SenDev GmbH</Authors>
+      <PackageIdSuffix Condition="'$(IsSelfCompiled)' == 'true'">.SelfCompiled</PackageIdSuffix>
       <PackageId>$(MSBuildProjectName)$(PackageIdSuffix)</PackageId>
    </PropertyGroup>
    <Target Name="NuGet" DependsOnTargets="Build" />
