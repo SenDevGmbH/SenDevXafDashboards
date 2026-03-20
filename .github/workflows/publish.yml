@@ -10,5 +10,5 @@ jobs:
     uses: SenDevGmbH/github-workflows/.github/workflows/publish.yml@main
     with:
       solution-path: ./src/SenDev.Xaf.Dashboards.slnx  
-      package-name-pattern: SenDev.Xaf.Dashboards
+      package-name-pattern: SenDev.Xaf.Dashboards*
     secrets: inherit
