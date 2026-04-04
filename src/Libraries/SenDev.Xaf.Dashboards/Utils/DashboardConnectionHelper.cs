@@ -1,8 +1,8 @@
-﻿using System;
-using DevExpress.DashboardCommon;
+using System;
 using DevExpress.DataAccess.ConnectionParameters;
 using DevExpress.ExpressApp;
 using SenDev.Xaf.Dashboards.BusinessObjects;
+using SenDev.Xaf.Dashboards.DataExtract;
 
 namespace SenDev.Xaf.Dashboards.Utils
 {
@@ -33,16 +33,17 @@ namespace SenDev.Xaf.Dashboards.Utils
 
 		public IDashboardDataExtract ConfigureDataConnection(DataConnectionParametersBase dataConnectionParameters)
 		{
-			if (dataConnectionParameters is ExtractDataSourceConnectionParameters extractParameters
-				&& Guid.TryParse(extractParameters.FileName, out var id))
+			foreach (var backend in SenDevDashboardsModule.BackendRegistry.GetAllBackends())
 			{
-				IDashboardDataExtract extract = GetDataExtract(id);
-				if (extract != null)
-					extract.ConfigureConnectionParameters(Application, extractParameters);
-
-				return extract;
+				var id = backend.TryGetExtractId(dataConnectionParameters);
+				if (id.HasValue)
+				{
+					IDashboardDataExtract extract = GetDataExtract(id.Value);
+					if (extract != null)
+						backend.ConfigureDataConnection(dataConnectionParameters, extract, Application);
+					return extract;
+				}
 			}
-
 			return null;
 		}
 
@@ -53,8 +54,5 @@ namespace SenDev.Xaf.Dashboards.Utils
 				: extractType;
 			return (IDashboardDataExtract)ObjectSpace.GetObjectByKey(type, id);
 		}
-
-
-
 	}
 }

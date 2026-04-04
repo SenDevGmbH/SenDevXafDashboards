@@ -1,9 +1,6 @@
 ﻿using System;
-using System.Collections;
-using System.IO;
 using System.Linq;
 using System.Threading;
-using DevExpress.DashboardCommon;
 using DevExpress.ExpressApp;
 using SenDev.Xaf.Dashboards.BusinessObjects;
 using SenDev.Xaf.Dashboards.Utils;
@@ -85,7 +82,6 @@ namespace SenDev.Xaf.Dashboards.Scripting
 			if (string.IsNullOrWhiteSpace(extract.Script))
 				return;
 
-
 			ScriptDataSource dataSource = CreateScriptDataSource(extract, Application, ServiceProvider, cancellationToken);
 			object data = dataSource.GetDataForDataExtract();
 			if (data == null)
@@ -94,35 +90,11 @@ namespace SenDev.Xaf.Dashboards.Scripting
 				extract.RowCount = 0;
 				return;
 			}
-			using (DashboardObjectDataSource ods = new DashboardObjectDataSource())
-			{
 
-				if (data is byte[] buffer)
-				{
-					SetDataExtractContent(extract, buffer);
-					return;
-				}
-				ods.DataSource = data;
-				string fileName = Path.GetTempFileName();
-				try
-				{
-					using (DashboardExtractDataSource extractDataSource = new DashboardExtractDataSource())
-					{
-						extractDataSource.ExtractSourceOptions.DataSource = ods;
-						extractDataSource.FileName = fileName;
-						extractDataSource.UpdateExtractFile(cancellationToken);
-						SetDataExtractContent(extract, File.ReadAllBytes(fileName));
-						if (data is ICollection collection)
-							extract.RowCount = collection.Count;
-					}
-				}
-				finally
-				{
-					if (File.Exists(fileName))
-						File.Delete(fileName);
-				}
-
-			}
+			var backend = SenDevDashboardsModule.BackendRegistry.GetBackend(extract.BackendType);
+			byte[] extractData = backend.CreateExtract(data, cancellationToken);
+			SetDataExtractContent(extract, extractData);
+			extract.RowCount = backend.GetRowCount(data) ?? 0;
 		}
 
 		protected virtual ScriptDataSource CreateScriptDataSource(IDashboardDataExtract extract, XafApplication application, IServiceProvider serviceProvider, CancellationToken cancellationToken) =>

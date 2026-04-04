@@ -1,5 +1,4 @@
-﻿using System;
-using DevExpress.DashboardCommon;
+using System;
 using DevExpress.ExpressApp;
 using DevExpress.ExpressApp.DC;
 
@@ -18,16 +17,20 @@ namespace SenDev.Xaf.Dashboards.BusinessObjects
 		string Script { get; set; }
 		DateTime StartTime { get; set; }
 
-		bool PreserveTempFile { get;set; }
+		bool PreserveTempFile { get; set; }
 
 		int RowCount { get; set; }
 
-		string LastError { get; set;}
+		string LastError { get; set; }
 		DateTime LastExtractDataUpdateDate { get; set; }
 
-		void ConfigureConnectionParameters(XafApplication application, ExtractDataSourceConnectionParameters parameters);
+		/// <summary>
+		/// Identifies which <see cref="SenDev.Xaf.Dashboards.DataExtract.IDataExtractBackend"/> manages this extract.
+		/// Null or empty means the registry default is used.
+		/// </summary>
+		string BackendType { get; set; }
+
 		string EnsureTempFileCreated(XafApplication application);
 		string GetKeyAsString();
-
 	}
 }

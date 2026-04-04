@@ -8,6 +8,7 @@ using DevExpress.ExpressApp.Xpo;
 using DevExpress.Persistent.BaseImpl;
 using DevExpress.XtraReports.Diagnostics;
 using SenDev.Xaf.Dashboards.BusinessObjects;
+using SenDev.Xaf.Dashboards.DataExtract;
 using SenDev.Xaf.Dashboards.Scripting;
 
 namespace SenDev.Xaf.Dashboards
@@ -15,6 +16,12 @@ namespace SenDev.Xaf.Dashboards
 	// For more typical usage scenarios, be sure to check out https://documentation.devexpress.com/eXpressAppFramework/clsDevExpressExpressAppModuleBasetopic.aspx.
 	public sealed partial class SenDevDashboardsModule : ModuleBase
 	{
+		/// <summary>
+		/// Global registry of data extract backends. Register custom backends here before application startup.
+		/// The DevExpress backend is registered as the default during module setup.
+		/// </summary>
+		public static DataExtractBackendRegistry BackendRegistry { get; } = new DataExtractBackendRegistry();
+
 		public SenDevDashboardsModule()
 		{
 			InitializeComponent();
@@ -65,6 +72,7 @@ namespace SenDev.Xaf.Dashboards
 		{
 			base.Setup(application);
 			DashboardsModule.DataProvider = new ScriptingDashboardDataProvider();
+			BackendRegistry.Register(new DevExpressDataExtractBackend(), isDefault: true);
 		}
 
 		public override void CustomizeTypesInfo(ITypesInfo typesInfo)
