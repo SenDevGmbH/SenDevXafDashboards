@@ -25,10 +25,10 @@ namespace SenDev.Xaf.Dashboards.BusinessObjects
 		DateTime LastExtractDataUpdateDate { get; set; }
 
 		/// <summary>
-		/// Identifies which <see cref="SenDev.Xaf.Dashboards.DataExtract.IDataExtractBackend"/> manages this extract.
-		/// Null or empty means the registry default is used.
+		/// The backend type that manages this extract's creation and connection.
+		/// Selected via a UI lookup. Seeded by the database updater.
 		/// </summary>
-		string BackendType { get; set; }
+		BackendTypeBase BackendType { get; set; }
 
 		string EnsureTempFileCreated(XafApplication application);
 		string GetKeyAsString();

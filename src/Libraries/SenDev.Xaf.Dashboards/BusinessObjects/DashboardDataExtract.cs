@@ -175,13 +175,13 @@ namespace SenDev.Xaf.Dashboards.BusinessObjects
 
 
 		
-		private string backendType;
+		private BackendTypeBase backendType;
 
-		[VisibleInDetailView(false)]
-		[VisibleInListView(false)]
+		[VisibleInDetailView(true)]
+		[VisibleInListView(true)]
 		[VisibleInLookupListView(false)]
 		[ModelDefault(nameof(IModelMember.Caption), "Backend Type")]
-		public string BackendType
+		public BackendTypeBase BackendType
 		{
 			get => backendType;
 			set => SetPropertyValue(nameof(BackendType), ref backendType, value);

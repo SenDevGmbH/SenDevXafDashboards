@@ -1,8 +1,9 @@
 using System;
+using System.Collections.Generic;
+using System.Linq;
 using DevExpress.DataAccess.ConnectionParameters;
 using DevExpress.ExpressApp;
 using SenDev.Xaf.Dashboards.BusinessObjects;
-using SenDev.Xaf.Dashboards.DataExtract;
 
 namespace SenDev.Xaf.Dashboards.Utils
 {
@@ -33,8 +34,9 @@ namespace SenDev.Xaf.Dashboards.Utils
 
 		public IDashboardDataExtract ConfigureDataConnection(DataConnectionParametersBase dataConnectionParameters)
 		{
-			foreach (var backend in SenDevDashboardsModule.BackendRegistry.GetAllBackends())
+			foreach (var backendType in GetAllBackendTypes())
 			{
+				var backend = backendType.CreateBackend();
 				var id = backend.TryGetExtractId(dataConnectionParameters);
 				if (id.HasValue)
 				{
@@ -46,6 +48,9 @@ namespace SenDev.Xaf.Dashboards.Utils
 			}
 			return null;
 		}
+
+		protected virtual IEnumerable<BackendTypeBase> GetAllBackendTypes() =>
+			ObjectSpace.GetObjects(typeof(BackendTypeBase)).Cast<BackendTypeBase>();
 
 		protected virtual IDashboardDataExtract GetDataExtract(Guid id)
 		{

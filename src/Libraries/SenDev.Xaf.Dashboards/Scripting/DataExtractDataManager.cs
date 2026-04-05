@@ -3,6 +3,7 @@ using System.Linq;
 using System.Threading;
 using DevExpress.ExpressApp;
 using SenDev.Xaf.Dashboards.BusinessObjects;
+using SenDev.Xaf.Dashboards.DataExtract;
 using SenDev.Xaf.Dashboards.Utils;
 
 namespace SenDev.Xaf.Dashboards.Scripting
@@ -91,7 +92,7 @@ namespace SenDev.Xaf.Dashboards.Scripting
 				return;
 			}
 
-			var backend = SenDevDashboardsModule.BackendRegistry.GetBackend(extract.BackendType);
+			var backend = (extract.BackendType?.CreateBackend()) ?? new DevExpressDataExtractBackend();
 			byte[] extractData = backend.CreateExtract(data, cancellationToken);
 			SetDataExtractContent(extract, extractData);
 			extract.RowCount = backend.GetRowCount(data) ?? 0;

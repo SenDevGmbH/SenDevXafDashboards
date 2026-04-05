@@ -71,7 +71,7 @@ namespace SenDev.Xaf.Dashboards.Win.Controllers
 		private void PatchExtracts(List<IDashboardDataExtract> extracts, Dashboard dashboard, bool designMode)
 		{
 			foreach (var extract in extracts)
-				SenDevDashboardsModule.BackendRegistry.GetBackend(extract.BackendType)?.PatchDashboard(dashboard, extract, designMode);
+				extract.BackendType?.CreateBackend()?.PatchDashboard(dashboard, extract, designMode);
 			extracts.Clear();
 		}
 

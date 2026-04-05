@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using DevExpress.ExpressApp;
 using DevExpress.ExpressApp.Dashboards;
@@ -8,7 +8,6 @@ using DevExpress.ExpressApp.Xpo;
 using DevExpress.Persistent.BaseImpl;
 using DevExpress.XtraReports.Diagnostics;
 using SenDev.Xaf.Dashboards.BusinessObjects;
-using SenDev.Xaf.Dashboards.DataExtract;
 using SenDev.Xaf.Dashboards.Scripting;
 
 namespace SenDev.Xaf.Dashboards
@@ -16,12 +15,6 @@ namespace SenDev.Xaf.Dashboards
 	// For more typical usage scenarios, be sure to check out https://documentation.devexpress.com/eXpressAppFramework/clsDevExpressExpressAppModuleBasetopic.aspx.
 	public sealed partial class SenDevDashboardsModule : ModuleBase
 	{
-		/// <summary>
-		/// Global registry of data extract backends. Register custom backends here before application startup.
-		/// The DevExpress backend is registered as the default during module setup.
-		/// </summary>
-		public static DataExtractBackendRegistry BackendRegistry { get; } = new DataExtractBackendRegistry();
-
 		public SenDevDashboardsModule()
 		{
 			InitializeComponent();
@@ -50,7 +43,7 @@ namespace SenDev.Xaf.Dashboards
 		}
 
 		/// <summary>
-		/// Sets or returns type 
+		/// Sets or returns type
 		/// </summary>
 		public Type DashboardExtractType { get; set; } = typeof(DashboardDataExtract);
 		public Type ScriptCompilerType { get; set; } = typeof(ScriptCompiler);
@@ -68,11 +61,11 @@ namespace SenDev.Xaf.Dashboards
 			ModuleUpdater updater = new DatabaseUpdate.Updater(objectSpace, versionFromDB);
 			return new ModuleUpdater[] { updater };
 		}
+
 		public override void Setup(XafApplication application)
 		{
 			base.Setup(application);
 			DashboardsModule.DataProvider = new ScriptingDashboardDataProvider();
-			BackendRegistry.Register(new DevExpressDataExtractBackend(), isDefault: true);
 		}
 
 		public override void CustomizeTypesInfo(ITypesInfo typesInfo)
