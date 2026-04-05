@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using DevExpress.ExpressApp;
 using DevExpress.ExpressApp.Dashboards;
@@ -43,7 +43,7 @@ namespace SenDev.Xaf.Dashboards
 		}
 
 		/// <summary>
-		/// Sets or returns type 
+		/// Sets or returns type
 		/// </summary>
 		public Type DashboardExtractType { get; set; } = typeof(DashboardDataExtract);
 		public Type ScriptCompilerType { get; set; } = typeof(ScriptCompiler);
@@ -61,6 +61,7 @@ namespace SenDev.Xaf.Dashboards
 			ModuleUpdater updater = new DatabaseUpdate.Updater(objectSpace, versionFromDB);
 			return new ModuleUpdater[] { updater };
 		}
+
 		public override void Setup(XafApplication application)
 		{
 			base.Setup(application);

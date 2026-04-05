@@ -1,6 +1,5 @@
 ﻿using System;
 using System.IO;
-using DevExpress.DashboardCommon;
 using DevExpress.ExpressApp;
 using DevExpress.ExpressApp.Model;
 using DevExpress.Persistent.Base;
@@ -176,6 +175,19 @@ namespace SenDev.Xaf.Dashboards.BusinessObjects
 
 
 		
+		private BackendTypeBase backendType;
+
+		[VisibleInDetailView(true)]
+		[VisibleInListView(true)]
+		[VisibleInLookupListView(false)]
+		[ModelDefault(nameof(IModelMember.Caption), "Backend Type")]
+		public BackendTypeBase BackendType
+		{
+			get => backendType;
+			set => SetPropertyValue(nameof(BackendType), ref backendType, value);
+		}
+
+
 		[NonPersistent]
 		public bool PreserveTempFile
 		{
@@ -211,12 +223,6 @@ namespace SenDev.Xaf.Dashboards.BusinessObjects
 
 
 		
-		public void ConfigureConnectionParameters(XafApplication application, ExtractDataSourceConnectionParameters parameters)
-		{
-			parameters.FileName = EnsureTempFileCreated(application);
-		}
-
-
 		protected virtual byte[] GetExtractData(XafApplication application) => ExtractData;
 		public string EnsureTempFileCreated(XafApplication application)
 		{
