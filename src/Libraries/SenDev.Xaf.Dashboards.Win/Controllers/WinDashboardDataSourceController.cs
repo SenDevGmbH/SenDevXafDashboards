@@ -1,8 +1,6 @@
-using System.Collections.Generic;
 using DevExpress.DashboardCommon;
 using DevExpress.DashboardWin;
 using DevExpress.ExpressApp.Dashboards.Win;
-using SenDev.Xaf.Dashboards.BusinessObjects;
 using SenDev.Xaf.Dashboards.Controllers;
 using SenDev.Xaf.Dashboards.Utils;
 
@@ -10,11 +8,6 @@ namespace SenDev.Xaf.Dashboards.Win.Controllers
 {
 	public class WinDashboardDataSourceController : WinCustomizeDashboardViewerControllerBase
 	{
-		// Extracts configured during ConfigureDataConnection are collected here and
-		// consumed by the corresponding DashboardLoaded event to call PatchDashboard.
-		private readonly List<IDashboardDataExtract> viewerExtracts = new List<IDashboardDataExtract>();
-		private readonly List<IDashboardDataExtract> designerExtracts = new List<IDashboardDataExtract>();
-
 		protected override void OnActivated()
 		{
 			base.OnActivated();
@@ -35,16 +28,11 @@ namespace SenDev.Xaf.Dashboards.Win.Controllers
 		private void DashboardDesigner_ConfigureDataConnection(object sender, DashboardConfigureDataConnectionEventArgs e)
 		{
 			var extract = CreateConnectionHelper().ConfigureDataConnection(e.ConnectionParameters);
-			if (extract != null)
-				designerExtracts.Add(extract);
+			extract?.BackendType?.CreateBackend()?.PatchDashboard(((DashboardDesigner)sender).Dashboard, extract, designMode: true);
 		}
 
-		private void DashboardDesigner_DashboardLoaded(object sender, DashboardLoadedEventArgs e)
-		{
-			var dashboard = ((DashboardDesigner)sender).Dashboard;
-			PatchExtracts(designerExtracts, dashboard, designMode: true);
-			CustomizeDashboard(dashboard, designMode: true);
-		}
+		private void DashboardDesigner_DashboardLoaded(object sender, DashboardLoadedEventArgs e) =>
+			CustomizeDashboard(((DashboardDesigner)sender).Dashboard, designMode: true);
 
 		protected override void CustomizeDashboardViewer(DashboardViewer dashboardViewer)
 		{
@@ -57,23 +45,11 @@ namespace SenDev.Xaf.Dashboards.Win.Controllers
 		private void DashboardViewer_ConfigureDataConnection(object sender, DashboardConfigureDataConnectionEventArgs e)
 		{
 			var extract = CreateConnectionHelper().ConfigureDataConnection(e.ConnectionParameters);
-			if (extract != null)
-				viewerExtracts.Add(extract);
+			extract?.BackendType?.CreateBackend()?.PatchDashboard(((DashboardViewer)sender).Dashboard, extract, designMode: false);
 		}
 
-		private void DashboardViewer_DashboardLoaded(object sender, DashboardLoadedEventArgs e)
-		{
-			var dashboard = ((DashboardViewer)sender).Dashboard;
-			PatchExtracts(viewerExtracts, dashboard, designMode: false);
-			CustomizeDashboard(dashboard, designMode: false);
-		}
-
-		private void PatchExtracts(List<IDashboardDataExtract> extracts, Dashboard dashboard, bool designMode)
-		{
-			foreach (var extract in extracts)
-				extract.BackendType?.CreateBackend()?.PatchDashboard(dashboard, extract, designMode);
-			extracts.Clear();
-		}
+		private void DashboardViewer_DashboardLoaded(object sender, DashboardLoadedEventArgs e) =>
+			CustomizeDashboard(((DashboardViewer)sender).Dashboard, designMode: false);
 
 		private void CustomizeDashboard(Dashboard dashboard, bool designMode)
 		{
