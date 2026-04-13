@@ -1,5 +1,6 @@
-﻿using System;
-using DevExpress.DashboardCommon;
+using System;
+using System.Collections.Generic;
+using System.Linq;
 using DevExpress.DataAccess.ConnectionParameters;
 using DevExpress.ExpressApp;
 using SenDev.Xaf.Dashboards.BusinessObjects;
@@ -33,18 +34,23 @@ namespace SenDev.Xaf.Dashboards.Utils
 
 		public IDashboardDataExtract ConfigureDataConnection(DataConnectionParametersBase dataConnectionParameters)
 		{
-			if (dataConnectionParameters is ExtractDataSourceConnectionParameters extractParameters
-				&& Guid.TryParse(extractParameters.FileName, out var id))
+			foreach (var backendType in GetAllBackendTypes())
 			{
-				IDashboardDataExtract extract = GetDataExtract(id);
-				if (extract != null)
-					extract.ConfigureConnectionParameters(Application, extractParameters);
-
-				return extract;
+				var backend = backendType.CreateBackend();
+				var id = backend.TryGetExtractId(dataConnectionParameters);
+				if (id.HasValue)
+				{
+					IDashboardDataExtract extract = GetDataExtract(id.Value);
+					if (extract != null)
+						backend.ConfigureDataConnection(dataConnectionParameters, extract, Application);
+					return extract;
+				}
 			}
-
 			return null;
 		}
+
+		protected virtual IEnumerable<BackendTypeBase> GetAllBackendTypes() =>
+			ObjectSpace.GetObjects(typeof(BackendTypeBase)).Cast<BackendTypeBase>();
 
 		protected virtual IDashboardDataExtract GetDataExtract(Guid id)
 		{
@@ -53,8 +59,5 @@ namespace SenDev.Xaf.Dashboards.Utils
 				: extractType;
 			return (IDashboardDataExtract)ObjectSpace.GetObjectByKey(type, id);
 		}
-
-
-
 	}
 }
