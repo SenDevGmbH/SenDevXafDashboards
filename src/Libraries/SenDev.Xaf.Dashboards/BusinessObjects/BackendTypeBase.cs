@@ -1,4 +1,4 @@
-using DevExpress.ExpressApp.DC;
+﻿using DevExpress.ExpressApp.DC;
 using DevExpress.ExpressApp.Model;
 using DevExpress.Persistent.Base;
 using DevExpress.Persistent.BaseImpl;
@@ -12,7 +12,6 @@ namespace SenDev.Xaf.Dashboards.BusinessObjects
 	/// Create a subclass and override <see cref="CreateBackend"/> to implement a custom backend.
 	/// Instances are seeded in the database updater and selected via a UI lookup.
 	/// </summary>
-	[AbstractClass]
 	[ImageName("BO_Unknown")]
 	[NavigationItem("Reports")]
 	[ModelDefault(nameof(IModelClass.Caption), "Data Extract Backend Type")]

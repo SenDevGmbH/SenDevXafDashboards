@@ -58,7 +58,7 @@
 	  <PackageReference Include="CsvHelper" />
     <PackageReference Include="System.ServiceModel.Http" />
 	  <PackageReference Include="Microsoft.CodeAnalysis.Common" />
-    <PackageReference Include="DevExpress.ExpressApp.Security.Xpo"/>
+    <PackageReference Include="DevExpress.ExpressApp.Security.Xpo" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
