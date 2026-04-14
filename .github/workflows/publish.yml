@@ -11,4 +11,5 @@ jobs:
     with:
       solution-path: ./src/SenDev.Xaf.Dashboards.slnx  
       package-name-pattern: SenDev.Xaf.Dashboards*
+      test-project-path: ./src/Libraries/UnitTests.NetCore/UnitTests.NetCore.csproj
     secrets: inherit
