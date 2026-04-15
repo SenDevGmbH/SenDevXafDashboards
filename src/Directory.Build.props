@@ -16,5 +16,6 @@
         Script data sources allow specifying dashboard data through C# scripts at runtime.
         Data extracts store large datasets in an optimized format for fast dashboard loading.
     </Description>
+    <NugetAudit>false</NugetAudit>
 </PropertyGroup>
 </Project>
