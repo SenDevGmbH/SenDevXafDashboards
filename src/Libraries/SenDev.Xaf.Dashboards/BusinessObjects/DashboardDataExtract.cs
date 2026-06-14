@@ -1,5 +1,8 @@
 ﻿using System;
 using System.IO;
+using System.Security.Cryptography;
+using System.Text;
+using System.Text.RegularExpressions;
 using DevExpress.DashboardCommon;
 using DevExpress.ExpressApp;
 using DevExpress.ExpressApp.Model;
@@ -17,41 +20,24 @@ namespace SenDev.Xaf.Dashboards.BusinessObjects
 	[ModelDefault(nameof(IModelClass.Caption), "Dashboard Data Extract")]
 	public class DashboardDataExtract : BaseObject, IDashboardDataExtract
 	{
+		private const string RootFolderName = "XafDashboards";
+		private const string ExtractDataFileName = "ExtractData.dat";
+
+		// The hash is a lowercase SHA-256 hex string. The temp folder named after it is only
+		// ever deleted when it exactly matches this format, to avoid accidentally removing
+		// unrelated directories.
+		private static readonly Regex hashFolderRegex = new Regex("^[0-9a-f]{64}$", RegexOptions.Compiled);
+
 		private string tempFileName;
 
 		public DashboardDataExtract(Session session) : base(session)
 		{
-			Session.Disposed += Session_Disposed;
 		}
 
 		public override void AfterConstruction()
 		{
 			base.AfterConstruction();
 			CronExpression = "0 1 * * *";
-		}
-
-		private void Session_Disposed(object sender, EventArgs e)
-		{
-			if (!PreserveTempFile)
-				DeleteTempFileSafe();
-		}
-
-
-
-		private void DeleteTempFileSafe()
-		{
-			if (!string.IsNullOrWhiteSpace(tempFileName) && File.Exists(tempFileName))
-			{
-				try
-				{
-					File.Delete(tempFileName);
-					tempFileName = null;
-				}
-				catch (IOException ex)
-				{
-					Tracing.Tracer.LogError(ex);
-				}
-			}
 		}
 
 
@@ -209,6 +195,19 @@ namespace SenDev.Xaf.Dashboards.BusinessObjects
             set => SetPropertyValue(nameof(LastExtractDataUpdateDate), ref lastExtractDataUpdateDate, value);
         }
 
+		private string hash;
+		[VisibleInDetailView(false)]
+		[VisibleInListView(false)]
+		[VisibleInLookupListView(false)]
+		[Size(64)]
+		[ModelDefault(nameof(IModelMember.Caption), "Hash")]
+		[ModelDefault(nameof(IModelMember.AllowEdit), "False")]
+		public string Hash
+		{
+			get => hash;
+			set => SetPropertyValue(nameof(Hash), ref hash, value);
+		}
+
 
 		
 		public void ConfigureConnectionParameters(XafApplication application, ExtractDataSourceConnectionParameters parameters)
@@ -218,17 +217,73 @@ namespace SenDev.Xaf.Dashboards.BusinessObjects
 
 
 		protected virtual byte[] GetExtractData(XafApplication application) => ExtractData;
+
+
 		public string EnsureTempFileCreated(XafApplication application)
 		{
 			byte[] data = GetExtractData(application);
+			if (data == null)
+				return null;
 
-			if (string.IsNullOrWhiteSpace(tempFileName) && data != null)
+			string hashValue = Hash;
+			if (string.IsNullOrEmpty(hashValue))
+				hashValue = ComputeHash(data);
+
+			string extractFolder = Path.Combine(Path.GetTempPath(), RootFolderName, Oid.ToString());
+			string hashFolder = Path.Combine(extractFolder, hashValue);
+			string filePath = Path.Combine(hashFolder, ExtractDataFileName);
+
+			if (!File.Exists(filePath))
 			{
-				tempFileName = Path.GetTempFileName();
-				File.WriteAllBytes(tempFileName, data);
+				DeleteOldExtractFiles(extractFolder, hashValue);
+				Directory.CreateDirectory(hashFolder);
+				File.WriteAllBytes(filePath, data);
 			}
 
+			tempFileName = filePath;
 			return tempFileName;
+		}
+
+		private static void DeleteOldExtractFiles(string extractFolder, string currentHash)
+		{
+			if (!Directory.Exists(extractFolder))
+				return;
+
+			foreach (string directory in Directory.GetDirectories(extractFolder))
+			{
+				string folderName = Path.GetFileName(directory);
+				if (string.Equals(folderName, currentHash, StringComparison.OrdinalIgnoreCase))
+					continue;
+
+				// Only delete folders whose name exactly matches the hash format. This guards
+				// against accidentally deleting directories that were not created by us.
+				if (!hashFolderRegex.IsMatch(folderName))
+					continue;
+
+				try
+				{
+					Directory.Delete(directory, true);
+				}
+				catch (IOException ex)
+				{
+					Tracing.Tracer.LogError(ex);
+				}
+			}
+		}
+
+		public static string ComputeHash(byte[] data)
+		{
+			if (data == null)
+				return null;
+
+			using (var sha = SHA256.Create())
+			{
+				byte[] hashBytes = sha.ComputeHash(data);
+				var builder = new StringBuilder(hashBytes.Length * 2);
+				foreach (byte b in hashBytes)
+					builder.Append(b.ToString("x2"));
+				return builder.ToString();
+			}
 		}
 
 		public string GetKeyAsString() => Oid.ToString();

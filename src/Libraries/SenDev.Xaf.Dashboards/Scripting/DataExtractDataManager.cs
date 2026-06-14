@@ -69,8 +69,9 @@ namespace SenDev.Xaf.Dashboards.Scripting
 				{
 					extract.LastError = ex.ToString();
 					extract.ExtractData = null;
-					extract.ExtractDataSize = 0;	
+					extract.ExtractDataSize = 0;
 					extract.RowCount = 0;
+					extract.Hash = null;
 					objectSpace.CommitChanges();
 					throw;
 				}
@@ -92,6 +93,7 @@ namespace SenDev.Xaf.Dashboards.Scripting
 			{
 				extract.ExtractData = null;
 				extract.RowCount = 0;
+				extract.Hash = null;
 				return;
 			}
 			using (DashboardObjectDataSource ods = new DashboardObjectDataSource())
@@ -132,6 +134,7 @@ namespace SenDev.Xaf.Dashboards.Scripting
 		{
 			extract.ExtractData = fileData;
 			extract.ExtractDataSize = fileData?.LongLength ?? 0;
+			extract.Hash = DashboardDataExtract.ComputeHash(fileData);
 			extract.LastError = null;
 			extract.LastExtractDataUpdateDate = DateTime.Now;
 		}
