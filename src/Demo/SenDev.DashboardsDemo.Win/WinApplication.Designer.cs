@@ -57,7 +57,6 @@
             this.Modules.Add(this.dashboardsWindowsFormsModule);
             this.Modules.Add(this.senDevDashboardsWinModule1);
             this.Modules.Add(this.module4);
-            this.UseOldTemplates = false;
             this.DatabaseVersionMismatch += new System.EventHandler<DevExpress.ExpressApp.DatabaseVersionMismatchEventArgs>(this.DashboardsDemoWindowsFormsApplication_DatabaseVersionMismatch);
             this.CustomizeLanguagesList += new System.EventHandler<DevExpress.ExpressApp.CustomizeLanguagesListEventArgs>(this.DashboardsDemoWindowsFormsApplication_CustomizeLanguagesList);
             ((System.ComponentModel.ISupportInitialize)(this)).EndInit();

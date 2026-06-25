@@ -17,7 +17,6 @@ namespace SenDev.DashboardsDemo.Win
 		private void InitializeDefaults()
 		{
 			LinkNewObjectToParentImmediately = false;
-			OptimizedControllersCreation = true;
 			UseLightStyle = true;
 		}
 		#endregion
