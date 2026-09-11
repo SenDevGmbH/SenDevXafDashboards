@@ -42,6 +42,26 @@ steps:
     vstsFeed: 'DevExpress/Release'
 
 
+- task: PowerShell@2
+  displayName: Install DevExpress license key
+  env:
+    DevExpress_License: $(DevExpress_License)
+  inputs:
+    targetType: inline
+    failOnStderr: true
+    script: |
+      $key = "$env:DevExpress_License".Trim()
+      if ([string]::IsNullOrWhiteSpace($key) -or $key.StartsWith('$(')) {
+        Write-Host "##vso[task.logissue type=error]Pipeline variable DevExpress_License is not set. Define it as a secret variable on this pipeline (Edit > Variables)."
+        exit 1
+      }
+      Write-Host "DevExpress_License found (length $($key.Length), starts with '$($key.Substring(0, [Math]::Min(5, $key.Length)))')."
+      $dir = Join-Path $env:APPDATA 'DevExpress'
+      New-Item -ItemType Directory -Force -Path $dir | Out-Null
+      $file = Join-Path $dir 'DevExpress_License.txt'
+      [System.IO.File]::WriteAllText($file, $key)
+      Write-Host "License key written to $file"
+
 - task: MSBuild@1
   displayName: Build and pack
   env:
