@@ -43,11 +43,14 @@ steps:
 
 
 - task: MSBuild@1
+  displayName: Build and pack
+  env:
+    DevExpress_License: $(DevExpress_License)
   inputs:
     solution: '$(solution)'
     platform: '$(buildPlatform)'
     configuration: '$(buildConfiguration)'
-    msbuildArguments: '/bl:$(BinLogDirectory)\build.binlog /t:NuGet /p:BuildNumber=$(VersionRevision) /p:PackageOutputPath=$(Build.ArtifactStagingDirectory) /p:TargetDevExpressVersions="$(TargetDevExpressVersions)" /p:NugetSource=$(NugetSource)'
+    msbuildArguments: '/nodeReuse:false /bl:$(BinLogDirectory)\build.binlog /t:NuGet /p:BuildNumber=$(VersionRevision) /p:PackageOutputPath=$(Build.ArtifactStagingDirectory) /p:TargetDevExpressVersions="$(TargetDevExpressVersions)" /p:NugetSource=$(NugetSource)'
 
 - task: PublishBuildArtifacts@1
   displayName: 'Publish binary log'
@@ -59,19 +62,23 @@ steps:
 
 - task: MSBuild@1
   displayName: Build net48 unit tests
+  env:
+    DevExpress_License: $(DevExpress_License)
   inputs:
     solution: 'src\Libraries\UnitTests\UnitTests.csproj'
     platform: '$(buildPlatform)'
     configuration: '$(buildConfiguration)'
-    msbuildArguments: '/bl:$(BinLogDirectory)\build_unittests.binlog /p:OutDir=$(Build.SourcesDirectory)\FrameworkTests'
+    msbuildArguments: '/nodeReuse:false /bl:$(BinLogDirectory)\build_unittests.binlog /p:OutDir=$(Build.SourcesDirectory)\FrameworkTests'
 
 - task: MSBuild@1
   displayName: Build net60 unit tests
+  env:
+    DevExpress_License: $(DevExpress_License)
   inputs:
     solution: 'src\Libraries\UnitTests.NetCore\UnitTests.NetCore.csproj'
     platform: '$(buildPlatform)'
     configuration: '$(buildConfiguration)'
-    msbuildArguments: '/bl:$(BinLogDirectory)\build_unittests.core.binlog /p:OutDir=$(Build.SourcesDirectory)\NetCoreTests'
+    msbuildArguments: '/nodeReuse:false /bl:$(BinLogDirectory)\build_unittests.core.binlog /p:OutDir=$(Build.SourcesDirectory)\NetCoreTests'
 
 - task: VSTest@2
   displayName: 'VSTest - Net Framework'  
